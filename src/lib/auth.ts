@@ -6,8 +6,41 @@ import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcryptjs";
 import { db } from "./db";
 
+// Génère un username unique à partir d'un nom ou email
+async function generateUsername(base: string): Promise<string> {
+  const slug = base
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9]/g, "")
+    .slice(0, 20) || "user";
+
+  const exists = await db.user.findUnique({ where: { username: slug } });
+  if (!exists) return slug;
+
+  let attempt: string;
+  do {
+    attempt = slug + Math.floor(1000 + Math.random() * 9000);
+  } while (await db.user.findUnique({ where: { username: attempt } }));
+  return attempt;
+}
+
+// Adapter custom : injecte un username auto lors de la création OAuth
+const baseAdapter = PrismaAdapter(db) as any;
+const customAdapter = {
+  ...baseAdapter,
+  createUser: async (data: any) => {
+    const base =
+      data.name?.split(" ")[0] ||
+      data.email?.split("@")[0] ||
+      "user";
+    const username = await generateUsername(base);
+    return baseAdapter.createUser({ ...data, username });
+  },
+};
+
 export const authOptions: NextAuthOptions = {
-  adapter: PrismaAdapter(db) as any,
+  adapter: customAdapter,
   providers: [
     ...(process.env.GOOGLE_CLIENT_ID
       ? [
