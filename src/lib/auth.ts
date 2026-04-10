@@ -97,6 +97,18 @@ export const authOptions: NextAuthOptions = {
         token.username = (user as any).username;
         token.plan = (user as any).plan;
       }
+      // Pour les utilisateurs OAuth, username/plan ne sont pas dans l'objet user
+      // => on les récupère depuis la base de données
+      if (token.id && !token.username) {
+        const dbUser = await db.user.findUnique({
+          where: { id: token.id as string },
+          select: { username: true, plan: true },
+        });
+        if (dbUser) {
+          token.username = dbUser.username;
+          token.plan = dbUser.plan;
+        }
+      }
       if (trigger === "update" && session) {
         token.plan = session.plan;
         token.username = session.username;
