@@ -133,8 +133,6 @@ export function Navbar() {
     </header>
   );
 }
-
-  useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
