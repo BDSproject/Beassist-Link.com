@@ -7,7 +7,7 @@ import {
   Plus, Trash2, GripVertical, Eye, Palette, User, Globe, Pencil,
   X, Check, ExternalLink, Image as ImageIcon, Type, MousePointer2,
   Share2, Instagram, Twitter, Youtube, Facebook, Linkedin, Github,
-  Music, MessageCircle,
+  Music, MessageCircle, Lock,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -491,29 +491,62 @@ export default function BioPage() {
                   Theme predifini
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-                  {THEMES.map((theme) => (
-                    <button
-                      key={theme.id}
-                      onClick={() =>
-                        setPageForm((p) => ({
-                          ...p,
-                          theme: theme.id,
-                          ...(theme.id !== "gradient" && { bgColor: THEME_BG_DEFAULTS[theme.id] ?? p.bgColor }),
-                        }))
-                      }
-                      className={`relative rounded-xl overflow-hidden border-2 transition-all ${
-                        pageForm.theme === theme.id ? "border-[#8F00FF]" : "border-gray-200 hover:border-gray-300"
-                      }`}
-                    >
-                      <div className={`h-16 ${theme.preview}`} />
-                      <div className="p-2 text-xs font-medium text-center text-gray-700 bg-white">{theme.label}</div>
-                      {pageForm.theme === theme.id && (
-                        <div className="absolute top-2 right-2 w-5 h-5 bg-[#8F00FF] rounded-full flex items-center justify-center">
-                          <Check className="w-3 h-3 text-white" />
-                        </div>
-                      )}
-                    </button>
-                  ))}
+                  {THEMES.map((theme) => {
+                    const isFree = !session?.user?.plan || session.user.plan === "FREE";
+                    const isLocked = isFree && theme.id !== "default";
+                    return (
+                      <button
+                        key={theme.id}
+                        onClick={() => {
+                          if (isLocked) {
+                            toast(
+                              (t) => (
+                                <span className="text-sm">
+                                  🔒 {"Theme reserve aux abonnes."}{" "}
+                                  <a
+                                    href="/dashboard/billing"
+                                    className="font-semibold text-[#8F00FF] underline"
+                                    onClick={() => toast.dismiss(t.id)}
+                                  >
+                                    Upgrader
+                                  </a>
+                                </span>
+                              ),
+                              { duration: 4000 }
+                            );
+                            return;
+                          }
+                          setPageForm((p) => ({
+                            ...p,
+                            theme: theme.id,
+                            ...(theme.id !== "gradient" && { bgColor: THEME_BG_DEFAULTS[theme.id] ?? p.bgColor }),
+                          }));
+                        }}
+                        className={`relative rounded-xl overflow-hidden border-2 transition-all ${
+                          isLocked
+                            ? "border-gray-200 opacity-70 cursor-not-allowed"
+                            : pageForm.theme === theme.id
+                            ? "border-[#8F00FF]"
+                            : "border-gray-200 hover:border-gray-300"
+                        }`}
+                      >
+                        <div className={`h-16 ${theme.preview}`} />
+                        <div className="p-2 text-xs font-medium text-center text-gray-700 bg-white">{theme.label}</div>
+                        {isLocked && (
+                          <div className="absolute inset-0 flex items-center justify-center bg-black/10">
+                            <div className="bg-white/90 rounded-full p-1.5 shadow">
+                              <Lock className="w-3.5 h-3.5 text-gray-500" />
+                            </div>
+                          </div>
+                        )}
+                        {!isLocked && pageForm.theme === theme.id && (
+                          <div className="absolute top-2 right-2 w-5 h-5 bg-[#8F00FF] rounded-full flex items-center justify-center">
+                            <Check className="w-3 h-3 text-white" />
+                          </div>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </Card>
 
