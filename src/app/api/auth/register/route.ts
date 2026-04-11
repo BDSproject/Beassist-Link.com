@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 import { db } from "@/database/client";
+import { sendWelcomeEmail } from "@/lib/email";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -88,6 +89,9 @@ export async function POST(req: NextRequest) {
       },
       select: { id: true, email: true, username: true },
     });
+
+    // Envoi email de bienvenue (fire-and-forget, ne bloque pas la réponse)
+    void sendWelcomeEmail({ name: data.name, email: user.email, username: user.username });
 
     return NextResponse.json(
       { message: "Compte créé avec succès", userId: user.id },
