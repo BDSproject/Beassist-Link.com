@@ -133,12 +133,24 @@ export default async function UserBioPage({ params }: Props) {
   try { socialLinks = JSON.parse((bioPage as { socialLinks?: string | null }).socialLinks || "[]"); } catch { /* ignore */ }
   const isDarkBg = !!(bgImage || theme === "dark" || theme === "gradient");
 
-  // Fond: bgImage > theme gradient/dark > bgColor
+  // Fond: bgImage > gradient (Tailwind) > bgColor (with theme-aware fallback for backward compat)
+  const THEME_BG_FALLBACK: Record<string, string> = {
+    dark: "#030712",
+    minimal: "#F9FAFB",
+    default: "#FFFFFF",
+  };
+  const effectiveBgColor =
+    theme === "gradient"
+      ? undefined
+      : bioPage.bgColor && bioPage.bgColor !== "#FFFFFF"
+      ? bioPage.bgColor
+      : THEME_BG_FALLBACK[theme] ?? "#FFFFFF";
+
   const wrapperStyle: React.CSSProperties = bgImage
     ? { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }
-    : theme === "default" || theme === "minimal"
-    ? { backgroundColor: bioPage.bgColor || undefined }
-    : {};
+    : theme === "gradient"
+    ? {}
+    : { backgroundColor: effectiveBgColor };
 
   return (
     <main

@@ -63,6 +63,13 @@ const FONT_STYLES = [
   { id: "mono", label: "Tech", cls: "font-mono" },
 ];
 
+const THEME_BG_DEFAULTS: Record<string, string> = {
+  default: "#FFFFFF",
+  minimal: "#F9FAFB",
+  dark: "#030712",
+  gradient: "#8F00FF",
+};
+
 const SOCIAL_ICON_PLATFORMS = [
   { id: "instagram", icon: Instagram },
   { id: "twitter", icon: Twitter },
@@ -487,7 +494,13 @@ export default function BioPage() {
                   {THEMES.map((theme) => (
                     <button
                       key={theme.id}
-                      onClick={() => setPageForm((p) => ({ ...p, theme: theme.id }))}
+                      onClick={() =>
+                        setPageForm((p) => ({
+                          ...p,
+                          theme: theme.id,
+                          ...(theme.id !== "gradient" && { bgColor: THEME_BG_DEFAULTS[theme.id] ?? p.bgColor }),
+                        }))
+                      }
                       className={`relative rounded-xl overflow-hidden border-2 transition-all ${
                         pageForm.theme === theme.id ? "border-[#8F00FF]" : "border-gray-200 hover:border-gray-300"
                       }`}
@@ -674,14 +687,9 @@ export default function BioPage() {
                           backgroundPosition: "center",
                           backgroundRepeat: "no-repeat",
                         }
-                      : {
-                          background:
-                            pageForm.theme === "gradient"
-                              ? "linear-gradient(135deg, #7c3aed, #ec4899)"
-                              : pageForm.theme === "dark"
-                              ? "#030712"
-                              : pageForm.bgColor,
-                        }
+                      : pageForm.theme === "gradient"
+                      ? { background: "linear-gradient(135deg, #7c3aed, #ec4899)" }
+                      : { backgroundColor: pageForm.bgColor }
                   }
                 >
                   {pageForm.bgImage && <div className="absolute inset-0 bg-black/25" />}
