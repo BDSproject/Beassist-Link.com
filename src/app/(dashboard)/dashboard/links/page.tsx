@@ -23,6 +23,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PLANS } from "@/lib/plans";
 import { formatNumber, formatDate, isValidUrl } from "@/lib/utils";
+import { useLanguage } from "@/contexts/language-context";
 
 const linkSchema = z.object({
   url: z.string().url("URL invalide — ex: https://exemple.com"),
@@ -47,6 +48,8 @@ interface Link {
 
 export default function LinksPage() {
   const { data: session } = useSession();
+  const { t } = useLanguage();
+  const d = t.dashboard.links;
   const [links, setLinks] = useState<Link[]>([]);
   const [loading, setLoading] = useState(true);
   const [creating, setCreating] = useState(false);
@@ -70,7 +73,7 @@ export default function LinksPage() {
       const data = await res.json();
       setLinks(data.links || []);
     } catch {
-      toast.error("Erreur lors du chargement");
+      toast.error(d.loadError);
     } finally {
       setLoading(false);
     }
@@ -86,7 +89,7 @@ export default function LinksPage() {
       links.length >= (planLimits?.maxShortLinks || 3)
     ) {
       toast.error(
-        `Limite atteinte (${planLimits?.maxShortLinks} liens). Passez au plan supérieur !`
+        d.limitReached.replace("{count}", String(planLimits?.maxShortLinks))
       );
       return;
     }
@@ -108,9 +111,9 @@ export default function LinksPage() {
       setLinks((prev) => [link, ...prev]);
       reset();
       setShowForm(false);
-      toast.success("Lien créé avec succès !");
+      toast.success(d.created);
     } catch (error: any) {
-      toast.error(error.message || "Erreur lors de la création");
+      toast.error(error.message || d.createError);
     } finally {
       setCreating(false);
     }
@@ -120,7 +123,7 @@ export default function LinksPage() {
     const url = `${window.location.origin}/r/${slug}`;
     navigator.clipboard.writeText(url);
     setCopied(slug);
-    toast.success("Lien copié !");
+    toast.success(d.copied);
     setTimeout(() => setCopied(null), 2000);
   };
 
@@ -134,20 +137,20 @@ export default function LinksPage() {
       setLinks((prev) =>
         prev.map((l) => (l.id === id ? { ...l, active: !active } : l))
       );
-      toast.success(active ? "Lien désactivé" : "Lien activé");
+      toast.success(active ? d.deactivated : d.activated);
     } catch {
-      toast.error("Erreur");
+      toast.error(d.loadError);
     }
   };
 
   const deleteLink = async (id: string) => {
-    if (!confirm("Supprimer ce lien ?")) return;
+    if (!confirm(d.confirmDelete)) return;
     try {
       await fetch(`/api/links/${id}`, { method: "DELETE" });
       setLinks((prev) => prev.filter((l) => l.id !== id));
-      toast.success("Lien supprimé");
+      toast.success(d.deleted);
     } catch {
-      toast.error("Erreur lors de la suppression");
+      toast.error(d.deleteError);
     }
   };
 
@@ -164,14 +167,14 @@ export default function LinksPage() {
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
           <h1 className="text-2xl font-black text-gray-900">
-            Liens raccourcis
+            {d.title}
           </h1>
           <p className="text-gray-500 mt-1 text-sm">
             {links.length} /{" "}
             {planLimits?.maxShortLinks === -1
               ? "∞"
               : planLimits?.maxShortLinks}{" "}
-            liens utilisés
+            {d.linksUsed}
           </p>
         </div>
         <Button
@@ -180,37 +183,37 @@ export default function LinksPage() {
           onClick={() => setShowForm(!showForm)}
         >
           <Plus size={16} />
-          Nouveau lien
+          {d.newLink}
         </Button>
       </div>
 
       {/* Formulaire création */}
       {showForm && (
         <Card padding="md" className="mb-6 border-[#EAD6FF]">
-          <h2 className="font-bold text-gray-900 mb-4">Créer un lien raccourci</h2>
+          <h2 className="font-bold text-gray-900 mb-4">{d.createTitle}</h2>
           <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
             <Input
-              label="URL de destination *"
+              label={d.urlLabel}
               type="url"
-              placeholder="https://exemple.com/mon-article"
+              placeholder={d.urlPlaceholder}
               leftIcon={<Link2 size={16} />}
               error={errors.url?.message}
               {...register("url")}
             />
             <div className="grid sm:grid-cols-2 gap-4">
               <Input
-                label="Titre (optionnel)"
-                placeholder="Mon article de blog"
+                label={d.titleLabel}
+                placeholder={d.titlePlaceholder}
                 error={errors.title?.message}
                 {...register("title")}
               />
               <Input
-                label="Alias personnalisé (optionnel)"
-                placeholder="mon-lien"
+                label={d.aliasLabel}
+                placeholder={d.aliasPlaceholder}
                 hint={
                   planLimits?.hasCustomAlias
-                    ? "Votre lien : beassistlink.com/r/mon-lien"
-                    : "Disponible avec Starter ou Pro"
+                    ? d.aliasHint
+                    : d.aliasUnavailable
                 }
                 disabled={!planLimits?.hasCustomAlias}
                 error={errors.slug?.message}
@@ -224,7 +227,7 @@ export default function LinksPage() {
                 size="md"
                 loading={creating}
               >
-                Créer le lien
+                {d.create}
               </Button>
               <Button
                 type="button"
@@ -235,7 +238,7 @@ export default function LinksPage() {
                   reset();
                 }}
               >
-                Annuler
+                {d.cancel}
               </Button>
             </div>
           </form>
@@ -245,7 +248,7 @@ export default function LinksPage() {
       {/* Recherche */}
       <div className="mb-4">
         <Input
-          placeholder="Rechercher un lien..."
+          placeholder={d.searchPlaceholder}
           leftIcon={<Search size={16} />}
           value={search}
           onChange={(e) => setSearch(e.target.value)}
@@ -255,17 +258,15 @@ export default function LinksPage() {
       {/* Liste des liens */}
       <Card padding="none">
         {loading ? (
-          <div className="p-8 text-center text-gray-400">Chargement...</div>
+          <div className="p-8 text-center text-gray-400">{d.loading}</div>
         ) : filteredLinks.length === 0 ? (
           <div className="p-12 text-center">
             <Link2 size={40} className="mx-auto text-gray-200 mb-4" />
             <h3 className="font-semibold text-gray-700 mb-2">
-              Aucun lien trouvé
+              {d.noLinksFound}
             </h3>
             <p className="text-sm text-gray-400 mb-4">
-              {search
-                ? "Essayez un autre terme de recherche"
-                : "Créez votre premier lien raccourci"}
+              {search ? d.noLinksSearch : d.noLinksEmpty}
             </p>
             {!search && (
               <Button
@@ -273,7 +274,7 @@ export default function LinksPage() {
                 size="sm"
                 onClick={() => setShowForm(true)}
               >
-                Créer un lien
+                {d.createLink}
               </Button>
             )}
           </div>
@@ -298,7 +299,7 @@ export default function LinksPage() {
                       variant={link.active ? "success" : "gray"}
                       size="sm"
                     >
-                      {link.active ? "Actif" : "Inactif"}
+                      {link.active ? d.active : d.inactive}
                     </Badge>
                   </div>
                   <div className="flex items-center gap-2 text-xs text-gray-400">
@@ -315,7 +316,7 @@ export default function LinksPage() {
                   <p className="text-lg font-black text-gray-900">
                     {formatNumber(link.clicks)}
                   </p>
-                  <p className="text-xs text-gray-400">clics</p>
+                  <p className="text-xs text-gray-400">{d.clicks}</p>
                 </div>
 
                 {/* Actions */}

@@ -15,9 +15,12 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/language-context";
 
 export default function SettingsPage() {
   const { data: session, update } = useSession();
+  const { t, lang } = useLanguage();
+  const d = t.dashboard.settings;
 
   // Profile form
   const [profileForm, setProfileForm] = useState({
@@ -47,11 +50,11 @@ export default function SettingsPage() {
 
   const saveProfile = async () => {
     if (!profileForm.name.trim() || !profileForm.username.trim()) {
-      toast.error("Le nom et le nom d'utilisateur sont requis");
+      toast.error(d.profileTitle + " — " + d.fullName + " & " + d.username);
       return;
     }
     if (!/^[a-zA-Z0-9_-]{3,30}$/.test(profileForm.username)) {
-      toast.error("Nom d'utilisateur invalide (3-30 caractères, lettres/chiffres/_/-)");
+      toast.error(d.username + " invalide (3-30 car.)");
       return;
     }
 
@@ -65,7 +68,7 @@ export default function SettingsPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       await update({ name: profileForm.name, username: profileForm.username });
-      toast.success("Profil mis à jour !");
+      toast.success(d.profileUpdated);
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Erreur lors de la mise à jour");
     } finally {
@@ -75,11 +78,11 @@ export default function SettingsPage() {
 
   const savePassword = async () => {
     if (passwordForm.newPassword.length < 8) {
-      toast.error("Le nouveau mot de passe doit contenir au moins 8 caractères");
+      toast.error(d.newPassword + " — 8+ characters required");
       return;
     }
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      toast.error("Les mots de passe ne correspondent pas");
+      toast.error(d.confirmPassword + " mismatch");
       return;
     }
 
@@ -96,7 +99,7 @@ export default function SettingsPage() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       setPasswordForm({ currentPassword: "", newPassword: "", confirmPassword: "" });
-      toast.success("Mot de passe mis à jour !");
+      toast.success(d.passwordUpdated);
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Erreur");
     } finally {
@@ -105,8 +108,9 @@ export default function SettingsPage() {
   };
 
   const deleteAccount = async () => {
-    if (deleteConfirmText !== "SUPPRIMER") {
-      toast.error("Tapez SUPPRIMER pour confirmer");
+    const confirmWord = lang === "fr" ? "SUPPRIMER" : "DELETE";
+    if (deleteConfirmText !== confirmWord) {
+      toast.error(d.deleteConfirmPlaceholder);
       return;
     }
 
@@ -114,7 +118,7 @@ export default function SettingsPage() {
     try {
       const res = await fetch("/api/user/delete", { method: "DELETE" });
       if (!res.ok) throw new Error();
-      toast.success("Compte supprimé");
+      toast.success(d.accountDeleted);
       await signOut({ callbackUrl: "/" });
     } catch {
       toast.error("Erreur lors de la suppression du compte");
@@ -132,15 +136,15 @@ export default function SettingsPage() {
   };
 
   const strength = passwordStrength(passwordForm.newPassword);
-  const strengthLabels = ["", "Faible", "Moyen", "Bon", "Excellent"];
+  const strengthLabels = ["", d.passwordWeak, d.passwordMedium, d.passwordGood, d.passwordStrong];
   const strengthColors = ["", "bg-red-400", "bg-yellow-400", "bg-blue-400", "bg-green-400"];
 
   return (
     <div className="max-w-2xl mx-auto p-4 sm:p-6 lg:p-8">
       {/* Header */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Paramètres</h1>
-        <p className="text-gray-500 mt-1">Gérez votre compte et vos préférences</p>
+        <h1 className="text-2xl font-bold text-gray-900">{d.title}</h1>
+        <p className="text-gray-500 mt-1">{d.subtitle}</p>
       </div>
 
       <div className="space-y-6">
@@ -151,14 +155,14 @@ export default function SettingsPage() {
               <User className="w-5 h-5 text-[#8F00FF]" />
             </div>
             <div>
-              <h2 className="font-semibold text-gray-900">Informations du profil</h2>
-              <p className="text-sm text-gray-500">Modifiez vos informations publiques</p>
+              <h2 className="font-semibold text-gray-900">{d.profileTitle}</h2>
+              <p className="text-sm text-gray-500">{d.profileDesc}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <Input
-              label="Nom complet"
+              label={d.fullName}
               placeholder="Jean Dupont"
               value={profileForm.name}
               onChange={(e) =>
@@ -167,7 +171,7 @@ export default function SettingsPage() {
             />
             <div>
               <Input
-                label="Nom d'utilisateur"
+              label={d.username}
                 placeholder="jeandupont"
                 value={profileForm.username}
                 onChange={(e) =>
@@ -180,7 +184,7 @@ export default function SettingsPage() {
               />
             </div>
             <Input
-              label="Email"
+              label={d.email}
               type="email"
               placeholder="jean@exemple.com"
               value={profileForm.email}
@@ -198,7 +202,7 @@ export default function SettingsPage() {
               className="text-white hover:opacity-90"
             >
               <Check className="w-4 h-4 mr-2" />
-              Enregistrer
+              {d.save}
             </Button>
           </div>
         </Card>
@@ -210,15 +214,15 @@ export default function SettingsPage() {
               <Lock className="w-5 h-5 text-[#8F00FF]" />
             </div>
             <div>
-              <h2 className="font-semibold text-gray-900">Mot de passe</h2>
-              <p className="text-sm text-gray-500">Changez votre mot de passe</p>
+              <h2 className="font-semibold text-gray-900">{d.passwordTitle}</h2>
+              <p className="text-sm text-gray-500">{d.passwordDesc}</p>
             </div>
           </div>
 
           <div className="space-y-4">
             <div className="relative">
               <Input
-                label="Mot de passe actuel"
+                label={d.currentPassword}
                 type={showPasswords.current ? "text" : "password"}
                 placeholder="••••••••"
                 value={passwordForm.currentPassword}
@@ -243,7 +247,7 @@ export default function SettingsPage() {
 
             <div className="relative">
               <Input
-                label="Nouveau mot de passe"
+                label={d.newPassword}
                 type={showPasswords.new ? "text" : "password"}
                 placeholder="••••••••"
                 value={passwordForm.newPassword}
@@ -288,7 +292,7 @@ export default function SettingsPage() {
 
             <div className="relative">
               <Input
-                label="Confirmer le nouveau mot de passe"
+                label={d.confirmPassword}
                 type={showPasswords.confirm ? "text" : "password"}
                 placeholder="••••••••"
                 value={passwordForm.confirmPassword}
@@ -298,7 +302,7 @@ export default function SettingsPage() {
                 error={
                   passwordForm.confirmPassword &&
                   passwordForm.confirmPassword !== passwordForm.newPassword
-                    ? "Les mots de passe ne correspondent pas"
+                    ? d.confirmPassword + " mismatch"
                     : undefined
                 }
               />
@@ -330,7 +334,7 @@ export default function SettingsPage() {
               style={{ backgroundColor: "#8F00FF" }}
               className="text-white hover:opacity-90 disabled:opacity-50"
             >
-              Changer le mot de passe
+              {d.updatePassword}
             </Button>
           </div>
         </Card>
@@ -342,8 +346,8 @@ export default function SettingsPage() {
               <AlertTriangle className="w-5 h-5 text-red-500" />
             </div>
             <div>
-              <h2 className="font-semibold text-gray-900">Zone de danger</h2>
-              <p className="text-sm text-gray-500">Actions irréversibles</p>
+              <h2 className="font-semibold text-gray-900">{d.dangerTitle}</h2>
+              <p className="text-sm text-gray-500">{d.dangerDesc}</p>
             </div>
           </div>
 
@@ -351,10 +355,10 @@ export default function SettingsPage() {
             <div className="flex items-center justify-between p-4 bg-red-50 rounded-xl">
               <div>
                 <p className="text-sm font-medium text-gray-900">
-                  Supprimer mon compte
+                  {d.deleteAccount}
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  Cette action est irréversible. Toutes vos données seront supprimées.
+                  {d.deleteWarning}
                 </p>
               </div>
               <Button

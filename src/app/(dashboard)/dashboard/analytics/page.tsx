@@ -16,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
+import { useLanguage } from "@/contexts/language-context";
 
 interface LinkStat {
   id: string;
@@ -33,6 +34,8 @@ interface BioStat {
 
 export default function AnalyticsPage() {
   const { data: session } = useSession();
+  const { t } = useLanguage();
+  const d = t.dashboard.analytics;
   const [links, setLinks] = useState<LinkStat[]>([]);
   const [bio, setBio] = useState<BioStat | null>(null);
   const [loading, setLoading] = useState(true);
@@ -87,9 +90,9 @@ export default function AnalyticsPage() {
     return (
       <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{d.title}</h1>
           <p className="text-gray-500 mt-1">
-            Suivez vos performances en temps réel
+            {d.subtitle}
           </p>
         </div>
 
@@ -98,9 +101,9 @@ export default function AnalyticsPage() {
           {/* Fake stats blurred */}
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6 blur-sm pointer-events-none select-none">
             {[
-              { label: "Clics totaux", value: "1,247", icon: MousePointerClick },
-              { label: "Vues bio", value: "3,891", icon: Eye },
-              { label: "Lien le plus cliqué", value: "Instagram", icon: TrendingUp },
+              { label: d.totalClicks, value: "1,247", icon: MousePointerClick },
+              { label: d.bioViews, value: "3,891", icon: Eye },
+              { label: d.totalLinks, value: "Instagram", icon: TrendingUp },
             ].map((stat) => (
               <Card key={stat.label} className="p-5">
                 <div className="flex items-center gap-3">
@@ -123,12 +126,10 @@ export default function AnalyticsPage() {
                 <Lock className="w-7 h-7 text-[#8F00FF]" />
               </div>
               <h2 className="text-xl font-bold text-gray-900 mb-2">
-                Analytics disponibles
+                {d.upgradeTitle}
               </h2>
               <p className="text-gray-500 text-sm mb-6 leading-relaxed">
-                Passez au plan <strong>Starter</strong> ou{" "}
-                <strong>Pro</strong> pour accéder aux statistiques détaillées
-                de vos liens et pages bio.
+                {d.upgradeDesc}
               </p>
               <a href="/dashboard/billing">
                 <Button
@@ -136,12 +137,12 @@ export default function AnalyticsPage() {
                   style={{ backgroundColor: "#8F00FF" }}
                   className="text-white hover:opacity-90"
                 >
-                  Upgrader maintenant
+                  {d.upgradeBtn}
                   <ArrowUpRight className="w-4 h-4 ml-1" />
                 </Button>
               </a>
               <p className="text-xs text-gray-400 mt-3">
-                À partir de 5€/mois · Annulable à tout moment
+                {d.upgradePrice}
               </p>
             </div>
           </div>
@@ -155,9 +156,9 @@ export default function AnalyticsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Analytics</h1>
+          <h1 className="text-2xl font-bold text-gray-900">{d.title}</h1>
           <p className="text-gray-500 mt-1">
-            Performances de vos liens et page bio
+            {d.subtitlePro}
           </p>
         </div>
         <Badge
@@ -171,28 +172,28 @@ export default function AnalyticsPage() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
         {[
           {
-            label: "Clics sur liens courts",
+            label: d.totalClicks,
             value: formatNumber(totalClicks),
             icon: MousePointerClick,
             color: "text-blue-600",
             bg: "bg-blue-50",
           },
           {
-            label: "Vues page bio",
+            label: d.bioViews,
             value: formatNumber(bio?.views ?? 0),
             icon: Eye,
             color: "text-purple-600",
             bg: "bg-purple-50",
           },
           {
-            label: "Clics bio",
+            label: d.bioClicks,
             value: formatNumber(totalBioClicks),
             icon: Globe,
             color: "text-green-600",
             bg: "bg-green-50",
           },
           {
-            label: "Total liens",
+            label: d.totalLinks,
             value: formatNumber(links.length),
             icon: Link2,
             color: "text-orange-600",
@@ -220,12 +221,12 @@ export default function AnalyticsPage() {
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <BarChart2 className="w-5 h-5 text-[#8F00FF]" />
-            <h3 className="font-semibold text-gray-900">Liens les plus cliqués</h3>
+            <h3 className="font-semibold text-gray-900">{d.linkPerf}</h3>
           </div>
           {links.length === 0 ? (
             <div className="text-center py-8 text-gray-400">
               <Link2 className="w-8 h-8 mx-auto mb-2 opacity-40" />
-              <p className="text-sm">Aucun lien créé</p>
+              <p className="text-sm">{d.noData}</p>
             </div>
           ) : (
             <div className="space-y-3">
@@ -269,12 +270,12 @@ export default function AnalyticsPage() {
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <TrendingUp className="w-5 h-5 text-[#8F00FF]" />
-            <h3 className="font-semibold text-gray-900">Liens bio les plus cliqués</h3>
+            <h3 className="font-semibold text-gray-900">{d.bioPerf}</h3>
           </div>
           {!bio || bio.links.length === 0 ? (
             <div className="text-center py-8 text-gray-400">
               <Globe className="w-8 h-8 mx-auto mb-2 opacity-40" />
-              <p className="text-sm">Aucun lien bio</p>
+              <p className="text-sm">{d.noData}</p>
             </div>
           ) : (
             <div className="space-y-3">

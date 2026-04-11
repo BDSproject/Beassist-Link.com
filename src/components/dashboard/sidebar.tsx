@@ -20,25 +20,28 @@ import { Logo } from "@/components/shared/logo";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-
-const navItems = [
-  { href: "/dashboard", label: "Tableau de bord", icon: LayoutDashboard },
-  { href: "/dashboard/links", label: "Liens raccourcis", icon: Link2 },
-  { href: "/dashboard/bio", label: "Page bio", icon: FileText },
-  { href: "/dashboard/analytics", label: "Analytiques", icon: BarChart3 },
-  { href: "/dashboard/billing", label: "Facturation", icon: CreditCard },
-  { href: "/dashboard/settings", label: "Paramètres", icon: Settings },
-];
+import { useLanguage } from "@/contexts/language-context";
 
 export function Sidebar() {
   const pathname = usePathname();
   const { data: session } = useSession();
   const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { t, lang, setLang } = useLanguage();
+  const d = t.dashboard;
 
   const plan = session?.user?.plan || "FREE";
   const isPro = plan === "PRO";
   const isStarter = plan === "STARTER";
+
+  const navItems = [
+    { href: "/dashboard", label: d.nav.dashboard, icon: LayoutDashboard },
+    { href: "/dashboard/links", label: d.nav.links, icon: Link2 },
+    { href: "/dashboard/bio", label: d.nav.bio, icon: FileText },
+    { href: "/dashboard/analytics", label: d.nav.analytics, icon: BarChart3 },
+    { href: "/dashboard/billing", label: d.nav.billing, icon: CreditCard },
+    { href: "/dashboard/settings", label: d.nav.settings, icon: Settings },
+  ];
 
   const handleSignOut = async () => {
     await signOut({ redirect: false });
@@ -94,20 +97,46 @@ export function Sidebar() {
               <div className="absolute top-0 right-0 w-16 h-16 bg-white/10 rounded-full -translate-y-4 translate-x-4" />
               <Sparkles size={20} className="mb-2" />
               <p className="font-bold text-sm mb-1">
-                {isStarter ? "Passer au Pro" : "Passer au Starter"}
+                {isStarter ? d.sidebar.upgradeToPro : d.sidebar.upgradeToStarter}
               </p>
               <p className="text-xs text-purple-200 leading-relaxed">
-                {isStarter
-                  ? "Domaine custom, analytiques avancées, API"
-                  : "Analytiques, QR codes, thèmes premium"}
+                {d.sidebar.upgradeDesc}
               </p>
               <div className="mt-3 flex items-center gap-1 text-xs font-semibold">
-                Voir les offres <ChevronRight size={12} />
+                {d.sidebar.upgrade} <ChevronRight size={12} />
               </div>
             </div>
           </Link>
         </div>
       )}
+
+      {/* Language switcher */}
+      <div className="px-4 pb-3">
+        <div className="flex items-center gap-2 p-1 bg-gray-100 rounded-xl">
+          <button
+            onClick={() => setLang("fr")}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200",
+              lang === "fr"
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+            )}
+          >
+            🇫🇷 FR
+          </button>
+          <button
+            onClick={() => setLang("en")}
+            className={cn(
+              "flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg text-xs font-semibold transition-all duration-200",
+              lang === "en"
+                ? "bg-white text-gray-900 shadow-sm"
+                : "text-gray-500 hover:text-gray-700"
+            )}
+          >
+            🇬🇧 EN
+          </button>
+        </div>
+      </div>
 
       {/* Profil utilisateur */}
       <div className="px-3 pb-4 border-t border-gray-100 pt-4">
@@ -135,7 +164,7 @@ export function Sidebar() {
           className="w-full flex items-center gap-3 px-3 py-2 mt-1 rounded-xl text-sm font-medium text-gray-500 hover:bg-red-50 hover:text-red-600 transition-all duration-200"
         >
           <LogOut size={16} />
-          Se déconnecter
+          {d.sidebar.signOut}
         </button>
       </div>
     </div>
@@ -153,12 +182,21 @@ export function Sidebar() {
         <Link href="/dashboard">
           <Logo size="sm" />
         </Link>
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="p-2 rounded-xl hover:bg-gray-100 transition-colors"
-        >
-          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
-        </button>
+        <div className="flex items-center gap-2">
+          {/* Mobile language toggle */}
+          <button
+            onClick={() => setLang(lang === "fr" ? "en" : "fr")}
+            className="px-2.5 py-1.5 rounded-lg bg-gray-100 text-xs font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
+          >
+            {lang === "fr" ? "🇫🇷" : "🇬🇧"}
+          </button>
+          <button
+            onClick={() => setMobileOpen(!mobileOpen)}
+            className="p-2 rounded-xl hover:bg-gray-100 transition-colors"
+          >
+            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile sidebar */}
@@ -176,3 +214,4 @@ export function Sidebar() {
     </>
   );
 }
+
