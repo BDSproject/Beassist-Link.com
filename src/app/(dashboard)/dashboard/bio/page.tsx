@@ -21,6 +21,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { SOCIAL_PLATFORMS } from "@/lib/utils";
+import { SocialIcon } from "@/components/ui/social-icon";
 import { canUserDo } from "@/lib/plans";
 
 interface BioPage {
@@ -289,7 +290,7 @@ export default function BioPage() {
                                 : "border-gray-200 hover:border-gray-300 text-gray-600"
                             }`}
                           >
-                            <span className="text-lg">{p.icon}</span>
+                            <SocialIcon platform={p.id} size={18} />
                             <span className="truncate w-full text-center">{p.label}</span>
                           </button>
                         ))}
@@ -374,8 +375,8 @@ export default function BioPage() {
                         <GripVertical className="w-4 h-4" />
                       </div>
 
-                      <div className="text-xl w-8 text-center">
-                        {link.icon || "🔗"}
+                      <div className="w-8 flex items-center justify-center">
+                        <SocialIcon platform={link.platform || "other"} size={20} />
                       </div>
 
                       <div className="flex-1 min-w-0">
@@ -600,7 +601,7 @@ export default function BioPage() {
                         className="flex items-center gap-2 px-3 py-2.5 rounded-xl text-white text-xs font-medium"
                         style={{ backgroundColor: pageForm.primaryColor }}
                       >
-                        <span>{link.icon || "🔗"}</span>
+                        <SocialIcon platform={link.platform || "other"} size={14} color="white" />
                         <span className="flex-1 text-center">{link.title}</span>
                       </div>
                     ))}

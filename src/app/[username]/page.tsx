@@ -4,6 +4,7 @@ import { PLANS } from "@/lib/plans";
 import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
+import { SocialIcon } from "@/components/ui/social-icon";
 import type { Metadata } from "next";
 
 interface Props {
@@ -171,11 +172,12 @@ export default async function UserBioPage({ params }: Props) {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
 
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    {link.icon && (
-                      <span className="text-xl flex-shrink-0 leading-none">
-                        {link.icon}
-                      </span>
-                    )}
+                    <SocialIcon
+                      platform={link.platform || "other"}
+                      size={20}
+                      color="white"
+                      className="flex-shrink-0"
+                    />
                     <div className="flex-1 min-w-0">
                       <span className="text-white font-semibold truncate block">
                         {link.title}
