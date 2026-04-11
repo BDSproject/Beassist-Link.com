@@ -14,6 +14,11 @@ export default async function DashboardLayout({
     redirect("/login");
   }
 
+  // Redirect OAuth new users to complete their onboarding
+  if (session.user.onboardingCompleted === false) {
+    redirect("/onboarding");
+  }
+
   return (
     <div className="flex min-h-screen bg-gray-50">
       <Sidebar />

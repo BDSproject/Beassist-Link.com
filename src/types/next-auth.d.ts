@@ -6,12 +6,16 @@ declare module "next-auth" {
       id: string;
       username: string;
       plan: string;
+      onboardingCompleted: boolean;
+      company?: string | null;
     } & DefaultSession["user"];
   }
 
   interface User {
     username?: string;
     plan?: string;
+    onboardingCompleted?: boolean;
+    company?: string | null;
   }
 }
 
@@ -20,5 +24,6 @@ declare module "next-auth/jwt" {
     id: string;
     username: string;
     plan: string;
+    onboardingCompleted: boolean;
   }
 }

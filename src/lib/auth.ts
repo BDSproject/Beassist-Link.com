@@ -35,7 +35,7 @@ const customAdapter = {
       data.email?.split("@")[0] ||
       "user";
     const username = await generateUsername(base);
-    const user = await baseAdapter.createUser({ ...data, username });
+    const user = await (baseAdapter.createUser as any)({ ...data, username, onboardingCompleted: false });
     // Create bioPage and subscription for OAuth users (credentials users get these at register)
     await Promise.all([
       db.bioPage.upsert({
@@ -121,22 +121,26 @@ export const authOptions: NextAuthOptions = {
         token.id = user.id;
         token.username = (user as any).username;
         token.plan = (user as any).plan;
+        token.onboardingCompleted = (user as any).onboardingCompleted ?? true;
       }
       // Pour les utilisateurs OAuth, username/plan ne sont pas dans l'objet user
       // => on les récupère depuis la base de données
       if (token.id && !token.username) {
         const dbUser = await db.user.findUnique({
           where: { id: token.id as string },
-          select: { username: true, plan: true },
         });
         if (dbUser) {
           token.username = dbUser.username;
           token.plan = dbUser.plan;
+          token.onboardingCompleted = (dbUser as any).onboardingCompleted ?? true;
         }
       }
       if (trigger === "update" && session) {
         token.plan = session.plan;
         token.username = session.username;
+        if (session.onboardingCompleted !== undefined) {
+          token.onboardingCompleted = session.onboardingCompleted;
+        }
       }
       return token;
     },
@@ -145,6 +149,7 @@ export const authOptions: NextAuthOptions = {
         session.user.id = token.id;
         session.user.username = token.username;
         session.user.plan = token.plan;
+        session.user.onboardingCompleted = token.onboardingCompleted ?? true;
       }
       return session;
     },
