@@ -15,6 +15,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
+import { AvatarUpload } from "@/components/ui/avatar-upload";
 import { useLanguage } from "@/contexts/language-context";
 
 export default function SettingsPage() {
@@ -28,6 +29,7 @@ export default function SettingsPage() {
     username: session?.user?.username || "",
     email: session?.user?.email || "",
   });
+  const [profileImage, setProfileImage] = useState<string | null>(session?.user?.image || null);
   const [savingProfile, setSavingProfile] = useState(false);
 
   // Sync form when session data loads (important for OAuth users)
@@ -38,6 +40,7 @@ export default function SettingsPage() {
         username: session.user.username || "",
         email: session.user.email || "",
       });
+      setProfileImage(session.user.image || null);
     }
   }, [session?.user?.id]);
 
@@ -74,11 +77,11 @@ export default function SettingsPage() {
       const res = await fetch("/api/user/profile", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(profileForm),
+        body: JSON.stringify({ ...profileForm, image: profileImage }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
-      await update({ name: profileForm.name, username: profileForm.username });
+      await update({ name: profileForm.name, username: profileForm.username, image: profileImage });
       toast.success(d.profileUpdated);
     } catch (err: unknown) {
       toast.error(err instanceof Error ? err.message : "Erreur lors de la mise à jour");
@@ -172,6 +175,15 @@ export default function SettingsPage() {
           </div>
 
           <div className="space-y-4">
+            {/* Avatar upload */}
+            <div className="pb-4 border-b border-gray-100">
+              <AvatarUpload
+                currentImage={profileImage}
+                name={profileForm.name || session?.user?.name}
+                onImageChange={setProfileImage}
+                loading={savingProfile}
+              />
+            </div>
             <Input
               label={d.fullName}
               placeholder="Jean Dupont"

@@ -141,6 +141,9 @@ export const authOptions: NextAuthOptions = {
         if (session.onboardingCompleted !== undefined) {
           token.onboardingCompleted = session.onboardingCompleted;
         }
+        if (session.image !== undefined) {
+          token.picture = session.image;
+        }
       }
       return token;
     },
@@ -150,6 +153,7 @@ export const authOptions: NextAuthOptions = {
         session.user.username = token.username;
         session.user.plan = token.plan;
         session.user.onboardingCompleted = token.onboardingCompleted ?? true;
+        session.user.image = token.picture as string | null | undefined;
       }
       return session;
     },

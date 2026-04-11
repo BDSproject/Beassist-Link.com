@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/badge";
 import { SOCIAL_PLATFORMS } from "@/lib/utils";
 import { SocialIcon } from "@/components/ui/social-icon";
 import { canUserDo } from "@/lib/plans";
+import { AvatarUpload } from "@/components/ui/avatar-upload";
 
 interface BioPage {
   id: string;
@@ -71,6 +72,7 @@ export default function BioPage() {
   const [pageForm, setPageForm] = useState({
     title: "",
     description: "",
+    avatar: null as string | null,
     primaryColor: "#8F00FF",
     bgColor: "#FFFFFF",
     theme: "default",
@@ -94,6 +96,7 @@ export default function BioPage() {
         setPageForm({
           title: bioData.bioPage.title || "",
           description: bioData.bioPage.description || "",
+          avatar: bioData.bioPage.avatar || null,
           primaryColor: bioData.bioPage.primaryColor || "#8F00FF",
           bgColor: bioData.bioPage.bgColor || "#FFFFFF",
           theme: bioData.bioPage.theme || "default",
@@ -455,6 +458,17 @@ export default function BioPage() {
                   Informations de profil
                 </h3>
                 <div className="space-y-4">
+                  {/* Avatar upload */}
+                  <div className="pb-4 border-b border-gray-100">
+                    <AvatarUpload
+                      currentImage={pageForm.avatar}
+                      name={pageForm.title || session?.user?.name}
+                      onImageChange={(base64) =>
+                        setPageForm((p) => ({ ...p, avatar: base64 }))
+                      }
+                      label="Avatar de la page bio"
+                    />
+                  </div>
                   <Input
                     label="Titre de la page"
                     placeholder="Votre nom ou pseudo"
@@ -579,10 +593,15 @@ export default function BioPage() {
                     {/* Avatar placeholder */}
                     <div className="flex flex-col items-center mb-4">
                       <div
-                        className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-2"
+                        className="w-16 h-16 rounded-full flex items-center justify-center text-white text-2xl font-bold mb-2 overflow-hidden"
                         style={{ backgroundColor: pageForm.primaryColor }}
                       >
-                        {pageForm.title?.charAt(0) || session?.user?.name?.charAt(0) || "A"}
+                        {pageForm.avatar ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img src={pageForm.avatar} alt="" className="w-full h-full object-cover" />
+                        ) : (
+                          pageForm.title?.charAt(0) || session?.user?.name?.charAt(0) || "A"
+                        )}
                       </div>
                       <p className="text-sm font-bold text-gray-900 text-center">
                         {pageForm.title || session?.user?.name || "Votre nom"}

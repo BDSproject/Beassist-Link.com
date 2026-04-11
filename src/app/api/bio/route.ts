@@ -10,6 +10,7 @@ const updateSchema = z.object({
   primaryColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
   bgColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
   theme: z.string().optional(),
+  avatar: z.string().nullable().optional(),
 });
 
 // GET - Récupérer la page bio

@@ -141,8 +141,17 @@ export function Sidebar() {
       {/* Profil utilisateur */}
       <div className="px-3 pb-4 border-t border-gray-100 pt-4">
         <div className="flex items-center gap-3 px-3 py-2">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#8F00FF] to-[#6200CC] flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
-            {session?.user?.name?.[0]?.toUpperCase() || "U"}
+          <div className="w-8 h-8 rounded-full overflow-hidden bg-gradient-to-br from-[#8F00FF] to-[#6200CC] flex items-center justify-center text-white text-sm font-bold flex-shrink-0 flex-shrink-0">
+            {session?.user?.image ? (
+              // eslint-disable-next-line @next/next/no-img-element
+              <img
+                src={session.user.image}
+                alt={session.user.name || ""}
+                className="w-full h-full object-cover"
+              />
+            ) : (
+              session?.user?.name?.[0]?.toUpperCase() || "U"
+            )}
           </div>
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold text-gray-900 truncate">

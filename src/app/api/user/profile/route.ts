@@ -12,6 +12,7 @@ const schema = z.object({
     .max(30)
     .regex(/^[a-zA-Z0-9_-]+$/),
   email: z.string().email(),
+  image: z.string().nullable().optional(),
 });
 
 const RESERVED_USERNAMES = [
@@ -28,7 +29,7 @@ export async function PATCH(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { name, username, email } = schema.parse(body);
+    const { name, username, email, image } = schema.parse(body);
 
     if (RESERVED_USERNAMES.includes(username.toLowerCase())) {
       return NextResponse.json(
@@ -61,7 +62,12 @@ export async function PATCH(req: NextRequest) {
 
     const updated = await db.user.update({
       where: { id: session.user.id },
-      data: { name, username, email },
+      data: {
+        name,
+        username,
+        email,
+        ...(image !== undefined ? { image } : {}),
+      },
     });
 
     // Update bioPage username if username changed
@@ -73,7 +79,7 @@ export async function PATCH(req: NextRequest) {
     }
 
     return NextResponse.json({
-      user: { id: updated.id, name: updated.name, username: updated.username, email: updated.email },
+      user: { id: updated.id, name: updated.name, username: updated.username, email: updated.email, image: updated.image },
     });
   } catch {
     return NextResponse.json({ message: "Erreur" }, { status: 400 });
