@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 import { notFound } from "next/navigation";
 import { PLANS } from "@/lib/plans";
 import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";

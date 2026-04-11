@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { headers } from "next/headers";
 import { stripe } from "@/lib/stripe";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 import type Stripe from "stripe";
 
 export const dynamic = "force-dynamic";

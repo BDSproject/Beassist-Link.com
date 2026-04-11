@@ -4,7 +4,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcryptjs";
-import { db } from "./db";
+import { db } from "@/database/client";
 
 // Génère un username unique à partir d'un nom ou email
 async function generateUsername(base: string): Promise<string> {

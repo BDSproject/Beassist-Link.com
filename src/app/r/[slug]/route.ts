@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 import { getBrowserName, getDeviceType } from "@/lib/utils";
 
 // Route de redirection des liens courts

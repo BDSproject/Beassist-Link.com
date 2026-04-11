@@ -1,6 +1,6 @@
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 import { redirect } from "next/navigation";
 import { DashboardHomeContent } from "@/components/dashboard/dashboard-home-content";
 

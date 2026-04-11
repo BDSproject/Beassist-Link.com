@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { stripe } from "@/lib/stripe";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 
 export const dynamic = "force-dynamic";
 

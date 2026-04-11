@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
 import { z } from "zod";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 
 const schema = z.object({
   name: z.string().min(2),

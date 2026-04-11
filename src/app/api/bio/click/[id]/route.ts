@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 
 // Enregistre un clic sur un lien bio et redirige
 export async function GET(

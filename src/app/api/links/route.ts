@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
-import { db } from "@/lib/db";
+import { db } from "@/database/client";
 import { PLANS } from "@/lib/plans";
 import { generateSlug, isValidUrl } from "@/lib/utils";
 import { z } from "zod";
