@@ -59,7 +59,7 @@ export const PLATFORM_COLORS: Record<string, string> = {
   twitch: "#9146FF",
   spotify: "#1DB954",
   discord: "#5865F2",
-  snapchat: "#FFFC00",
+  snapchat: "#C9A800",
   pinterest: "#E60023",
   behance: "#1769FF",
   dribbble: "#EA4C89",

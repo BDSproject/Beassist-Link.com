@@ -8,13 +8,14 @@ export default async function DashboardPage() {
   const session = await getServerSession(authOptions);
   if (!session) redirect("/login");
 
-  const [totalLinksCount, totalClicksAgg, bioPage, recentLinks] =
+  const [totalLinksCount, totalClicksAgg, activeLinksCount, bioPage, recentLinks] =
     await Promise.all([
       db.link.count({ where: { userId: session.user.id } }),
       db.link.aggregate({
         where: { userId: session.user.id },
         _sum: { clicks: true },
       }),
+      db.link.count({ where: { userId: session.user.id, active: true } }),
       db.bioPage.findUnique({
         where: { userId: session.user.id },
         include: { links: { take: 3, orderBy: { order: "asc" } } },
@@ -25,8 +26,6 @@ export default async function DashboardPage() {
         take: 5,
       }),
     ]);
-
-  const activeLinksCount = recentLinks.filter((l) => l.active).length;
 
   return (
     <DashboardHomeContent
@@ -55,6 +54,7 @@ export default async function DashboardPage() {
                 id: bl.id,
                 title: bl.title,
                 icon: bl.icon ?? null,
+                platform: bl.platform ?? null,
                 clicks: bl.clicks,
               })),
             }

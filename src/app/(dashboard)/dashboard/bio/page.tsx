@@ -66,7 +66,6 @@ export default function BioPage() {
     title: "",
     url: "",
     platform: "",
-    icon: "",
   });
 
   const [pageForm, setPageForm] = useState({
@@ -142,14 +141,16 @@ export default function BioPage() {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          ...newLink,
+          title: newLink.title,
+          url: newLink.url,
+          platform: newLink.platform || undefined,
           order: bioLinks.length,
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       setBioLinks((prev) => [...prev, data.link]);
-      setNewLink({ title: "", url: "", platform: "", icon: "" });
+      setNewLink({ title: "", url: "", platform: "" });
       setShowAddLink(false);
       toast.success("Lien ajouté !");
     } catch (err: unknown) {
@@ -281,7 +282,6 @@ export default function BioPage() {
                                 ...prev,
                                 platform: p.id,
                                 title: prev.title || p.label,
-                                icon: p.icon,
                               }))
                             }
                             className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all ${

@@ -35,7 +35,32 @@ const customAdapter = {
       data.email?.split("@")[0] ||
       "user";
     const username = await generateUsername(base);
-    return baseAdapter.createUser({ ...data, username });
+    const user = await baseAdapter.createUser({ ...data, username });
+    // Create bioPage and subscription for OAuth users (credentials users get these at register)
+    await Promise.all([
+      db.bioPage.upsert({
+        where: { userId: user.id },
+        update: {},
+        create: {
+          userId: user.id,
+          username,
+          title: data.name || username,
+          primaryColor: "#8F00FF",
+          bgColor: "#FFFFFF",
+          theme: "default",
+        },
+      }),
+      db.subscription.upsert({
+        where: { userId: user.id },
+        update: {},
+        create: {
+          userId: user.id,
+          plan: "FREE",
+          status: "ACTIVE",
+        },
+      }),
+    ]).catch(console.error);
+    return user;
   },
 };
 

@@ -15,11 +15,13 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
+import { SocialIcon } from "@/components/ui/social-icon";
 
 interface BioLink {
   id: string;
   title: string;
   icon: string | null;
+  platform: string | null;
   clicks: number;
 }
 
@@ -265,7 +267,7 @@ export function DashboardHomeContent({
                     key={link.id}
                     className="flex items-center gap-3 px-3 py-2.5 rounded-xl border border-gray-100 bg-gray-50"
                   >
-                    <span className="text-sm">{link.icon || "🔗"}</span>
+                    <SocialIcon platform={link.platform || "other"} size={16} />
                     <span className="text-sm font-medium text-gray-700 flex-1 truncate">
                       {link.title}
                     </span>

@@ -28,13 +28,28 @@ export async function POST(req: NextRequest) {
     const plan = session.user.plan as keyof typeof PLANS;
     const planLimits = PLANS[plan]?.limits;
 
-    const bioPage = await db.bioPage.findUnique({
+    let bioPage = await db.bioPage.findUnique({
       where: { userId: session.user.id },
       include: { _count: { select: { links: true } } },
     });
 
+    // Auto-create bioPage if missing (OAuth users)
     if (!bioPage) {
-      return NextResponse.json({ message: "Page bio non trouvée" }, { status: 404 });
+      const user = await db.user.findUnique({ where: { id: session.user.id } });
+      if (!user) {
+        return NextResponse.json({ message: "Utilisateur non trouvé" }, { status: 404 });
+      }
+      bioPage = await db.bioPage.create({
+        data: {
+          userId: session.user.id,
+          username: user.username,
+          title: user.name || user.username,
+          primaryColor: "#8F00FF",
+          bgColor: "#FFFFFF",
+          theme: "default",
+        },
+        include: { _count: { select: { links: true } } },
+      });
     }
 
     if (

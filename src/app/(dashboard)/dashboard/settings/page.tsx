@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import {
@@ -29,6 +29,17 @@ export default function SettingsPage() {
     email: session?.user?.email || "",
   });
   const [savingProfile, setSavingProfile] = useState(false);
+
+  // Sync form when session data loads (important for OAuth users)
+  useEffect(() => {
+    if (session?.user) {
+      setProfileForm({
+        name: session.user.name || "",
+        username: session.user.username || "",
+        email: session.user.email || "",
+      });
+    }
+  }, [session?.user?.id]);
 
   // Password form
   const [passwordForm, setPasswordForm] = useState({

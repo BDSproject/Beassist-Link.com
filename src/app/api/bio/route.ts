@@ -3,7 +3,6 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/lib/db";
 import { z } from "zod";
-import { PLANS } from "@/lib/plans";
 
 const updateSchema = z.object({
   title: z.string().max(60).optional(),
@@ -20,12 +19,30 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({ message: "Non autorisé" }, { status: 401 });
   }
 
-  const bioPage = await db.bioPage.findUnique({
+  let bioPage = await db.bioPage.findUnique({
     where: { userId: session.user.id },
     include: {
       links: { orderBy: { order: "asc" } },
     },
   });
+
+  // Auto-create bioPage for users who don't have one (e.g., OAuth users)
+  if (!bioPage) {
+    const user = await db.user.findUnique({ where: { id: session.user.id } });
+    if (user) {
+      bioPage = await db.bioPage.create({
+        data: {
+          userId: session.user.id,
+          username: user.username,
+          title: user.name || user.username,
+          primaryColor: "#8F00FF",
+          bgColor: "#FFFFFF",
+          theme: "default",
+        },
+        include: { links: { orderBy: { order: "asc" } } },
+      });
+    }
+  }
 
   return NextResponse.json({ bioPage });
 }
@@ -41,13 +58,23 @@ export async function PATCH(req: NextRequest) {
     const body = await req.json();
     const data = updateSchema.parse(body);
 
-    // Vérifier les droits de personnalisation des couleurs
-    const plan = session.user.plan as keyof typeof PLANS;
-    const planLimits = PLANS[plan]?.limits;
+    const user = await db.user.findUnique({ where: { id: session.user.id } });
+    if (!user) {
+      return NextResponse.json({ message: "Utilisateur non trouvé" }, { status: 404 });
+    }
 
-    const bioPage = await db.bioPage.update({
+    const bioPage = await db.bioPage.upsert({
       where: { userId: session.user.id },
-      data,
+      update: data,
+      create: {
+        userId: session.user.id,
+        username: user.username,
+        title: data.title || user.name || user.username,
+        description: data.description,
+        primaryColor: data.primaryColor || "#8F00FF",
+        bgColor: data.bgColor || "#FFFFFF",
+        theme: data.theme || "default",
+      },
       include: { links: { orderBy: { order: "asc" } } },
     });
 
