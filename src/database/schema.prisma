@@ -90,6 +90,10 @@ model BioPage {
   theme        String    @default("default")
   primaryColor String    @default("#8F00FF")
   bgColor      String    @default("#FFFFFF")
+  bgImage      String?   // base64 or URL background image
+  buttonStyle  String    @default("rounded")  // rounded | pill | square | outline | shadow
+  fontStyle    String    @default("sans")     // sans | serif | mono
+  socialLinks  String?   // JSON: [{platform, url}]
   views        Int       @default(0)
   active       Boolean   @default(true)
   createdAt    DateTime  @default(now())

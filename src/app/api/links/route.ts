@@ -12,9 +12,9 @@ const createSchema = z.object({
   slug: z
     .string()
     .regex(/^[a-zA-Z0-9_-]*$/)
-    .min(2)
     .max(50)
-    .optional(),
+    .optional()
+    .transform((v) => (v === "" ? undefined : v)),
 });
 
 // GET - Récupérer tous les liens de l'utilisateur

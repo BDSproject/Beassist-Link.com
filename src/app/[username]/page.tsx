@@ -1,8 +1,10 @@
+import type React from "react";
+import type { LucideIcon } from "lucide-react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
 import { PLANS } from "@/lib/plans";
 import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
-import { ExternalLink } from "lucide-react";
+import { ExternalLink, Instagram, Twitter, Youtube, Facebook, Linkedin, Github, Music, MessageCircle } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
 import type { Metadata } from "next";
@@ -67,6 +69,31 @@ const THEME_STYLES = {
   },
 } as const;
 
+const BUTTON_STYLE_CLASSES: Record<string, string> = {
+  rounded: "rounded-2xl",
+  pill: "rounded-full",
+  square: "rounded-none",
+  outline: "rounded-2xl",
+  shadow: "rounded-2xl shadow-2xl",
+};
+
+const FONT_STYLE_CLASSES: Record<string, string> = {
+  sans: "font-sans",
+  serif: "font-serif",
+  mono: "font-mono",
+};
+
+const SOCIAL_ICON_MAP: Record<string, LucideIcon> = {
+  instagram: Instagram,
+  twitter: Twitter,
+  youtube: Youtube,
+  facebook: Facebook,
+  linkedin: Linkedin,
+  github: Github,
+  tiktok: Music,
+  whatsapp: MessageCircle,
+};
+
 export default async function UserBioPage({ params }: Props) {
   const bioPage = await db.bioPage.findUnique({
     where: { username: params.username, active: true },
@@ -96,19 +123,30 @@ export default async function UserBioPage({ params }: Props) {
   const primaryColor = bioPage.primaryColor || "#8F00FF";
   const theme = (bioPage.theme as keyof typeof THEME_STYLES) || "default";
   const styles = THEME_STYLES[theme] ?? THEME_STYLES.default;
+  const buttonStyle = (bioPage as { buttonStyle?: string }).buttonStyle || "rounded";
+  const fontStyle = (bioPage as { fontStyle?: string }).fontStyle || "sans";
+  const fontClass = FONT_STYLE_CLASSES[fontStyle] || "font-sans";
+  const btnCls = BUTTON_STYLE_CLASSES[buttonStyle] || "rounded-2xl";
+  const isOutlineBtn = buttonStyle === "outline";
+  const bgImage = (bioPage as { bgImage?: string | null }).bgImage;
+  let socialLinks: { platform: string; url: string }[] = [];
+  try { socialLinks = JSON.parse((bioPage as { socialLinks?: string | null }).socialLinks || "[]"); } catch { /* ignore */ }
+  const isDarkBg = !!(bgImage || theme === "dark" || theme === "gradient");
 
-  // Fond personnalisé uniquement pour les thèmes sans fond imposé
-  const wrapperStyle =
-    theme === "default" || theme === "minimal"
-      ? { backgroundColor: bioPage.bgColor || undefined }
-      : {};
+  // Fond: bgImage > theme gradient/dark > bgColor
+  const wrapperStyle: React.CSSProperties = bgImage
+    ? { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }
+    : theme === "default" || theme === "minimal"
+    ? { backgroundColor: bioPage.bgColor || undefined }
+    : {};
 
   return (
     <main
-      className={`${styles.wrapper} flex flex-col items-center py-10 px-4`}
+      className={`${styles.wrapper} flex flex-col items-center py-10 px-4 relative ${fontClass}`}
       style={wrapperStyle}
     >
-      <div className="w-full max-w-sm sm:max-w-md">
+      {bgImage && <div className="absolute inset-0 bg-black/30 pointer-events-none" />}
+      <div className="w-full max-w-sm sm:max-w-md relative z-10">
         {/* Avatar + Profil */}
         <div className="flex flex-col items-center mb-8 text-center">
           {/* Avatar */}
@@ -131,19 +169,19 @@ export default async function UserBioPage({ params }: Props) {
           </div>
 
           {/* Nom */}
-          <h1 className={`text-xl sm:text-2xl font-black ${styles.title}`}>
+          <h1 className={`text-xl sm:text-2xl font-black ${isDarkBg ? "text-white" : styles.title}`}>
             {bioPage.title || params.username}
           </h1>
 
           {/* Description */}
           {bioPage.description && (
-            <p className={`text-sm mt-2 leading-relaxed max-w-xs ${styles.subtitle}`}>
+            <p className={`text-sm mt-2 leading-relaxed max-w-xs ${isDarkBg ? "text-white/75" : styles.subtitle}`}>
               {bioPage.description}
             </p>
           )}
 
           {/* Username */}
-          <p className={`text-xs mt-2 ${styles.username}`}>
+          <p className={`text-xs mt-2 ${isDarkBg ? "text-white/50" : styles.username}`}>
             @{params.username}
           </p>
         </div>
@@ -165,8 +203,12 @@ export default async function UserBioPage({ params }: Props) {
                 className="group block w-full"
               >
                 <div
-                  className="relative flex items-center w-full px-4 py-3.5 sm:py-4 rounded-2xl font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden"
-                  style={{ backgroundColor: platformColor }}
+                  className={`relative flex items-center w-full px-4 py-3.5 sm:py-4 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
+                  style={{
+                    backgroundColor: isOutlineBtn ? "transparent" : platformColor,
+                    border: isOutlineBtn ? `2px solid ${primaryColor}` : undefined,
+                    color: isOutlineBtn ? primaryColor : "white",
+                  }}
                 >
                   {/* Reflet lumineux */}
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
@@ -175,15 +217,15 @@ export default async function UserBioPage({ params }: Props) {
                     <SocialIcon
                       platform={link.platform || "other"}
                       size={20}
-                      color="white"
+                      color={isOutlineBtn ? primaryColor : "white"}
                       className="flex-shrink-0"
                     />
                     <div className="flex-1 min-w-0">
-                      <span className="text-white font-semibold truncate block">
+                      <span className={`font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}>
                         {link.title}
                       </span>
                       {link.platform && link.platform !== "other" && platform && (
-                        <span className="text-white/60 text-xs">
+                        <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
                           {getPlatformLabel(link.platform)}
                         </span>
                       )}
@@ -192,7 +234,7 @@ export default async function UserBioPage({ params }: Props) {
 
                   <ExternalLink
                     size={14}
-                    className="text-white/60 group-hover:text-white/90 transition-colors flex-shrink-0 ml-2"
+                    className={`transition-colors flex-shrink-0 ml-2 ${isOutlineBtn ? "opacity-50 group-hover:opacity-90" : "text-white/60 group-hover:text-white/90"}`}
                   />
                 </div>
               </a>
@@ -203,6 +245,28 @@ export default async function UserBioPage({ params }: Props) {
         {bioPage.links.length === 0 && (
           <div className={`text-center py-16 ${styles.emptyText}`}>
             <p className="text-sm">Aucun lien pour le moment.</p>
+          </div>
+        )}
+
+        {/* Social Icons */}
+        {socialLinks.filter((s) => s.url).length > 0 && (
+          <div className="flex justify-center gap-3 mt-6 flex-wrap">
+            {socialLinks.filter((s) => s.url).map((s) => {
+              const Icon = SOCIAL_ICON_MAP[s.platform];
+              return Icon ? (
+                <a
+                  key={s.platform}
+                  href={s.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 ${
+                    isDarkBg ? "bg-white/20 text-white" : "bg-gray-200 text-gray-700"
+                  }`}
+                >
+                  <Icon size={18} />
+                </a>
+              ) : null;
+            })}
           </div>
         )}
 

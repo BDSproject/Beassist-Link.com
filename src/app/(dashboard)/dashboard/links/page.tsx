@@ -99,7 +99,11 @@ export default function LinksPage() {
       const res = await fetch("/api/links", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          url: data.url,
+          title: data.title || undefined,
+          slug: data.slug?.trim() || undefined,
+        }),
       });
 
       if (!res.ok) {

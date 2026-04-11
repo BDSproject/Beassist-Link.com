@@ -6,11 +6,15 @@ import { z } from "zod";
 
 const updateSchema = z.object({
   title: z.string().max(60).optional(),
-  description: z.string().max(160).optional(),
+  description: z.string().max(300).optional(),
   primaryColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
   bgColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).optional(),
   theme: z.string().optional(),
   avatar: z.string().nullable().optional(),
+  bgImage: z.string().nullable().optional(),
+  buttonStyle: z.string().optional(),
+  fontStyle: z.string().optional(),
+  socialLinks: z.string().nullable().optional(),
 });
 
 // GET - Récupérer la page bio
@@ -66,7 +70,7 @@ export async function PATCH(req: NextRequest) {
 
     const bioPage = await db.bioPage.upsert({
       where: { userId: session.user.id },
-      update: data,
+      update: data as any,
       create: {
         userId: session.user.id,
         username: user.username,
@@ -75,6 +79,8 @@ export async function PATCH(req: NextRequest) {
         primaryColor: data.primaryColor || "#8F00FF",
         bgColor: data.bgColor || "#FFFFFF",
         theme: data.theme || "default",
+        buttonStyle: data.buttonStyle || "rounded",
+        fontStyle: data.fontStyle || "sans",
       },
       include: { links: { orderBy: { order: "asc" } } },
     });
