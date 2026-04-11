@@ -15,6 +15,7 @@ import {
   Sparkles,
   Menu,
   X,
+  QrCode,
 } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Badge } from "@/components/ui/badge";
@@ -38,6 +39,7 @@ export function Sidebar() {
     { href: "/dashboard", label: d.nav.dashboard, icon: LayoutDashboard },
     { href: "/dashboard/links", label: d.nav.links, icon: Link2 },
     { href: "/dashboard/bio", label: d.nav.bio, icon: FileText },
+    { href: "/dashboard/qrcode", label: d.nav.qrcode, icon: QrCode },
     { href: "/dashboard/analytics", label: d.nav.analytics, icon: BarChart3 },
     { href: "/dashboard/billing", label: d.nav.billing, icon: CreditCard },
     { href: "/dashboard/settings", label: d.nav.settings, icon: Settings },
