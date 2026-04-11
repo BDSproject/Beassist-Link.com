@@ -666,15 +666,23 @@ export default function BioPage() {
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-2xl z-10" />
                 <div
                   className={`rounded-[2rem] overflow-hidden h-[500px] flex flex-col relative ${fontClass}`}
-                  style={{
-                    background: pageForm.bgImage
-                      ? `url(${pageForm.bgImage}) center/cover no-repeat`
-                      : pageForm.theme === "gradient"
-                      ? "linear-gradient(135deg, #7c3aed, #ec4899)"
-                      : pageForm.theme === "dark"
-                      ? "#030712"
-                      : pageForm.bgColor,
-                  }}
+                  style={
+                    pageForm.bgImage
+                      ? {
+                          backgroundImage: `url(${pageForm.bgImage})`,
+                          backgroundSize: "cover",
+                          backgroundPosition: "center",
+                          backgroundRepeat: "no-repeat",
+                        }
+                      : {
+                          background:
+                            pageForm.theme === "gradient"
+                              ? "linear-gradient(135deg, #7c3aed, #ec4899)"
+                              : pageForm.theme === "dark"
+                              ? "#030712"
+                              : pageForm.bgColor,
+                        }
+                  }
                 >
                   {pageForm.bgImage && <div className="absolute inset-0 bg-black/25" />}
                   <div className="flex-1 overflow-y-auto p-4 pt-8 space-y-2.5 relative z-10">
