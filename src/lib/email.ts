@@ -2,8 +2,8 @@ import { Resend } from "resend";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
-const FROM = "BeassistLink <noreply@beassistlink.com>";
-const BASE_URL = process.env.NEXTAUTH_URL || "https://www.beassistlink.com";
+const FROM = "BeassistLink <noreply@beassist-link.com>";
+const BASE_URL = process.env.NEXTAUTH_URL || "https://www.beassist-link.com";
 
 // ---------------------------------------------------------------------------
 // Template HTML — email de bienvenue
@@ -109,7 +109,7 @@ function welcomeEmailHtml({
               <p style="margin:0;font-size:12px;color:#9CA3AF;text-align:center;line-height:1.6;">
                 Vous recevez cet email car vous venez de créer un compte sur BeassistLink.<br/>
                 Si vous n'êtes pas à l'origine de cette inscription, ignorez cet email.<br/><br/>
-                <a href="${BASE_URL}" style="color:#8F00FF;text-decoration:none;">beassistlink.com</a>
+                <a href="${BASE_URL}" style="color:#8F00FF;text-decoration:none;">beassist-link.com</a>
                 &nbsp;·&nbsp;
                 <a href="${BASE_URL}/legal" style="color:#9CA3AF;text-decoration:none;">Mentions légales</a>
               </p>
