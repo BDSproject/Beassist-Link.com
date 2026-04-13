@@ -1,3 +1,6 @@
+"use client";
+
+import type { ReactNode } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
@@ -7,7 +10,7 @@ interface MarketingLayoutProps {
   title: string;
   description: string;
   updatedAt?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 export function MarketingLayout({
