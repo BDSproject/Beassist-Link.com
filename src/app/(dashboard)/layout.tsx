@@ -2,6 +2,7 @@ import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 import { authOptions } from "@/lib/auth";
 import { Sidebar } from "@/components/dashboard/sidebar";
+import { SessionRefresher } from "@/components/dashboard/session-refresher";
 
 export default async function DashboardLayout({
   children,
@@ -21,6 +22,7 @@ export default async function DashboardLayout({
 
   return (
     <div className="flex min-h-screen bg-gray-50">
+      <SessionRefresher />
       <Sidebar />
       <main className="flex-1 min-h-screen overflow-x-hidden">
         <div className="lg:pt-0 pt-14">
