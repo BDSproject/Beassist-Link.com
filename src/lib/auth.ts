@@ -138,6 +138,9 @@ export const authOptions: NextAuthOptions = {
       if (trigger === "update" && session) {
         token.plan = session.plan;
         token.username = session.username;
+        if (session.name !== undefined) {
+          token.name = session.name;
+        }
         if (session.onboardingCompleted !== undefined) {
           token.onboardingCompleted = session.onboardingCompleted;
         }

@@ -67,7 +67,7 @@ export function DashboardHomeContent({
   const { t, lang } = useLanguage();
   const d = t.dashboard.home;
 
-  const greeting = d.greeting.replace("{name}", userName?.split(" ")[0] || "");
+  const greeting = d.greeting.replace("{name}", username || userName?.split(" ")[0] || "");
 
   const dateStr = new Date().toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", {
     weekday: "long",
