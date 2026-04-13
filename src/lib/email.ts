@@ -1,7 +1,5 @@
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const FROM = "BeassistLink <noreply@beassist-link.com>";
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.beassist-link.com";
 
@@ -140,6 +138,8 @@ export async function sendWelcomeEmail({
     console.warn("[email] RESEND_API_KEY manquante — email non envoyé");
     return;
   }
+
+  const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
     await resend.emails.send({
