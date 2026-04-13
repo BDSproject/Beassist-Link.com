@@ -13,6 +13,7 @@ const FOOTER_LINKS_CONFIG = {
   Entreprise: [
     { key: "À propos", href: "/about" },
     { key: "Blog", href: "/blog" },
+    { key: "Partenariat", href: "/partenariat" },
   ],
   Support: [
     { key: "Documentation", href: "/docs" },
