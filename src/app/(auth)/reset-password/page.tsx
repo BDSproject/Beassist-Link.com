@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
@@ -15,6 +15,14 @@ import { useLanguage } from "@/contexts/language-context";
 type ResetForm = { password: string; confirm: string };
 
 export default function ResetPasswordPage() {
+  return (
+    <Suspense fallback={<div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 sm:p-10 h-64 animate-pulse" />}>
+      <ResetPasswordForm />
+    </Suspense>
+  );
+}
+
+function ResetPasswordForm() {
   const { t, lang } = useLanguage();
   const a = t.auth.resetPassword;
   const router = useRouter();
