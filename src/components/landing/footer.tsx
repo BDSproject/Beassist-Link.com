@@ -7,8 +7,8 @@ import { useLanguage } from "@/contexts/language-context";
 
 const FOOTER_LINKS_CONFIG = {
   Produit: [
-    { key: "Fonctionnalités", href: "#features" },
-    { key: "Tarifs", href: "#pricing" },
+    { key: "Fonctionnalités", href: "/features" },
+    { key: "Tarifs", href: "/pricing" },
     { key: "Changelog", href: "/changelog" },
     { key: "API", href: "/api-docs" },
   ],
@@ -35,6 +35,13 @@ const FOOTER_LINKS_CONFIG = {
 } as const;
 
 type FooterCategory = keyof typeof FOOTER_LINKS_CONFIG;
+
+const FOOTER_CATEGORY_HREFS: Record<FooterCategory, string> = {
+  Produit: "/product",
+  Entreprise: "/about",
+  Support: "/support",
+  Légal: "/legal",
+};
 
 export function Footer() {
   const { t, lang } = useLanguage();
@@ -71,9 +78,12 @@ export function Footer() {
           {/* Links */}
           {(Object.keys(FOOTER_LINKS_CONFIG) as FooterCategory[]).map((category) => (
             <div key={category}>
-              <h4 className="text-sm font-semibold text-white mb-4">
+              <Link
+                href={FOOTER_CATEGORY_HREFS[category]}
+                className="text-sm font-semibold text-white mb-4 inline-block hover:text-[#CFA8FF] transition-colors"
+              >
                 {t.footer.categories[category]}
-              </h4>
+              </Link>
               <ul className="space-y-3">
                 {FOOTER_LINKS_CONFIG[category].map((link) => (
                   <li key={link.key}>
