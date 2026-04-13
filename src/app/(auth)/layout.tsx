@@ -1,4 +1,8 @@
+"use client";
+
 import { Logo } from "@/components/shared/logo";
+import { LangSwitcher } from "@/components/shared/lang-switcher";
+import { useLanguage } from "@/contexts/language-context";
 import Link from "next/link";
 
 export default function AuthLayout({
@@ -6,13 +10,16 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const { t } = useLanguage();
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#F5EBFF] via-white to-white flex flex-col">
       {/* Header */}
-      <header className="px-6 py-5">
+      <header className="px-6 py-5 flex items-center justify-between">
         <Link href="/">
           <Logo size="md" />
         </Link>
+        <LangSwitcher />
       </header>
 
       {/* Contenu centré */}
@@ -24,9 +31,9 @@ export default function AuthLayout({
 
       {/* Footer minimal */}
       <footer className="px-6 py-4 text-center text-xs text-gray-400">
-        © {new Date().getFullYear()} BeassistLink · 
-        <Link href="/privacy" className="hover:text-[#8F00FF] ml-1">Confidentialité</Link> · 
-        <Link href="/terms" className="hover:text-[#8F00FF] ml-1">Conditions</Link>
+        © {new Date().getFullYear()} BeassistLink · 
+        <Link href="/privacy" className="hover:text-[#8F00FF] ml-1">{t.auth.privacy}</Link> · 
+        <Link href="/terms" className="hover:text-[#8F00FF] ml-1">{t.auth.terms}</Link>
       </footer>
     </div>
   );

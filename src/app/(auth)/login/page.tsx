@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
@@ -11,18 +11,26 @@ import toast from "react-hot-toast";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useLanguage } from "@/contexts/language-context";
 
-const loginSchema = z.object({
-  email: z.string().email("Email invalide"),
-  password: z.string().min(1, "Mot de passe requis"),
-});
-
-type LoginForm = z.infer<typeof loginSchema>;
+type LoginForm = { email: string; password: string };
 
 export default function LoginPage() {
   const router = useRouter();
+  const { t, lang } = useLanguage();
+  const a = t.auth.login;
   const [loading, setLoading] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
+
+  const loginSchema = useMemo(
+    () =>
+      z.object({
+        email: z.string().email(a.emailInvalid),
+        password: z.string().min(1, a.passwordRequired),
+      }),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [lang]
+  );
 
   const {
     register,
@@ -42,14 +50,14 @@ export default function LoginPage() {
       });
 
       if (result?.error) {
-        toast.error("Email ou mot de passe incorrect");
+        toast.error(a.errorCredentials);
       } else {
-        toast.success("Connexion réussie !");
+        toast.success(a.successLogin);
         router.push("/dashboard");
         router.refresh();
       }
     } catch {
-      toast.error("Une erreur est survenue");
+      toast.error(a.errorGeneral);
     } finally {
       setLoading(false);
     }
@@ -59,10 +67,8 @@ export default function LoginPage() {
     <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 sm:p-10">
       {/* En-tête */}
       <div className="text-center mb-8">
-        <h1 className="text-2xl font-black text-gray-900">Bon retour ! 👋</h1>
-        <p className="text-gray-500 mt-2 text-sm">
-          Connectez-vous à votre compte BeassistLink
-        </p>
+        <h1 className="text-2xl font-black text-gray-900">{a.heading}</h1>
+        <p className="text-gray-500 mt-2 text-sm">{a.subtitle}</p>
       </div>
 
       {/* Boutons OAuth */}
@@ -77,7 +83,7 @@ export default function LoginPage() {
             <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
-          Continuer avec Google
+          {a.continueGoogle}
         </button>
         <button
           onClick={() => signIn("github", { callbackUrl: "/dashboard" })}
@@ -86,7 +92,7 @@ export default function LoginPage() {
           <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
           </svg>
-          Continuer avec GitHub
+          {a.continueGithub}
         </button>
       </div>
 
@@ -96,14 +102,14 @@ export default function LoginPage() {
           <div className="w-full border-t border-gray-200" />
         </div>
         <div className="relative flex justify-center text-xs text-gray-400 bg-white px-3">
-          ou continuez avec votre email
+          {a.orEmail}
         </div>
       </div>
 
       {/* Formulaire */}
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <Input
-          label="Email"
+          label={a.emailLabel}
           type="email"
           placeholder="vous@exemple.com"
           leftIcon={<Mail size={16} />}
@@ -111,7 +117,7 @@ export default function LoginPage() {
           {...register("email")}
         />
         <Input
-          label="Mot de passe"
+          label={a.passwordLabel}
           type={showPwd ? "text" : "password"}
           placeholder="••••••••"
           leftIcon={<Lock size={16} />}
@@ -129,33 +135,21 @@ export default function LoginPage() {
         />
 
         <div className="flex justify-end">
-          <Link
-            href="/forgot-password"
-            className="text-xs text-[#8F00FF] hover:underline"
-          >
-            Mot de passe oublié ?
+          <Link href="/forgot-password" className="text-xs text-[#8F00FF] hover:underline">
+            {a.forgotPassword}
           </Link>
         </div>
 
-        <Button
-          type="submit"
-          variant="primary"
-          size="lg"
-          fullWidth
-          loading={loading}
-        >
-          Se connecter
+        <Button type="submit" variant="primary" size="lg" fullWidth loading={loading}>
+          {a.submitBtn}
         </Button>
       </form>
 
       {/* Inscription */}
       <p className="text-center text-sm text-gray-500 mt-6">
-        Pas encore de compte ?{" "}
-        <Link
-          href="/register"
-          className="font-semibold text-[#8F00FF] hover:underline"
-        >
-          S&apos;inscrire gratuitement
+        {a.noAccount}{" "}
+        <Link href="/register" className="font-semibold text-[#8F00FF] hover:underline">
+          {a.signUpLink}
         </Link>
       </p>
     </div>
