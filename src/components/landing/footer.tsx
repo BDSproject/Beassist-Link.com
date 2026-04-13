@@ -10,7 +10,6 @@ const FOOTER_LINKS_CONFIG = {
     { key: "Fonctionnalités", href: "/features" },
     { key: "Tarifs", href: "/pricing" },
     { key: "Changelog", href: "/changelog" },
-    { key: "API", href: "/api-docs" },
   ],
   Entreprise: [
     { key: "À propos", href: "/about" },
@@ -28,7 +27,6 @@ const FOOTER_LINKS_CONFIG = {
     { key: "CGU", href: "/cgu" },
     { key: "Cookies", href: "/cookies" },
     { key: "RGPD", href: "/gdpr" },
-    { key: "Mentions légales", href: "/legal" },
   ],
 } as const;
 
