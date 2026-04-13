@@ -39,6 +39,13 @@ export const metadata: Metadata = {
     description: "Regroupez tous vos réseaux sociaux en un seul lien.",
     creator: "@beassistlink",
   },
+  icons: {
+    icon: [
+      { url: "/icon.svg", type: "image/svg+xml" },
+    ],
+    shortcut: "/icon.svg",
+    apple: "/icon.svg",
+  },
   robots: {
     index: true,
     follow: true,
