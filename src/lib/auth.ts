@@ -123,14 +123,15 @@ export const authOptions: NextAuthOptions = {
         token.plan = (user as any).plan;
         token.onboardingCompleted = (user as any).onboardingCompleted ?? true;
       }
-      // Pour les utilisateurs OAuth, username/plan ne sont pas dans l'objet user
-      // => on les récupère depuis la base de données
-      if (token.id && !token.username) {
+      // Toujours rafraîchir le plan depuis la DB pour refléter tout changement
+      // (upgrade, downgrade, reset admin) sans exiger une reconnexion
+      if (token.id && !user) {
         const dbUser = await db.user.findUnique({
           where: { id: token.id as string },
+          select: { username: true, plan: true, onboardingCompleted: true },
         });
         if (dbUser) {
-          token.username = dbUser.username;
+          if (!token.username) token.username = dbUser.username;
           token.plan = dbUser.plan;
           token.onboardingCompleted = (dbUser as any).onboardingCompleted ?? true;
         }
