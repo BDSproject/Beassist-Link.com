@@ -98,7 +98,7 @@ export function CtaSection() {
               className="flex flex-col sm:flex-row gap-4 items-center justify-center animate-fade-up"
               style={{ opacity: 0, animationDelay: "360ms", animationFillMode: "forwards" }}
             >
-              <Link href="/register">
+              <Link href="/register" className="w-fit">
                 <button className="group relative inline-flex items-center gap-2 bg-white text-[#8F00FF] font-bold text-base px-8 py-4 rounded-2xl shadow-2xl transition-all duration-300 hover:scale-105 hover:shadow-white/25 hover:bg-purple-50 active:scale-100">
                   {t.cta.cta1}
                   <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-1" />

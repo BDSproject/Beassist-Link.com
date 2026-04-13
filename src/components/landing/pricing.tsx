@@ -223,20 +223,21 @@ export function Pricing() {
                 </div>
 
                 {/* CTA button */}
-                <Link href="/register" className="mb-8">
-                  <Button
-                    variant={isHighlighted ? "secondary" : "outline"}
-                    size="lg"
-                    fullWidth
-                    className={`transition-transform duration-200 group-hover:scale-[1.02] ${
-                      isHighlighted
-                        ? "bg-white text-[#8F00FF] hover:bg-gray-50 border-0 font-bold"
-                        : ""
-                    }`}
-                  >
-                    {t.pricing.plans[planKey].ctaLabel}
-                  </Button>
-                </Link>
+                <div className="flex justify-center mb-8">
+                  <Link href="/register">
+                    <Button
+                      variant={isHighlighted ? "secondary" : "outline"}
+                      size="lg"
+                      className={`transition-transform duration-200 group-hover:scale-[1.02] ${
+                        isHighlighted
+                          ? "bg-white text-[#8F00FF] hover:bg-gray-50 border-0 font-bold"
+                          : ""
+                      }`}
+                    >
+                      {t.pricing.plans[planKey].ctaLabel}
+                    </Button>
+                  </Link>
+                </div>
 
                 {/* Feature list */}
                 <ul className="space-y-3 flex-1">
