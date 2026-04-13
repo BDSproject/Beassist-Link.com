@@ -16,6 +16,7 @@ import { SOCIAL_PLATFORMS } from "@/lib/utils";
 import { SocialIcon } from "@/components/ui/social-icon";
 import { AvatarUpload } from "@/components/ui/avatar-upload";
 import { canUserDo } from "@/lib/plans";
+import { useLanguage } from "@/contexts/language-context";
 
 interface BioPageData {
   id: string;
@@ -43,24 +44,24 @@ interface BioLink {
 }
 
 const THEMES = [
-  { id: "default", label: "Classique", preview: "bg-white" },
-  { id: "dark", label: "Sombre", preview: "bg-gray-900" },
-  { id: "gradient", label: "Degrade", preview: "bg-gradient-to-br from-purple-500 to-pink-500" },
-  { id: "minimal", label: "Minimal", preview: "bg-gray-50" },
+  { id: "default", preview: "bg-white" },
+  { id: "dark", preview: "bg-gray-900" },
+  { id: "gradient", preview: "bg-gradient-to-br from-purple-500 to-pink-500" },
+  { id: "minimal", preview: "bg-gray-50" },
 ];
 
 const BUTTON_STYLES = [
-  { id: "rounded", label: "Arrondi", cls: "rounded-xl" },
-  { id: "pill", label: "Pilule", cls: "rounded-full" },
-  { id: "square", label: "Carre", cls: "rounded-none" },
-  { id: "outline", label: "Contour", cls: "rounded-xl" },
-  { id: "shadow", label: "Ombre", cls: "rounded-xl shadow-xl" },
+  { id: "rounded", cls: "rounded-xl" },
+  { id: "pill", cls: "rounded-full" },
+  { id: "square", cls: "rounded-none" },
+  { id: "outline", cls: "rounded-xl" },
+  { id: "shadow", cls: "rounded-xl shadow-xl" },
 ];
 
 const FONT_STYLES = [
-  { id: "sans", label: "Moderne", cls: "font-sans" },
-  { id: "serif", label: "Elegant", cls: "font-serif" },
-  { id: "mono", label: "Tech", cls: "font-mono" },
+  { id: "sans", cls: "font-sans" },
+  { id: "serif", cls: "font-serif" },
+  { id: "mono", cls: "font-mono" },
 ];
 
 const THEME_BG_DEFAULTS: Record<string, string> = {
@@ -85,6 +86,8 @@ type TabId = "links" | "appearance" | "background" | "style" | "social";
 
 export default function BioPage() {
   const { data: session } = useSession();
+  const { t } = useLanguage();
+  const b = t.dashboard.bio;
   const [bioLinks, setBioLinks] = useState<BioLink[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
@@ -135,11 +138,11 @@ export default function BioPage() {
       }
       if (linksData.links) setBioLinks(linksData.links.sort((a: BioLink, b: BioLink) => a.order - b.order));
     } catch {
-      toast.error("Erreur lors du chargement");
+      toast.error(b.loadError);
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [b.loadError]);
 
   useEffect(() => { fetchBioData(); }, [fetchBioData]);
 
@@ -155,16 +158,16 @@ export default function BioPage() {
         }),
       });
       if (!res.ok) throw new Error();
-      toast.success("Page mise a jour !");
+      toast.success(b.saveSuccess);
     } catch {
-      toast.error("Erreur lors de la sauvegarde");
+      toast.error(b.saveError);
     } finally {
       setSaving(false);
     }
   };
 
   const addLink = async () => {
-    if (!newLink.title || !newLink.url) { toast.error("Titre et URL requis"); return; }
+    if (!newLink.title || !newLink.url) { toast.error(b.linkRequired); return; }
     try {
       const res = await fetch("/api/bio/links", {
         method: "POST",
@@ -181,9 +184,9 @@ export default function BioPage() {
       setBioLinks((prev) => [...prev, data.link]);
       setNewLink({ title: "", url: "", platform: "" });
       setShowAddLink(false);
-      toast.success("Lien ajoute !");
+      toast.success(b.linkAdded);
     } catch (err: unknown) {
-      toast.error(err instanceof Error ? err.message : "Erreur");
+      toast.error(err instanceof Error ? err.message : b.saveError);
     }
   };
 
@@ -191,9 +194,9 @@ export default function BioPage() {
     try {
       await fetch(`/api/bio/links/${id}`, { method: "DELETE" });
       setBioLinks((prev) => prev.filter((l) => l.id !== id));
-      toast.success("Lien supprime");
+      toast.success(b.linkDeleted);
     } catch {
-      toast.error("Erreur");
+      toast.error(b.saveError);
     }
   };
 
@@ -213,7 +216,7 @@ export default function BioPage() {
   const handleBgImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 5 * 1024 * 1024) { toast.error("Image trop lourde (max 5 Mo)"); return; }
+    if (file.size > 5 * 1024 * 1024) { toast.error(b.bgImageTooLarge); return; }
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
@@ -252,11 +255,11 @@ export default function BioPage() {
   const isDarkBg = !!(pageForm.bgImage || pageForm.theme === "dark" || pageForm.theme === "gradient");
 
   const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
-    { id: "links", label: "Liens", icon: <Globe className="w-4 h-4" /> },
-    { id: "appearance", label: "Profil", icon: <User className="w-4 h-4" /> },
-    { id: "background", label: "Fond", icon: <ImageIcon className="w-4 h-4" /> },
-    { id: "style", label: "Style", icon: <Palette className="w-4 h-4" /> },
-    { id: "social", label: "Socials", icon: <Share2 className="w-4 h-4" /> },
+    { id: "links", label: b.tabs.links, icon: <Globe className="w-4 h-4" /> },
+    { id: "appearance", label: b.tabs.appearance, icon: <User className="w-4 h-4" /> },
+    { id: "background", label: b.tabs.background, icon: <ImageIcon className="w-4 h-4" /> },
+    { id: "style", label: b.tabs.style, icon: <Palette className="w-4 h-4" /> },
+    { id: "social", label: b.tabs.social, icon: <Share2 className="w-4 h-4" /> },
   ];
 
   if (loading) return (
@@ -270,14 +273,14 @@ export default function BioPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gray-900">Page Bio</h1>
-          <p className="text-gray-500 mt-1">Personnalisez votre mini-site public</p>
+          <h1 className="text-2xl font-bold text-gray-900">{b.title}</h1>
+          <p className="text-gray-500 mt-1">{b.subtitle}</p>
         </div>
         <div className="flex items-center gap-3">
           <a href={`/${session?.user?.username}`} target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="sm">
               <Eye className="w-4 h-4 mr-2" />
-              Previsualiser
+              {b.preview}
               <ExternalLink className="w-3 h-3 ml-1.5" />
             </Button>
           </a>
@@ -289,7 +292,7 @@ export default function BioPage() {
             className="text-white hover:opacity-90"
           >
             <Check className="w-4 h-4 mr-2" />
-            {saving ? "Enregistrement..." : "Enregistrer"}
+            {saving ? b.saving : b.save}
           </Button>
         </div>
       </div>
@@ -321,13 +324,13 @@ export default function BioPage() {
               {showAddLink ? (
                 <Card className="p-4 border-2 border-[#8F00FF]/30">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="font-medium text-gray-900">Nouveau lien</h3>
+                    <h3 className="font-medium text-gray-900">{b.newLink}</h3>
                     <button onClick={() => setShowAddLink(false)} className="text-gray-400 hover:text-gray-600">
                       <X className="w-4 h-4" />
                     </button>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Plateforme (optionnel)</label>
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{b.platform}</label>
                     <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
                       {SOCIAL_PLATFORMS.slice(0, 12).map((p) => (
                         <button
@@ -347,42 +350,42 @@ export default function BioPage() {
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <Input
-                      label="Titre"
+                      label={b.titleLabel}
                       placeholder="Instagram"
                       value={newLink.title}
                       onChange={(e) => setNewLink((p) => ({ ...p, title: e.target.value }))}
                     />
                     <Input
-                      label="URL"
+                      label={b.urlLabel}
                       placeholder="https://..."
                       value={newLink.url}
                       onChange={(e) => setNewLink((p) => ({ ...p, url: e.target.value }))}
                     />
                   </div>
                   <div className="flex justify-end gap-2">
-                    <Button variant="outline" size="sm" onClick={() => setShowAddLink(false)}>Annuler</Button>
+                    <Button variant="outline" size="sm" onClick={() => setShowAddLink(false)}>{b.cancel}</Button>
                     <Button size="sm" onClick={addLink} style={{ backgroundColor: "#8F00FF" }} className="text-white hover:opacity-90">
-                      Ajouter
+                      {b.add}
                     </Button>
                   </div>
                 </Card>
               ) : (
                 <button
                   onClick={() => {
-                    if (!canAddLink) { toast.error("Limite atteinte pour votre plan."); return; }
+                    if (!canAddLink) { toast.error(b.planLimit); return; }
                     setShowAddLink(true);
                   }}
                   className="w-full py-3 border-2 border-dashed border-gray-300 rounded-xl text-gray-500 hover:border-[#8F00FF] hover:text-[#8F00FF] transition-colors flex items-center justify-center gap-2 text-sm font-medium"
                 >
                   <Plus className="w-4 h-4" />
-                  Ajouter un lien
+                  {b.addLink}
                 </button>
               )}
 
               {bioLinks.length === 0 ? (
                 <div className="text-center py-12 text-gray-400">
                   <Globe className="w-10 h-10 mx-auto mb-3 opacity-40" />
-                  <p>Aucun lien pour l&apos;instant</p>
+                  <p>{b.noLinks}</p>
                 </div>
               ) : (
                 <div className="space-y-2">
@@ -421,7 +424,7 @@ export default function BioPage() {
                         )}
                       </div>
                       <div className="flex items-center gap-1">
-                        <span className="text-xs text-gray-400 mr-1 hidden sm:inline">{link.clicks} clics</span>
+                        <span className="text-xs text-gray-400 mr-1 hidden sm:inline">{link.clicks} {b.clics}</span>
                         <button
                           onClick={() => setEditingLink(editingLink === link.id ? null : link.id)}
                           className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
@@ -434,7 +437,7 @@ export default function BioPage() {
                             link.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
                           }`}
                         >
-                          {link.active ? "Actif" : "Inactif"}
+                          {link.active ? b.active : b.inactive}
                         </button>
                         <button
                           onClick={() => deleteLink(link.id)}
@@ -458,21 +461,21 @@ export default function BioPage() {
                   currentImage={pageForm.avatar}
                   name={pageForm.title || session?.user?.name}
                   onImageChange={(base64) => setPageForm((p) => ({ ...p, avatar: base64 }))}
-                  label="Avatar de la page"
+                  label={b.avatarLabel}
                 />
               </div>
               <Input
-                label="Nom / Titre"
-                placeholder="Votre nom ou pseudo"
+                label={b.nameLabel}
+                placeholder={b.namePlaceholder}
                 value={pageForm.title}
                 onChange={(e) => setPageForm((p) => ({ ...p, title: e.target.value }))}
               />
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">Bio / Description</label>
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">{b.descLabel}</label>
                 <textarea
                   className="w-full rounded-xl border border-gray-200 px-3.5 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8F00FF]/20 focus:border-[#8F00FF] resize-none"
                   rows={4}
-                  placeholder="Decrivez-vous en quelques mots..."
+                  placeholder={b.descPlaceholder}
                   maxLength={300}
                   value={pageForm.description}
                   onChange={(e) => setPageForm((p) => ({ ...p, description: e.target.value }))}
@@ -488,7 +491,7 @@ export default function BioPage() {
               <Card className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <Palette className="w-4 h-4" />
-                  Theme predifini
+                  {b.predefinedTheme}
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {THEMES.map((theme) => {
@@ -502,13 +505,13 @@ export default function BioPage() {
                             toast(
                               (t) => (
                                 <span className="text-sm">
-                                  🔒 {"Theme reserve aux abonnes."}{" "}
+                                  🔒 {b.lockedTheme}{" "}
                                   <a
                                     href="/dashboard/billing"
                                     className="font-semibold text-[#8F00FF] underline"
                                     onClick={() => toast.dismiss(t.id)}
                                   >
-                                    Upgrader
+                                    {b.upgrade}
                                   </a>
                                 </span>
                               ),
@@ -531,7 +534,9 @@ export default function BioPage() {
                         }`}
                       >
                         <div className={`h-16 ${theme.preview}`} />
-                        <div className="p-2 text-xs font-medium text-center text-gray-700 bg-white">{theme.label}</div>
+                        <div className="p-2 text-xs font-medium text-center text-gray-700 bg-white">
+                          {b.themes[theme.id as keyof typeof b.themes]}
+                        </div>
                         {isLocked && (
                           <div className="absolute inset-0 flex items-center justify-center bg-black/10">
                             <div className="bg-white/90 rounded-full p-1.5 shadow">
@@ -551,11 +556,11 @@ export default function BioPage() {
               </Card>
 
               <Card className="p-5">
-                <h3 className="font-semibold text-gray-900 mb-4">Couleurs personnalisees</h3>
+                <h3 className="font-semibold text-gray-900 mb-4">{b.customColors}</h3>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { label: "Couleur principale", key: "primaryColor" as const },
-                    { label: "Couleur de fond", key: "bgColor" as const },
+                    { label: b.primaryColor, key: "primaryColor" as const },
+                    { label: b.bgColor, key: "bgColor" as const },
                   ].map(({ label, key }) => (
                     <div key={key}>
                       <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
@@ -576,9 +581,9 @@ export default function BioPage() {
               <Card className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
                   <ImageIcon className="w-4 h-4" />
-                  Image d&apos;arriere-plan
+                  {b.bgImage}
                 </h3>
-                <p className="text-xs text-gray-400 mb-4">Remplace la couleur de fond · JPG/PNG · max 5 Mo</p>
+                <p className="text-xs text-gray-400 mb-4">{b.bgImageHint}</p>
                 {pageForm.bgImage ? (
                   <div className="relative rounded-xl overflow-hidden h-40 border border-gray-200 group">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -589,14 +594,14 @@ export default function BioPage() {
                         className="bg-white text-gray-800 text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-gray-100 flex items-center gap-1.5"
                       >
                         <ImageIcon className="w-3.5 h-3.5" />
-                        Changer
+                        {b.changeBgImage}
                       </button>
                       <button
                         onClick={() => setPageForm((p) => ({ ...p, bgImage: null }))}
                         className="bg-red-500 text-white text-xs font-semibold px-3 py-1.5 rounded-lg hover:bg-red-600 flex items-center gap-1.5"
                       >
                         <X className="w-3.5 h-3.5" />
-                        Supprimer
+                        {b.removeBgImage}
                       </button>
                     </div>
                   </div>
@@ -606,8 +611,8 @@ export default function BioPage() {
                     className="w-full h-32 border-2 border-dashed border-gray-300 rounded-xl flex flex-col items-center justify-center gap-2 text-gray-400 hover:border-[#8F00FF] hover:text-[#8F00FF] transition-colors"
                   >
                     <ImageIcon className="w-8 h-8" />
-                    <span className="text-sm font-medium">Importer une image de fond</span>
-                    <span className="text-xs">JPG, PNG · max 5 Mo</span>
+                    <span className="text-sm font-medium">{b.importBgImage}</span>
+                    <span className="text-xs">{b.bgImageFormat}</span>
                   </button>
                 )}
                 <input ref={bgImageRef} type="file" accept="image/*" className="hidden" onChange={handleBgImageUpload} />
@@ -621,7 +626,7 @@ export default function BioPage() {
               <Card className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <MousePointer2 className="w-4 h-4" />
-                  Style des boutons
+                  {b.buttonStyleTitle}
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                   {BUTTON_STYLES.map((bs) => (
@@ -642,9 +647,11 @@ export default function BioPage() {
                           color: bs.id === "outline" ? pageForm.primaryColor : "white",
                         }}
                       >
-                        Exemple
+                        {b.exampleBtn}
                       </div>
-                      <p className="text-xs text-center font-medium text-gray-700">{bs.label}</p>
+                      <p className="text-xs text-center font-medium text-gray-700">
+                        {b.buttonStyles[bs.id as keyof typeof b.buttonStyles]}
+                      </p>
                     </button>
                   ))}
                 </div>
@@ -653,7 +660,7 @@ export default function BioPage() {
               <Card className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-4 flex items-center gap-2">
                   <Type className="w-4 h-4" />
-                  Typographie
+                  {b.fontStyleTitle}
                 </h3>
                 <div className="grid grid-cols-3 gap-3">
                   {FONT_STYLES.map((fs) => (
@@ -667,7 +674,9 @@ export default function BioPage() {
                       }`}
                     >
                       <p className={`text-lg text-center mb-1 font-semibold text-gray-800 ${fs.cls}`}>Aa</p>
-                      <p className="text-xs text-center font-medium text-gray-600">{fs.label}</p>
+                      <p className="text-xs text-center font-medium text-gray-600">
+                        {b.fontStyles[fs.id as keyof typeof b.fontStyles]}
+                      </p>
                     </button>
                   ))}
                 </div>
@@ -680,9 +689,9 @@ export default function BioPage() {
             <Card className="p-5">
               <h3 className="font-semibold text-gray-900 mb-1 flex items-center gap-2">
                 <Share2 className="w-4 h-4" />
-                Icones de reseaux sociaux
+                {b.socialTitle}
               </h3>
-              <p className="text-xs text-gray-400 mb-5">Apparaissent en bas de votre page publique.</p>
+              <p className="text-xs text-gray-400 mb-5">{b.socialHint}</p>
               <div className="space-y-3">
                 {SOCIAL_ICON_PLATFORMS.map(({ id, icon: Icon }) => (
                   <div key={id} className="flex items-center gap-3">
@@ -706,7 +715,7 @@ export default function BioPage() {
         {/* LIVE PREVIEW */}
         <div className="hidden lg:block">
           <div className="sticky top-24">
-            <p className="text-sm font-medium text-gray-500 mb-3 text-center">Apercu en direct</p>
+            <p className="text-sm font-medium text-gray-500 mb-3 text-center">{b.livePreview}</p>
             <div className="mx-auto w-64">
               <div className="relative bg-gray-900 rounded-[2.5rem] p-3 shadow-2xl">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-6 bg-gray-900 rounded-b-2xl z-10" />
@@ -743,7 +752,7 @@ export default function BioPage() {
                         )}
                       </div>
                       <p className={`text-sm font-bold text-center ${isDarkBg ? "text-white" : "text-gray-900"}`}>
-                        {pageForm.title || session?.user?.name || "Votre nom"}
+                        {pageForm.title || session?.user?.name || b.yourName}
                       </p>
                       {pageForm.description && (
                         <p className={`text-xs text-center mt-0.5 leading-tight max-w-[180px] ${isDarkBg ? "text-white/70" : "text-gray-500"}`}>
@@ -777,7 +786,7 @@ export default function BioPage() {
                     })}
 
                     {bioLinks.filter((l) => l.active).length === 0 && (
-                      <div className="text-center text-xs text-gray-400 py-4">Vos liens ici</div>
+                      <div className="text-center text-xs text-gray-400 py-4">{b.yourLinks}</div>
                     )}
 
                     {/* Social icons row */}
@@ -802,7 +811,7 @@ export default function BioPage() {
                     {/* Branding */}
                     <div className="text-center pt-1">
                       <span className={`text-[10px] ${isDarkBg ? "text-white/40" : "text-gray-400"}`}>
-                        Cree avec{" "}
+                        {b.createdWith}{" "}
                         <span className="font-semibold">
                           Beassist<span style={{ color: pageForm.primaryColor }}>Link</span>
                         </span>
@@ -814,7 +823,7 @@ export default function BioPage() {
             </div>
 
             <div className="mt-4 p-3 bg-gray-50 rounded-xl text-center">
-              <p className="text-xs text-gray-500 mb-1">Votre lien public</p>
+              <p className="text-xs text-gray-500 mb-1">{b.yourLink}</p>
               <a
                 href={`/${session?.user?.username}`}
                 target="_blank"

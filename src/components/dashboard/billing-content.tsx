@@ -236,22 +236,9 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
 
       {/* FAQ */}
       <div className="mt-10 bg-gray-50 rounded-2xl p-6">
-        <h3 className="font-bold text-gray-900 mb-4">FAQ</h3>
+        <h3 className="font-bold text-gray-900 mb-4">{d.faqTitle}</h3>
         <div className="space-y-4">
-          {[
-            {
-              q: "Puis-je annuler à tout moment ?",
-              a: "Oui, sans engagement. Votre plan reste actif jusqu'à la fin de la période payée.",
-            },
-            {
-              q: "Comment fonctionne le paiement annuel ?",
-              a: "Le montant annuel est débité en une seule fois avec une réduction de 10% par rapport au tarif mensuel.",
-            },
-            {
-              q: "Puis-je changer de plan en cours de période ?",
-              a: "Oui, vous pouvez upgrader immédiatement. Le prorata sera calculé automatiquement.",
-            },
-          ].map((item) => (
+          {d.faq.map((item) => (
             <div key={item.q}>
               <p className="font-semibold text-gray-900 text-sm">{item.q}</p>
               <p className="text-gray-500 text-sm mt-1">{item.a}</p>

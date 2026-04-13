@@ -20,7 +20,7 @@ import { useLanguage } from "@/contexts/language-context";
 
 export default function SettingsPage() {
   const { data: session, update } = useSession();
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
   const d = t.dashboard.settings;
 
   // Profile form
@@ -68,7 +68,7 @@ export default function SettingsPage() {
       return;
     }
     if (!/^[a-zA-Z0-9_-]{3,30}$/.test(profileForm.username)) {
-      toast.error(d.username + " invalide (3-30 car.)");
+      toast.error(d.username + " " + d.usernameInvalid);
       return;
     }
 
@@ -84,7 +84,7 @@ export default function SettingsPage() {
       await update({ name: profileForm.name, username: profileForm.username, image: profileImage });
       toast.success(d.profileUpdated);
     } catch (err: unknown) {
-      toast.error(err instanceof Error ? err.message : "Erreur lors de la mise à jour");
+      toast.error(err instanceof Error ? err.message : d.updateError);
     } finally {
       setSavingProfile(false);
     }
@@ -96,7 +96,7 @@ export default function SettingsPage() {
       return;
     }
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {
-      toast.error(d.confirmPassword + " mismatch");
+      toast.error(d.passwordMismatch);
       return;
     }
 
@@ -122,7 +122,7 @@ export default function SettingsPage() {
   };
 
   const deleteAccount = async () => {
-    const confirmWord = lang === "fr" ? "SUPPRIMER" : "DELETE";
+    const confirmWord = d.deleteWord;
     if (deleteConfirmText !== confirmWord) {
       toast.error(d.deleteConfirmPlaceholder);
       return;
@@ -135,7 +135,7 @@ export default function SettingsPage() {
       toast.success(d.accountDeleted);
       await signOut({ callbackUrl: "/" });
     } catch {
-      toast.error("Erreur lors de la suppression du compte");
+      toast.error(d.deleteError);
       setDeletingAccount(false);
     }
   };
@@ -306,7 +306,7 @@ export default function SettingsPage() {
                   </div>
                   {strength > 0 && (
                     <p className="text-xs text-gray-500">
-                      Force : <span className="font-medium">{strengthLabels[strength]}</span>
+                      {d.passwordStrengthLabel} <span className="font-medium">{strengthLabels[strength]}</span>
                     </p>
                   )}
                 </div>
@@ -325,7 +325,7 @@ export default function SettingsPage() {
                 error={
                   passwordForm.confirmPassword &&
                   passwordForm.confirmPassword !== passwordForm.newPassword
-                    ? d.confirmPassword + " mismatch"
+                    ? d.passwordMismatch
                     : undefined
                 }
               />
@@ -390,7 +390,7 @@ export default function SettingsPage() {
                 onClick={() => setShowDeleteConfirm(true)}
               >
                 <Trash2 className="w-4 h-4 mr-1.5" />
-                Supprimer
+                {d.deleteBtn}
               </Button>
             </div>
           ) : (
@@ -399,23 +399,22 @@ export default function SettingsPage() {
                 <AlertTriangle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
                 <div>
                   <p className="text-sm font-semibold text-red-700">
-                    Êtes-vous sûr de vouloir supprimer votre compte ?
+                    {d.deleteConfirmTitle}
                   </p>
                   <p className="text-xs text-red-600 mt-1">
-                    Tous vos liens, pages bio et données analytics seront définitivement supprimés.
-                    Votre abonnement Stripe sera annulé.
+                    {d.deleteConfirmDesc}
                   </p>
                 </div>
               </div>
               <div>
                 <label className="block text-xs font-medium text-red-700 mb-1.5">
-                  Tapez <strong>SUPPRIMER</strong> pour confirmer
+                  {d.deleteTypeLabel.replace('"SUPPRIMER"', `"${d.deleteWord}"`).replace('"DELETE"', `"${d.deleteWord}"`)}
                 </label>
                 <input
                   type="text"
                   value={deleteConfirmText}
                   onChange={(e) => setDeleteConfirmText(e.target.value)}
-                  placeholder="SUPPRIMER"
+                  placeholder={d.deleteWord}
                   className="w-full px-3 py-2 text-sm border border-red-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-red-300 bg-white"
                 />
               </div>
@@ -428,17 +427,17 @@ export default function SettingsPage() {
                     setDeleteConfirmText("");
                   }}
                 >
-                  Annuler
+                  {d.cancelBtn}
                 </Button>
                 <Button
                   variant="danger"
                   size="sm"
                   loading={deletingAccount}
-                  disabled={deleteConfirmText !== "SUPPRIMER"}
+                  disabled={deleteConfirmText !== d.deleteWord}
                   onClick={deleteAccount}
                 >
                   <Trash2 className="w-4 h-4 mr-1.5" />
-                  Supprimer définitivement
+                  {d.deleteFinalBtn}
                 </Button>
               </div>
             </div>

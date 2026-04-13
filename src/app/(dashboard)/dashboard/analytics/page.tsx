@@ -323,10 +323,10 @@ export default function AnalyticsPage() {
         <Card className="p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <Globe className="w-5 h-5 text-[#8F00FF]" />
-            <h3 className="font-semibold text-gray-900">Insights rapides</h3>
+            <h3 className="font-semibold text-gray-900">{d.quickInsights}</h3>
             {session?.user?.plan !== "PRO" && (
               <Badge variant="outline" size="sm">
-                Analyses avancées avec Pro
+                {d.advancedProBadge}
               </Badge>
             )}
           </div>
@@ -334,10 +334,10 @@ export default function AnalyticsPage() {
           {session?.user?.plan === "PRO" ? (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { label: "Top pays", value: "France 🇫🇷", sub: "68% du trafic" },
-                { label: "Top device", value: "Mobile 📱", sub: "82% mobile" },
-                { label: "Top navigateur", value: "Chrome", sub: "54% d'utilisation" },
-                { label: "Taux de clics", value: "12.4%", sub: "vs 8.1% avg" },
+                { label: d.insightCountry, value: "France 🇫🇷", sub: "68% du trafic" },
+                { label: d.insightDevice, value: "Mobile 📱", sub: "82% mobile" },
+                { label: d.insightBrowser, value: "Chrome", sub: "54% d'utilisation" },
+                { label: d.insightCTR, value: "12.4%", sub: "vs 8.1% avg" },
               ].map((insight) => (
                 <div
                   key={insight.label}
@@ -356,10 +356,10 @@ export default function AnalyticsPage() {
               </div>
               <div className="flex-1">
                 <p className="text-sm font-medium text-gray-900">
-                  Analyses avancées avec Pro
+                  {d.advancedProBadge}
                 </p>
                 <p className="text-xs text-gray-500 mt-0.5">
-                  Pays, appareils, navigateurs, taux de conversion et plus encore
+                  {d.advancedProDesc}
                 </p>
               </div>
               <a href="/dashboard/billing">
@@ -368,7 +368,7 @@ export default function AnalyticsPage() {
                   style={{ backgroundColor: "#8F00FF" }}
                   className="text-white hover:opacity-90 flex-shrink-0"
                 >
-                  Passer Pro
+                  {d.upgradeProBtn}
                 </Button>
               </a>
             </div>
