@@ -27,15 +27,18 @@ const config: Config = {
         sans: ["Inter", "system-ui", "sans-serif"],
       },
       animation: {
-        "fade-up": "fadeUp 0.6s ease-out forwards",
+        "fade-up": "fadeUp 0.7s ease-out forwards",
         "fade-in": "fadeIn 0.5s ease-out forwards",
         "slide-in": "slideIn 0.5s ease-out forwards",
-        float: "float 3s ease-in-out infinite",
+        float: "float 6s ease-in-out infinite",
+        "float-reverse": "floatReverse 8s ease-in-out infinite",
         "pulse-slow": "pulse 3s ease-in-out infinite",
+        blob: "blob 10s ease-in-out infinite",
+        shimmer: "shimmer 2.5s linear infinite",
       },
       keyframes: {
         fadeUp: {
-          "0%": { opacity: "0", transform: "translateY(24px)" },
+          "0%": { opacity: "0", transform: "translateY(28px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
         fadeIn: {
@@ -47,8 +50,22 @@ const config: Config = {
           "100%": { opacity: "1", transform: "translateX(0)" },
         },
         float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
+          "0%, 100%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(-18px) scale(1.04)" },
+        },
+        floatReverse: {
+          "0%, 100%": { transform: "translateY(0) scale(1)" },
+          "50%": { transform: "translateY(18px) scale(0.96)" },
+        },
+        blob: {
+          "0%, 100%": { borderRadius: "60% 40% 30% 70% / 60% 30% 70% 40%" },
+          "25%": { borderRadius: "30% 60% 70% 40% / 50% 60% 30% 60%" },
+          "50%": { borderRadius: "50% 60% 30% 60% / 40% 30% 60% 50%" },
+          "75%": { borderRadius: "40% 60% 50% 40% / 60% 50% 40% 50%" },
+        },
+        shimmer: {
+          "0%": { backgroundPosition: "-200% center" },
+          "100%": { backgroundPosition: "200% center" },
         },
       },
       backgroundImage: {
