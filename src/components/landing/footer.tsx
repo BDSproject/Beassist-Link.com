@@ -9,13 +9,10 @@ const FOOTER_LINKS_CONFIG = {
   Produit: [
     { key: "Fonctionnalités", href: "/features" },
     { key: "Tarifs", href: "/pricing" },
-    { key: "Changelog", href: "/changelog" },
   ],
   Entreprise: [
     { key: "À propos", href: "/about" },
     { key: "Blog", href: "/blog" },
-    { key: "Carrières", href: "/careers" },
-    { key: "Presse", href: "/press" },
   ],
   Support: [
     { key: "Documentation", href: "/docs" },

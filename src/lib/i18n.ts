@@ -344,11 +344,8 @@ export const fr = {
     links: {
       Fonctionnalités: "Fonctionnalités",
       Tarifs: "Tarifs",
-      Changelog: "Changelog",
       "À propos": "À propos",
       Blog: "Blog",
-      Carrières: "Carrières",
-      Presse: "Presse",
       Documentation: "Documentation",
       "Centre d'aide": "Centre d'aide",
       Contact: "Contact",
@@ -782,11 +779,8 @@ export const en: typeof fr = {
     links: {
       Fonctionnalités: "Features",
       Tarifs: "Pricing",
-      Changelog: "Changelog",
       "À propos": "About",
       Blog: "Blog",
-      Carrières: "Careers",
-      Presse: "Press",
       Documentation: "Documentation",
       "Centre d'aide": "Help Center",
       Contact: "Contact",
