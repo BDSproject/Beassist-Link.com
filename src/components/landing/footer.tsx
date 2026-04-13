@@ -21,12 +21,10 @@ const FOOTER_LINKS_CONFIG = {
   Support: [
     { key: "Documentation", href: "/docs" },
     { key: "Centre d'aide", href: "/help" },
-    { key: "Statut", href: "/status" },
     { key: "Contact", href: "/contact" },
   ],
   Légal: [
     { key: "Confidentialité", href: "/privacy" },
-    { key: "Conditions d'utilisation", href: "/cgv" },
     { key: "CGU", href: "/cgu" },
     { key: "Cookies", href: "/cookies" },
     { key: "RGPD", href: "/gdpr" },
