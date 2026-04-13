@@ -137,17 +137,11 @@ export const authOptions: NextAuthOptions = {
         }
       }
       if (trigger === "update" && session) {
-        token.plan = session.plan;
-        token.username = session.username;
-        if (session.name !== undefined) {
-          token.name = session.name;
-        }
-        if (session.onboardingCompleted !== undefined) {
-          token.onboardingCompleted = session.onboardingCompleted;
-        }
-        if (session.image !== undefined) {
-          token.picture = session.image;
-        }
+        if (session.plan !== undefined) token.plan = session.plan;
+        if (session.username !== undefined) token.username = session.username;
+        if (session.name !== undefined) token.name = session.name;
+        if (session.onboardingCompleted !== undefined) token.onboardingCompleted = session.onboardingCompleted;
+        if (session.image !== undefined) token.picture = session.image;
       }
       return token;
     },
