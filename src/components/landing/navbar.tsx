@@ -17,9 +17,9 @@ export function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { label: t.nav.features, href: "#features" },
-    { label: t.nav.howItWorks, href: "#how-it-works" },
-    { label: t.nav.pricing, href: "#pricing" },
+    { label: t.nav.features, href: "/#features" },
+    { label: t.nav.howItWorks, href: "/#how-it-works" },
+    { label: t.nav.pricing, href: "/#pricing" },
   ];
 
   useEffect(() => {
@@ -47,13 +47,13 @@ export function Navbar() {
           {/* Nav desktop */}
           <nav className="hidden md:flex items-center gap-8">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm font-medium text-gray-600 hover:text-[#8F00FF] transition-colors duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -96,14 +96,14 @@ export function Navbar() {
       {mobileOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 px-4 py-4 space-y-3">
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
               className="block py-2 text-sm font-medium text-gray-700 hover:text-[#8F00FF] transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
           <div className="pt-3 border-t border-gray-100 flex flex-col gap-2">
             <LanguageSwitcher className="self-start" />

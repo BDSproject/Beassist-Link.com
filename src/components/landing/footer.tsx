@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "@/components/shared/logo";
-import { Instagram, Twitter, Youtube, Github } from "lucide-react";
+import { Facebook } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 const FOOTER_LINKS_CONFIG = {
@@ -55,21 +55,15 @@ export function Footer() {
             </p>
             {/* Réseaux sociaux */}
             <div className="flex gap-3 mt-6">
-              {[
-                { Icon: Instagram, href: "#", label: "Instagram" },
-                { Icon: Twitter, href: "#", label: "Twitter" },
-                { Icon: Youtube, href: "#", label: "YouTube" },
-                { Icon: Github, href: "#", label: "GitHub" },
-              ].map(({ Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  aria-label={label}
-                  className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200"
-                >
-                  <Icon size={16} />
-                </a>
-              ))}
+              <a
+                href="https://www.facebook.com/beassistlink"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Facebook"
+                className="w-9 h-9 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all duration-200"
+              >
+                <Facebook size={16} />
+              </a>
             </div>
           </div>
 
