@@ -253,6 +253,7 @@ export default function BioPage() {
 
   const fontClass = FONT_STYLES.find((f) => f.id === pageForm.fontStyle)?.cls || "font-sans";
   const isDarkBg = !!(pageForm.bgImage || pageForm.theme === "dark" || pageForm.theme === "gradient");
+  const isFree = !session?.user?.plan || session.user.plan === "FREE";
 
   const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: "links", label: b.tabs.links, icon: <Globe className="w-4 h-4" /> },
@@ -495,7 +496,6 @@ export default function BioPage() {
                 </h3>
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                   {THEMES.map((theme) => {
-                    const isFree = !session?.user?.plan || session.user.plan === "FREE";
                     const isLocked = isFree && theme.id !== "default";
                     return (
                       <button
@@ -557,24 +557,37 @@ export default function BioPage() {
 
               <Card className="p-5">
                 <h3 className="font-semibold text-gray-900 mb-4">{b.customColors}</h3>
-                <div className="grid grid-cols-2 gap-4">
-                  {[
-                    { label: b.primaryColor, key: "primaryColor" as const },
-                    { label: b.bgColor, key: "bgColor" as const },
-                  ].map(({ label, key }) => (
-                    <div key={key}>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
-                      <div className="flex items-center gap-3">
-                        <input
-                          type="color"
-                          value={pageForm[key]}
-                          onChange={(e) => setPageForm((p) => ({ ...p, [key]: e.target.value }))}
-                          className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer"
-                        />
-                        <span className="text-sm font-mono text-gray-500">{pageForm[key]}</span>
+                <div className="relative">
+                  {isFree && (
+                    <div className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 rounded-xl bg-white/80 backdrop-blur-[2px]">
+                      <div className="flex items-center gap-2 text-sm font-medium text-gray-700">
+                        <Lock className="w-4 h-4 text-[#8F00FF]" />
+                        {b.lockedColors}
                       </div>
+                      <a href="/dashboard/billing" className="text-xs font-semibold text-white bg-[#8F00FF] px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity">
+                        {b.upgrade}
+                      </a>
                     </div>
-                  ))}
+                  )}
+                  <div className={`grid grid-cols-2 gap-4 ${isFree ? "blur-[2px] pointer-events-none select-none" : ""}`}>
+                    {[
+                      { label: b.primaryColor, key: "primaryColor" as const },
+                      { label: b.bgColor, key: "bgColor" as const },
+                    ].map(({ label, key }) => (
+                      <div key={key}>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">{label}</label>
+                        <div className="flex items-center gap-3">
+                          <input
+                            type="color"
+                            value={pageForm[key]}
+                            onChange={(e) => setPageForm((p) => ({ ...p, [key]: e.target.value }))}
+                            className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer"
+                          />
+                          <span className="text-sm font-mono text-gray-500">{pageForm[key]}</span>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </Card>
 
@@ -584,7 +597,15 @@ export default function BioPage() {
                   {b.bgImage}
                 </h3>
                 <p className="text-xs text-gray-400 mb-4">{b.bgImageHint}</p>
-                {pageForm.bgImage ? (
+                {isFree ? (
+                  <div className="w-full h-32 border-2 border-dashed border-gray-200 rounded-xl flex flex-col items-center justify-center gap-2 text-gray-400 cursor-not-allowed">
+                    <Lock className="w-6 h-6 text-[#8F00FF]/60" />
+                    <span className="text-sm font-medium text-gray-500">{b.lockedBgImage}</span>
+                    <a href="/dashboard/billing" className="text-xs font-semibold text-white bg-[#8F00FF] px-4 py-1.5 rounded-lg hover:opacity-90 transition-opacity mt-1">
+                      {b.upgrade}
+                    </a>
+                  </div>
+                ) : pageForm.bgImage ? (
                   <div className="relative rounded-xl overflow-hidden h-40 border border-gray-200 group">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img src={pageForm.bgImage} alt="Fond" className="w-full h-full object-cover" />
