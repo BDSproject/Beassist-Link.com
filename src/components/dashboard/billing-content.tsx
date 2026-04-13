@@ -101,9 +101,8 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                   )}
                 </div>
                 {plan.price.savings > 0 && (
-                  <p className="text-xs text-[#8F00FF] mt-1">
-                    ou {formatPrice(plan.price.yearlyPerMonth)}/mois en annuel
-                    (économisez {plan.price.savings}%)
+                  <p className="text-xs text-green-600 font-medium mt-1">
+                    💰 Annuel : {formatPrice(plan.price.yearlyPerMonth)}/mois — <span className="font-bold">-{plan.price.savings}% d'économie</span>
                   </p>
                 )}
               </div>
@@ -134,9 +133,12 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                       type="submit"
                       name="billing"
                       value="yearly"
-                      className="flex-1 py-2.5 px-3 rounded-xl border-2 border-[#8F00FF] text-[#8F00FF] text-xs font-bold hover:bg-[#F5EBFF] transition-colors"
+                      className="flex-1 py-2.5 px-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs font-bold hover:bg-green-100 transition-colors flex items-center justify-center gap-1"
                     >
-                      Annuel -10%
+                      Annuel
+                      <span className="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-black">
+                        -10%
+                      </span>
                     </button>
                   </div>
                 </form>

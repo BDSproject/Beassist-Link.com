@@ -142,6 +142,15 @@ export function Pricing() {
                       {plan.price.savings}%
                     </p>
                   )}
+                  {!yearly && plan.price.savings > 0 && (
+                    <p
+                      className={`text-xs mt-1 font-medium ${
+                        isHighlighted ? "text-green-300" : "text-green-600"
+                      }`}
+                    >
+                      💰 Passez en annuel et économisez {plan.price.savings}%
+                    </p>
+                  )}
                 </div>
 
                 {/* CTA */}
