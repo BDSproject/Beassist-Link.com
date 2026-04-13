@@ -9,13 +9,16 @@ export const dynamic = "force-dynamic";
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session) {
-    return NextResponse.redirect(new URL("/login", req.url));
+    return NextResponse.json({ error: "Non authentifié" }, { status: 401 });
   }
 
   try {
-    const formData = await req.formData();
-    const plan = formData.get("plan") as string;
-    const billing = formData.get("billing") as "monthly" | "yearly";
+    const body = await req.json();
+    const { plan, billing } = body as { plan: string; billing: "monthly" | "yearly" };
+
+    if (!plan || !billing) {
+      return NextResponse.json({ error: "Paramètres manquants" }, { status: 400 });
+    }
 
     // Récupérer ou créer le customer Stripe
     let subscription = await db.subscription.findUnique({
@@ -56,8 +59,10 @@ export async function POST(req: NextRequest) {
           ? STRIPE_PRICE_IDS.PRO_YEARLY
           : STRIPE_PRICE_IDS.PRO_MONTHLY;
     } else {
-      return NextResponse.json({ message: "Plan invalide" }, { status: 400 });
+      return NextResponse.json({ error: "Plan invalide" }, { status: 400 });
     }
+
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.beassist-link.com";
 
     // Créer la session Stripe Checkout
     const checkoutSession = await stripe.checkout.sessions.create({
@@ -65,8 +70,8 @@ export async function POST(req: NextRequest) {
       mode: "subscription",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
-      success_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing?success=true`,
-      cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing?canceled=true`,
+      success_url: `${appUrl}/dashboard/billing?success=true`,
+      cancel_url: `${appUrl}/dashboard/billing?canceled=true`,
       metadata: {
         userId: session.user.id,
         plan,
@@ -79,11 +84,12 @@ export async function POST(req: NextRequest) {
       locale: "fr",
     });
 
-    return NextResponse.redirect(checkoutSession.url!, { status: 303 });
+    return NextResponse.json({ url: checkoutSession.url });
   } catch (error) {
     console.error("Stripe checkout error:", error);
-    return NextResponse.redirect(
-      new URL("/dashboard/billing?error=true", req.url)
+    return NextResponse.json(
+      { error: "Erreur lors de la création du paiement" },
+      { status: 500 }
     );
   }
 }

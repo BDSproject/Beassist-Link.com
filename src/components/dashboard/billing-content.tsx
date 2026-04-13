@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Check } from "lucide-react";
+import { useSearchParams } from "next/navigation";
+import { Check, AlertCircle, CheckCircle2, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PLANS, PLAN_FEATURE_LISTS, type PlanName } from "@/lib/plans";
 import { formatDate, formatPrice } from "@/lib/utils";
@@ -17,11 +18,39 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
   const d = t.dashboard.billing;
   const [yearly, setYearly] = useState(false);
   const [visible, setVisible] = useState(false);
+  const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   useEffect(() => {
     const timer = setTimeout(() => setVisible(true), 50);
     return () => clearTimeout(timer);
   }, []);
+
+  const searchParams = useSearchParams();
+  const isSuccess = searchParams.get("success") === "true";
+  const isCanceled = searchParams.get("canceled") === "true";
+
+  async function handleCheckout(planKey: string) {
+    setLoadingPlan(planKey);
+    setCheckoutError(null);
+    try {
+      const res = await fetch("/api/stripe/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plan: planKey, billing: yearly ? "yearly" : "monthly" }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.url) {
+        setCheckoutError(data.error || "Une erreur est survenue");
+        setLoadingPlan(null);
+        return;
+      }
+      window.location.href = data.url;
+    } catch {
+      setCheckoutError("Impossible de contacter le serveur");
+      setLoadingPlan(null);
+    }
+  }
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
@@ -45,6 +74,26 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
         <h1 className="text-2xl font-black text-gray-900">{d.title}</h1>
         <p className="text-gray-500 mt-1">{d.subtitle}</p>
       </div>
+
+      {/* Alerts */}
+      {isSuccess && (
+        <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 text-green-800">
+          <CheckCircle2 size={20} className="flex-shrink-0 text-green-600" />
+          <p className="font-semibold text-sm">🎉 Paiement réussi ! Votre plan a été mis à jour.</p>
+        </div>
+      )}
+      {isCanceled && (
+        <div className="flex items-center gap-3 bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mb-6 text-yellow-800">
+          <XCircle size={20} className="flex-shrink-0 text-yellow-600" />
+          <p className="font-semibold text-sm">Paiement annulé. Votre abonnement n&apos;a pas été modifié.</p>
+        </div>
+      )}
+      {checkoutError && (
+        <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-red-800">
+          <AlertCircle size={20} className="flex-shrink-0 text-red-600" />
+          <p className="font-semibold text-sm">{checkoutError}</p>
+        </div>
+      )}
 
       {/* Current plan banner */}
       <div className="bg-gradient-to-r from-[#8F00FF] to-[#6200CC] rounded-3xl p-6 text-white mb-8 relative overflow-hidden">
@@ -201,16 +250,24 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                   {d.choosePlan}
                 </div>
               ) : (
-                <form action="/api/stripe/checkout" method="POST" className="mb-5">
-                  <input type="hidden" name="plan" value={planKey} />
-                  <input type="hidden" name="billing" value={yearly ? "yearly" : "monthly"} />
+                <div className="mb-5">
                   <button
-                    type="submit"
-                    className="w-full py-2.5 px-4 rounded-xl bg-[#8F00FF] text-white text-sm font-bold hover:bg-[#7200CC] transition-all duration-200 group-hover:shadow-md"
+                    type="button"
+                    onClick={() => handleCheckout(planKey)}
+                    disabled={loadingPlan === planKey}
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#8F00FF] text-white text-sm font-bold hover:bg-[#7200CC] transition-all duration-200 group-hover:shadow-md disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
                   >
-                    {d.upgrade}
+                    {loadingPlan === planKey ? (
+                      <>
+                        <svg className="animate-spin h-4 w-4" fill="none" viewBox="0 0 24 24">
+                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z" />
+                        </svg>
+                        Chargement...
+                      </>
+                    ) : d.upgrade}
                   </button>
-                </form>
+                </div>
               )}
 
               {/* Features */}
