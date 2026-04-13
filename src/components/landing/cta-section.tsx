@@ -53,7 +53,7 @@ export function CtaSection() {
           />
 
           {/* ── Contenu centré ── */}
-          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:px-12 py-20 sm:py-28 min-h-[520px]">
+          <div className="relative z-10 flex flex-col items-center justify-center text-center px-6 sm:px-12 py-16 sm:py-24">
 
             {/* Badge */}
             <div
@@ -115,13 +115,6 @@ export function CtaSection() {
                   </span>
                 </button>
               </Link>
-
-              <Link href="/contact">
-                <button className="group inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-base px-8 py-4 rounded-2xl border border-white/25 backdrop-blur-sm transition-all duration-300 hover:bg-white/20 hover:border-white/40 hover:scale-105 active:scale-100">
-                  <MessageCircle size={18} className="transition-transform duration-300 group-hover:scale-110" />
-                  {t.cta.cta2}
-                </button>
-              </Link>
             </div>
 
             {/* Social proof */}
@@ -129,9 +122,9 @@ export function CtaSection() {
               className="flex flex-wrap gap-x-8 gap-y-2 justify-center mt-12 text-white/50 text-sm animate-fade-up"
               style={{ opacity: 0, animationDelay: "480ms", animationFillMode: "forwards" }}
             >
-              <span>✓ Sans carte bancaire</span>
-              <span>✓ Gratuit pour toujours</span>
-              <span>✓ Prêt en 2 minutes</span>
+              <span>✓ {t.cta.proof1}</span>
+              <span>✓ {t.cta.proof2}</span>
+              <span>✓ {t.cta.proof3}</span>
             </div>
           </div>
         </div>
