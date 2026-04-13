@@ -97,7 +97,7 @@ export default function QRCodePage() {
           className="text-white hover:opacity-90 px-8 py-3 text-base font-semibold"
         >
           <Sparkles className="w-4 h-4 mr-2" />
-          {lang === "fr" ? "Passer au Starter — 5€/mois" : "Upgrade to Starter — €5/month"}
+          {lang === "fr" ? "Passer au Starter — 6€/mois" : "Upgrade to Starter — €6/month"}
         </Button>
         <p className="text-xs text-gray-400 mt-3">
           {lang === "fr" ? "Sans engagement · Annulez quand vous voulez" : "No commitment · Cancel anytime"}

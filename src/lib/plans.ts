@@ -66,9 +66,9 @@ export const PLANS: Record<PlanName, Plan> = {
     description:
       "Pour les créateurs de contenu qui souhaitent se démarquer et analyser leurs performances.",
     price: {
-      monthly: 5,
-      yearly: 54, // 5 * 12 * 0.9
-      yearlyPerMonth: 4.5,
+      monthly: 6,
+      yearly: 65, // 6 * 12 * 0.9
+      yearlyPerMonth: 5.4,
       savings: 10,
     },
     limits: {
@@ -95,9 +95,9 @@ export const PLANS: Record<PlanName, Plan> = {
     description:
       "La solution complète pour les professionnels et agences qui veulent tout contrôler.",
     price: {
-      monthly: 10,
-      yearly: 108, // 10 * 12 * 0.9
-      yearlyPerMonth: 9,
+      monthly: 12,
+      yearly: 130, // 12 * 12 * 0.9
+      yearlyPerMonth: 10.8,
       savings: 10,
     },
     limits: {
