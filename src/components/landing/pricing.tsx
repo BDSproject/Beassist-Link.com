@@ -74,18 +74,15 @@ export function Pricing() {
           <p className="text-lg text-gray-500">{t.pricing.subheading}</p>
 
           {/* Slide toggle pill */}
-          <div className="mt-8 inline-flex items-center relative bg-gray-100 rounded-2xl p-1.5">
-            {/* Sliding white background */}
+          <div className="mt-8 relative inline-grid grid-cols-2 bg-gray-100 rounded-2xl p-1.5">
+            {/* Sliding white background — left-1.5 aligns with inner padding, translateX(100%) moves exactly one column */}
             <div
-              className="absolute top-1.5 bottom-1.5 rounded-xl bg-white shadow-sm transition-transform duration-300 ease-out pointer-events-none"
-              style={{
-                width: "calc(50% - 6px)",
-                transform: yearly ? "translateX(calc(100% + 12px))" : "translateX(0)",
-              }}
+              className="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-xl bg-white shadow-sm transition-transform duration-300 ease-out pointer-events-none"
+              style={{ transform: yearly ? "translateX(100%)" : "translateX(0)" }}
             />
             <button
               onClick={() => setYearly(false)}
-              className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-xl transition-colors duration-200 ${
+              className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-xl transition-colors duration-200 text-center ${
                 !yearly ? "text-gray-900" : "text-gray-500 hover:text-gray-700"
               }`}
             >
@@ -93,7 +90,7 @@ export function Pricing() {
             </button>
             <button
               onClick={() => setYearly(true)}
-              className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-xl transition-colors duration-200 flex items-center gap-2 ${
+              className={`relative z-10 px-6 py-2.5 text-sm font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 ${
                 yearly ? "text-gray-900" : "text-gray-500 hover:text-gray-700"
               }`}
             >

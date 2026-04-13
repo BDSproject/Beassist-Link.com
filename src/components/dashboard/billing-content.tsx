@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
-import { Check, Crown, Zap } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Check } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { PLANS, PLAN_FEATURE_LISTS, type PlanName } from "@/lib/plans";
 import { formatDate, formatPrice } from "@/lib/utils";
@@ -15,9 +15,31 @@ interface Props {
 export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
   const { t } = useLanguage();
   const d = t.dashboard.billing;
+  const [yearly, setYearly] = useState(false);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setVisible(true), 50);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-5xl mx-auto">
+      {/* Keyframes shared with landing pricing */}
+      <style>{`
+        @keyframes pricePop {
+          0% { transform: scale(0.85); opacity: 0; }
+          60% { transform: scale(1.05); }
+          100% { transform: scale(1); opacity: 1; }
+        }
+        .price-pop { animation: pricePop 0.35s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+        @keyframes savingsFade {
+          from { opacity: 0; transform: translateY(-4px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .savings-fade { animation: savingsFade 0.3s ease-out forwards; }
+      `}</style>
+
       {/* Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-black text-gray-900">{d.title}</h1>
@@ -55,28 +77,81 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
         </div>
       </div>
 
-      {/* Available plans */}
-      <h2 className="text-xl font-black text-gray-900 mb-6">
-        {currentPlan === "FREE" ? d.choosePlan : d.changePlan}
-      </h2>
+      {/* Section title + slide toggle */}
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-2">
+        <h2 className="text-xl font-black text-gray-900">
+          {currentPlan === "FREE" ? d.choosePlan : d.changePlan}
+        </h2>
 
+        {/* Slide toggle pill — same mechanic as landing pricing */}
+        <div className="relative inline-grid grid-cols-2 bg-gray-100 rounded-2xl p-1.5">
+          <div
+            className="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-xl bg-white shadow-sm transition-transform duration-300 ease-out pointer-events-none"
+            style={{ transform: yearly ? "translateX(100%)" : "translateX(0)" }}
+          />
+          <button
+            onClick={() => setYearly(false)}
+            className={`relative z-10 px-5 py-2 text-sm font-semibold rounded-xl transition-colors duration-200 text-center ${
+              !yearly ? "text-gray-900" : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            {t.pricing.monthly}
+          </button>
+          <button
+            onClick={() => setYearly(true)}
+            className={`relative z-10 px-5 py-2 text-sm font-semibold rounded-xl transition-colors duration-200 flex items-center justify-center gap-2 ${
+              yearly ? "text-gray-900" : "text-gray-500 hover:text-gray-700"
+            }`}
+          >
+            {t.pricing.yearly}
+            <span
+              className={`text-xs px-1.5 py-0.5 rounded-full font-bold transition-all duration-300 ${
+                yearly ? "bg-green-500 text-white shadow-sm" : "bg-green-100 text-green-700"
+              }`}
+            >
+              -10%
+            </span>
+          </button>
+        </div>
+      </div>
+
+      {/* Annual savings hint */}
+      {yearly && (
+        <p className="savings-fade text-sm text-green-600 font-medium mb-5">
+          🎉 {t.pricing.saveAnnual}
+        </p>
+      )}
+      {!yearly && <div className="mb-5" />}
+
+      {/* Plan cards */}
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {(["FREE", "STARTER", "PRO"] as PlanName[]).map((planKey) => {
+        {(["FREE", "STARTER", "PRO"] as PlanName[]).map((planKey, index) => {
           const plan = PLANS[planKey];
           const features = PLAN_FEATURE_LISTS[planKey];
           const isCurrentPlan = planKey === currentPlan;
+          const price = yearly ? plan.price.yearlyPerMonth : plan.price.monthly;
 
           return (
             <div
               key={planKey}
-              className={`rounded-2xl p-6 border-2 flex flex-col transition-all duration-300 ${
+              className={`rounded-2xl p-6 border-2 flex flex-col transition-all duration-500 group ${
                 isCurrentPlan
                   ? "border-[#8F00FF] bg-[#F5EBFF]"
                   : plan.highlighted
-                  ? "border-[#8F00FF]/40 bg-white hover:border-[#8F00FF] hover:shadow-lg"
-                  : "border-gray-200 bg-white hover:border-gray-300"
-              }`}
+                  ? "border-[#8F00FF]/40 bg-white hover:border-[#8F00FF] hover:shadow-xl hover:-translate-y-1.5"
+                  : "border-gray-200 bg-white hover:border-gray-300 hover:shadow-lg hover:-translate-y-1.5"
+              } ${visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
+              style={{ transitionDelay: visible ? `${index * 100}ms` : "0ms" }}
             >
+              {/* Yearly savings badge */}
+              {yearly && plan.price.savings > 0 && (
+                <div className="flex justify-end -mt-1 mb-2">
+                  <span className="savings-fade text-xs font-bold px-2.5 py-0.5 rounded-full bg-green-500 text-white shadow-sm">
+                    -{plan.price.savings}%
+                  </span>
+                </div>
+              )}
+
               {/* Plan header */}
               <div className="mb-4">
                 <div className="flex items-center justify-between mb-2">
@@ -90,19 +165,28 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                     <Badge variant="primary" size="sm">{plan.badge}</Badge>
                   )}
                 </div>
+
+                {/* Animated price */}
                 <div className="flex items-end gap-1">
-                  <span className="text-3xl font-black text-gray-900">
-                    {plan.price.monthly === 0
-                      ? d.free
-                      : formatPrice(plan.price.monthly)}
+                  <span
+                    key={`${planKey}-${yearly}`}
+                    className="price-pop text-3xl font-black text-gray-900"
+                  >
+                    {price === 0 ? d.free : formatPrice(price)}
                   </span>
-                  {plan.price.monthly > 0 && (
-                    <span className="text-gray-400 text-sm mb-1">/mois</span>
+                  {price > 0 && (
+                    <span className="text-gray-400 text-sm mb-1">{t.pricing.perMonth}</span>
                   )}
                 </div>
-                {plan.price.savings > 0 && (
+
+                {yearly && plan.price.savings > 0 && (
+                  <p className="savings-fade text-xs text-[#8F00FF] font-medium mt-1">
+                    {t.pricing.billedYearly} {formatPrice(plan.price.yearly)}{t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
+                  </p>
+                )}
+                {!yearly && plan.price.savings > 0 && (
                   <p className="text-xs text-green-600 font-medium mt-1">
-                    💰 Annuel : {formatPrice(plan.price.yearlyPerMonth)}/mois — <span className="font-bold">-{plan.price.savings}% d'économie</span>
+                    💰 {t.pricing.saveAnnual}
                   </p>
                 )}
               </div>
@@ -117,30 +201,15 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                   {d.choosePlan}
                 </div>
               ) : (
-                <form action="/api/stripe/checkout" method="POST">
+                <form action="/api/stripe/checkout" method="POST" className="mb-5">
                   <input type="hidden" name="plan" value={planKey} />
-                  <input type="hidden" name="billing" value="monthly" />
-                  <div className="flex gap-2 mb-5">
-                    <button
-                      type="submit"
-                      name="billing"
-                      value="monthly"
-                      className="flex-1 py-2.5 px-3 rounded-xl bg-[#8F00FF] text-white text-xs font-bold hover:bg-[#7200CC] transition-colors"
-                    >
-                      Mensuel
-                    </button>
-                    <button
-                      type="submit"
-                      name="billing"
-                      value="yearly"
-                      className="flex-1 py-2.5 px-3 rounded-xl border-2 border-green-500 bg-green-50 text-green-700 text-xs font-bold hover:bg-green-100 transition-colors flex items-center justify-center gap-1"
-                    >
-                      Annuel
-                      <span className="bg-green-500 text-white text-[10px] px-1.5 py-0.5 rounded-full font-black">
-                        -10%
-                      </span>
-                    </button>
-                  </div>
+                  <input type="hidden" name="billing" value={yearly ? "yearly" : "monthly"} />
+                  <button
+                    type="submit"
+                    className="w-full py-2.5 px-4 rounded-xl bg-[#8F00FF] text-white text-sm font-bold hover:bg-[#7200CC] transition-all duration-200 group-hover:shadow-md"
+                  >
+                    {d.upgrade}
+                  </button>
                 </form>
               )}
 
