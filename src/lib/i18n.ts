@@ -235,6 +235,7 @@ export const fr = {
     billedYearly: "Facturé",
     perYear: "/an",
     save: "Économisez",
+    saveAnnual: "Économisez 10% en passant au plan annuel",
     note: "✓ Annulation à tout moment   ✓ Aucune carte requise pour l'offre gratuite   ✓ Migration facile entre les plans",
     plans: {
       FREE: {
@@ -593,6 +594,7 @@ export const en: typeof fr = {
     billedYearly: "Billed",
     perYear: "/yr",
     save: "Save",
+    saveAnnual: "Save 10% by switching to the annual plan",
     note: "✓ Cancel anytime   ✓ No card required for the free plan   ✓ Easy plan migration",
     plans: {
       FREE: {
