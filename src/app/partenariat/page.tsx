@@ -76,10 +76,19 @@ export default function PartnershipPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    // Simule un envoi (à connecter à une vraie API ou Resend)
-    await new Promise((r) => setTimeout(r, 1200));
-    setLoading(false);
-    setSubmitted(true);
+    try {
+      const res = await fetch("/api/partenariat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (!res.ok) throw new Error();
+      setSubmitted(true);
+    } catch {
+      alert("Une erreur est survenue. Réessayez ou contactez-nous directement.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
