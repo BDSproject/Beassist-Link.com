@@ -13,7 +13,7 @@ export default async function BillingPage() {
     where: { userId: session.user.id },
   });
 
-  const currentPlan = (session.user.plan as PlanName) || "FREE";
+  const currentPlan = ((subscription?.plan ?? session.user.plan) as PlanName) || "FREE";
 
   return (
     <BillingContent

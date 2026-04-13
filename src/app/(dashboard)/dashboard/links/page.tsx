@@ -29,6 +29,7 @@ import { Badge } from "@/components/ui/badge";
 import { PLANS } from "@/lib/plans";
 import { formatNumber, formatDate, isValidUrl } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
+import { usePlan } from "@/hooks/use-plan";
 
 const linkSchema = z.object({
   url: z.string().url("URL invalide — ex: https://exemple.com"),
@@ -68,7 +69,7 @@ export default function LinksPage() {
   // Prévisualisation slug dans le formulaire
   const [slugPreview, setSlugPreview] = useState("");
 
-  const plan = (session?.user?.plan as any) || "FREE";
+  const { plan } = usePlan();
   const planLimits = PLANS[plan as keyof typeof PLANS]?.limits;
   const username = session?.user?.username || session?.user?.name?.toLowerCase().replace(/\s+/g, "") || "";
   const baseUrl = typeof window !== "undefined" ? window.location.origin : "https://www.beassist-link.com";

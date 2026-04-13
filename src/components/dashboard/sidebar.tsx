@@ -22,6 +22,7 @@ import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
 import { useLanguage } from "@/contexts/language-context";
+import { usePlan } from "@/hooks/use-plan";
 
 export function Sidebar() {
   const pathname = usePathname();
@@ -31,7 +32,7 @@ export function Sidebar() {
   const { t, lang, setLang } = useLanguage();
   const d = t.dashboard;
 
-  const plan = session?.user?.plan || "FREE";
+  const { plan } = usePlan();
   const isPro = plan === "PRO";
   const isStarter = plan === "STARTER";
 

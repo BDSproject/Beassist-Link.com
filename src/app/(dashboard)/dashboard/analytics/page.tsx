@@ -17,6 +17,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
+import { usePlan } from "@/hooks/use-plan";
 
 interface LinkStat {
   id: string;
@@ -40,7 +41,8 @@ export default function AnalyticsPage() {
   const [bio, setBio] = useState<BioStat | null>(null);
   const [loading, setLoading] = useState(true);
 
-  const isPro = session?.user?.plan === "STARTER" || session?.user?.plan === "PRO";
+  const { plan: dbPlan } = usePlan();
+  const isPro = dbPlan === "STARTER" || dbPlan === "PRO";
 
   const fetchData = useCallback(async () => {
     try {
