@@ -1,9 +1,9 @@
 "use client";
 
-import { Link2, BarChart3, Palette, QrCode, Shield, Zap } from "lucide-react";
+import { Link2, BarChart3, Palette, QrCode, Zap, Shuffle } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
-const FEATURE_ICONS = [Link2, Zap, BarChart3, Palette, QrCode, Shield];
+const FEATURE_ICONS = [Link2, Palette, Shuffle, BarChart3, QrCode, Zap];
 const FEATURE_STYLES = [
   { color: "#8F00FF", bg: "#F5EBFF" },
   { color: "#F59E0B", bg: "#FFFBEB" },

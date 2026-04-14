@@ -300,32 +300,32 @@ export const fr = {
       {
         title: "Lien en Bio Pro",
         description:
-          "Un lien unique à glisser dans ta bio Insta, TikTok ou YouTube. Regroupe tous tes réseaux, collabs et contenus en une seule page stylée et personnalisable.",
+          "Une page unique pour regrouper tous tes liens. Personnalisable en quelques clics — thème, couleurs, boutons, typographie.",
+      },
+      {
+        title: "Thèmes & Palettes",
+        description:
+          "Palettes de couleurs sur mesure et thèmes premium pour coller exactement à ton style et ton identité visuelle.",
+      },
+      {
+        title: "Lien de Redirection",
+        description:
+          "Redirige temporairement tes visiteurs vers un lien clé — parfait pour une promo, un lancement ou un événement à durée limitée.",
+      },
+      {
+        title: "Analytics Créatrice",
+        description:
+          "Suis tes clics en temps réel : pays, appareils, sources de trafic. Comprends ton audience et optimise tes placements.",
+      },
+      {
+        title: "QR Codes Instantanés",
+        description:
+          "Génère un QR code unique pour chaque lien. Parfait pour les affiches, les flyers et tous tes supports imprimés.",
       },
       {
         title: "Liens Raccourcis",
         description:
-          "Transformez n'importe quelle URL longue en un lien court et mémorable. Partagez-le partout, mesurez chaque clic.",
-      },
-      {
-        title: "Analytics de Créateur",
-        description:
-          "Suis en temps réel les clics sur ton lien en bio. Pays, appareils, sources — comprends ton audience et optimise tes placements de contenus.",
-      },
-      {
-        title: "Personnalisation Totale",
-        description:
-          "Choisissez parmi nos thèmes premium ou créez le vôtre avec vos propres couleurs. Votre marque, votre identité.",
-      },
-      {
-        title: "Codes QR Instantanés",
-        description:
-          "Génère un QR code unique pour ton lien en bio. Parfait pour les affiches, goodies, cartes de visite et flyers.",
-      },
-      {
-        title: "Sécurité & Fiabilité",
-        description:
-          "Vos données sont chiffrées et vos liens disponibles 24h/24. Infrastructure robuste avec 99.9% de disponibilité.",
+          "Transforme n'importe quelle URL longue en un lien court et mémorable. Partage-le partout, mesure chaque clic.",
       },
     ],
   },
@@ -868,32 +868,32 @@ export const en: typeof fr = {
       {
         title: "Pro Link in Bio",
         description:
-          "One unique link to drop in your Instagram, TikTok or YouTube bio. Group all your socials, collabs and content in one stylish, fully customizable page.",
+          "One page to group all your links. Customizable in a few clicks — theme, colors, buttons, typography.",
       },
       {
-        title: "Short Links",
+        title: "Custom Themes",
         description:
-          "Turn any long URL into a short, memorable link. Share it everywhere, measure every click.",
+          "Custom color palettes and fresh themes to match your style and visual identity.",
+      },
+      {
+        title: "Redirect Links",
+        description:
+          "Temporarily send visitors to one key link — perfect for promos, launches, or time-limited events.",
       },
       {
         title: "Creator Analytics",
         description:
-          "Track your link in bio clicks in real time. Countries, devices, sources — understand your audience and optimize your content placements.",
-      },
-      {
-        title: "Full Customization",
-        description:
-          "Choose from our premium themes or create your own with custom colors. Your brand, your identity.",
+          "Track your clicks in real time: countries, devices, traffic sources. Understand your audience and optimize your placements.",
       },
       {
         title: "Instant QR Codes",
         description:
-          "Generate a unique QR code for your link in bio. Perfect for posters, merch, business cards, and flyers.",
+          "Generate a unique QR code for every link. Perfect for posters, flyers, and any printed material.",
       },
       {
-        title: "Security & Reliability",
+        title: "Short Links",
         description:
-          "Your data is encrypted and your links available 24/7. Robust infrastructure with 99.9% uptime.",
+          "Turn any long URL into a short, memorable link. Share it anywhere, measure every click.",
       },
     ],
   },

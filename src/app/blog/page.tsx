@@ -41,7 +41,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment optimiser sa bio pour convertir en 2026",
     excerpt:
-      "7 leviers simples pour transformer vos visiteurs en clients — testés sur +10 000 pages BeassistLink.",
+      "7 leviers simples pour transformer vos visiteurs en clients — des bonnes pratiques partagées par les créateurs qui gèrent leur présence en ligne avec soin.",
     date: "1 avril 2026",
     readTime: "4 min",
     featured: false,
@@ -149,7 +149,7 @@ export default function BlogPage() {
       category="Blog"
       title="Conseils, comparatifs & stratégies créateur"
       description="Retours d'expérience, tutoriels et analyses pour mieux performer en ligne — par l'équipe BeassistLink 🇫🇷"
-      updatedAt="13 avril 2026"
+      updatedAt="14 avril 2026"
     >
       {/* ── Article vedette ── */}
       <article className="rounded-2xl border-2 border-[#8F00FF]/30 bg-gradient-to-br from-[#F9F5FF] to-white p-6 sm:p-8">

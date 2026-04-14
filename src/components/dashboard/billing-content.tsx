@@ -14,8 +14,10 @@ interface Props {
 }
 
 export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const d = t.dashboard.billing;
+  const fp = (amount: number) =>
+    lang === "en" ? formatPrice(amount, "USD", "en-US") : formatPrice(amount, "EUR", "fr-FR");
   const [yearly, setYearly] = useState(false);
   const [visible, setVisible] = useState(false);
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
@@ -221,7 +223,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                     key={`${planKey}-${yearly}`}
                     className="price-pop text-3xl font-black text-gray-900"
                   >
-                    {price === 0 ? d.free : formatPrice(price)}
+                    {price === 0 ? d.free : fp(price)}
                   </span>
                   {price > 0 && (
                     <span className="text-gray-400 text-sm mb-1">{t.pricing.perMonth}</span>
@@ -230,7 +232,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
 
                 {yearly && plan.price.savings > 0 && (
                   <p className="savings-fade text-xs text-[#8F00FF] font-medium mt-1">
-                    {t.pricing.billedYearly} {formatPrice(plan.price.yearly)}{t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
+                    {t.pricing.billedYearly} {fp(plan.price.yearly)}{t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
                   </p>
                 )}
                 {!yearly && plan.price.savings > 0 && (

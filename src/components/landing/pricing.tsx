@@ -11,7 +11,9 @@ import { useLanguage } from "@/contexts/language-context";
 const planOrder: PlanName[] = ["FREE", "STARTER", "PRO"];
 
 export function Pricing() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+  const fp = (amount: number) =>
+    lang === "en" ? formatPrice(amount, "USD", "en-US") : formatPrice(amount, "EUR", "fr-FR");
   const [yearly, setYearly] = useState(false);
   const [visible, setVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
@@ -185,7 +187,7 @@ export function Pricing() {
                         isHighlighted ? "text-white" : "text-gray-900"
                       }`}
                     >
-                      {price === 0 ? t.pricing.free : formatPrice(price)}
+                      {price === 0 ? t.pricing.free : fp(price)}
                     </span>
                     {price > 0 && (
                       <span
@@ -205,7 +207,7 @@ export function Pricing() {
                         isHighlighted ? "text-purple-200" : "text-[#8F00FF]"
                       }`}
                     >
-                      {t.pricing.billedYearly} {formatPrice(plan.price.yearly)}
+                      {t.pricing.billedYearly} {fp(plan.price.yearly)}
                       {t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
                     </p>
                   )}
