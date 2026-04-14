@@ -126,41 +126,9 @@ export function Hero() {
                 </Button>
               </a>
             </div>
-
-            {/* Preuve sociale */}
-            <div className="mt-10 flex flex-col sm:flex-row items-center lg:items-start gap-4 text-sm text-gray-500">
-              <div className="flex -space-x-2">
-                {["A", "M", "S", "L", "R"].map((letter, i) => (
-                  <div
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white flex items-center justify-center text-white text-xs font-bold"
-                    style={{
-                      backgroundColor: [
-                        "#8F00FF",
-                        "#E1306C",
-                        "#1DA1F2",
-                        "#FF0000",
-                        "#25D366",
-                      ][i],
-                    }}
-                  >
-                    {letter}
-                  </div>
-                ))}
-              </div>
-              <div>
-                <span className="font-semibold text-gray-900">{t.hero.socialProof}</span>
-                <div className="flex items-center gap-1 mt-0.5">
-                  {[1, 2, 3, 4, 5].map((s) => (
-                    <span key={s} className="text-yellow-400 text-xs">★</span>
-                  ))}
-                  <span className="text-gray-500 text-xs ml-1">4.9/5</span>
-                </div>
-              </div>
-            </div>
           </div>
 
-          {/* Mockup téléphone */}
+          {/* Mockup téléphone */}}
           <div className="hidden sm:flex justify-center lg:justify-end">
             <div className="animate-float">
               <PhoneMockup />

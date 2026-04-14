@@ -288,7 +288,7 @@ export const fr = {
     subheadingStrong: "Simple, personnalisé, efficace.",
     cta1: "Créer mon lien en bio",
     cta2: "Voir comment ça marche",
-    socialProof: "+10 000 créateurs nous font confiance",
+    socialProof: "",
   },
   features: {
     badge: "✨ Fonctionnalités",
@@ -448,7 +448,7 @@ export const fr = {
     ],
   },
   cta: {
-    badge: "✨ Rejoignez +10 000 créateurs",
+    badge: "✨ Rejoins la communauté",
     heading1: "Prêt à passer",
     heading2: "à l’action ?",
     subheading:
@@ -856,7 +856,7 @@ export const en: typeof fr = {
     subheadingStrong: "Simple, branded, powerful.",
     cta1: "Create my link in bio",
     cta2: "See how it works",
-    socialProof: "+10,000 creators trust us",
+    socialProof: "",
   },
   features: {
     badge: "✨ Features",
@@ -1015,7 +1015,7 @@ export const en: typeof fr = {
     ],
   },
   cta: {
-    badge: "✨ Join +10,000 creators",
+    badge: "✨ Join the community",
     heading1: "Ready to take",
     heading2: "action?",
     subheading:
