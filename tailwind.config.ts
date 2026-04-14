@@ -25,6 +25,24 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
+        // Google Fonts — top créatrices / models
+        playfair: ["var(--font-playfair)", "serif"],
+        greatvibes: ["var(--font-greatvibes)", "cursive"],
+        dancing: ["var(--font-dancing)", "cursive"],
+        cormorant: ["var(--font-cormorant)", "serif"],
+        bodoni: ["var(--font-bodoni)", "serif"],
+        // Google Fonts — style & design
+        montserrat: ["var(--font-montserrat)", "sans-serif"],
+        raleway: ["var(--font-raleway)", "sans-serif"],
+        josefin: ["var(--font-josefin)", "sans-serif"],
+        cinzel: ["var(--font-cinzel)", "serif"],
+        lobster: ["var(--font-lobster)", "cursive"],
+        bebas: ["var(--font-bebas)", "sans-serif"],
+        pacifico: ["var(--font-pacifico)", "cursive"],
+        oswald: ["var(--font-oswald)", "sans-serif"],
+        abril: ["var(--font-abril)", "serif"],
+        satisfy: ["var(--font-satisfy)", "cursive"],
+        lato: ["var(--font-lato)", "sans-serif"],
       },
       animation: {
         "fade-up": "fadeUp 0.7s ease-out forwards",

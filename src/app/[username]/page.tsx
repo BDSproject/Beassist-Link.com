@@ -77,9 +77,28 @@ const BUTTON_STYLE_CLASSES: Record<string, string> = {
 };
 
 const FONT_STYLE_CLASSES: Record<string, string> = {
+  // Basiques
   sans: "font-sans",
   serif: "font-serif",
   mono: "font-mono",
+  // Top créatrices
+  playfair: "font-playfair",
+  greatvibes: "font-greatvibes",
+  dancing: "font-dancing",
+  cormorant: "font-cormorant",
+  bodoni: "font-bodoni",
+  // Style & Design
+  montserrat: "font-montserrat",
+  raleway: "font-raleway",
+  josefin: "font-josefin",
+  cinzel: "font-cinzel",
+  lobster: "font-lobster",
+  bebas: "font-bebas",
+  pacifico: "font-pacifico",
+  oswald: "font-oswald",
+  abril: "font-abril",
+  satisfy: "font-satisfy",
+  lato: "font-lato",
 };
 
 export default async function UserBioPage({ params }: Props) {

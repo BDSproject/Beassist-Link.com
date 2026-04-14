@@ -28,17 +28,61 @@ interface SocialIconProps {
 type IconComponent = (props: { size?: number; className?: string; style?: React.CSSProperties }) => React.ReactElement | null;
 
 // Icônes custom pour les plateformes sans icône react-icons
+
+/** MYM — badge arrondi rose avec « mym » en blanc gras */
 const MymIcon: IconComponent = ({ size = 20, className, style }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={style}>
-    <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.18" />
-    <text x="12" y="16.5" textAnchor="middle" fontSize="7.5" fontWeight="900" fontFamily="Arial, sans-serif" fill="currentColor">mym</text>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    style={style}
+  >
+    {/* Fond badge arrondi — currentColor = #FF3366 (ou blanc sur fond sombre) */}
+    <rect width="100" height="100" rx="22" fill="currentColor" />
+    {/* Texte blanc centré */}
+    <text
+      x="50"
+      y="50"
+      textAnchor="middle"
+      dominantBaseline="central"
+      fontSize="34"
+      fontWeight="900"
+      fontFamily="&apos;Arial Black&apos;, Arial, sans-serif"
+      fill="white"
+      letterSpacing="2"
+    >
+      mym
+    </text>
   </svg>
 );
 
+/** Fansly — cercle bleu avec « F » en blanc gras */
 const FanslyIcon: IconComponent = ({ size = 20, className, style }) => (
-  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={style}>
-    <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.18" />
-    <text x="12" y="17" textAnchor="middle" fontSize="13" fontWeight="900" fontFamily="Arial, sans-serif" fill="currentColor">F</text>
+  <svg
+    width={size}
+    height={size}
+    viewBox="0 0 100 100"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    className={className}
+    style={style}
+  >
+    <circle cx="50" cy="50" r="50" fill="currentColor" />
+    <text
+      x="50"
+      y="50"
+      textAnchor="middle"
+      dominantBaseline="central"
+      fontSize="56"
+      fontWeight="900"
+      fontFamily="&apos;Arial Black&apos;, Arial, sans-serif"
+      fill="white"
+    >
+      F
+    </text>
   </svg>
 );
 

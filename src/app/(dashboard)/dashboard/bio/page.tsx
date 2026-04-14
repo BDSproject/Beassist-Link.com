@@ -58,10 +58,29 @@ const BUTTON_STYLES = [
   { id: "shadow", cls: "rounded-xl shadow-xl" },
 ];
 
-const FONT_STYLES = [
-  { id: "sans", cls: "font-sans" },
-  { id: "serif", cls: "font-serif" },
-  { id: "mono", cls: "font-mono" },
+const FONT_STYLES: { id: string; cls: string; group: "base" | "creator" | "style" }[] = [
+  // ── Basiques
+  { id: "sans",       cls: "font-sans",       group: "base" },
+  { id: "serif",      cls: "font-serif",      group: "base" },
+  { id: "mono",       cls: "font-mono",       group: "base" },
+  // ── Top créatrices ⭐ (plus utilisés par modèles & créatrices adultes)
+  { id: "playfair",   cls: "font-playfair",   group: "creator" },
+  { id: "greatvibes", cls: "font-greatvibes", group: "creator" },
+  { id: "dancing",    cls: "font-dancing",    group: "creator" },
+  { id: "cormorant",  cls: "font-cormorant",  group: "creator" },
+  { id: "bodoni",     cls: "font-bodoni",     group: "creator" },
+  // ── Style & Design
+  { id: "montserrat", cls: "font-montserrat", group: "style" },
+  { id: "raleway",    cls: "font-raleway",    group: "style" },
+  { id: "josefin",    cls: "font-josefin",    group: "style" },
+  { id: "cinzel",     cls: "font-cinzel",     group: "style" },
+  { id: "lobster",    cls: "font-lobster",    group: "style" },
+  { id: "bebas",      cls: "font-bebas",      group: "style" },
+  { id: "pacifico",   cls: "font-pacifico",   group: "style" },
+  { id: "oswald",     cls: "font-oswald",     group: "style" },
+  { id: "abril",      cls: "font-abril",      group: "style" },
+  { id: "satisfy",    cls: "font-satisfy",    group: "style" },
+  { id: "lato",       cls: "font-lato",       group: "style" },
 ];
 
 const THEME_BG_DEFAULTS: Record<string, string> = {
@@ -715,19 +734,67 @@ export default function BioPage() {
                   <Type className="w-4 h-4" />
                   {b.fontStyleTitle}
                 </h3>
-                <div className="grid grid-cols-3 gap-3">
-                  {FONT_STYLES.map((fs) => (
+
+                {/* Basiques */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {FONT_STYLES.filter((f) => f.group === "base").map((fs) => (
                     <button
                       key={fs.id}
                       onClick={() => setPageForm((p) => ({ ...p, fontStyle: fs.id }))}
-                      className={`p-3 border-2 rounded-xl transition-all ${
+                      className={`p-2 border-2 rounded-xl transition-all ${
                         pageForm.fontStyle === fs.id
                           ? "border-[#8F00FF] bg-[#8F00FF]/5"
                           : "border-gray-200 hover:border-gray-300"
                       }`}
                     >
-                      <p className={`text-lg text-center mb-1 font-semibold text-gray-800 ${fs.cls}`}>Aa</p>
-                      <p className="text-xs text-center font-medium text-gray-600">
+                      <p className={`text-base text-center mb-0.5 font-semibold text-gray-800 ${fs.cls}`}>Aa</p>
+                      <p className="text-[10px] text-center font-medium text-gray-600 truncate leading-tight">
+                        {b.fontStyles[fs.id as keyof typeof b.fontStyles]}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Top créatrices */}
+                <p className="text-xs font-semibold text-pink-500 mb-2 flex items-center gap-1">
+                  ⭐ {b.fontCreatorLabel}
+                </p>
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                  {FONT_STYLES.filter((f) => f.group === "creator").map((fs) => (
+                    <button
+                      key={fs.id}
+                      onClick={() => setPageForm((p) => ({ ...p, fontStyle: fs.id }))}
+                      className={`p-2 border-2 rounded-xl transition-all ${
+                        pageForm.fontStyle === fs.id
+                          ? "border-[#8F00FF] bg-[#8F00FF]/5"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      <p className={`text-base text-center mb-0.5 font-semibold text-gray-800 ${fs.cls}`}>Aa</p>
+                      <p className="text-[10px] text-center font-medium text-gray-600 truncate leading-tight">
+                        {b.fontStyles[fs.id as keyof typeof b.fontStyles]}
+                      </p>
+                    </button>
+                  ))}
+                </div>
+
+                {/* Style & Design */}
+                <p className="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-1">
+                  🎨 {b.fontStyleLabel}
+                </p>
+                <div className="grid grid-cols-3 gap-2">
+                  {FONT_STYLES.filter((f) => f.group === "style").map((fs) => (
+                    <button
+                      key={fs.id}
+                      onClick={() => setPageForm((p) => ({ ...p, fontStyle: fs.id }))}
+                      className={`p-2 border-2 rounded-xl transition-all ${
+                        pageForm.fontStyle === fs.id
+                          ? "border-[#8F00FF] bg-[#8F00FF]/5"
+                          : "border-gray-200 hover:border-gray-300"
+                      }`}
+                    >
+                      <p className={`text-base text-center mb-0.5 font-semibold text-gray-800 ${fs.cls}`}>Aa</p>
+                      <p className="text-[10px] text-center font-medium text-gray-600 truncate leading-tight">
                         {b.fontStyles[fs.id as keyof typeof b.fontStyles]}
                       </p>
                     </button>

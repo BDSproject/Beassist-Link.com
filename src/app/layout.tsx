@@ -2,8 +2,12 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
+import { ALL_FONT_VARIABLES } from "@/lib/fonts";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
+
+// Build the combined CSS-variable class string for <html>
+const fontVarClasses = ALL_FONT_VARIABLES.map((f) => f.variable).join(" ");
 
 export const metadata: Metadata = {
   title: {
@@ -64,8 +68,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
+    <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${fontVarClasses}`}>
+      <body className="font-sans antialiased">
         <Providers>{children}</Providers>
       </body>
     </html>
