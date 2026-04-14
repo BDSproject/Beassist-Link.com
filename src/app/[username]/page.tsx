@@ -1,7 +1,6 @@
 import type React from "react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
-import { PLANS } from "@/lib/plans";
 import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
@@ -109,7 +108,6 @@ export default async function UserBioPage({ params }: Props) {
         where: { active: true },
         orderBy: { order: "asc" },
       },
-      user: { select: { plan: true } },
     },
   });
 
@@ -122,10 +120,6 @@ export default async function UserBioPage({ params }: Props) {
     where: { id: bioPage.id },
     data: { views: { increment: 1 } },
   });
-
-  const userPlan = bioPage.user.plan;
-  const showBranding =
-    !PLANS[userPlan as keyof typeof PLANS]?.limits.hasRemoveBranding;
 
   const primaryColor = bioPage.primaryColor || "#8F00FF";
   const theme = (bioPage.theme as keyof typeof THEME_STYLES) || "default";
@@ -292,19 +286,22 @@ export default async function UserBioPage({ params }: Props) {
           </div>
         )}
 
-        {/* Branding BeassistLink */}
-        {showBranding && (
-          <div className="mt-10 flex justify-center">
-            <a
-              href="/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`flex items-center gap-2 text-xs transition-colors ${styles.branding}`}
-            >
-              Créé avec <Logo size="sm" />
-            </a>
-          </div>
-        )}
+        {/* Marketing footer — toujours discret */}
+        <div className="mt-10 flex justify-center">
+          <a
+            href="https://www.beassist-link.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`flex items-center gap-1.5 text-[11px] transition-opacity hover:opacity-80 ${
+              isDarkBg ? "text-white/35 hover:text-white/60" : "text-gray-400/60 hover:text-gray-500"
+            }`}
+          >
+            Rejoindre
+            <span className="font-semibold">@{params.username}</span>
+            sur
+            <Logo size="sm" />
+          </a>
+        </div>
       </div>
     </main>
   );

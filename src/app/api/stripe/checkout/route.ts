@@ -62,6 +62,15 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Plan invalide" }, { status: 400 });
     }
 
+    // Vérifier que le price ID est configuré
+    if (!priceId) {
+      console.error("[checkout] Price ID manquant pour", plan, billing);
+      return NextResponse.json(
+        { error: "Prix non configuré. Contactez le support." },
+        { status: 500 }
+      );
+    }
+
     const appUrl = process.env.NEXT_PUBLIC_APP_URL || "https://www.beassist-link.com";
 
     // Créer la session Stripe Checkout
@@ -87,9 +96,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error) {
     console.error("Stripe checkout error:", error);
-    return NextResponse.json(
-      { error: "Erreur lors de la création du paiement" },
-      { status: 500 }
-    );
+    const message =
+      error instanceof Error ? error.message : "Erreur lors de la création du paiement";
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
