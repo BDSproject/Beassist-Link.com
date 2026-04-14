@@ -218,14 +218,27 @@ export default function BioPage() {
     reader.onload = (ev) => {
       const img = new Image();
       img.onload = () => {
+        // Cible : format portrait téléphone 9:18 (430×860 px)
+        const TARGET_W = 430;
+        const TARGET_H = 860;
+        const targetRatio = TARGET_W / TARGET_H; // ~0.5
+        const srcRatio = img.width / img.height;
+
+        let sx = 0, sy = 0, sw = img.width, sh = img.height;
+        if (srcRatio > targetRatio) {
+          // Image paysage : recadrer les côtés, garder la hauteur
+          sw = Math.round(img.height * targetRatio);
+          sx = Math.round((img.width - sw) / 2);
+        } else {
+          // Image portrait ou carrée : recadrer le bas, garder le haut
+          sh = Math.round(img.width / targetRatio);
+          sy = 0;
+        }
         const canvas = document.createElement("canvas");
-        const maxW = 1200;
-        let { width, height } = img;
-        if (width > maxW) { height = Math.round(height * maxW / width); width = maxW; }
-        canvas.width = width;
-        canvas.height = height;
-        canvas.getContext("2d")!.drawImage(img, 0, 0, width, height);
-        setPageForm((p) => ({ ...p, bgImage: canvas.toDataURL("image/jpeg", 0.8) }));
+        canvas.width = TARGET_W;
+        canvas.height = TARGET_H;
+        canvas.getContext("2d")!.drawImage(img, sx, sy, sw, sh, 0, 0, TARGET_W, TARGET_H);
+        setPageForm((p) => ({ ...p, bgImage: canvas.toDataURL("image/jpeg", 0.85) }));
       };
       img.src = ev.target?.result as string;
     };
@@ -623,10 +636,10 @@ export default function BioPage() {
                       {b.upgrade}
                     </a>
                   </div>
-                ) : pageForm.bgImage ? (
-                  <div className="relative rounded-xl overflow-hidden h-40 border border-gray-200 group">
+                                ) : pageForm.bgImage ? (
+                  <div className="relative rounded-xl overflow-hidden border border-gray-200 group" style={{ aspectRatio: "9/16", maxHeight: "260px" }}>
                     {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src={pageForm.bgImage} alt="Fond" className="w-full h-full object-cover" />
+                    <img src={pageForm.bgImage} alt="Fond" className="w-full h-full object-cover object-top" />
                     <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-3">
                       <button
                         onClick={() => bgImageRef.current?.click()}
@@ -652,6 +665,7 @@ export default function BioPage() {
                     <ImageIcon className="w-8 h-8" />
                     <span className="text-sm font-medium">{b.importBgImage}</span>
                     <span className="text-xs">{b.bgImageFormat}</span>
+                    <span className="text-[10px] text-green-600 font-medium">📱 Format portrait 9:16 recommandé</span>
                   </button>
                 )}
                 <input ref={bgImageRef} type="file" accept="image/*" className="hidden" onChange={handleBgImageUpload} />
@@ -768,7 +782,7 @@ export default function BioPage() {
                       ? {
                           backgroundImage: `url(${pageForm.bgImage})`,
                           backgroundSize: "cover",
-                          backgroundPosition: "center",
+                          backgroundPosition: "center top",
                           backgroundRepeat: "no-repeat",
                         }
                       : pageForm.theme === "gradient"

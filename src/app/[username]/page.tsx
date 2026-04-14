@@ -135,7 +135,13 @@ export default async function UserBioPage({ params }: Props) {
       : THEME_BG_FALLBACK[theme] ?? "#FFFFFF";
 
   const wrapperStyle: React.CSSProperties = bgImage
-    ? { backgroundImage: `url(${bgImage})`, backgroundSize: "cover", backgroundPosition: "center" }
+    ? {
+        backgroundImage: `url(${bgImage})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center top",
+        backgroundRepeat: "no-repeat",
+        backgroundAttachment: "scroll", // 'fixed' breaks on iOS Safari
+      }
     : theme === "gradient"
     ? {}
     : { backgroundColor: effectiveBgColor };
