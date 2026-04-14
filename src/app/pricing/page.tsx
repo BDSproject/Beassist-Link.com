@@ -12,12 +12,12 @@ export default function PricingPage() {
     ? [
         ["Free", "$0", ["1 bio page", "5 bio links", "3 short links", "BeassistLink branding"]],
         ["Starter", "$6/mo", ["3 bio pages", "20 bio links", "QR Codes", "Basic analytics"]],
-        ["Pro", "$12/mo", ["Unlimited everything", "Custom domain", "API access", "Priority support"]],
+        ["Pro", "$12/mo", ["Unlimited everything", "API access", "Priority support"]],
       ]
     : [
         ["Free", "0€", ["1 page bio", "5 liens bio", "3 liens courts", "Branding BeassistLink"]],
         ["Starter", "6€/mois", ["3 pages bio", "20 liens bio", "QR Codes", "Analytics basiques"]],
-        ["Pro", "12€/mois", ["Tout illimité", "Domaine custom", "API access", "Support prioritaire"]],
+        ["Pro", "12€/mois", ["Tout illimité", "API access", "Support prioritaire"]],
       ];
 
   return (

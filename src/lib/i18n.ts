@@ -503,7 +503,6 @@ export const fr = {
           { label: "QR Code", included: false },
           { label: "Supprimer le branding", included: false },
           { label: "Alias personnalisé", included: false },
-          { label: "Domaine personnalisé", included: false },
         ],
       },
       STARTER: {
@@ -519,7 +518,6 @@ export const fr = {
           { label: "Génération de QR codes", included: true },
           { label: "Alias personnalisé", included: true },
           { label: "Liens programmés", included: false },
-          { label: "Domaine personnalisé", included: false },
         ],
       },
       PRO: {
@@ -535,7 +533,6 @@ export const fr = {
           { label: "QR codes illimités", included: true },
           { label: "Alias illimités", included: true },
           { label: "Liens programmés", included: true },
-          { label: "Domaine personnalisé", included: true },
           { label: "Support prioritaire", included: true },
         ],
       },
@@ -1191,7 +1188,6 @@ export const en: typeof fr = {
           { label: "QR Code", included: false },
           { label: "Remove branding", included: false },
           { label: "Custom alias", included: false },
-          { label: "Custom domain", included: false },
         ],
       },
       STARTER: {
@@ -1207,7 +1203,6 @@ export const en: typeof fr = {
           { label: "QR code generation", included: true },
           { label: "Custom alias", included: true },
           { label: "Scheduled links", included: false },
-          { label: "Custom domain", included: false },
         ],
       },
       PRO: {
@@ -1223,7 +1218,6 @@ export const en: typeof fr = {
           { label: "Unlimited QR codes", included: true },
           { label: "Unlimited aliases", included: true },
           { label: "Scheduled links", included: true },
-          { label: "Custom domain", included: true },
           { label: "Priority support", included: true },
         ],
       },

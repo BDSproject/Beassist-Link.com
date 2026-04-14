@@ -163,7 +163,6 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Alias illimités", included: true },
     { label: "Supprimer le branding", included: true },
     { label: "Liens programmés", included: true },
-    { label: "Domaine personnalisé", included: true },
     { label: "Support prioritaire", included: true },
   ],
 };
