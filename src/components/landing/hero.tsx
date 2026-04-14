@@ -128,7 +128,7 @@ export function Hero() {
             </div>
           </div>
 
-          {/* Mockup téléphone */}}
+          {/* Mockup téléphone */}
           <div className="hidden sm:flex justify-center lg:justify-end">
             <div className="animate-float">
               <PhoneMockup />
