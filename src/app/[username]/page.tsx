@@ -1,10 +1,9 @@
 import type React from "react";
-import type { LucideIcon } from "lucide-react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
 import { PLANS } from "@/lib/plans";
 import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
-import { ExternalLink, Instagram, Twitter, Youtube, Facebook, Linkedin, Github, Music, MessageCircle } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
 import type { Metadata } from "next";
@@ -81,17 +80,6 @@ const FONT_STYLE_CLASSES: Record<string, string> = {
   sans: "font-sans",
   serif: "font-serif",
   mono: "font-mono",
-};
-
-const SOCIAL_ICON_MAP: Record<string, LucideIcon> = {
-  instagram: Instagram,
-  twitter: Twitter,
-  youtube: Youtube,
-  facebook: Facebook,
-  linkedin: Linkedin,
-  github: Github,
-  tiktok: Music,
-  whatsapp: MessageCircle,
 };
 
 export default async function UserBioPage({ params }: Props) {
@@ -263,22 +251,19 @@ export default async function UserBioPage({ params }: Props) {
         {/* Social Icons */}
         {socialLinks.filter((s) => s.url).length > 0 && (
           <div className="flex justify-center gap-3 mt-6 flex-wrap">
-            {socialLinks.filter((s) => s.url).map((s) => {
-              const Icon = SOCIAL_ICON_MAP[s.platform];
-              return Icon ? (
-                <a
-                  key={s.platform}
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`w-10 h-10 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 ${
-                    isDarkBg ? "bg-white/20 text-white" : "bg-gray-200 text-gray-700"
-                  }`}
-                >
-                  <Icon size={18} />
-                </a>
-              ) : null;
-            })}
+            {socialLinks.filter((s) => s.url).map((s) => (
+              <a
+                key={s.platform}
+                href={s.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`w-10 h-10 rounded-full flex items-center justify-center transition-opacity hover:opacity-80 ${
+                  isDarkBg ? "bg-white/20 text-white" : "bg-gray-200 text-gray-700"
+                }`}
+              >
+                <SocialIcon platform={s.platform} size={18} color={isDarkBg ? "white" : undefined} />
+              </a>
+            ))}
           </div>
         )}
 

@@ -85,6 +85,11 @@ export const SOCIAL_PLATFORMS = [
   { id: "whatsapp", label: "WhatsApp", color: "#25D366", icon: "💬" },
   { id: "telegram", label: "Telegram", color: "#2CA5E0", icon: "✈️" },
   { id: "other", label: "Autre", color: "#8F00FF", icon: "🔗" },
+  // === Plateformes adultes ===
+  { id: "onlyfans", label: "OnlyFans", color: "#00AFF0", icon: "💧" },
+  { id: "mym", label: "MYM", color: "#FF3366", icon: "💋" },
+  { id: "fansly", label: "Fansly", color: "#0090FF", icon: "💙" },
+  { id: "patreon", label: "Patreon", color: "#FF424D", icon: "🎨" },
 ] as const;
 
 export function getPlatformColor(platform: string): string {

@@ -11,6 +11,8 @@ import {
   SiDribbble,
   SiWhatsapp,
   SiTelegram,
+  SiOnlyfans,
+  SiPatreon,
 } from "react-icons/si";
 import { FaTiktok, FaYoutube, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { Globe, Mail, Phone, Link2 } from "lucide-react";
@@ -24,6 +26,21 @@ interface SocialIconProps {
 }
 
 type IconComponent = (props: { size?: number; className?: string; style?: React.CSSProperties }) => React.ReactElement | null;
+
+// Icônes custom pour les plateformes sans icône react-icons
+const MymIcon: IconComponent = ({ size = 20, className, style }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={style}>
+    <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.18" />
+    <text x="12" y="16.5" textAnchor="middle" fontSize="7.5" fontWeight="900" fontFamily="Arial, sans-serif" fill="currentColor">mym</text>
+  </svg>
+);
+
+const FanslyIcon: IconComponent = ({ size = 20, className, style }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" className={className} style={style}>
+    <circle cx="12" cy="12" r="10" fill="currentColor" fillOpacity="0.18" />
+    <text x="12" y="17" textAnchor="middle" fontSize="13" fontWeight="900" fontFamily="Arial, sans-serif" fill="currentColor">F</text>
+  </svg>
+);
 
 const PLATFORM_ICON_MAP: Record<string, IconComponent> = {
   instagram: SiInstagram as IconComponent,
@@ -46,6 +63,11 @@ const PLATFORM_ICON_MAP: Record<string, IconComponent> = {
   email: Mail as unknown as IconComponent,
   phone: Phone as unknown as IconComponent,
   other: Link2 as unknown as IconComponent,
+  // Plateformes adultes
+  onlyfans: SiOnlyfans as IconComponent,
+  mym: MymIcon,
+  fansly: FanslyIcon,
+  patreon: SiPatreon as IconComponent,
 };
 
 export const PLATFORM_COLORS: Record<string, string> = {
@@ -69,6 +91,11 @@ export const PLATFORM_COLORS: Record<string, string> = {
   email: "#EA4335",
   phone: "#34A853",
   other: "#8F00FF",
+  // Plateformes adultes
+  onlyfans: "#00AFF0",
+  mym: "#FF3366",
+  fansly: "#0090FF",
+  patreon: "#FF424D",
 };
 
 export function SocialIcon({ platform, size = 20, className, color }: SocialIconProps) {
