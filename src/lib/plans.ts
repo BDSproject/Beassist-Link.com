@@ -22,9 +22,14 @@ export interface Plan {
   description: string;
   price: {
     monthly: number;
-    yearly: number; // prix annuel total
-    yearlyPerMonth: number; // prix annuel / 12
-    savings: number; // % d'économie
+    yearly: number;
+    yearlyPerMonth: number;
+    savings: number;
+    usd: {
+      monthly: number;
+      yearly: number;
+      yearlyPerMonth: number;
+    };
   };
   limits: PlanLimits;
   badge?: string;
@@ -43,6 +48,7 @@ export const PLANS: Record<PlanName, Plan> = {
       yearly: 0,
       yearlyPerMonth: 0,
       savings: 0,
+      usd: { monthly: 0, yearly: 0, yearlyPerMonth: 0 },
     },
     limits: {
       maxBioLinks: 5,
@@ -67,9 +73,10 @@ export const PLANS: Record<PlanName, Plan> = {
       "Pour les créateurs de contenu qui souhaitent se démarquer et analyser leurs performances.",
     price: {
       monthly: 6,
-      yearly: 65, // 6 * 12 * 0.9
+      yearly: 65,
       yearlyPerMonth: 5.4,
       savings: 10,
+      usd: { monthly: 7, yearly: 76, yearlyPerMonth: 6.33 },
     },
     limits: {
       maxBioLinks: 20,
@@ -96,9 +103,10 @@ export const PLANS: Record<PlanName, Plan> = {
       "La solution complète pour les professionnels et agences qui veulent tout contrôler.",
     price: {
       monthly: 12,
-      yearly: 130, // 12 * 12 * 0.9
+      yearly: 130,
       yearlyPerMonth: 10.8,
       savings: 10,
+      usd: { monthly: 13, yearly: 141, yearlyPerMonth: 11.75 },
     },
     limits: {
       maxBioLinks: -1,
@@ -173,4 +181,34 @@ export function canUserDo(
   if (limit === -1) return true;
   if (currentCount !== undefined) return currentCount < (limit as number);
   return true;
+}
+
+/** Retourne la devise selon la langue du navigateur */
+export type Currency = "eur" | "usd";
+
+export function getCurrencyFromLocale(lang: string): Currency {
+  return lang === "en" ? "usd" : "eur";
+}
+
+/** Retourne le prix du plan dans la bonne devise */
+export function getPlanPrice(
+  plan: PlanName,
+  billing: "monthly" | "yearly",
+  currency: Currency
+): number {
+  const p = PLANS[plan].price;
+  if (p.monthly === 0) return 0;
+  if (currency === "usd") {
+    return billing === "yearly" ? p.usd.yearly : p.usd.monthly;
+  }
+  return billing === "yearly" ? p.yearly : p.monthly;
+}
+
+export function getPlanPricePerMonth(
+  plan: PlanName,
+  currency: Currency
+): number {
+  const p = PLANS[plan].price;
+  if (p.monthly === 0) return 0;
+  return currency === "usd" ? p.usd.yearlyPerMonth : p.yearlyPerMonth;
 }

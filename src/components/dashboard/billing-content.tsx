@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 import { Check, AlertCircle, CheckCircle2, XCircle } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { PLANS, PLAN_FEATURE_LISTS, type PlanName } from "@/lib/plans";
+import { PLANS, PLAN_FEATURE_LISTS, type PlanName, getCurrencyFromLocale, getPlanPrice, getPlanPricePerMonth, type Currency } from "@/lib/plans";
 import { formatDate, formatPrice } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -16,8 +16,10 @@ interface Props {
 export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
   const { t, lang } = useLanguage();
   const d = t.dashboard.billing;
-  const fp = (amount: number) =>
-    lang === "en" ? formatPrice(amount, "USD", "en-US") : formatPrice(amount, "EUR", "fr-FR");
+  const currency: Currency = getCurrencyFromLocale(lang);
+  const symbol = currency === "usd" ? "USD" : "EUR";
+  const locale = currency === "usd" ? "en-US" : "fr-FR";
+  const fp = (amount: number) => formatPrice(amount, symbol, locale);
   const [yearly, setYearly] = useState(false);
   const [visible, setVisible] = useState(false);
   const [loadingPlan, setLoadingPlan] = useState<string | null>(null);
@@ -39,7 +41,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
       const res = await fetch("/api/stripe/checkout", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ plan: planKey, billing: yearly ? "yearly" : "monthly" }),
+        body: JSON.stringify({ plan: planKey, billing: yearly ? "yearly" : "monthly", currency }),
       });
       const data = await res.json();
       if (!res.ok || !data.url) {
@@ -180,7 +182,8 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
           const plan = PLANS[planKey];
           const features = PLAN_FEATURE_LISTS[planKey];
           const isCurrentPlan = planKey === currentPlan;
-          const price = yearly ? plan.price.yearlyPerMonth : plan.price.monthly;
+          const price = yearly ? getPlanPricePerMonth(planKey, currency) : getPlanPrice(planKey, "monthly", currency);
+          const yearlyTotal = getPlanPrice(planKey, "yearly", currency);
 
           return (
             <div
@@ -232,7 +235,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
 
                 {yearly && plan.price.savings > 0 && (
                   <p className="savings-fade text-xs text-[#8F00FF] font-medium mt-1">
-                    {t.pricing.billedYearly} {fp(plan.price.yearly)}{t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
+                    {t.pricing.billedYearly} {fp(yearlyTotal)}{t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
                   </p>
                 )}
                 {!yearly && plan.price.savings > 0 && (
