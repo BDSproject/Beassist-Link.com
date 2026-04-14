@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { ALL_FONT_VARIABLES } from "@/lib/fonts";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -71,6 +72,7 @@ export default function RootLayout({
     <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${fontVarClasses}`}>
       <body className="font-sans antialiased">
         <Providers>{children}</Providers>
+        <Analytics />
       </body>
     </html>
   );
