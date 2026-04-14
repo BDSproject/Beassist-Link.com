@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Fond carré arrondi violet -->
+  <rect width="32" height="32" rx="8" fill="#8F00FF"/>
+  <!-- Anneau haut-gauche de la chaîne (ouvert en bas-droite) -->
+  <path
+    d="M7 14C7 11.2 9.2 9 12 9H15.5C18.3 9 20.5 11.2 20.5 14C20.5 16.8 18.3 19 15.5 19H13.5"
+    stroke="white"
+    stroke-width="2.8"
+    stroke-linecap="round"
+  />
+  <!-- Anneau bas-droite de la chaîne (ouvert en haut-gauche) -->
+  <path
+    d="M25 18C25 20.8 22.8 23 20 23H16.5C13.7 23 11.5 20.8 11.5 18C11.5 15.2 13.7 13 16.5 13H18.5"
+    stroke="white"
+    stroke-width="2.8"
+    stroke-linecap="round"
+  />
+</svg>

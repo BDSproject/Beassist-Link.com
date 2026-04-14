@@ -105,10 +105,8 @@ export async function POST(req: NextRequest) {
       );
     }
     console.error("Register error:", error);
-    const message =
-      error instanceof Error ? error.message : String(error);
     return NextResponse.json(
-      { message: "Erreur serveur interne", detail: message },
+      { message: "Erreur serveur interne" },
       { status: 500 }
     );
   }
