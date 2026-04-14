@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/lib/auth";
 import { db } from "@/database/client";
-import { stripe, STRIPE_PRICE_IDS } from "@/lib/stripe";
+import { stripe, getPriceId } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
 
@@ -14,7 +14,11 @@ export async function POST(req: NextRequest) {
 
   try {
     const body = await req.json();
-    const { plan, billing } = body as { plan: string; billing: "monthly" | "yearly" };
+    const { plan, billing, currency = "eur" } = body as {
+      plan: string;
+      billing: "monthly" | "yearly";
+      currency?: "eur" | "usd" | "gbp";
+    };
 
     if (!plan || !billing) {
       return NextResponse.json({ error: "Paramètres manquants" }, { status: 400 });
@@ -46,18 +50,10 @@ export async function POST(req: NextRequest) {
       });
     }
 
-    // Sélectionner le prix Stripe
+    // Sélectionner le prix Stripe selon le plan et la devise
     let priceId: string;
-    if (plan === "STARTER") {
-      priceId =
-        billing === "yearly"
-          ? STRIPE_PRICE_IDS.STARTER_YEARLY
-          : STRIPE_PRICE_IDS.STARTER_MONTHLY;
-    } else if (plan === "PRO") {
-      priceId =
-        billing === "yearly"
-          ? STRIPE_PRICE_IDS.PRO_YEARLY
-          : STRIPE_PRICE_IDS.PRO_MONTHLY;
+    if (plan === "STARTER" || plan === "PRO") {
+      priceId = getPriceId(plan, billing, currency);
     } else {
       return NextResponse.json({ error: "Plan invalide" }, { status: 400 });
     }
@@ -90,7 +86,8 @@ export async function POST(req: NextRequest) {
         metadata: { userId: session.user.id, plan, billing },
       },
       allow_promotion_codes: true,
-      locale: "fr",
+      locale: currency === "usd" ? "en" : currency === "gbp" ? "en" : "fr",
+      currency: currency,
     });
 
     return NextResponse.json({ url: checkoutSession.url });
