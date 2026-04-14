@@ -106,7 +106,7 @@ export const PLANS: Record<PlanName, Plan> = {
       yearly: 130,
       yearlyPerMonth: 10.8,
       savings: 10,
-      usd: { monthly: 13, yearly: 141, yearlyPerMonth: 11.75 },
+      usd: { monthly: 13, yearly: 140, yearlyPerMonth: 11.67 },
     },
     limits: {
       maxBioLinks: -1,
