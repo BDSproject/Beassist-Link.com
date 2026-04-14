@@ -80,7 +80,7 @@ export default function RegisterPage() {
       }
 
       toast.success(a.successRegister);
-      router.push("/login?registered=true");
+      router.push(`/verify-email?email=${encodeURIComponent(data.email)}`);
     } catch (error: unknown) {
       toast.error(error instanceof Error ? error.message : a.errorGeneral);
     } finally {

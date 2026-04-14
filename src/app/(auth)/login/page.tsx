@@ -1,26 +1,29 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useMemo, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import toast from "react-hot-toast";
-import { Eye, EyeOff, Mail, Lock } from "lucide-react";
+import { Eye, EyeOff, Mail, Lock, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLanguage } from "@/contexts/language-context";
 
 type LoginForm = { email: string; password: string };
 
-export default function LoginPage() {
+function LoginContent() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const verified = searchParams.get("verified");
   const { t, lang } = useLanguage();
   const a = t.auth.login;
   const [loading, setLoading] = useState(false);
   const [showPwd, setShowPwd] = useState(false);
+  const [emailNotVerified, setEmailNotVerified] = useState(false);
 
   const loginSchema = useMemo(
     () =>
@@ -49,7 +52,10 @@ export default function LoginPage() {
         redirect: false,
       });
 
-      if (result?.error) {
+      if (result?.error === "EmailNotVerified") {
+        setEmailNotVerified(true);
+      } else if (result?.error) {
+        setEmailNotVerified(false);
         toast.error(a.errorCredentials);
       } else {
         toast.success(a.successLogin);
@@ -65,6 +71,26 @@ export default function LoginPage() {
 
   return (
     <div className="bg-white rounded-3xl border border-gray-100 shadow-xl p-8 sm:p-10">
+      {/* Bannière email vérifié */}
+      {verified === "true" && (
+        <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl p-4 mb-6">
+          <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+          <p className="text-sm text-green-800 font-medium">
+            Email vérifié ! Vous pouvez maintenant vous connecter.
+          </p>
+        </div>
+      )}
+
+      {/* Bannière email non vérifié */}
+      {emailNotVerified && (
+        <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
+          <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
+          <p className="text-sm text-amber-800">
+            <span className="font-semibold">Vérifiez votre email.</span> Un lien de confirmation vous a été envoyé lors de votre inscription. Consultez vos spams si nécessaire.
+          </p>
+        </div>
+      )}
+
       {/* En-tête */}
       <div className="text-center mb-8">
         <h1 className="text-2xl font-black text-gray-900">{a.heading}</h1>
@@ -153,5 +179,13 @@ export default function LoginPage() {
         </Link>
       </p>
     </div>
+  );
+}
+
+export default function LoginPage() {
+  return (
+    <Suspense fallback={null}>
+      <LoginContent />
+    </Suspense>
   );
 }

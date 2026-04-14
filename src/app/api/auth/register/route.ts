@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import bcrypt from "bcryptjs";
+import { randomBytes } from "crypto";
 import { z } from "zod";
 import { db } from "@/database/client";
-import { sendWelcomeEmail } from "@/lib/email";
+import { sendVerificationEmail } from "@/lib/email";
 
 const schema = z.object({
   name: z.string().min(2),
@@ -90,11 +91,22 @@ export async function POST(req: NextRequest) {
       select: { id: true, email: true, username: true },
     });
 
-    // Envoi email de bienvenue (fire-and-forget, ne bloque pas la réponse)
-    void sendWelcomeEmail({ name: data.name, email: user.email, username: user.username });
+    // Envoi email de vérification (fire-and-forget)
+    const token = randomBytes(32).toString("hex");
+    const expires = new Date(Date.now() + 24 * 60 * 60 * 1000); // 24h
+
+    await db.verificationToken.create({
+      data: {
+        identifier: user.email,
+        token,
+        expires,
+      },
+    });
+
+    void sendVerificationEmail({ name: data.name, email: user.email, token });
 
     return NextResponse.json(
-      { message: "Compte créé avec succès", userId: user.id },
+      { message: "Compte créé. Vérifiez votre email.", needsVerification: true },
       { status: 201 }
     );
   } catch (error) {
