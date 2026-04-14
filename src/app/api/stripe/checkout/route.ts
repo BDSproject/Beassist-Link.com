@@ -67,11 +67,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const rawUrl =
-      process.env.NEXT_PUBLIC_APP_URL ||
-      (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : null) ||
-      "https://www.beassist-link.com";
-    const appUrl = rawUrl.replace(/\/$/, ""); // enlève le slash final si présent
+    // URL hardcodée pour garantir des URLs valides pour Stripe
+    const APP_URL = "https://www.beassist-link.com";
+    const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || APP_URL;
 
     // Créer la session Stripe Checkout
     const checkoutSession = await stripe.checkout.sessions.create({
