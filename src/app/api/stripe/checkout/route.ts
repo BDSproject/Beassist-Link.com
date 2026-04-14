@@ -86,15 +86,16 @@ export async function POST(req: NextRequest) {
         metadata: { userId: session.user.id, plan, billing },
       },
       allow_promotion_codes: true,
-      locale: currency === "usd" ? "en" : currency === "gbp" ? "en" : "fr",
-      currency: currency,
+      locale: currency === "usd" || currency === "gbp" ? "en" : "fr",
     });
 
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error) {
     console.error("Stripe checkout error:", error);
+    const stripeError = error as any;
     const message =
-      error instanceof Error ? error.message : "Erreur lors de la création du paiement";
+      stripeError?.raw?.message ||
+      (error instanceof Error ? error.message : "Erreur lors de la création du paiement");
     return NextResponse.json({ error: message }, { status: 500 });
   }
 }
