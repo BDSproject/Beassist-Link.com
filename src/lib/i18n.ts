@@ -5,7 +5,7 @@ export const fr = {
     nav: {
       dashboard: "Tableau de bord",
       links: "Liens raccourcis",
-      bio: "Page bio",
+      bio: "Lien en Bio",
       analytics: "Analytiques",
       qrcode: "QR Codes",
       billing: "Facturation",
@@ -27,22 +27,22 @@ export const fr = {
       stats: {
         links: "Liens raccourcis",
         clicks: "Clics totaux",
-        bioViews: "Vues page bio",
+        bioViews: "Vues lien en bio",
         activeLinks: "Liens actifs",
       },
       recentLinks: "Liens récents",
       viewAll: "Voir tout",
       noLinks: "Aucun lien créé pour l'instant",
       createFirstLink: "Créer mon premier lien",
-      bioPage: "Page bio",
+      bioPage: "Lien en Bio",
       edit: "Modifier",
       clicks: "clics",
       active: "Actif",
       inactive: "Inactif",
-      noBioLinks: "Aucun lien sur votre page bio",
+      noBioLinks: "Aucun lien sur votre lien en bio",
       addLinks: "Ajouter des liens",
-      bioNotSetup: "Votre page bio n'est pas encore configurée",
-      createBio: "Créer ma page bio",
+      bioNotSetup: "Votre lien en bio n'est pas encore configuré",
+      createBio: "Créer mon lien en bio",
     },
     links: {
       title: "Liens raccourcis",
@@ -89,13 +89,13 @@ export const fr = {
     analytics: {
       title: "Analytics",
       subtitle: "Suivez vos performances en temps réel",
-      subtitlePro: "Performances de vos liens et page bio",
+      subtitlePro: "Performances de vos liens et lien en bio",
       totalClicks: "Clics (liens courts)",
-      bioViews: "Vues page bio",
+      bioViews: "Vues lien en bio",
       bioClicks: "Clics bio",
       totalLinks: "Total liens",
       upgradeTitle: "Analytics disponibles dès Starter",
-      upgradeDesc: "Passez au plan Starter ou Pro pour accéder aux statistiques détaillées de vos liens et pages bio.",
+      upgradeDesc: "Passez au plan Starter ou Pro pour accéder aux statistiques détaillées de vos liens et lien en bio.",
       upgradeBtn: "Mettre à niveau",
       upgradePrice: "À partir de 5€/mois · Annulable à tout moment",
       linkPerf: "Performance des liens",
@@ -141,7 +141,7 @@ export const fr = {
       passwordGood: "Bon",
       passwordStrong: "Excellent",
       deleteConfirmTitle: "Êtes-vous sûr de vouloir supprimer votre compte ?",
-      deleteConfirmDesc: "Tous vos liens, pages bio et données analytics seront définitivement supprimés. Votre abonnement Stripe sera annulé.",
+      deleteConfirmDesc: "Tous vos liens, lien en bio et données analytics seront définitivement supprimés. Votre abonnement Stripe sera annulé.",
       deleteTypeLabel: 'Tapez "SUPPRIMER" pour confirmer',
       deleteWord: "SUPPRIMER",
       deleteBtn: "Supprimer",
@@ -173,8 +173,8 @@ export const fr = {
       ],
     },
     bio: {
-      title: "Page Bio",
-      subtitle: "Personnalisez votre mini-site public",
+      title: "Lien en Bio",
+      subtitle: "Personnalisez votre lien en bio",
       preview: "Prévisualiser",
       save: "Enregistrer",
       saving: "Enregistrement...",
@@ -262,13 +262,13 @@ export const fr = {
     dashboard: "Tableau de bord",
   },
   hero: {
-    badge: "La plateforme bio link tout-en-un",
-    heading1: "Tous vos liens.",
-    heading2: "Un seul endroit.",
+    badge: "Le lien en bio des créateurs 🔗",
+    heading1: "Ton lien en bio.",
+    heading2: "Toutes tes destinations.",
     subheading:
-      "Créez votre page bio personnalisée, raccourcissez vos liens et partagez-les sur tous vos réseaux sociaux en un clic.",
-    subheadingStrong: "Simple, rapide, efficace.",
-    cta1: "Commencer gratuitement",
+      "Regroupe tous tes réseaux, collabs et contenus en un seul lien. Glisse-le dans ta bio Instagram, TikTok ou YouTube.",
+    subheadingStrong: "Simple, personnalisé, efficace.",
+    cta1: "Créer mon lien en bio",
     cta2: "Voir comment ça marche",
     socialProof: "+10 000 créateurs nous font confiance",
   },
@@ -280,9 +280,9 @@ export const fr = {
       "BeassistLink concentre tous les outils dont un créateur de contenu a besoin dans une interface simple et élégante.",
     items: [
       {
-        title: "Page Bio Élégante",
+        title: "Lien en Bio Pro",
         description:
-          "Regroupez tous vos réseaux sociaux en une seule page personnalisée et partageable. Instagrammers, YouTubeurs, entrepreneurs — c'est fait pour vous.",
+          "Un lien unique à glisser dans ta bio Insta, TikTok ou YouTube. Regroupe tous tes réseaux, collabs et contenus en une seule page stylée et personnalisable.",
       },
       {
         title: "Liens Raccourcis",
@@ -290,9 +290,9 @@ export const fr = {
           "Transformez n'importe quelle URL longue en un lien court et mémorable. Partagez-le partout, mesurez chaque clic.",
       },
       {
-        title: "Analytiques Détaillées",
+        title: "Analytics de Créateur",
         description:
-          "Suivez les performances de vos liens en temps réel. Pays, appareils, navigateurs, sources — tout est là.",
+          "Suis en temps réel les clics sur ton lien en bio. Pays, appareils, sources — comprends ton audience et optimise tes placements de contenus.",
       },
       {
         title: "Personnalisation Totale",
@@ -302,7 +302,7 @@ export const fr = {
       {
         title: "Codes QR Instantanés",
         description:
-          "Générez un QR code unique pour chaque lien ou page bio. Parfait pour les affiches, cartes de visite et flyers.",
+          "Génère un QR code unique pour ton lien en bio. Parfait pour les affiches, goodies, cartes de visite et flyers.",
       },
       {
         title: "Sécurité & Fiabilité",
@@ -329,9 +329,9 @@ export const fr = {
           "Ajoutez vos réseaux sociaux, sites web et liens raccourcis depuis votre tableau de bord intuitif.",
       },
       {
-        title: "Partagez partout",
+        title: "Mets-le dans ta bio",
         description:
-          "Copiez votre lien unique beassistlink.com/vous et partagez-le dans toutes vos biographies.",
+          "Copie ton lien beassistlink.com/toi et colle-le dans ta bio Instagram, TikTok, YouTube… Tes abonnés n'ont plus qu'un clic à faire.",
       },
     ],
   },
@@ -352,10 +352,10 @@ export const fr = {
     note: "✓ Annulation à tout moment   ✓ Aucune carte requise pour l'offre gratuite   ✓ Migration facile entre les plans",
     plans: {
       FREE: {
-        description: "Idéal pour découvrir la plateforme et créer votre première page bio.",
+        description: "Idéal pour créer ton premier lien en bio et découvrir la plateforme.",
         ctaLabel: "Commencer gratuitement",
         features: [
-          { label: "1 page bio", included: true },
+          { label: "1 lien en bio", included: true },
           { label: "5 liens sociaux", included: true },
           { label: "3 liens raccourcis", included: true },
           { label: "1 thème de base", included: true },
@@ -368,10 +368,10 @@ export const fr = {
         ],
       },
       STARTER: {
-        description: "Pour les créateurs de contenu qui souhaitent se démarquer et analyser leurs performances.",
+        description: "Pour les créateurs de contenu qui veulent booster leur engagement et tracker leurs perfs.",
         ctaLabel: "Commencer avec Starter",
         features: [
-          { label: "3 pages bio", included: true },
+          { label: "3 liens en bio", included: true },
           { label: "20 liens sociaux", included: true },
           { label: "20 liens raccourcis", included: true },
           { label: "5 thèmes premium", included: true },
@@ -384,10 +384,10 @@ export const fr = {
         ],
       },
       PRO: {
-        description: "La solution complète pour les professionnels et agences qui veulent tout contrôler.",
+        description: "La solution complète pour les influenceurs, marques et agences qui gèrent plusieurs profils.",
         ctaLabel: "Passer au Pro",
         features: [
-          { label: "Pages bio illimitées", included: true },
+          { label: "Liens en bio illimités", included: true },
           { label: "Liens sociaux illimités", included: true },
           { label: "Liens raccourcis illimités", included: true },
           { label: "Tous les thèmes + couleurs custom", included: true },
@@ -410,7 +410,7 @@ export const fr = {
       "Rejoignez une communauté de créateurs, entrepreneurs et marques qui utilisent BeassistLink au quotidien.",
     items: [
       {
-        text: "BeassistLink a complètement changé ma façon de partager mes réseaux. Ma page bio est magnifique et mes abonnés adorent !",
+        text: "BeassistLink a changé ma façon de partager mes contenus. Mon lien en bio est stylisé et mes abonnés cliquent dessus en masse !",
       },
       {
         text: "En tant que freelance, j'utilise BeassistLink pour centraliser tous mes portfolios et réseaux. C'est devenu indispensable.",
@@ -434,8 +434,8 @@ export const fr = {
     heading1: "Prêt à passer",
     heading2: "à l’action ?",
     subheading:
-      "Créez votre lien bio en quelques minutes et commencez à convertir vos visiteurs.",
-    cta1: "Commencer",
+      "Crée ton lien en bio en quelques minutes et commence à convertir tes abonnés.",
+    cta1: "Créer mon lien en bio",
     cta2: "Nous contacter",
     proof1: "Sans carte bancaire",
     proof2: "Gratuit pour toujours",
@@ -443,7 +443,7 @@ export const fr = {
   },
   footer: {
     tagline:
-      "La plateforme tout-en-un pour créer votre page bio et gérer vos liens raccourcis.",
+      "La plateforme tout-en-un pour créer ton lien en bio et gérer tes liens raccourcis.",
     madeWith: "Fait avec",
     inFrance: "en France 🇫🇷",
     copyright: "Tous droits réservés.",
@@ -555,7 +555,7 @@ export const en: typeof fr = {
     nav: {
       dashboard: "Dashboard",
       links: "Short Links",
-      bio: "Bio Page",
+      bio: "Link in Bio",
       analytics: "Analytics",
       qrcode: "QR Codes",
       billing: "Billing",
@@ -577,22 +577,22 @@ export const en: typeof fr = {
       stats: {
         links: "Short links",
         clicks: "Total clicks",
-        bioViews: "Bio page views",
+        bioViews: "Link in bio views",
         activeLinks: "Active links",
       },
       recentLinks: "Recent links",
       viewAll: "View all",
       noLinks: "No links created yet",
       createFirstLink: "Create my first link",
-      bioPage: "Bio page",
+      bioPage: "Link in Bio",
       edit: "Edit",
       clicks: "clicks",
       active: "Active",
       inactive: "Inactive",
-      noBioLinks: "No links on your bio page",
+      noBioLinks: "No links on your link in bio",
       addLinks: "Add links",
-      bioNotSetup: "Your bio page is not set up yet",
-      createBio: "Create my bio page",
+      bioNotSetup: "Your link in bio is not set up yet",
+      createBio: "Create my link in bio",
     },
     links: {
       title: "Short Links",
@@ -639,13 +639,13 @@ export const en: typeof fr = {
     analytics: {
       title: "Analytics",
       subtitle: "Track your performance in real time",
-      subtitlePro: "Your links and bio page performance",
+      subtitlePro: "Your links and link in bio performance",
       totalClicks: "Short link clicks",
-      bioViews: "Bio page views",
+      bioViews: "Link in bio views",
       bioClicks: "Bio clicks",
       totalLinks: "Total links",
       upgradeTitle: "Analytics available from Starter",
-      upgradeDesc: "Upgrade to Starter or Pro to access detailed stats for your links and bio pages.",
+      upgradeDesc: "Upgrade to Starter or Pro to access detailed stats for your links and link in bio.",
       upgradeBtn: "Upgrade now",
       upgradePrice: "From €5/month · Cancel anytime",
       linkPerf: "Link performance",
@@ -691,7 +691,7 @@ export const en: typeof fr = {
       passwordGood: "Good",
       passwordStrong: "Strong",
       deleteConfirmTitle: "Are you sure you want to delete your account?",
-      deleteConfirmDesc: "All your links, bio pages and analytics data will be permanently deleted. Your Stripe subscription will be cancelled.",
+      deleteConfirmDesc: "All your links, link in bio and analytics data will be permanently deleted. Your Stripe subscription will be cancelled.",
       deleteTypeLabel: 'Type "DELETE" to confirm',
       deleteWord: "DELETE",
       deleteBtn: "Delete",
@@ -723,8 +723,8 @@ export const en: typeof fr = {
       ],
     },
     bio: {
-      title: "Bio Page",
-      subtitle: "Customize your public mini-site",
+      title: "Link in Bio",
+      subtitle: "Customize your link in bio",
       preview: "Preview",
       save: "Save",
       saving: "Saving...",
@@ -812,13 +812,13 @@ export const en: typeof fr = {
     dashboard: "Dashboard",
   },
   hero: {
-    badge: "The all-in-one bio link platform",
-    heading1: "All your links.",
-    heading2: "One single place.",
+    badge: "The link in bio platform for creators 🔗",
+    heading1: "Your link in bio.",
+    heading2: "All your destinations.",
     subheading:
-      "Create your personalized bio page, shorten your links and share them across all your social networks in one click.",
-    subheadingStrong: "Simple, fast, effective.",
-    cta1: "Get started for free",
+      "Group all your socials, collabs and content in one link. Drop it in your Instagram, TikTok or YouTube bio.",
+    subheadingStrong: "Simple, branded, powerful.",
+    cta1: "Create my link in bio",
     cta2: "See how it works",
     socialProof: "+10,000 creators trust us",
   },
@@ -830,9 +830,9 @@ export const en: typeof fr = {
       "BeassistLink brings together all the tools a content creator needs in a simple and elegant interface.",
     items: [
       {
-        title: "Elegant Bio Page",
+        title: "Pro Link in Bio",
         description:
-          "Gather all your social networks on one personalized, shareable page. Instagrammers, YouTubers, entrepreneurs — built for you.",
+          "One unique link to drop in your Instagram, TikTok or YouTube bio. Group all your socials, collabs and content in one stylish, fully customizable page.",
       },
       {
         title: "Short Links",
@@ -840,9 +840,9 @@ export const en: typeof fr = {
           "Turn any long URL into a short, memorable link. Share it everywhere, measure every click.",
       },
       {
-        title: "Detailed Analytics",
+        title: "Creator Analytics",
         description:
-          "Track your link performance in real time. Countries, devices, browsers, sources — all in one place.",
+          "Track your link in bio clicks in real time. Countries, devices, sources — understand your audience and optimize your content placements.",
       },
       {
         title: "Full Customization",
@@ -852,7 +852,7 @@ export const en: typeof fr = {
       {
         title: "Instant QR Codes",
         description:
-          "Generate a unique QR code for every link or bio page. Perfect for posters, business cards, and flyers.",
+          "Generate a unique QR code for your link in bio. Perfect for posters, merch, business cards, and flyers.",
       },
       {
         title: "Security & Reliability",
@@ -879,9 +879,9 @@ export const en: typeof fr = {
           "Add your social networks, websites and short links from your intuitive dashboard.",
       },
       {
-        title: "Share everywhere",
+        title: "Drop it in your bio",
         description:
-          "Copy your unique link beassistlink.com/you and share it in all your bios.",
+          "Copy your beassistlink.com/you link and paste it in your Instagram, TikTok, YouTube bio… Your followers just need one click.",
       },
     ],
   },
@@ -901,10 +901,10 @@ export const en: typeof fr = {
     note: "✓ Cancel anytime   ✓ No card required for the free plan   ✓ Easy plan migration",
     plans: {
       FREE: {
-        description: "Perfect to discover the platform and create your first bio page.",
+        description: "Perfect to create your first link in bio and discover the platform.",
         ctaLabel: "Get started for free",
         features: [
-          { label: "1 bio page", included: true },
+          { label: "1 link in bio", included: true },
           { label: "5 social links", included: true },
           { label: "3 short links", included: true },
           { label: "1 basic theme", included: true },
@@ -917,10 +917,10 @@ export const en: typeof fr = {
         ],
       },
       STARTER: {
-        description: "For content creators who want to stand out and track their performance.",
+        description: "For content creators who want to boost their engagement and track their performance.",
         ctaLabel: "Start with Starter",
         features: [
-          { label: "3 bio pages", included: true },
+          { label: "3 links in bio", included: true },
           { label: "20 social links", included: true },
           { label: "20 short links", included: true },
           { label: "5 premium themes", included: true },
@@ -933,10 +933,10 @@ export const en: typeof fr = {
         ],
       },
       PRO: {
-        description: "The complete solution for professionals and agencies who want full control.",
+        description: "The complete solution for influencers, brands and agencies managing multiple profiles.",
         ctaLabel: "Go Pro",
         features: [
-          { label: "Unlimited bio pages", included: true },
+          { label: "Unlimited links in bio", included: true },
           { label: "Unlimited social links", included: true },
           { label: "Unlimited short links", included: true },
           { label: "All themes + custom colors", included: true },
@@ -959,7 +959,7 @@ export const en: typeof fr = {
       "Join a community of creators, entrepreneurs and brands who use BeassistLink every day.",
     items: [
       {
-        text: "BeassistLink completely changed the way I share my networks. My bio page looks amazing and my followers love it!",
+        text: "BeassistLink changed the way I share my content. My link in bio looks amazing and my followers click on it all the time!",
       },
       {
         text: "As a freelancer, I use BeassistLink to centralize all my portfolios and social networks. It's become indispensable.",
@@ -983,8 +983,8 @@ export const en: typeof fr = {
     heading1: "Ready to take",
     heading2: "action?",
     subheading:
-      "Create your bio link in minutes and start converting your visitors.",
-    cta1: "Get started",
+      "Create your link in bio in minutes and start converting your followers.",
+    cta1: "Create my link in bio",
     cta2: "Contact us",
     proof1: "No credit card",
     proof2: "Free forever",
@@ -992,7 +992,7 @@ export const en: typeof fr = {
   },
   footer: {
     tagline:
-      "The all-in-one platform to create your bio page and manage your short links.",
+      "The all-in-one platform to create your link in bio and manage your short links.",
     madeWith: "Made with",
     inFrance: "in France 🇫🇷",
     copyright: "All rights reserved.",

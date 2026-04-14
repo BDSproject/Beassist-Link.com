@@ -16,7 +16,7 @@ const steps = [
     number: "02",
     title: "On valide votre profil",
     description:
-      "Notre équipe examine votre candidature sous 48 h. Aucun minimum d'abonnés requis — la qualité du contenu prime sur la taille.",
+      "Notre équipe examine votre candidature sous 48 h. Minimum 1 000 abonnés requis sur votre plateforme principale — ensuite, c'est l'engagement et l'authenticité du contenu qui comptent.",
   },
   {
     number: "03",
@@ -33,15 +33,16 @@ const steps = [
 ];
 
 const requirements = [
+  "Avoir minimum 1 000 abonnés / followers sur votre plateforme principale",
   "Être actif sur au moins une plateforme (YouTube, TikTok, Instagram, Twitch…)",
-  "Publier une vidéo ou story/reel présentant BeassistLink à votre audience",
-  "Mentionner au moins une fonctionnalité clé (lien bio, analytics, QR code…)",
-  "Inclure un lien vers beassist-link.com dans la description ou la bio",
-  "La vidéo doit rester en ligne au moins 12 mois",
+  "Publier une vidéo ou story/reel présentant BeassistLink à votre communauté",
+  "Mentionner au moins une fonctionnalité clé (lien en bio, analytics, QR code…)",
+  "Inclure un lien vers beassist-link.com dans ta description ou ta bio",
+  "Le contenu doit rester en ligne au moins 12 mois",
 ];
 
 const included = [
-  "Pages bio illimitées",
+  "Liens en bio illimités",
   "Liens raccourcis illimités",
   "Analytics avancées",
   "QR codes illimités",
@@ -95,8 +96,19 @@ export default function PartnershipPage() {
     <MarketingLayout
       category="Partenariat"
       title="Devenez ambassadeur BeassistLink 🇫🇷"
-      description="Présentez BeassistLink à votre audience dans une vidéo, et obtenez un abonnement Pro à vie — gratuitement, sans condition cachée."
+      description="Vous avez +1 000 abonnés ? Présentez BeassistLink à votre communauté dans une vidéo, et décrochez un accès Pro à vie — offert, sans condition cachée."
     >
+      {/* ── Minimum requis ── */}
+      <div className="rounded-2xl border border-amber-300 bg-amber-50 p-4 flex items-start gap-3">
+        <span className="text-2xl shrink-0 mt-0.5">📊</span>
+        <div>
+          <p className="text-sm font-bold text-amber-900">Minimum requis : 1 000 abonnés</p>
+          <p className="text-xs text-amber-700 mt-1 leading-relaxed">
+            Ce programme est réservé aux créateurs ayant au moins <strong>1 000 abonnés / followers</strong> sur leur plateforme principale (YouTube, TikTok, Instagram, Twitch…). Ce seuil garantit une vraie visibilité pour BeassistLink.
+          </p>
+        </div>
+      </div>
+
       {/* ── Pitch principal ── */}
       <div className="rounded-2xl border-2 border-[#8F00FF]/30 bg-gradient-to-br from-[#F9F5FF] to-white p-6 sm:p-8">
         <div className="flex flex-col sm:flex-row gap-6 items-start">
@@ -111,7 +123,7 @@ export default function PartnershipPage() {
               Pro, <strong>à vie</strong>, sans contrepartie supplémentaire.
             </p>
             <p className="text-sm text-gray-500 mt-3 leading-relaxed">
-              Aucun minimum d'abonnés. Aucun script imposé. Vous restez authentique.
+              Minimum 1 000 abonnés requis. Aucun script imposé. Tu restes 100% authentique 🎯
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:min-w-[200px]">
@@ -264,7 +276,6 @@ export default function PartnershipPage() {
                   onChange={(e) => setForm({ ...form, audience: e.target.value })}
                 >
                   <option value="">-- Sélectionner --</option>
-                  <option>Moins de 1 000</option>
                   <option>1 000 – 10 000</option>
                   <option>10 000 – 50 000</option>
                   <option>50 000 – 200 000</option>
@@ -306,7 +317,7 @@ export default function PartnershipPage() {
         {[
           {
             q: "Y a-t-il un minimum d'abonnés ?",
-            a: "Non. Ce qui compte c'est la qualité et l'authenticité de votre contenu, pas la taille de votre audience.",
+            a: "Oui. Nous demandons un minimum de 1 000 abonnés / followers sur votre plateforme principale. Ce seuil nous assure que votre audience peut réellement découvrir BeassistLink.",
           },
           {
             q: "Le contenu doit-il être sponsorisé / déclaré comme pub ?",

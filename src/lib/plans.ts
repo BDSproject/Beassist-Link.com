@@ -37,7 +37,7 @@ export const PLANS: Record<PlanName, Plan> = {
     name: "Free",
     slug: "FREE",
     description:
-      "Idéal pour découvrir la plateforme et créer votre première page bio.",
+      "Idéal pour créer ton premier lien en bio et découvrir la plateforme.",
     price: {
       monthly: 0,
       yearly: 0,
@@ -121,7 +121,7 @@ export const PLANS: Record<PlanName, Plan> = {
 // Listes de fonctionnalités pour l'affichage
 export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boolean }[]> = {
   FREE: [
-    { label: "1 page bio", included: true },
+    { label: "1 lien en bio", included: true },
     { label: "5 liens sociaux", included: true },
     { label: "3 liens raccourcis", included: true },
     { label: "1 thème de base", included: true },
@@ -133,7 +133,7 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Domaine personnalisé", included: false },
   ],
   STARTER: [
-    { label: "3 pages bio", included: true },
+    { label: "3 liens en bio", included: true },
     { label: "20 liens sociaux", included: true },
     { label: "20 liens raccourcis", included: true },
     { label: "5 thèmes premium", included: true },
@@ -145,7 +145,7 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Domaine personnalisé", included: false },
   ],
   PRO: [
-    { label: "Pages bio illimitées", included: true },
+    { label: "Liens en bio illimités", included: true },
     { label: "Liens sociaux illimités", included: true },
     { label: "Liens raccourcis illimités", included: true },
     { label: "Tous les thèmes + couleurs custom", included: true },
