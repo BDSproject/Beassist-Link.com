@@ -4,6 +4,7 @@ import type { ReactNode } from "react";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
+import { useLanguage } from "@/contexts/language-context";
 
 interface MarketingLayoutProps {
   category: string;
@@ -20,6 +21,18 @@ export function MarketingLayout({
   updatedAt,
   children,
 }: MarketingLayoutProps) {
+  const { lang } = useLanguage();
+  const t = {
+    updatedAt: lang === "en" ? "Last updated:" : "Dernière mise à jour :",
+    ctaHeading: lang === "en" ? "Ready to get started?" : "Prêt à passer à l'action ?",
+    ctaSubtext:
+      lang === "en"
+        ? "Create your link in bio in minutes and start converting your visitors."
+        : "Créez votre lien bio en quelques minutes et commencez à convertir vos visiteurs.",
+    ctaStart: lang === "en" ? "Get started" : "Commencer",
+    ctaContact: lang === "en" ? "Contact us" : "Nous contacter",
+  };
+
   return (
     <main className="overflow-hidden bg-white min-h-screen">
       <Navbar />
@@ -36,7 +49,7 @@ export function MarketingLayout({
             {description}
           </p>
           {updatedAt && (
-            <p className="mt-3 text-sm text-gray-400">Dernière mise à jour: {updatedAt}</p>
+            <p className="mt-3 text-sm text-gray-400">{t.updatedAt} {updatedAt}</p>
           )}
         </div>
       </section>
@@ -49,23 +62,21 @@ export function MarketingLayout({
         <div className="max-w-4xl mx-auto px-4 sm:px-6">
           <div className="rounded-2xl border border-[#8F00FF]/20 bg-[#8F00FF]/5 p-6 sm:p-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <h2 className="text-lg font-bold text-gray-900">Prêt à passer à l'action ?</h2>
-              <p className="text-sm text-gray-600 mt-1">
-                Créez votre lien bio en quelques minutes et commencez à convertir vos visiteurs.
-              </p>
+              <h2 className="text-lg font-bold text-gray-900">{t.ctaHeading}</h2>
+              <p className="text-sm text-gray-600 mt-1">{t.ctaSubtext}</p>
             </div>
             <div className="flex gap-3">
               <Link
                 href="/register"
                 className="px-5 py-2.5 rounded-xl bg-[#8F00FF] text-white font-semibold hover:bg-[#7200CC] transition-colors"
               >
-                Commencer
+                {t.ctaStart}
               </Link>
               <Link
                 href="/contact"
                 className="px-5 py-2.5 rounded-xl border border-gray-300 text-gray-700 font-semibold hover:bg-gray-50 transition-colors"
               >
-                Nous contacter
+                {t.ctaContact}
               </Link>
             </div>
           </div>

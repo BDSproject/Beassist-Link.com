@@ -16,6 +16,8 @@ import {
   Menu,
   X,
   QrCode,
+  HelpCircle,
+  MessageCircle,
 } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { Badge } from "@/components/ui/badge";
@@ -44,6 +46,8 @@ export function Sidebar() {
     { href: "/dashboard/analytics", label: d.nav.analytics, icon: BarChart3 },
     { href: "/dashboard/billing", label: d.nav.billing, icon: CreditCard },
     { href: "/dashboard/settings", label: d.nav.settings, icon: Settings },
+    { href: "/dashboard/help", label: d.nav.help, icon: HelpCircle },
+    { href: "/dashboard/contact", label: d.nav.contact, icon: MessageCircle },
   ];
 
   const handleSignOut = async () => {

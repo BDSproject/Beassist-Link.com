@@ -21,6 +21,7 @@ model User {
   updatedAt           DateTime      @updatedAt
   billingAddress      String?
   company             String?
+  customDomain        String?       @unique
   onboardingCompleted Boolean       @default(true)
   accounts            Account[]
   analytics           Analytics[]

@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { AvatarUpload } from "@/components/ui/avatar-upload";
 import { useLanguage } from "@/contexts/language-context";
+import { CustomDomainSection } from "@/components/dashboard/custom-domain-section";
 
 export default function SettingsPage() {
   const { data: session, update } = useSession();
@@ -361,6 +362,9 @@ export default function SettingsPage() {
             </Button>
           </div>
         </Card>
+
+        {/* Custom domain */}
+        <CustomDomainSection />
 
         {/* Danger zone */}
         <Card className="p-6 border-red-100">
