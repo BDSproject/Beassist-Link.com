@@ -11,50 +11,103 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 // Build the combined CSS-variable class string for <html>
 const fontVarClasses = ALL_FONT_VARIABLES.map((f) => f.variable).join(" ");
 
+const BASE = "https://www.beassist-link.com";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(BASE),
   title: {
-    default: "BeassistLink — Vos liens, votre marque, un seul endroit",
+    default: "BeassistLink — Alternative Linktree Française Gratuite",
     template: "%s | BeassistLink",
   },
   description:
-    "Créez votre page bio et regroupez tous vos réseaux sociaux en un seul lien. Raccourcissez vos URLs, analysez vos clics et partagez partout avec BeassistLink.",
+    "Créez votre page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube — gratuit, sans logo, conforme RGPD.",
   keywords: [
-    "lien bio",
+    // FR — haute intention
+    "lien en bio instagram",
+    "alternative linktree",
+    "plusieurs liens bio instagram",
+    "page de liens personnalisée",
+    "outil lien dans bio",
+    // FR — longue traîne
+    "linktree sans logo",
+    "mettre lien spotify dans bio",
+    "créer page redirection gratuite",
+    "alternative linktree française",
+    "lien bio gratuit france",
+    "page bio instagram",
+    "lien bio tiktok",
+    // EN — volume
     "link in bio",
-    "liens raccourcis",
-    "réseaux sociaux",
-    "page bio",
-    "url shortener",
+    "linktree alternative",
+    "free link in bio tool",
+    "bio link website",
+    // EN — conversion
+    "no logo link in bio",
+    "unlimited links bio",
+    "custom bio link page",
+    "best link in bio for tiktok",
+    // Brand
     "beassistlink",
-    "linktree",
+    "url shortener",
+    "liens raccourcis",
   ],
-  authors: [{ name: "BeassistLink" }],
+  authors: [{ name: "BeassistLink", url: BASE }],
   creator: "BeassistLink",
+  publisher: "BeassistLink",
+  alternates: {
+    canonical: BASE,
+    languages: {
+      "fr-FR": BASE,
+      "en-US": `${BASE}/en`,
+    },
+  },
   openGraph: {
-    title: "BeassistLink — Vos liens, votre marque",
+    title: "BeassistLink — Alternative Linktree Française Gratuite",
     description:
-      "Regroupez tous vos réseaux sociaux en un seul lien élégant.",
-    url: "https://beassistlink.com",
+      "Regroupez tous vos réseaux sociaux en un seul lien élégant. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
+    url: BASE,
     siteName: "BeassistLink",
     locale: "fr_FR",
+    alternateLocale: "en_US",
     type: "website",
+    images: [
+      {
+        url: `${BASE}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "BeassistLink — Alternative Linktree Française",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeassistLink",
-    description: "Regroupez tous vos réseaux sociaux en un seul lien.",
+    title: "BeassistLink — Alternative Linktree Gratuite 🇫🇷",
+    description:
+      "Plusieurs liens en bio Instagram / TikTok. Gratuit, sans logo, RGPD. Alternative française à Linktree.",
     creator: "@beassistlink",
+    images: [`${BASE}/og-image.png`],
   },
   icons: {
     icon: [
+      { url: "/favicon.ico" },
       { url: "/icon.svg", type: "image/svg+xml" },
     ],
-    shortcut: "/icon.svg",
+    shortcut: "/favicon.ico",
     apple: "/icon.svg",
   },
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-snippet": -1,
+      "max-image-preview": "large",
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ?? "",
   },
 };
 

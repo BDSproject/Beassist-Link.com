@@ -1,7 +1,36 @@
 import Link from "next/link";
+import type { Metadata } from "next";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
 
+export const metadata: Metadata = {
+  title: "Blog — Conseils Link in Bio, Comparatifs Linktree & Stratégies Créateur",
+  description:
+    "Tutoriels, comparatifs et conseils pour optimiser votre lien bio Instagram, TikTok et YouTube. Alternative française à Linktree — articles en français.",
+  keywords: [
+    "blog lien bio",
+    "comparatif linktree",
+    "alternative linktree blog",
+    "plusieurs liens instagram",
+    "optimiser bio instagram",
+    "link in bio conseils",
+  ],
+  alternates: {
+    canonical: "https://www.beassist-link.com/blog",
+  },
+};
+
 const posts = [
+  {
+    slug: "plusieurs-liens-instagram",
+    tag: "Tutoriel",
+    tagColor: "bg-green-100 text-green-700",
+    title: "Comment avoir plusieurs liens sur Instagram sans payer",
+    excerpt:
+      "Guide étape par étape : créez une page de liens personnalisée gratuite et mettez-la dans votre bio Instagram en 5 minutes — sans logo, sans abonnement.",
+    date: "14 avril 2026",
+    readTime: "5 min",
+    featured: false,
+  },
   {
     slug: "beassistlink-vs-linktree-2026",
     tag: "Comparatif",
