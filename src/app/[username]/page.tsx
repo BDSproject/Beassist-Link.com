@@ -282,14 +282,14 @@ export default async function UserBioPage({ params }: Props) {
                       <SocialIcon
                         platform={link.platform || "other"}
                         size={resolvedIconSize}
-                        color={isOutlineBtn ? primaryColor : "white"}
+                        color={fontColor || (isOutlineBtn ? primaryColor : "white")}
                         className="flex-shrink-0"
                       />
                     )}
                     <div className="flex-1 min-w-0">
                       <span
                         className={`${DESC_SIZE_MAP[fontSize]} font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}
-                        style={fontColor && isOutlineBtn ? { color: fontColor } : undefined}
+                        style={fontColor ? { color: fontColor } : undefined}
                       >
                         {link.title}
                       </span>

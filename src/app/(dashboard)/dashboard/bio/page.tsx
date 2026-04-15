@@ -1094,7 +1094,7 @@ export default function BioPage() {
                           style={{
                             backgroundColor: isOutline ? "transparent" : pageForm.primaryColor,
                             border: isOutline ? `1.5px solid ${pageForm.primaryColor}` : undefined,
-                            color: isOutline ? (pageForm.fontColor || pageForm.primaryColor) : "white",
+                            color: isOutline ? (pageForm.fontColor || pageForm.primaryColor) : (pageForm.fontColor || "white"),
                           }}
                         >
                           {link.icon && link.icon.startsWith("data:") ? (
@@ -1104,7 +1104,7 @@ export default function BioPage() {
                             <SocialIcon
                               platform={link.platform || "other"}
                               size={previewIconSize}
-                              color={isOutline ? (pageForm.fontColor || pageForm.primaryColor) : "white"}
+                              color={isOutline ? (pageForm.fontColor || pageForm.primaryColor) : (pageForm.fontColor || "white")}
                             />
                           )}
                           <span className="flex-1 text-center">{link.title}</span>
