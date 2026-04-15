@@ -6,7 +6,7 @@ import { useSession } from "next-auth/react";
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { Menu, X } from "lucide-react";
+import { AlignJustify, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -87,7 +87,7 @@ export function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className="md:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
           >
-            {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+            {mobileOpen ? <X size={20} /> : <AlignJustify size={20} />}
           </button>
         </div>
       </div>

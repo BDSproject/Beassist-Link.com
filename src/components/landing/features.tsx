@@ -1,9 +1,9 @@
 "use client";
 
-import { Link2, BarChart3, Palette, QrCode, Zap, Shuffle } from "lucide-react";
+import { Fingerprint, WandSparkles, GitBranch, TrendingUp, ScanQrCode, Rocket } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
-const FEATURE_ICONS = [Link2, Palette, Shuffle, BarChart3, QrCode, Zap];
+const FEATURE_ICONS = [Fingerprint, WandSparkles, GitBranch, TrendingUp, ScanQrCode, Rocket];
 const FEATURE_STYLES = [
   { color: "#8F00FF", bg: "#F5EBFF" },
   { color: "#F59E0B", bg: "#FFFBEB" },

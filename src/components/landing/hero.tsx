@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Zap } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 // Mockup de la page bio
@@ -85,7 +85,7 @@ export function Hero() {
           <div className="text-center lg:text-left">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#F5EBFF] border border-[#EAD6FF] text-sm font-medium text-[#8F00FF] mb-8">
-              <Zap size={14} className="fill-current" />
+              <Sparkles size={14} className="fill-current" />
               <span>{t.hero.badge}</span>
             </div>
 

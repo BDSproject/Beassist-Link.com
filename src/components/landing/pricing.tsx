@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
-import { Check, X } from "lucide-react";
+import { CheckCircle2, Minus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PLANS, type PlanName } from "@/lib/plans";
 import { formatPrice } from "@/lib/utils";
@@ -246,17 +246,17 @@ export function Pricing() {
                   {t.pricing.plans[planKey].features.map((feature) => (
                     <li key={feature.label} className="flex items-start gap-3 text-sm">
                       {feature.included ? (
-                        <Check
+                        <CheckCircle2
                           size={16}
                           className={`mt-0.5 flex-shrink-0 ${
                             isHighlighted ? "text-white" : "text-[#8F00FF]"
                           }`}
                         />
                       ) : (
-                        <X
+                        <Minus
                           size={16}
                           className={`mt-0.5 flex-shrink-0 ${
-                            isHighlighted ? "text-purple-300" : "text-gray-300"
+                            isHighlighted ? "text-purple-400/50" : "text-gray-300"
                           }`}
                         />
                       )}
