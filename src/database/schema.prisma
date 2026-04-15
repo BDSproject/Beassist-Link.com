@@ -104,6 +104,9 @@ model BioPage {
   bgImage      String?   // base64 or URL background image
   buttonStyle  String    @default("rounded")  // rounded | pill | square | outline | shadow
   fontStyle    String    @default("sans")     // sans | serif | mono
+  fontColor    String?                        // custom text color (STARTER+)
+  fontSize     String    @default("md")       // sm | md | lg
+  iconSize     String    @default("md")       // sm | md | lg
   socialLinks  String?   // JSON: [{platform, url}]
   views        Int       @default(0)
   active       Boolean   @default(true)

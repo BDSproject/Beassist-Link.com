@@ -14,6 +14,9 @@ const updateSchema = z.object({
   bgImage: z.string().nullable().optional(),
   buttonStyle: z.string().optional(),
   fontStyle: z.string().optional(),
+  fontColor: z.string().regex(/^#[0-9A-Fa-f]{6}$/).nullable().optional(),
+  fontSize: z.string().optional(),
+  iconSize: z.string().optional(),
   socialLinks: z.string().nullable().optional(),
 });
 

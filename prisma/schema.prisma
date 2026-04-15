@@ -104,6 +104,9 @@ model BioPage {
   bgImage      String?
   buttonStyle  String    @default("rounded")
   fontStyle    String    @default("sans")
+  fontColor    String?
+  fontSize     String    @default("md")
+  iconSize     String    @default("md")
   socialLinks  String?
   views        Int       @default(0)
   active       Boolean   @default(true)

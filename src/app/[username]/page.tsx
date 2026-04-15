@@ -126,9 +126,29 @@ export default async function UserBioPage({ params }: Props) {
   const styles = THEME_STYLES[theme] ?? THEME_STYLES.default;
   const buttonStyle = (bioPage as { buttonStyle?: string }).buttonStyle || "rounded";
   const fontStyle = (bioPage as { fontStyle?: string }).fontStyle || "sans";
+  const fontColor = (bioPage as { fontColor?: string | null }).fontColor || null;
+  const fontSize = (bioPage as { fontSize?: string }).fontSize || "md";
+  const iconSize = (bioPage as { iconSize?: string }).iconSize || "md";
   const fontClass = FONT_STYLE_CLASSES[fontStyle] || "font-sans";
   const btnCls = BUTTON_STYLE_CLASSES[buttonStyle] || "rounded-2xl";
   const isOutlineBtn = buttonStyle === "outline";
+
+  // Taille de police : sm=small, md=normal, lg=large
+  const FONT_SIZE_MAP: Record<string, string> = {
+    sm: "text-lg sm:text-xl",
+    md: "text-xl sm:text-2xl",
+    lg: "text-2xl sm:text-3xl",
+  };
+  const DESC_SIZE_MAP: Record<string, string> = {
+    sm: "text-xs",
+    md: "text-sm",
+    lg: "text-base",
+  };
+  // Taille des icônes : sm=28, md=40, lg=52
+  const ICON_SIZE_MAP: Record<string, number> = { sm: 28, md: 40, lg: 52 };
+  const ICON_IMG_MAP: Record<string, string> = { sm: "w-7 h-7", md: "w-10 h-10", lg: "w-13 h-13" };
+  const resolvedIconSize = ICON_SIZE_MAP[iconSize] ?? 40;
+  const resolvedIconImg = ICON_IMG_MAP[iconSize] ?? "w-10 h-10";
   const bgImage = (bioPage as { bgImage?: string | null }).bgImage;
   let socialLinks: { platform: string; url: string }[] = [];
   try { socialLinks = JSON.parse((bioPage as { socialLinks?: string | null }).socialLinks || "[]"); } catch { /* ignore */ }
@@ -203,13 +223,19 @@ export default async function UserBioPage({ params }: Props) {
           </div>
 
           {/* Nom */}
-          <h1 className={`text-xl sm:text-2xl font-black ${isDarkBg ? "text-white" : styles.title}`}>
+          <h1
+            className={`${FONT_SIZE_MAP[fontSize]} font-black ${isDarkBg ? "text-white" : styles.title}`}
+            style={fontColor ? { color: fontColor } : undefined}
+          >
             {bioPage.title || params.username}
           </h1>
 
           {/* Description */}
           {bioPage.description && (
-            <p className={`text-sm mt-2 leading-relaxed max-w-xs ${isDarkBg ? "text-white/75" : styles.subtitle}`}>
+            <p
+              className={`${DESC_SIZE_MAP[fontSize]} mt-2 leading-relaxed max-w-xs ${isDarkBg ? "text-white/75" : styles.subtitle}`}
+              style={fontColor ? { color: fontColor, opacity: 0.8 } : undefined}
+            >
               {bioPage.description}
             </p>
           )}
@@ -250,18 +276,21 @@ export default async function UserBioPage({ params }: Props) {
                       <img
                         src={link.icon}
                         alt=""
-                        className="w-10 h-10 rounded-full object-cover flex-shrink-0"
+                        className={`${resolvedIconImg} rounded-full object-cover flex-shrink-0`}
                       />
                     ) : (
                       <SocialIcon
                         platform={link.platform || "other"}
-                        size={40}
+                        size={resolvedIconSize}
                         color={isOutlineBtn ? primaryColor : "white"}
                         className="flex-shrink-0"
                       />
                     )}
                     <div className="flex-1 min-w-0">
-                      <span className={`font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}>
+                      <span
+                        className={`${DESC_SIZE_MAP[fontSize]} font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}
+                        style={fontColor && isOutlineBtn ? { color: fontColor } : undefined}
+                      >
                         {link.title}
                       </span>
                       {link.platform && link.platform !== "other" && platform && (

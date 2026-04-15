@@ -127,6 +127,9 @@ export default function BioPage() {
     theme: "default",
     buttonStyle: "rounded",
     fontStyle: "sans",
+    fontColor: null as string | null,
+    fontSize: "md",
+    iconSize: "md",
     socialLinks: [] as { platform: string; url: string }[],
   });
 
@@ -152,6 +155,9 @@ export default function BioPage() {
           theme: bioData.bioPage.theme || "default",
           buttonStyle: bioData.bioPage.buttonStyle || "rounded",
           fontStyle: bioData.bioPage.fontStyle || "sans",
+          fontColor: bioData.bioPage.fontColor || null,
+          fontSize: bioData.bioPage.fontSize || "md",
+          iconSize: bioData.bioPage.iconSize || "md",
           socialLinks: parsedSocial,
         });
       }
@@ -756,6 +762,71 @@ export default function BioPage() {
                         </div>
                       </div>
                     ))}
+
+                    {/* Couleur de la police */}
+                    <div className="col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Couleur de la police</label>
+                      <div className="flex items-center gap-3">
+                        <input
+                          type="color"
+                          value={pageForm.fontColor || "#000000"}
+                          onChange={(e) => setPageForm((p) => ({ ...p, fontColor: e.target.value }))}
+                          className="w-10 h-10 rounded-lg border border-gray-200 cursor-pointer"
+                        />
+                        <span className="text-sm font-mono text-gray-500">{pageForm.fontColor || "Auto"}</span>
+                        {pageForm.fontColor && (
+                          <button
+                            type="button"
+                            onClick={() => setPageForm((p) => ({ ...p, fontColor: null }))}
+                            className="text-xs text-gray-400 hover:text-red-500 underline transition-colors"
+                          >
+                            Réinitialiser
+                          </button>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Taille de la police */}
+                    <div className="col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Taille de la police</label>
+                      <div className="flex gap-2">
+                        {(["sm", "md", "lg"] as const).map((s) => (
+                          <button
+                            key={s}
+                            type="button"
+                            onClick={() => setPageForm((p) => ({ ...p, fontSize: s }))}
+                            className={`flex-1 py-2 rounded-xl border-2 text-sm font-semibold transition-all ${
+                              pageForm.fontSize === s
+                                ? "border-[#8F00FF] bg-[#8F00FF]/5 text-[#8F00FF]"
+                                : "border-gray-200 text-gray-600 hover:border-gray-300"
+                            }`}
+                          >
+                            {s === "sm" ? "Petit" : s === "md" ? "Normal" : "Grand"}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Taille des îcones */}
+                    <div className="col-span-2">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">Taille des icônes</label>
+                      <div className="flex gap-2">
+                        {(["sm", "md", "lg"] as const).map((s) => (
+                          <button
+                            key={s}
+                            type="button"
+                            onClick={() => setPageForm((p) => ({ ...p, iconSize: s }))}
+                            className={`flex-1 py-2 rounded-xl border-2 text-sm font-semibold transition-all ${
+                              pageForm.iconSize === s
+                                ? "border-[#8F00FF] bg-[#8F00FF]/5 text-[#8F00FF]"
+                                : "border-gray-200 text-gray-600 hover:border-gray-300"
+                            }`}
+                          >
+                            {s === "sm" ? "Petit" : s === "md" ? "Normal" : "Grand"}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               </Card>
@@ -993,11 +1064,17 @@ export default function BioPage() {
                           </div>
                         )}
                       </div>
-                      <p className={`text-sm font-bold text-center ${isDarkBg ? "text-white" : "text-gray-900"}`}>
+                      <p
+                        className={`${pageForm.fontSize === "sm" ? "text-[10px]" : pageForm.fontSize === "lg" ? "text-sm" : "text-xs"} font-bold text-center ${isDarkBg ? "text-white" : "text-gray-900"}`}
+                        style={pageForm.fontColor ? { color: pageForm.fontColor } : undefined}
+                      >
                         {pageForm.title || session?.user?.name || b.yourName}
                       </p>
                       {pageForm.description && (
-                        <p className={`text-xs text-center mt-0.5 leading-tight max-w-[180px] ${isDarkBg ? "text-white/70" : "text-gray-500"}`}>
+                        <p
+                          className={`text-[9px] text-center mt-0.5 leading-tight max-w-[180px] ${isDarkBg ? "text-white/70" : "text-gray-500"}`}
+                          style={pageForm.fontColor ? { color: pageForm.fontColor, opacity: 0.8 } : undefined}
+                        >
                           {pageForm.description.slice(0, 60)}{pageForm.description.length > 60 ? "..." : ""}
                         </p>
                       )}
@@ -1007,24 +1084,27 @@ export default function BioPage() {
                     {bioLinks.filter((l) => l.active).map((link) => {
                       const isOutline = pageForm.buttonStyle === "outline";
                       const btnCls = BUTTON_STYLES.find((b) => b.id === pageForm.buttonStyle)?.cls || "rounded-xl";
+                      const previewIconSize = pageForm.iconSize === "sm" ? 8 : pageForm.iconSize === "lg" ? 16 : 12;
+                      const previewImgCls = pageForm.iconSize === "sm" ? "w-2 h-2" : pageForm.iconSize === "lg" ? "w-4 h-4" : "w-3 h-3";
+                      const previewTextCls = pageForm.fontSize === "sm" ? "text-[9px]" : pageForm.fontSize === "lg" ? "text-[11px]" : "text-xs";
                       return (
                         <div
                           key={link.id}
-                          className={`flex items-center gap-2 px-3 py-2 text-xs font-semibold ${btnCls}`}
+                          className={`flex items-center gap-2 px-3 py-2 ${previewTextCls} font-semibold ${btnCls}`}
                           style={{
                             backgroundColor: isOutline ? "transparent" : pageForm.primaryColor,
                             border: isOutline ? `1.5px solid ${pageForm.primaryColor}` : undefined,
-                            color: isOutline ? pageForm.primaryColor : "white",
+                            color: isOutline ? (pageForm.fontColor || pageForm.primaryColor) : "white",
                           }}
                         >
                           {link.icon && link.icon.startsWith("data:") ? (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={link.icon} alt="" className="w-3 h-3 rounded-full object-cover flex-shrink-0" />
+                            <img src={link.icon} alt="" className={`${previewImgCls} rounded-full object-cover flex-shrink-0`} />
                           ) : (
                             <SocialIcon
                               platform={link.platform || "other"}
-                              size={12}
-                              color={isOutline ? pageForm.primaryColor : "white"}
+                              size={previewIconSize}
+                              color={isOutline ? (pageForm.fontColor || pageForm.primaryColor) : "white"}
                             />
                           )}
                           <span className="flex-1 text-center">{link.title}</span>

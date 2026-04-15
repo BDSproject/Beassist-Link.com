@@ -110,9 +110,27 @@ export default async function CustomDomainBioPage({ params }: Props) {
   const styles = THEME_STYLES[theme] ?? THEME_STYLES.default;
   const buttonStyle = (bioPage as { buttonStyle?: string }).buttonStyle || "rounded";
   const fontStyle = (bioPage as { fontStyle?: string }).fontStyle || "sans";
+  const fontColor = (bioPage as { fontColor?: string | null }).fontColor || null;
+  const fontSize = (bioPage as { fontSize?: string }).fontSize || "md";
+  const iconSize = (bioPage as { iconSize?: string }).iconSize || "md";
   const fontClass = FONT_STYLE_CLASSES[fontStyle] || "font-sans";
   const btnCls = BUTTON_STYLE_CLASSES[buttonStyle] || "rounded-2xl";
   const isOutlineBtn = buttonStyle === "outline";
+
+  const FONT_SIZE_MAP: Record<string, string> = {
+    sm: "text-lg sm:text-xl",
+    md: "text-xl sm:text-2xl",
+    lg: "text-2xl sm:text-3xl",
+  };
+  const DESC_SIZE_MAP: Record<string, string> = {
+    sm: "text-xs",
+    md: "text-sm",
+    lg: "text-base",
+  };
+  const ICON_SIZE_MAP: Record<string, number> = { sm: 28, md: 40, lg: 52 };
+  const ICON_IMG_MAP: Record<string, string> = { sm: "w-7 h-7", md: "w-10 h-10", lg: "w-13 h-13" };
+  const resolvedIconSize = ICON_SIZE_MAP[iconSize] ?? 40;
+  const resolvedIconImg = ICON_IMG_MAP[iconSize] ?? "w-10 h-10";
   const bgImage = (bioPage as { bgImage?: string | null }).bgImage;
   let socialLinks: { platform: string; url: string }[] = [];
   try {
@@ -163,11 +181,17 @@ export default async function CustomDomainBioPage({ params }: Props) {
               (bioPage.title || bioPage.username)[0].toUpperCase()
             )}
           </div>
-          <h1 className={`text-xl sm:text-2xl font-black ${isDarkBg ? "text-white" : styles.title}`}>
+          <h1
+            className={`${FONT_SIZE_MAP[fontSize]} font-black ${isDarkBg ? "text-white" : styles.title}`}
+            style={fontColor ? { color: fontColor } : undefined}
+          >
             {bioPage.title || bioPage.username}
           </h1>
           {bioPage.description && (
-            <p className={`text-sm mt-2 leading-relaxed max-w-xs ${isDarkBg ? "text-white/75" : styles.subtitle}`}>
+            <p
+              className={`${DESC_SIZE_MAP[fontSize]} mt-2 leading-relaxed max-w-xs ${isDarkBg ? "text-white/75" : styles.subtitle}`}
+              style={fontColor ? { color: fontColor, opacity: 0.8 } : undefined}
+            >
               {bioPage.description}
             </p>
           )}
@@ -200,9 +224,23 @@ export default async function CustomDomainBioPage({ params }: Props) {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <SocialIcon platform={link.platform || "other"} size={40} color={isOutlineBtn ? primaryColor : "white"} className="flex-shrink-0" />
+                    {link.icon && link.icon.startsWith("data:") ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={link.icon}
+                        alt=""
+                        className={`${resolvedIconImg} rounded-full object-cover flex-shrink-0`}
+                      />
+                    ) : (
+                      <SocialIcon platform={link.platform || "other"} size={resolvedIconSize} color={isOutlineBtn ? primaryColor : "white"} className="flex-shrink-0" />
+                    )}
                     <div className="flex-1 min-w-0">
-                      <span className={`font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}>{link.title}</span>
+                      <span
+                        className={`${DESC_SIZE_MAP[fontSize]} font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}
+                        style={fontColor && isOutlineBtn ? { color: fontColor } : undefined}
+                      >
+                        {link.title}
+                      </span>
                       {link.platform && link.platform !== "other" && platform && (
                         <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>{getPlatformLabel(link.platform)}</span>
                       )}
