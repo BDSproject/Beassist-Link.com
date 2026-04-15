@@ -14,11 +14,13 @@
 /* ── Reset & Base ──────────────────────────────────────────────────────────── */
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -29,6 +31,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* ── Touch optimizations (iOS / iPhone) ───────────────────────────────────── */
+button,
+a,
+input,
+select,
+textarea,
+[role="button"] {
+  touch-action: manipulation;
 }
 
 /* ── Sélection ─────────────────────────────────────────────────────────────── */
@@ -55,6 +67,41 @@ body {
 
 /* ── Utilitaires ───────────────────────────────────────────────────────────── */
 @layer utilities {
+  /* ── iPhone safe-area (Dynamic Island / home indicator) ─────────────────── */
+  /* Apply to fixed landing navbar header */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  /* Hero section — pushes content below navbar + Dynamic Island */
+  .hero-safe-pt {
+    padding-top: calc(4rem + env(safe-area-inset-top, 0px));
+  }
+  /* Dashboard mobile topbar — replaces py-3 */
+  .topbar-safe {
+    padding-top: calc(0.75rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 0.75rem;
+  }
+  /* Dashboard main content — offset matches topbar-safe height (mobile only) */
+  .content-pt-topbar {
+    padding-top: calc(3.5rem + env(safe-area-inset-top, 0px));
+  }
+  @media (min-width: 1024px) {
+    .content-pt-topbar {
+      padding-top: 0;
+    }
+  }
+  /* Bottom safe area for pages with home indicator */
+  .pb-safe {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* Dynamic / small viewport height — fix iOS 100vh layout bug */
+  .min-h-dvh {
+    min-height: 100dvh;
+  }
+  .min-h-svh {
+    min-height: 100svh;
+  }
+
   .text-gradient {
     background: linear-gradient(135deg, #8f00ff 0%, #6200cc 100%);
     -webkit-background-clip: text;

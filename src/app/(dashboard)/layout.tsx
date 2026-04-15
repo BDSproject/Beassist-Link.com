@@ -21,11 +21,11 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-[100svh] bg-gray-50">
       <SessionRefresher />
       <Sidebar />
-      <main className="flex-1 min-h-screen overflow-x-hidden">
-        <div className="lg:pt-0 pt-14">
+      <main className="flex-1 min-h-[100svh] overflow-x-hidden">
+        <div className="lg:pt-0 content-pt-topbar">
           {children}
         </div>
       </main>

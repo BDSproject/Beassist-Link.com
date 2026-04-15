@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 // Configurations de style par thème
 const THEME_STYLES = {
   default: {
-    wrapper: "min-h-screen bg-white",
+    wrapper: "min-h-[100svh] bg-white",
     title: "text-gray-900",
     subtitle: "text-gray-500",
     username: "text-gray-400",
@@ -41,7 +41,7 @@ const THEME_STYLES = {
     emptyText: "text-gray-400",
   },
   dark: {
-    wrapper: "min-h-screen bg-gray-950",
+    wrapper: "min-h-[100svh] bg-gray-950",
     title: "text-white",
     subtitle: "text-gray-400",
     username: "text-gray-600",
@@ -50,7 +50,7 @@ const THEME_STYLES = {
   },
   gradient: {
     wrapper:
-      "min-h-screen bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500",
+      "min-h-[100svh] bg-gradient-to-br from-violet-600 via-purple-600 to-pink-500",
     title: "text-white",
     subtitle: "text-white/75",
     username: "text-white/50",
@@ -58,7 +58,7 @@ const THEME_STYLES = {
     emptyText: "text-white/50",
   },
   minimal: {
-    wrapper: "min-h-screen bg-neutral-50",
+    wrapper: "min-h-[100svh] bg-neutral-50",
     title: "text-neutral-900",
     subtitle: "text-neutral-500",
     username: "text-neutral-400",
@@ -161,7 +161,7 @@ export default async function UserBioPage({ params }: Props) {
 
   return (
     <main
-      className={`${styles.wrapper} flex flex-col items-center py-10 px-4 relative ${fontClass}`}
+      className={`${styles.wrapper} flex flex-col items-center py-10 px-4 pb-safe relative ${fontClass}`}
       style={wrapperStyle}
     >
       {bgImage && <div className="absolute inset-0 bg-black/30 pointer-events-none" />}

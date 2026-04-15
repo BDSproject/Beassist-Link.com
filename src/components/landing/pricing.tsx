@@ -127,7 +127,7 @@ export function Pricing() {
             return (
               <div
                 key={planKey}
-                className={`relative rounded-3xl p-8 flex flex-col transition-all duration-500 group cursor-default ${
+                className={`relative rounded-3xl p-6 sm:p-8 flex flex-col transition-all duration-500 group cursor-default ${
                   isHighlighted
                     ? "bg-[#8F00FF] text-white shadow-[0_20px_60px_rgba(143,0,255,0.35)] md:scale-105 hover:shadow-[0_32px_80px_rgba(143,0,255,0.55)] hover:-translate-y-2"
                     : "bg-white border border-gray-200 hover:border-[#8F00FF]/40 hover:shadow-2xl hover:-translate-y-2"

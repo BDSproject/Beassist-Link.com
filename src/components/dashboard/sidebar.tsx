@@ -194,7 +194,7 @@ export function Sidebar() {
       </aside>
 
       {/* Mobile toggle */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-100 px-4 py-3 flex items-center justify-between">
+      <div className="lg:hidden fixed top-0 left-0 right-0 z-40 bg-white border-b border-gray-100 px-4 topbar-safe flex items-center justify-between">
         <Link href="/dashboard">
           <Logo size="sm" />
         </Link>
@@ -222,7 +222,7 @@ export function Sidebar() {
             className="lg:hidden fixed inset-0 z-50 bg-black/50"
             onClick={() => setMobileOpen(false)}
           />
-          <aside className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-72 bg-white shadow-2xl flex flex-col overflow-y-auto">
+          <aside className="lg:hidden fixed left-0 top-0 bottom-0 z-50 w-72 bg-white shadow-2xl flex flex-col overflow-y-auto" style={{ paddingTop: 'env(safe-area-inset-top, 0px)', paddingBottom: 'env(safe-area-inset-bottom, 0px)' }}>
             <SidebarContent />
           </aside>
         </>

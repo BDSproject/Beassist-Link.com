@@ -13,7 +13,7 @@ export default function AuthLayout({
   const { t } = useLanguage();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#F5EBFF] via-white to-white flex flex-col">
+    <div className="min-h-[100svh] bg-gradient-to-br from-[#F5EBFF] via-white to-white flex flex-col">
       {/* Header */}
       <header className="px-6 py-5 flex items-center justify-between">
         <Link href="/">
@@ -30,7 +30,7 @@ export default function AuthLayout({
       </div>
 
       {/* Footer minimal */}
-      <footer className="px-6 py-4 text-center text-xs text-gray-400">
+      <footer className="px-6 py-4 text-center text-xs text-gray-400" style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 0px))' }}>
         © {new Date().getFullYear()} BeassistLink · 
         <Link href="/privacy" className="hover:text-[#8F00FF] ml-1">{t.auth.privacy}</Link> · 
         <Link href="/terms" className="hover:text-[#8F00FF] ml-1">{t.auth.terms}</Link>
