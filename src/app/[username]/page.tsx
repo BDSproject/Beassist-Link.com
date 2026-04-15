@@ -132,6 +132,18 @@ export default async function UserBioPage({ params }: Props) {
   const bgImage = (bioPage as { bgImage?: string | null }).bgImage;
   let socialLinks: { platform: string; url: string }[] = [];
   try { socialLinks = JSON.parse((bioPage as { socialLinks?: string | null }).socialLinks || "[]"); } catch { /* ignore */ }
+
+  // Calcule la luminance perçue d'une couleur hex (#RRGGBB) — retourne 0 (noir) à 1 (blanc)
+  function hexLuminance(hex: string): number {
+    const h = hex.replace("#", "");
+    if (h.length < 6) return 1;
+    const r = parseInt(h.slice(0, 2), 16) / 255;
+    const g = parseInt(h.slice(2, 4), 16) / 255;
+    const b = parseInt(h.slice(4, 6), 16) / 255;
+    const toLinear = (c: number) => c <= 0.03928 ? c / 12.92 : Math.pow((c + 0.055) / 1.055, 2.4);
+    return 0.2126 * toLinear(r) + 0.7152 * toLinear(g) + 0.0722 * toLinear(b);
+  }
+
   const isDarkBg = !!(bgImage || theme === "dark" || theme === "gradient");
 
   // Fond: bgImage > gradient (Tailwind) > bgColor (with theme-aware fallback for backward compat)
@@ -158,6 +170,9 @@ export default async function UserBioPage({ params }: Props) {
     : theme === "gradient"
     ? {}
     : { backgroundColor: effectiveBgColor };
+
+  // isDarkBg prend aussi en compte les bgColor personnalisées sombres
+  const badgeIsDark = isDarkBg || (effectiveBgColor ? hexLuminance(effectiveBgColor) < 0.35 : false);
 
   return (
     <main
@@ -300,9 +315,9 @@ export default async function UserBioPage({ params }: Props) {
             rel="noopener noreferrer"
             className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[11px] font-medium transition-all hover:scale-105 backdrop-blur-sm"
             style={{
-              background: isDarkBg ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.75)",
-              color: isDarkBg ? "rgba(255,255,255,0.90)" : "rgba(30,30,30,0.85)",
-              boxShadow: isDarkBg
+              background: badgeIsDark ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.75)",
+              color: badgeIsDark ? "rgba(255,255,255,0.90)" : "rgba(30,30,30,0.85)",
+              boxShadow: badgeIsDark
                 ? "0 1px 8px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.12)"
                 : "0 1px 8px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.07)",
             }}
