@@ -11,6 +11,15 @@
   --primary-dark: #7200cc;
 }
 
+/* ── Scrollbar invisible (scroll tactile sans barre visible) ───────────────── */
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
 /* ── Reset & Base ──────────────────────────────────────────────────────────── */
 * {
   box-sizing: border-box;

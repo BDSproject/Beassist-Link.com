@@ -322,7 +322,7 @@ export default function LinksPage() {
 
                 {/* Prévisualisation URL complète */}
                 {slugPreview && planLimits?.hasCustomAlias && (
-                  <p className="text-xs text-[#8F00FF] font-mono bg-purple-50 rounded-lg px-3 py-1.5 truncate">
+                  <p className="text-xs text-[#8F00FF] font-mono bg-purple-50 rounded-lg px-3 py-1.5 overflow-x-auto whitespace-nowrap scrollbar-none">
                     {baseUrl}/r/{slugPreview}
                   </p>
                 )}
@@ -398,14 +398,14 @@ export default function LinksPage() {
 
                   {/* Info lien */}
                   <div className="flex-1 min-w-0">
-                    <div className="flex items-center gap-1.5 mb-0.5">
+                    <div className="flex items-center gap-1.5 mb-0.5 overflow-x-auto scrollbar-none">
                       {/* Platform icon STARTER+ — mobile */}
                       {planLimits?.hasCustomAlias && (
                         <div className="sm:hidden flex-shrink-0">
                           <SocialIcon platform={detectPlatformFromUrl(link.url)} size={15} />
                         </div>
                       )}
-                      <span className="font-semibold text-sm text-gray-900 truncate">
+                      <span className="font-semibold text-sm text-gray-900 whitespace-nowrap">
                         {link.title || link.slug}
                       </span>
                       <Badge variant={link.active ? "success" : "gray"} size="sm" className="flex-shrink-0">
@@ -418,9 +418,9 @@ export default function LinksPage() {
                     </div>
 
                     {/* Alias éditable inline */}
-                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                    <div className="flex items-center gap-1.5 text-xs text-gray-400 overflow-x-auto scrollbar-none">
                       {editingAlias === link.id ? (
-                        <div className="flex items-center gap-1">
+                        <div className="flex items-center gap-1 flex-shrink-0">
                           <span className="text-gray-400">/r/</span>
                           <input
                             autoFocus
@@ -447,8 +447,8 @@ export default function LinksPage() {
                           </button>
                         </div>
                       ) : (
-                        <div className="flex items-center gap-0.5 group/alias">
-                          <span className="text-[#8F00FF] font-medium font-mono">
+                        <div className="flex items-center gap-0.5 group/alias flex-shrink-0">
+                          <span className="text-[#8F00FF] font-medium font-mono whitespace-nowrap">
                             /r/{link.slug}
                           </span>
                           <button
@@ -463,9 +463,8 @@ export default function LinksPage() {
                           )}
                         </div>
                       )}
-                      {/* URL — desktop uniquement */}
-                      <span className="hidden sm:inline text-gray-300">→</span>
-                      <span className="hidden sm:inline truncate max-w-[160px]">{link.url}</span>
+                      <span className="text-gray-300 flex-shrink-0">→</span>
+                      <span className="whitespace-nowrap text-gray-400">{link.url}</span>
                     </div>
                   </div>
 
