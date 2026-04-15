@@ -276,7 +276,7 @@ export default async function UserBioPage({ params }: Props) {
                       <img
                         src={link.icon}
                         alt=""
-                        className={`${resolvedIconImg} rounded-full object-cover flex-shrink-0`}
+                        className={`${resolvedIconImg} rounded object-cover flex-shrink-0`}
                       />
                     ) : (
                       <SocialIcon

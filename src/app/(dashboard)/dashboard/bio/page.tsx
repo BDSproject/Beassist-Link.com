@@ -1099,7 +1099,7 @@ export default function BioPage() {
                         >
                           {link.icon && link.icon.startsWith("data:") ? (
                             // eslint-disable-next-line @next/next/no-img-element
-                            <img src={link.icon} alt="" className={`${previewImgCls} rounded-full object-cover flex-shrink-0`} />
+                            <img src={link.icon} alt="" className={`${previewImgCls} rounded object-cover flex-shrink-0`} />
                           ) : (
                             <SocialIcon
                               platform={link.platform || "other"}

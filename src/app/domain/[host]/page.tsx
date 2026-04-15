@@ -229,7 +229,7 @@ export default async function CustomDomainBioPage({ params }: Props) {
                       <img
                         src={link.icon}
                         alt=""
-                        className={`${resolvedIconImg} rounded-full object-cover flex-shrink-0`}
+                        className={`${resolvedIconImg} rounded object-cover flex-shrink-0`}
                       />
                     ) : (
                       <SocialIcon platform={link.platform || "other"} size={resolvedIconSize} color={isOutlineBtn ? primaryColor : "white"} className="flex-shrink-0" />
