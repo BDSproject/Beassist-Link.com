@@ -232,7 +232,8 @@ export default function BioPage() {
   const handleBgImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    if (file.size > 5 * 1024 * 1024) { toast.error(b.bgImageTooLarge); return; }
+    const maxSizeMB = isPro ? 15 : 5;
+    if (file.size > maxSizeMB * 1024 * 1024) { toast.error(b.bgImageTooLarge.replace("5", String(maxSizeMB))); return; }
     const reader = new FileReader();
     reader.onload = (ev) => {
       const img = new Image();
@@ -283,6 +284,7 @@ export default function BioPage() {
   const fontClass = FONT_STYLES.find((f) => f.id === pageForm.fontStyle)?.cls || "font-sans";
   const isDarkBg = !!(pageForm.bgImage || pageForm.theme === "dark" || pageForm.theme === "gradient");
   const isFree = !session?.user?.plan || session.user.plan === "FREE";
+  const isPro = session?.user?.plan === "PRO";
 
   const TABS: { id: TabId; label: string; icon: React.ReactNode }[] = [
     { id: "links", label: b.tabs.links, icon: <Globe className="w-4 h-4" /> },

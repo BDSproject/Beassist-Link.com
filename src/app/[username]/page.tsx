@@ -1,7 +1,7 @@
 import type React from "react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
-import { getPlatformColor, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
+import { getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -208,9 +208,6 @@ export default async function UserBioPage({ params }: Props) {
         {/* Liens */}
         <div className="space-y-3">
           {bioPage.links.map((link) => {
-            const platformColor = link.platform
-              ? getPlatformColor(link.platform)
-              : primaryColor;
             const platform = SOCIAL_PLATFORMS.find((p) => p.id === link.platform);
 
             return (
@@ -224,7 +221,7 @@ export default async function UserBioPage({ params }: Props) {
                 <div
                   className={`relative flex items-center w-full px-4 py-3.5 sm:py-4 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
                   style={{
-                    backgroundColor: isOutlineBtn ? "transparent" : platformColor,
+                    backgroundColor: isOutlineBtn ? "transparent" : primaryColor,
                     border: isOutlineBtn ? `2px solid ${primaryColor}` : undefined,
                     color: isOutlineBtn ? primaryColor : "white",
                   }}
