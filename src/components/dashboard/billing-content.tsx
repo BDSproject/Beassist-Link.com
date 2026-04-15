@@ -33,6 +33,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
   const searchParams = useSearchParams();
   const isSuccess = searchParams.get("success") === "true";
   const isCanceled = searchParams.get("canceled") === "true";
+  const portalError = searchParams.get("portal_error");
 
   async function handleCheckout(planKey: string) {
     setLoadingPlan(planKey);
@@ -96,6 +97,12 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
         <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-red-800">
           <AlertCircle size={20} className="flex-shrink-0 text-red-600" />
           <p className="font-semibold text-sm">{checkoutError}</p>
+        </div>
+      )}
+      {portalError && (
+        <div className="flex items-center gap-3 bg-red-50 border border-red-200 rounded-2xl p-4 mb-6 text-red-800">
+          <AlertCircle size={20} className="flex-shrink-0 text-red-600" />
+          <p className="font-semibold text-sm">Portail Stripe : {decodeURIComponent(portalError)}</p>
         </div>
       )}
 

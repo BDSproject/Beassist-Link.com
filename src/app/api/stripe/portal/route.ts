@@ -22,10 +22,17 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  const portalSession = await stripe.billingPortal.sessions.create({
-    customer: subscription.stripeCustomerId,
-    return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing`,
-  });
-
-  return NextResponse.redirect(portalSession.url, { status: 303 });
+  try {
+    const portalSession = await stripe.billingPortal.sessions.create({
+      customer: subscription.stripeCustomerId,
+      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing`,
+    });
+    return NextResponse.redirect(portalSession.url, { status: 303 });
+  } catch (error) {
+    console.error("[stripe/portal] Erreur:", error);
+    const msg = (error as any)?.raw?.message || (error instanceof Error ? error.message : "Erreur portail Stripe");
+    return NextResponse.redirect(
+      new URL(`/dashboard/billing?portal_error=${encodeURIComponent(msg)}`, req.url)
+    );
+  }
 }

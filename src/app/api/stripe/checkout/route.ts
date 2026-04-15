@@ -93,10 +93,11 @@ export async function POST(req: NextRequest) {
 
     return NextResponse.json({ url: checkoutSession.url });
   } catch (error) {
-    console.error("Stripe checkout error:", error);
+    console.error("[stripe/checkout] Erreur:", JSON.stringify(error, null, 2));
     const stripeError = error as any;
     const message =
       stripeError?.raw?.message ||
+      stripeError?.message ||
       (error instanceof Error ? error.message : "Erreur lors de la création du paiement");
     return NextResponse.json({ error: message }, { status: 500 });
   }
