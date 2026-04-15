@@ -5,7 +5,7 @@ let _stripe: Stripe | null = null;
 
 export function getStripe(): Stripe {
   if (!_stripe) {
-    const key = process.env.STRIPE_SECRET_KEY || "sk_test_placeholder_not_configured";
+    const key = (process.env.STRIPE_SECRET_KEY || "sk_test_placeholder_not_configured").trim();
     _stripe = new Stripe(key, {
       apiVersion: "2025-02-24.acacia",
       typescript: true,
@@ -21,18 +21,21 @@ export const stripe = new Proxy({} as Stripe, {
   },
 });
 
+// Helper pour lire les env vars Stripe en supprimant les espaces/sauts de ligne parasites
+const e = (key: string) => (process.env[key] ?? "").trim();
+
 // Constantes Stripe Price IDs
 export const STRIPE_PRICE_IDS = {
   // EUR (défaut)
-  STARTER_MONTHLY: process.env.STRIPE_STARTER_MONTHLY_PRICE_ID ?? "",
-  STARTER_YEARLY: process.env.STRIPE_STARTER_YEARLY_PRICE_ID ?? "",
-  PRO_MONTHLY: process.env.STRIPE_PRO_MONTHLY_PRICE_ID ?? "",
-  PRO_YEARLY: process.env.STRIPE_PRO_YEARLY_PRICE_ID ?? "",
+  STARTER_MONTHLY: e("STRIPE_STARTER_MONTHLY_PRICE_ID"),
+  STARTER_YEARLY: e("STRIPE_STARTER_YEARLY_PRICE_ID"),
+  PRO_MONTHLY: e("STRIPE_PRO_MONTHLY_PRICE_ID"),
+  PRO_YEARLY: e("STRIPE_PRO_YEARLY_PRICE_ID"),
   // USD
-  STARTER_MONTHLY_USD: process.env.STRIPE_STARTER_MONTHLY_PRICE_ID_USD ?? "",
-  STARTER_YEARLY_USD: process.env.STRIPE_STARTER_YEARLY_PRICE_ID_USD ?? "",
-  PRO_MONTHLY_USD: process.env.STRIPE_PRO_MONTHLY_PRICE_ID_USD ?? "",
-  PRO_YEARLY_USD: process.env.STRIPE_PRO_YEARLY_PRICE_ID_USD ?? "",
+  STARTER_MONTHLY_USD: e("STRIPE_STARTER_MONTHLY_PRICE_ID_USD"),
+  STARTER_YEARLY_USD: e("STRIPE_STARTER_YEARLY_PRICE_ID_USD"),
+  PRO_MONTHLY_USD: e("STRIPE_PRO_MONTHLY_PRICE_ID_USD"),
+  PRO_YEARLY_USD: e("STRIPE_PRO_YEARLY_PRICE_ID_USD"),
 };
 
 /** Retourne le bon Price ID selon la devise */
