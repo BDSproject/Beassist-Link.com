@@ -235,8 +235,19 @@ export default async function CustomDomainBioPage({ params }: Props) {
 
         {/* Subtle branding footer */}
         <div className="mt-10 flex justify-center">
-          <a href="https://www.beassist-link.com" target="_blank" rel="noopener noreferrer"
-            className={`flex items-center gap-1.5 text-[11px] transition-opacity hover:opacity-80 ${isDarkBg ? "text-white/35 hover:text-white/60" : "text-gray-400/60 hover:text-gray-500"}`}>
+          <a
+            href="https://www.beassist-link.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 px-4 py-2 rounded-full text-[11px] font-medium transition-all hover:scale-105 backdrop-blur-sm"
+            style={{
+              background: isDarkBg ? "rgba(0,0,0,0.45)" : "rgba(255,255,255,0.75)",
+              color: isDarkBg ? "rgba(255,255,255,0.90)" : "rgba(30,30,30,0.85)",
+              boxShadow: isDarkBg
+                ? "0 1px 8px rgba(0,0,0,0.35), inset 0 0 0 1px rgba(255,255,255,0.12)"
+                : "0 1px 8px rgba(0,0,0,0.12), inset 0 0 0 1px rgba(0,0,0,0.07)",
+            }}
+          >
             Powered by <Logo size="sm" />
           </a>
         </div>
