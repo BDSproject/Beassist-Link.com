@@ -113,6 +113,7 @@ export default function BioPage() {
   const bgImageRef = useRef<HTMLInputElement>(null);
   const iconInputRef = useRef<HTMLInputElement>(null);
   const [uploadIconLinkId, setUploadIconLinkId] = useState<string | null>(null);
+  const [iconMenuLinkId, setIconMenuLinkId] = useState<string | null>(null);
 
   const [newLink, setNewLink] = useState({ title: "", url: "", platform: "" });
 
@@ -501,40 +502,64 @@ export default function BioPage() {
                       }`}
                     >
                       <div className="text-gray-400 cursor-grab"><GripVertical className="w-4 h-4" /></div>
-                      {/* Icon zone — clickable for STARTER+ */}
-                      <div
-                        className={`relative w-8 h-8 flex items-center justify-center rounded-lg flex-shrink-0 group/icon ${
-                          !isFree ? "cursor-pointer hover:opacity-80" : ""
-                        }`}
-                        title={!isFree ? "Changer l'icône" : undefined}
-                        onClick={() => {
-                          if (isFree) return;
-                          setUploadIconLinkId(link.id);
-                          iconInputRef.current?.click();
-                        }}
-                      >
-                        {link.icon && link.icon.startsWith("data:") ? (
-                          <>
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                      {/* Icon zone — popover menu for STARTER+ */}
+                      <div className="relative flex-shrink-0">
+                        <div
+                          className={`relative w-8 h-8 flex items-center justify-center rounded-lg group/icon ${
+                            !isFree ? "cursor-pointer hover:opacity-80" : ""
+                          }`}
+                          title={!isFree ? "Changer l'icône" : undefined}
+                          onClick={() => {
+                            if (isFree) return;
+                            setIconMenuLinkId(iconMenuLinkId === link.id ? null : link.id);
+                          }}
+                        >
+                          {link.icon && link.icon.startsWith("data:") ? (
+                            // eslint-disable-next-line @next/next/no-img-element
                             <img src={link.icon} alt="" className="w-7 h-7 rounded-full object-cover" />
-                            {!isFree && (
+                          ) : (
+                            <SocialIcon platform={link.platform || "other"} size={28} />
+                          )}
+                          {!isFree && (
+                            <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
+                              <Camera className="w-3.5 h-3.5 text-white" />
+                            </div>
+                          )}
+                        </div>
+
+                        {/* Popover menu */}
+                        {iconMenuLinkId === link.id && (
+                          <>
+                            {/* Overlay to close */}
+                            <div
+                              className="fixed inset-0 z-10"
+                              onClick={() => setIconMenuLinkId(null)}
+                            />
+                            <div className="absolute left-0 top-10 z-20 bg-white rounded-xl shadow-xl border border-gray-100 p-1.5 min-w-[175px] flex flex-col gap-0.5">
                               <button
                                 type="button"
-                                onClick={(e) => { e.stopPropagation(); removeLinkIcon(link.id); }}
-                                className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center opacity-0 group/icon:opacity-100 transition-opacity"
+                                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
+                                onClick={() => {
+                                  setIconMenuLinkId(null);
+                                  removeLinkIcon(link.id);
+                                }}
                               >
-                                <X className="w-2.5 h-2.5 text-white" />
+                                <SocialIcon platform={link.platform || "other"} size={16} />
+                                <span>Icône plateforme</span>
                               </button>
-                            )}
-                          </>
-                        ) : (
-                          <>
-                            <SocialIcon platform={link.platform || "other"} size={36} />
-                            {!isFree && (
-                              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
-                                <Camera className="w-3.5 h-3.5 text-white" />
-                              </div>
-                            )}
+                              <button
+                                type="button"
+                                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
+                                onClick={() => {
+                                  setIconMenuLinkId(null);
+                                  setUploadIconLinkId(link.id);
+                                  iconInputRef.current?.click();
+                                }}
+                              >
+                                <Camera className="w-4 h-4" />
+                                <span>Importer une image</span>
+                              </button>
+                            </div>
                           </>
                         )}
                       </div>
