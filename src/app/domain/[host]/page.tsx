@@ -200,7 +200,7 @@ export default async function CustomDomainBioPage({ params }: Props) {
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <SocialIcon platform={link.platform || "other"} size={28} color={isOutlineBtn ? primaryColor : "white"} className="flex-shrink-0" />
+                    <SocialIcon platform={link.platform || "other"} size={40} color={isOutlineBtn ? primaryColor : "white"} className="flex-shrink-0" />
                     <div className="flex-1 min-w-0">
                       <span className={`font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}>{link.title}</span>
                       {link.platform && link.platform !== "other" && platform && (

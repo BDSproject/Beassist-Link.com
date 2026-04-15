@@ -219,7 +219,7 @@ export default async function UserBioPage({ params }: Props) {
                 className="group block w-full"
               >
                 <div
-                  className={`relative flex items-center w-full px-4 py-3.5 sm:py-4 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
+                  className={`relative flex items-center w-full px-4 py-4 sm:py-5 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
                   style={{
                     backgroundColor: isOutlineBtn ? "transparent" : primaryColor,
                     border: isOutlineBtn ? `2px solid ${primaryColor}` : undefined,
@@ -235,12 +235,12 @@ export default async function UserBioPage({ params }: Props) {
                       <img
                         src={link.icon}
                         alt=""
-                        className="w-7 h-7 rounded-full object-cover flex-shrink-0"
+                        className="w-10 h-10 rounded-full object-cover flex-shrink-0"
                       />
                     ) : (
                       <SocialIcon
                         platform={link.platform || "other"}
-                        size={28}
+                        size={40}
                         color={isOutlineBtn ? primaryColor : "white"}
                         className="flex-shrink-0"
                       />
