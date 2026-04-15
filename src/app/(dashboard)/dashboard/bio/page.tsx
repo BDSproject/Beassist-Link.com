@@ -1065,14 +1065,14 @@ export default function BioPage() {
                         )}
                       </div>
                       <p
-                        className={`${pageForm.fontSize === "sm" ? "text-[10px]" : pageForm.fontSize === "lg" ? "text-sm" : "text-xs"} font-bold text-center ${isDarkBg ? "text-white" : "text-gray-900"}`}
+                        className={`${pageForm.fontSize === "sm" ? "text-[9px]" : pageForm.fontSize === "lg" ? "text-[13px]" : "text-[11px]"} font-bold text-center ${isDarkBg ? "text-white" : "text-gray-900"}`}
                         style={pageForm.fontColor ? { color: pageForm.fontColor } : undefined}
                       >
                         {pageForm.title || session?.user?.name || b.yourName}
                       </p>
                       {pageForm.description && (
                         <p
-                          className={`text-[9px] text-center mt-0.5 leading-tight max-w-[180px] ${isDarkBg ? "text-white/70" : "text-gray-500"}`}
+                          className={`${pageForm.fontSize === "sm" ? "text-[7px]" : pageForm.fontSize === "lg" ? "text-[11px]" : "text-[9px]"} text-center mt-0.5 leading-tight max-w-[180px] ${isDarkBg ? "text-white/70" : "text-gray-500"}`}
                           style={pageForm.fontColor ? { color: pageForm.fontColor, opacity: 0.8 } : undefined}
                         >
                           {pageForm.description.slice(0, 60)}{pageForm.description.length > 60 ? "..." : ""}
@@ -1086,7 +1086,7 @@ export default function BioPage() {
                       const btnCls = BUTTON_STYLES.find((b) => b.id === pageForm.buttonStyle)?.cls || "rounded-xl";
                       const previewIconSize = pageForm.iconSize === "sm" ? 8 : pageForm.iconSize === "lg" ? 16 : 12;
                       const previewImgCls = pageForm.iconSize === "sm" ? "w-2 h-2" : pageForm.iconSize === "lg" ? "w-4 h-4" : "w-3 h-3";
-                      const previewTextCls = pageForm.fontSize === "sm" ? "text-[9px]" : pageForm.fontSize === "lg" ? "text-[11px]" : "text-xs";
+                      const previewTextCls = pageForm.fontSize === "sm" ? "text-[8px]" : pageForm.fontSize === "lg" ? "text-xs" : "text-[10px]";
                       return (
                         <div
                           key={link.id}
