@@ -82,6 +82,42 @@ export async function POST(req: NextRequest) {
   }
 }
 
+// PATCH - Réordonner les liens bio
+export async function PATCH(req: NextRequest) {
+  const session = await getServerSession(authOptions);
+  if (!session) {
+    return NextResponse.json({ message: "Non autorisé" }, { status: 401 });
+  }
+
+  try {
+    const body = await req.json();
+    const items = z.array(z.object({ id: z.string(), order: z.number().int().min(0) })).parse(body);
+
+    // Vérifier que tous les liens appartiennent bien à l'utilisateur
+    const bioPage = await db.bioPage.findUnique({
+      where: { userId: session.user.id },
+      select: { id: true },
+    });
+    if (!bioPage) return NextResponse.json({ message: "Page introuvable" }, { status: 404 });
+
+    await Promise.all(
+      items.map((item) =>
+        db.bioLink.updateMany({
+          where: { id: item.id, bioPageId: bioPage.id },
+          data: { order: item.order },
+        })
+      )
+    );
+
+    return NextResponse.json({ ok: true });
+  } catch (error) {
+    if (error instanceof z.ZodError) {
+      return NextResponse.json({ message: "Données invalides" }, { status: 400 });
+    }
+    return NextResponse.json({ message: "Erreur serveur" }, { status: 500 });
+  }
+}
+
 // GET - Récupérer les liens bio
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);

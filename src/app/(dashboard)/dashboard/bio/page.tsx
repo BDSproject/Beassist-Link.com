@@ -9,6 +9,23 @@ import {
   Share2, Instagram, Twitter, Youtube, Facebook, Linkedin, Github,
   Music, MessageCircle, Lock, Camera,
 } from "lucide-react";
+import {
+  DndContext,
+  closestCenter,
+  KeyboardSensor,
+  PointerSensor,
+  useSensor,
+  useSensors,
+  type DragEndEvent,
+} from "@dnd-kit/core";
+import {
+  arrayMove,
+  SortableContext,
+  sortableKeyboardCoordinates,
+  useSortable,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable";
+import { CSS } from "@dnd-kit/utilities";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
@@ -99,6 +116,164 @@ const SOCIAL_ICON_PLATFORM_IDS = [
 const ADULT_PLATFORM_IDS = ["onlyfans", "mym", "fansly", "patreon"];
 
 type TabId = "links" | "appearance" | "background" | "style" | "social";
+
+// ── Composant ligne sortable (drag-and-drop) ──────────────────────────────────
+interface SortableLinkRowProps {
+  link: { id: string; title: string; url: string; icon: string | null; platform: string | null; active: boolean; clicks: number; order: number };
+  isFree: boolean;
+  editingLink: string | null;
+  iconMenuLinkId: string | null;
+  setEditingLink: (id: string | null) => void;
+  setIconMenuLinkId: (id: string | null) => void;
+  setBioLinks: React.Dispatch<React.SetStateAction<{ id: string; title: string; url: string; icon: string | null; platform: string | null; order: number; clicks: number; active: boolean }[]>>;
+  toggleLink: (id: string, active: boolean) => void;
+  deleteLink: (id: string) => void;
+  removeLinkIcon: (id: string) => void;
+  setUploadIconLinkId: (id: string) => void;
+  iconInputRef: React.RefObject<HTMLInputElement>;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  b: any;
+}
+
+function SortableLinkRow({
+  link, isFree, editingLink, iconMenuLinkId,
+  setEditingLink, setIconMenuLinkId, setBioLinks,
+  toggleLink, deleteLink, removeLinkIcon,
+  setUploadIconLinkId, iconInputRef, b,
+}: SortableLinkRowProps) {
+  const { attributes, listeners, setNodeRef, transform, transition, isDragging } = useSortable({ id: link.id });
+  const style: React.CSSProperties = {
+    transform: CSS.Transform.toString(transform),
+    transition,
+    zIndex: isDragging ? 50 : undefined,
+    opacity: isDragging ? 0.85 : undefined,
+  };
+
+  return (
+    <div
+      ref={setNodeRef}
+      style={style}
+      className={`flex items-center gap-3 p-3 bg-white rounded-xl border transition-all ${
+        link.active ? "border-gray-200" : "border-gray-100 opacity-60"
+      } ${isDragging ? "shadow-xl ring-2 ring-[#8F00FF]/30" : ""}`}
+    >
+      {/* Drag handle */}
+      <div
+        className="text-gray-400 hover:text-gray-600 cursor-grab active:cursor-grabbing touch-none"
+        {...attributes}
+        {...listeners}
+      >
+        <GripVertical className="w-4 h-4" />
+      </div>
+
+      {/* Icon zone — popover menu for STARTER+ */}
+      <div className="relative flex-shrink-0">
+        <div
+          className={`relative w-8 h-8 flex items-center justify-center rounded-lg group/icon ${
+            !isFree ? "cursor-pointer hover:opacity-80" : ""
+          }`}
+          title={!isFree ? "Changer l'icône" : undefined}
+          onClick={() => {
+            if (isFree) return;
+            setIconMenuLinkId(iconMenuLinkId === link.id ? null : link.id);
+          }}
+        >
+          {link.icon && link.icon.startsWith("data:") ? (
+            // eslint-disable-next-line @next/next/no-img-element
+            <img src={link.icon} alt="" className="w-7 h-7 rounded-full object-cover" />
+          ) : (
+            <SocialIcon platform={link.platform || "other"} size={28} />
+          )}
+          {!isFree && (
+            <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
+              <Camera className="w-3.5 h-3.5 text-white" />
+            </div>
+          )}
+        </div>
+
+        {/* Popover menu */}
+        {iconMenuLinkId === link.id && (
+          <>
+            <div className="fixed inset-0 z-10" onClick={() => setIconMenuLinkId(null)} />
+            <div className="absolute left-0 top-10 z-20 bg-white rounded-xl shadow-xl border border-gray-100 p-1.5 min-w-[175px] flex flex-col gap-0.5">
+              <button
+                type="button"
+                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
+                onClick={() => { setIconMenuLinkId(null); removeLinkIcon(link.id); }}
+              >
+                <SocialIcon platform={link.platform || "other"} size={16} />
+                <span>Icône plateforme</span>
+              </button>
+              <button
+                type="button"
+                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
+                onClick={() => {
+                  setIconMenuLinkId(null);
+                  setUploadIconLinkId(link.id);
+                  iconInputRef.current?.click();
+                }}
+              >
+                <Camera className="w-4 h-4" />
+                <span>Importer une image</span>
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Title + URL */}
+      <div className="flex-1 min-w-0">
+        {editingLink === link.id ? (
+          <input
+            className="flex-1 w-full text-sm font-medium border rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#8F00FF]"
+            defaultValue={link.title}
+            onBlur={async (e) => {
+              await fetch(`/api/bio/links/${link.id}`, {
+                method: "PATCH",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ title: e.target.value }),
+              });
+              setBioLinks((prev) => prev.map((l) => l.id === link.id ? { ...l, title: e.target.value } : l));
+              setEditingLink(null);
+            }}
+            autoFocus
+          />
+        ) : (
+          <>
+            <p className="text-sm font-medium text-gray-900 truncate">{link.title}</p>
+            <p className="text-xs text-gray-400 truncate">{link.url}</p>
+          </>
+        )}
+      </div>
+
+      {/* Actions */}
+      <div className="flex items-center gap-1">
+        <span className="text-xs text-gray-400 mr-1 hidden sm:inline">{link.clicks} {b.clics}</span>
+        <button
+          onClick={() => setEditingLink(editingLink === link.id ? null : link.id)}
+          className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
+        >
+          <Pencil className="w-3.5 h-3.5" />
+        </button>
+        <button
+          onClick={() => toggleLink(link.id, link.active)}
+          className={`px-2 py-1 text-xs rounded-full font-medium transition-colors ${
+            link.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
+          }`}
+        >
+          {link.active ? b.active : b.inactive}
+        </button>
+        <button
+          onClick={() => deleteLink(link.id)}
+          className="p-1.5 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50"
+        >
+          <Trash2 className="w-3.5 h-3.5" />
+        </button>
+      </div>
+    </div>
+  );
+}
+// ─────────────────────────────────────────────────────────────────────────────
 
 export default function BioPage() {
   const { data: session } = useSession();
@@ -339,6 +514,33 @@ export default function BioPage() {
     });
   };
 
+  // Drag-and-drop sensors
+  const sensors = useSensors(
+    useSensor(PointerSensor, { activationConstraint: { distance: 5 } }),
+    useSensor(KeyboardSensor, { coordinateGetter: sortableKeyboardCoordinates })
+  );
+
+  const handleDragEnd = async (event: DragEndEvent) => {
+    const { active, over } = event;
+    if (!over || active.id === over.id) return;
+
+    const oldIndex = bioLinks.findIndex((l) => l.id === active.id);
+    const newIndex = bioLinks.findIndex((l) => l.id === over.id);
+    const reordered = arrayMove(bioLinks, oldIndex, newIndex).map((l, i) => ({ ...l, order: i }));
+    setBioLinks(reordered);
+
+    try {
+      await fetch("/api/bio/links", {
+        method: "PATCH",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(reordered.map((l) => ({ id: l.id, order: l.order }))),
+      });
+    } catch {
+      toast.error("Erreur lors de la sauvegarde de l'ordre");
+      fetchBioData(); // rollback
+    }
+  };
+
   const fontClass = FONT_STYLES.find((f) => f.id === pageForm.fontStyle)?.cls || "font-sans";
   const isDarkBg = !!(pageForm.bgImage || pageForm.theme === "dark" || pageForm.theme === "gradient");
   const isFree = !session?.user?.plan || session.user.plan === "FREE";
@@ -499,125 +701,30 @@ export default function BioPage() {
                   <p>{b.noLinks}</p>
                 </div>
               ) : (
-                <div className="space-y-2">
-                  {bioLinks.map((link) => (
-                    <div
-                      key={link.id}
-                      className={`flex items-center gap-3 p-3 bg-white rounded-xl border transition-all ${
-                        link.active ? "border-gray-200" : "border-gray-100 opacity-60"
-                      }`}
-                    >
-                      <div className="text-gray-400 cursor-grab"><GripVertical className="w-4 h-4" /></div>
-                      {/* Icon zone — popover menu for STARTER+ */}
-                      <div className="relative flex-shrink-0">
-                        <div
-                          className={`relative w-8 h-8 flex items-center justify-center rounded-lg group/icon ${
-                            !isFree ? "cursor-pointer hover:opacity-80" : ""
-                          }`}
-                          title={!isFree ? "Changer l'icône" : undefined}
-                          onClick={() => {
-                            if (isFree) return;
-                            setIconMenuLinkId(iconMenuLinkId === link.id ? null : link.id);
-                          }}
-                        >
-                          {link.icon && link.icon.startsWith("data:") ? (
-                            // eslint-disable-next-line @next/next/no-img-element
-                            <img src={link.icon} alt="" className="w-7 h-7 rounded-full object-cover" />
-                          ) : (
-                            <SocialIcon platform={link.platform || "other"} size={28} />
-                          )}
-                          {!isFree && (
-                            <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
-                              <Camera className="w-3.5 h-3.5 text-white" />
-                            </div>
-                          )}
-                        </div>
-
-                        {/* Popover menu */}
-                        {iconMenuLinkId === link.id && (
-                          <>
-                            {/* Overlay to close */}
-                            <div
-                              className="fixed inset-0 z-10"
-                              onClick={() => setIconMenuLinkId(null)}
-                            />
-                            <div className="absolute left-0 top-10 z-20 bg-white rounded-xl shadow-xl border border-gray-100 p-1.5 min-w-[175px] flex flex-col gap-0.5">
-                              <button
-                                type="button"
-                                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
-                                onClick={() => {
-                                  setIconMenuLinkId(null);
-                                  removeLinkIcon(link.id);
-                                }}
-                              >
-                                <SocialIcon platform={link.platform || "other"} size={16} />
-                                <span>Icône plateforme</span>
-                              </button>
-                              <button
-                                type="button"
-                                className="flex items-center gap-2.5 px-3 py-2 text-sm text-gray-700 hover:bg-[#F5EBFF] hover:text-[#8F00FF] rounded-lg transition-colors text-left w-full"
-                                onClick={() => {
-                                  setIconMenuLinkId(null);
-                                  setUploadIconLinkId(link.id);
-                                  iconInputRef.current?.click();
-                                }}
-                              >
-                                <Camera className="w-4 h-4" />
-                                <span>Importer une image</span>
-                              </button>
-                            </div>
-                          </>
-                        )}
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        {editingLink === link.id ? (
-                          <input
-                            className="flex-1 w-full text-sm font-medium border rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#8F00FF]"
-                            defaultValue={link.title}
-                            onBlur={async (e) => {
-                              await fetch(`/api/bio/links/${link.id}`, {
-                                method: "PATCH",
-                                headers: { "Content-Type": "application/json" },
-                                body: JSON.stringify({ title: e.target.value }),
-                              });
-                              setBioLinks((prev) => prev.map((l) => l.id === link.id ? { ...l, title: e.target.value } : l));
-                              setEditingLink(null);
-                            }}
-                            autoFocus
-                          />
-                        ) : (
-                          <>
-                            <p className="text-sm font-medium text-gray-900 truncate">{link.title}</p>
-                            <p className="text-xs text-gray-400 truncate">{link.url}</p>
-                          </>
-                        )}
-                      </div>
-                      <div className="flex items-center gap-1">
-                        <span className="text-xs text-gray-400 mr-1 hidden sm:inline">{link.clicks} {b.clics}</span>
-                        <button
-                          onClick={() => setEditingLink(editingLink === link.id ? null : link.id)}
-                          className="p-1.5 text-gray-400 hover:text-gray-600 rounded-lg hover:bg-gray-100"
-                        >
-                          <Pencil className="w-3.5 h-3.5" />
-                        </button>
-                        <button
-                          onClick={() => toggleLink(link.id, link.active)}
-                          className={`px-2 py-1 text-xs rounded-full font-medium transition-colors ${
-                            link.active ? "bg-green-100 text-green-700" : "bg-gray-100 text-gray-500"
-                          }`}
-                        >
-                          {link.active ? b.active : b.inactive}
-                        </button>
-                        <button
-                          onClick={() => deleteLink(link.id)}
-                          className="p-1.5 text-gray-400 hover:text-red-500 rounded-lg hover:bg-red-50"
-                        >
-                          <Trash2 className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                <DndContext sensors={sensors} collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
+                  <SortableContext items={bioLinks.map((l) => l.id)} strategy={verticalListSortingStrategy}>
+                    <div className="space-y-2">
+                      {bioLinks.map((link) => (
+                        <SortableLinkRow
+                          key={link.id}
+                          link={link}
+                          isFree={isFree}
+                          editingLink={editingLink}
+                          iconMenuLinkId={iconMenuLinkId}
+                          setEditingLink={setEditingLink}
+                          setIconMenuLinkId={setIconMenuLinkId}
+                          setBioLinks={setBioLinks}
+                          toggleLink={toggleLink}
+                          deleteLink={deleteLink}
+                          removeLinkIcon={removeLinkIcon}
+                          setUploadIconLinkId={setUploadIconLinkId}
+                          iconInputRef={iconInputRef}
+                          b={b}
+                        />
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  </SortableContext>
+                </DndContext>
               )}
               {/* Hidden file input for custom link icons */}
               <input
