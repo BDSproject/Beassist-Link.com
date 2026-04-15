@@ -25,7 +25,7 @@ function PhoneMockup() {
               J
             </div>
             <h3 className="mt-3 text-sm font-bold text-gray-900">
-              @juliedupont
+              @Matthieu
             </h3>
             <p className="text-xs text-gray-500 mt-1 text-center leading-relaxed">
               Créatrice de contenu ✨
