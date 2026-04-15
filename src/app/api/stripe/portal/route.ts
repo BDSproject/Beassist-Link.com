@@ -22,10 +22,17 @@ export async function POST(req: NextRequest) {
     );
   }
 
+  // Déduire l'URL de l'app de manière robuste
+  const origin = req.headers.get("origin")
+    || req.headers.get("referer")?.replace(/\/[^/]*$/, "")
+    || process.env.NEXT_PUBLIC_APP_URL
+    || "https://www.beassist-link.com";
+  const appUrl = origin.replace(/\/$/, "");
+
   try {
     const portalSession = await stripe.billingPortal.sessions.create({
       customer: subscription.stripeCustomerId,
-      return_url: `${process.env.NEXT_PUBLIC_APP_URL}/dashboard/billing`,
+      return_url: `${appUrl}/dashboard/billing`,
     });
     return NextResponse.redirect(portalSession.url, { status: 303 });
   } catch (error) {

@@ -67,9 +67,21 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // URL hardcodée pour garantir des URLs valides pour Stripe
-    const APP_URL = "https://www.beassist-link.com";
-    const appUrl = process.env.NEXT_PUBLIC_APP_URL?.replace(/\/$/, "") || APP_URL;
+    // Déduire l'URL de l'app de manière robuste
+    const origin = req.headers.get("origin")
+      || req.headers.get("referer")?.replace(/\/[^/]*$/, "")
+      || process.env.NEXT_PUBLIC_APP_URL
+      || "https://www.beassist-link.com";
+    const appUrl = origin.replace(/\/$/, "");
+
+    // Vérifier que l'URL est absolue (Stripe l'exige)
+    if (!/^https?:\/\//.test(appUrl)) {
+      console.error("[checkout] appUrl invalide:", appUrl);
+      return NextResponse.json(
+        { error: "Configuration URL invalide. Contactez le support." },
+        { status: 500 }
+      );
+    }
 
     // Créer la session Stripe Checkout
     const checkoutSession = await stripe.checkout.sessions.create({
