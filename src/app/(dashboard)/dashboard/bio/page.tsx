@@ -529,7 +529,7 @@ export default function BioPage() {
                           </>
                         ) : (
                           <>
-                            <SocialIcon platform={link.platform || "other"} size={20} />
+                            <SocialIcon platform={link.platform || "other"} size={28} />
                             {!isFree && (
                               <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
                                 <Camera className="w-3.5 h-3.5 text-white" />

@@ -235,12 +235,12 @@ export default async function UserBioPage({ params }: Props) {
                       <img
                         src={link.icon}
                         alt=""
-                        className="w-5 h-5 rounded-full object-cover flex-shrink-0"
+                        className="w-7 h-7 rounded-full object-cover flex-shrink-0"
                       />
                     ) : (
                       <SocialIcon
                         platform={link.platform || "other"}
-                        size={20}
+                        size={28}
                         color={isOutlineBtn ? primaryColor : "white"}
                         className="flex-shrink-0"
                       />
