@@ -102,6 +102,36 @@ export function getPlatformLabel(platform: string): string {
   return found?.label ?? platform;
 }
 
+/** Detect social platform from a URL (used for short-link icons) */
+export function detectPlatformFromUrl(url: string): string {
+  try {
+    const host = new URL(url).hostname.toLowerCase().replace(/^www\./, "");
+    if (host.includes("instagram.com")) return "instagram";
+    if (host.includes("tiktok.com")) return "tiktok";
+    if (host.includes("youtube.com") || host.includes("youtu.be")) return "youtube";
+    if (host.includes("twitter.com") || host.includes("x.com")) return "twitter";
+    if (host.includes("facebook.com") || host.includes("fb.com")) return "facebook";
+    if (host.includes("linkedin.com")) return "linkedin";
+    if (host.includes("github.com")) return "github";
+    if (host.includes("twitch.tv")) return "twitch";
+    if (host.includes("spotify.com")) return "spotify";
+    if (host.includes("discord.gg") || host.includes("discord.com")) return "discord";
+    if (host.includes("snapchat.com")) return "snapchat";
+    if (host.includes("pinterest.")) return "pinterest";
+    if (host.includes("behance.net")) return "behance";
+    if (host.includes("dribbble.com")) return "dribbble";
+    if (host.includes("wa.me") || host.includes("whatsapp.com")) return "whatsapp";
+    if (host.includes("t.me") || host.includes("telegram.org") || host.includes("telegram.me")) return "telegram";
+    if (host.includes("onlyfans.com")) return "onlyfans";
+    if (host.includes("mym.fans")) return "mym";
+    if (host.includes("fansly.com")) return "fansly";
+    if (host.includes("patreon.com")) return "patreon";
+    return "other";
+  } catch {
+    return "other";
+  }
+}
+
 export function getDeviceType(userAgent: string): string {
   if (/mobile/i.test(userAgent)) return "Mobile";
   if (/tablet|ipad/i.test(userAgent)) return "Tablette";

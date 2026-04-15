@@ -27,9 +27,10 @@ import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { PLANS } from "@/lib/plans";
-import { formatNumber, formatDate, isValidUrl } from "@/lib/utils";
+import { formatNumber, formatDate, isValidUrl, detectPlatformFromUrl } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
 import { usePlan } from "@/hooks/use-plan";
+import { SocialIcon } from "@/components/ui/social-icon";
 
 const linkSchema = z.object({
   url: z.string().url("URL invalide — ex: https://exemple.com"),
@@ -383,120 +384,141 @@ export default function LinksPage() {
             {filteredLinks.map((link, index) => (
               <div
                 key={link.id}
-                className={`flex items-center gap-4 px-5 py-4 hover:bg-gray-50 transition-colors ${
+                className={`px-3 sm:px-5 py-3 sm:py-4 hover:bg-gray-50 transition-colors ${
                   index < filteredLinks.length - 1 ? "border-b border-gray-100" : ""
                 }`}
               >
-                {/* Info lien */}
-                <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold text-sm text-gray-900">
-                      {link.title || link.slug}
-                    </span>
-                    <Badge variant={link.active ? "success" : "gray"} size="sm">
-                      {link.active ? d.active : d.inactive}
-                    </Badge>
+                <div className="flex items-center gap-2 sm:gap-4">
+                  {/* Platform icon STARTER+ — desktop */}
+                  {planLimits?.hasCustomAlias && (
+                    <div className="hidden sm:flex flex-shrink-0">
+                      <SocialIcon platform={detectPlatformFromUrl(link.url)} size={20} />
+                    </div>
+                  )}
+
+                  {/* Info lien */}
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      {/* Platform icon STARTER+ — mobile */}
+                      {planLimits?.hasCustomAlias && (
+                        <div className="sm:hidden flex-shrink-0">
+                          <SocialIcon platform={detectPlatformFromUrl(link.url)} size={15} />
+                        </div>
+                      )}
+                      <span className="font-semibold text-sm text-gray-900 truncate">
+                        {link.title || link.slug}
+                      </span>
+                      <Badge variant={link.active ? "success" : "gray"} size="sm" className="flex-shrink-0">
+                        {link.active ? d.active : d.inactive}
+                      </Badge>
+                      {/* Clics inline — mobile */}
+                      <span className="sm:hidden text-xs text-gray-400 ml-auto flex-shrink-0">
+                        {formatNumber(link.clicks)}
+                      </span>
+                    </div>
+
+                    {/* Alias éditable inline */}
+                    <div className="flex items-center gap-1.5 text-xs text-gray-400">
+                      {editingAlias === link.id ? (
+                        <div className="flex items-center gap-1">
+                          <span className="text-gray-400">/r/</span>
+                          <input
+                            autoFocus
+                            value={aliasValue}
+                            onChange={(e) => setAliasValue(e.target.value)}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") saveAlias(link.id);
+                              if (e.key === "Escape") setEditingAlias(null);
+                            }}
+                            className="border border-[#8F00FF] rounded-md px-2 py-0.5 text-xs text-gray-900 outline-none w-24 font-mono"
+                          />
+                          <button
+                            onClick={() => saveAlias(link.id)}
+                            disabled={savingAlias}
+                            className="p-1 rounded text-green-600 hover:bg-green-50"
+                          >
+                            <Check size={12} />
+                          </button>
+                          <button
+                            onClick={() => setEditingAlias(null)}
+                            className="p-1 rounded text-gray-400 hover:bg-gray-100"
+                          >
+                            <X size={12} />
+                          </button>
+                        </div>
+                      ) : (
+                        <div className="flex items-center gap-0.5 group/alias">
+                          <span className="text-[#8F00FF] font-medium font-mono">
+                            /r/{link.slug}
+                          </span>
+                          <button
+                            onClick={() => startEditAlias(link)}
+                            title="Modifier l'alias"
+                            className="opacity-0 group-hover/alias:opacity-100 transition-opacity p-0.5 rounded hover:bg-purple-100 text-[#8F00FF]"
+                          >
+                            <Pencil size={10} />
+                          </button>
+                          {!planLimits?.hasCustomAlias && (
+                            <Lock size={10} className="text-gray-300 ml-0.5" />
+                          )}
+                        </div>
+                      )}
+                      {/* URL — desktop uniquement */}
+                      <span className="hidden sm:inline text-gray-300">→</span>
+                      <span className="hidden sm:inline truncate max-w-[160px]">{link.url}</span>
+                    </div>
                   </div>
 
-                  {/* Alias éditable inline */}
-                  <div className="flex items-center gap-2 text-xs text-gray-400">
-                    {editingAlias === link.id ? (
-                      <div className="flex items-center gap-1">
-                        <span className="text-gray-400">/r/</span>
-                        <input
-                          autoFocus
-                          value={aliasValue}
-                          onChange={(e) => setAliasValue(e.target.value)}
-                          onKeyDown={(e) => {
-                            if (e.key === "Enter") saveAlias(link.id);
-                            if (e.key === "Escape") setEditingAlias(null);
-                          }}
-                          className="border border-[#8F00FF] rounded-md px-2 py-0.5 text-xs text-gray-900 outline-none w-32 font-mono"
-                        />
-                        <button
-                          onClick={() => saveAlias(link.id)}
-                          disabled={savingAlias}
-                          className="p-1 rounded text-green-600 hover:bg-green-50"
-                        >
-                          <Check size={12} />
-                        </button>
-                        <button
-                          onClick={() => setEditingAlias(null)}
-                          className="p-1 rounded text-gray-400 hover:bg-gray-100"
-                        >
-                          <X size={12} />
-                        </button>
-                      </div>
-                    ) : (
-                      <div className="flex items-center gap-1 group/alias">
-                        <span className="text-[#8F00FF] font-medium font-mono">
-                          /r/{link.slug}
-                        </span>
-                        <button
-                          onClick={() => startEditAlias(link)}
-                          title="Modifier l'alias"
-                          className="opacity-0 group-hover/alias:opacity-100 transition-opacity p-0.5 rounded hover:bg-purple-100 text-[#8F00FF]"
-                        >
-                          <Pencil size={10} />
-                        </button>
-                        {!planLimits?.hasCustomAlias && (
-                          <Lock size={10} className="text-gray-300 ml-1" />
-                        )}
-                      </div>
-                    )}
-                    <span>→</span>
-                    <span className="truncate max-w-[180px]">{link.url}</span>
+                  {/* Clics — desktop */}
+                  <div className="text-center hidden sm:block flex-shrink-0">
+                    <p className="text-lg font-black text-gray-900">
+                      {formatNumber(link.clicks)}
+                    </p>
+                    <p className="text-xs text-gray-400">{d.clicks}</p>
                   </div>
-                </div>
 
-                {/* Clics */}
-                <div className="text-center hidden sm:block">
-                  <p className="text-lg font-black text-gray-900">
-                    {formatNumber(link.clicks)}
-                  </p>
-                  <p className="text-xs text-gray-400">{d.clicks}</p>
-                </div>
-
-                {/* Actions */}
-                <div className="flex items-center gap-1">
-                  <button
-                    onClick={() => copyLink(link.slug)}
-                    title="Copier le lien court"
-                    className={`p-2 rounded-lg transition-colors ${
-                      copied === link.slug
-                        ? "bg-green-100 text-green-600"
-                        : "hover:bg-gray-100 text-gray-400 hover:text-gray-700"
-                    }`}
-                  >
-                    <Copy size={15} />
-                  </button>
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    title="Ouvrir l'URL originale"
-                    className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
-                  >
-                    <ExternalLink size={15} />
-                  </a>
-                  <button
-                    onClick={() => toggleLink(link.id, link.active)}
-                    title={link.active ? "Désactiver" : "Activer"}
-                    className="p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
-                  >
-                    {link.active ? (
-                      <ToggleRight size={15} className="text-[#8F00FF]" />
-                    ) : (
-                      <ToggleLeft size={15} />
-                    )}
-                  </button>
-                  <button
-                    onClick={() => deleteLink(link.id)}
-                    title="Supprimer"
-                    className="p-2 rounded-lg hover:bg-red-50 text-gray-400 hover:text-red-500 transition-colors"
-                  >
-                    <Trash2 size={15} />
-                  </button>
+                  {/* Actions */}
+                  <div className="flex items-center gap-0.5 sm:gap-1 flex-shrink-0">
+                    <button
+                      onClick={() => copyLink(link.slug)}
+                      title="Copier le lien court"
+                      className={`p-1.5 sm:p-2 rounded-lg transition-colors ${
+                        copied === link.slug
+                          ? "bg-green-100 text-green-600"
+                          : "hover:bg-gray-100 text-gray-400 hover:text-gray-700"
+                      }`}
+                    >
+                      <Copy size={14} />
+                    </button>
+                    {/* Lien externe — desktop */}
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Ouvrir l'URL originale"
+                      className="hidden sm:flex p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
+                    >
+                      <ExternalLink size={14} />
+                    </a>
+                    <button
+                      onClick={() => toggleLink(link.id, link.active)}
+                      title={link.active ? "Désactiver" : "Activer"}
+                      className="p-1.5 sm:p-2 rounded-lg hover:bg-gray-100 text-gray-400 hover:text-gray-700 transition-colors"
+                    >
+                      {link.active ? (
+                        <ToggleRight size={15} className="text-[#8F00FF]" />
+                      ) : (
+                        <ToggleLeft size={15} />
+                      )}
+                    </button>
+                    <button
+                      onClick={() => deleteLink(link.id)}
+                      title="Supprimer"
+                      className="p-1.5 sm:p-2 rounded-lg hover:bg-red-50 text-gray-400 hover:text-red-500 transition-colors"
+                    >
+                      <Trash2 size={14} />
+                    </button>
+                  </div>
                 </div>
               </div>
             ))}
