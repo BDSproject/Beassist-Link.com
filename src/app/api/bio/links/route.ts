@@ -8,7 +8,7 @@ import { PLANS } from "@/lib/plans";
 const linkSchema = z.object({
   title: z.string().min(1).max(60),
   url: z.string().url(),
-  icon: z.string().max(4).optional(),
+  icon: z.string().optional(),
   platform: z.string().optional(),
   order: z.number().int().min(0).optional(),
 });

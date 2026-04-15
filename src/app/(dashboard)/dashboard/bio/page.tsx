@@ -7,7 +7,7 @@ import {
   Plus, Trash2, GripVertical, Eye, Palette, User, Globe, Pencil,
   X, Check, ExternalLink, Image as ImageIcon, Type, MousePointer2,
   Share2, Instagram, Twitter, Youtube, Facebook, Linkedin, Github,
-  Music, MessageCircle, Lock,
+  Music, MessageCircle, Lock, Camera,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -111,6 +111,8 @@ export default function BioPage() {
   const [showAddLink, setShowAddLink] = useState(false);
   const [editingLink, setEditingLink] = useState<string | null>(null);
   const bgImageRef = useRef<HTMLInputElement>(null);
+  const iconInputRef = useRef<HTMLInputElement>(null);
+  const [uploadIconLinkId, setUploadIconLinkId] = useState<string | null>(null);
 
   const [newLink, setNewLink] = useState({ title: "", url: "", platform: "" });
 
@@ -259,6 +261,55 @@ export default function BioPage() {
         canvas.height = TARGET_H;
         canvas.getContext("2d")!.drawImage(img, sx, sy, sw, sh, 0, 0, TARGET_W, TARGET_H);
         setPageForm((p) => ({ ...p, bgImage: canvas.toDataURL("image/jpeg", 0.85) }));
+      };
+      img.src = ev.target?.result as string;
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const removeLinkIcon = async (linkId: string) => {
+    await fetch(`/api/bio/links/${linkId}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ icon: "" }),
+    });
+    setBioLinks((prev) => prev.map((l) => l.id === linkId ? { ...l, icon: null } : l));
+  };
+
+  const handleLinkIconUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file || !uploadIconLinkId) return;
+    if (file.size > 2 * 1024 * 1024) { toast.error("Image trop lourde (max 2 Mo)"); return; }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      const img = new Image();
+      img.onload = async () => {
+        const SIZE = 96;
+        const canvas = document.createElement("canvas");
+        canvas.width = SIZE;
+        canvas.height = SIZE;
+        const ctx = canvas.getContext("2d")!;
+        // Crop to square from center
+        const minDim = Math.min(img.width, img.height);
+        const sx = (img.width - minDim) / 2;
+        const sy = (img.height - minDim) / 2;
+        ctx.drawImage(img, sx, sy, minDim, minDim, 0, 0, SIZE, SIZE);
+        const base64 = canvas.toDataURL("image/jpeg", 0.85);
+        // Persist
+        try {
+          await fetch(`/api/bio/links/${uploadIconLinkId}`, {
+            method: "PATCH",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ icon: base64 }),
+          });
+          setBioLinks((prev) => prev.map((l) => l.id === uploadIconLinkId ? { ...l, icon: base64 } : l));
+          toast.success("Icône mise à jour !");
+        } catch {
+          toast.error("Erreur lors de l'upload");
+        } finally {
+          setUploadIconLinkId(null);
+          if (iconInputRef.current) iconInputRef.current.value = "";
+        }
       };
       img.src = ev.target?.result as string;
     };
@@ -450,8 +501,42 @@ export default function BioPage() {
                       }`}
                     >
                       <div className="text-gray-400 cursor-grab"><GripVertical className="w-4 h-4" /></div>
-                      <div className="w-8 flex items-center justify-center">
-                        <SocialIcon platform={link.platform || "other"} size={20} />
+                      {/* Icon zone — clickable for STARTER+ */}
+                      <div
+                        className={`relative w-8 h-8 flex items-center justify-center rounded-lg flex-shrink-0 group/icon ${
+                          !isFree ? "cursor-pointer hover:opacity-80" : ""
+                        }`}
+                        title={!isFree ? "Changer l'icône" : undefined}
+                        onClick={() => {
+                          if (isFree) return;
+                          setUploadIconLinkId(link.id);
+                          iconInputRef.current?.click();
+                        }}
+                      >
+                        {link.icon && link.icon.startsWith("data:") ? (
+                          <>
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src={link.icon} alt="" className="w-7 h-7 rounded-full object-cover" />
+                            {!isFree && (
+                              <button
+                                type="button"
+                                onClick={(e) => { e.stopPropagation(); removeLinkIcon(link.id); }}
+                                className="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full flex items-center justify-center opacity-0 group/icon:opacity-100 transition-opacity"
+                              >
+                                <X className="w-2.5 h-2.5 text-white" />
+                              </button>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <SocialIcon platform={link.platform || "other"} size={20} />
+                            {!isFree && (
+                              <div className="absolute inset-0 flex items-center justify-center bg-black/40 rounded-lg opacity-0 group/icon:opacity-100 transition-opacity">
+                                <Camera className="w-3.5 h-3.5 text-white" />
+                              </div>
+                            )}
+                          </>
+                        )}
                       </div>
                       <div className="flex-1 min-w-0">
                         {editingLink === link.id ? (
@@ -503,10 +588,17 @@ export default function BioPage() {
                   ))}
                 </div>
               )}
+              {/* Hidden file input for custom link icons */}
+              <input
+                ref={iconInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={handleLinkIconUpload}
+              />
             </div>
           )}
 
-          {/* TAB: PROFIL */}
           {activeTab === "appearance" && (
             <Card className="p-5 space-y-5">
               <div className="pb-4 border-b border-gray-100">
@@ -900,11 +992,16 @@ export default function BioPage() {
                             color: isOutline ? pageForm.primaryColor : "white",
                           }}
                         >
-                          <SocialIcon
-                            platform={link.platform || "other"}
-                            size={12}
-                            color={isOutline ? pageForm.primaryColor : "white"}
-                          />
+                          {link.icon && link.icon.startsWith("data:") ? (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <img src={link.icon} alt="" className="w-3 h-3 rounded-full object-cover flex-shrink-0" />
+                          ) : (
+                            <SocialIcon
+                              platform={link.platform || "other"}
+                              size={12}
+                              color={isOutline ? pageForm.primaryColor : "white"}
+                            />
+                          )}
                           <span className="flex-1 text-center">{link.title}</span>
                         </div>
                       );

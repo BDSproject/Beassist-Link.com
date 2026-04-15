@@ -230,12 +230,21 @@ export default async function UserBioPage({ params }: Props) {
                   <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
 
                   <div className="flex items-center gap-3 flex-1 min-w-0">
-                    <SocialIcon
-                      platform={link.platform || "other"}
-                      size={20}
-                      color={isOutlineBtn ? primaryColor : "white"}
-                      className="flex-shrink-0"
-                    />
+                    {link.icon && link.icon.startsWith("data:") ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={link.icon}
+                        alt=""
+                        className="w-5 h-5 rounded-full object-cover flex-shrink-0"
+                      />
+                    ) : (
+                      <SocialIcon
+                        platform={link.platform || "other"}
+                        size={20}
+                        color={isOutlineBtn ? primaryColor : "white"}
+                        className="flex-shrink-0"
+                      />
+                    )}
                     <div className="flex-1 min-w-0">
                       <span className={`font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}>
                         {link.title}
