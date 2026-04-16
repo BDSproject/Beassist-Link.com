@@ -240,8 +240,10 @@ function SortableLinkRow({
           />
         ) : (
           <>
-            <p className="text-sm font-medium text-gray-900 truncate">{link.title}</p>
-            <p className="text-xs text-gray-400 overflow-x-auto whitespace-nowrap scrollbar-none">{link.url}</p>
+            <div className="overflow-x-auto scrollbar-none">
+              <p className="text-sm font-medium text-gray-900 whitespace-nowrap">{link.title}</p>
+              <p className="text-xs text-gray-400 mt-0.5 whitespace-nowrap">{link.url}</p>
+            </div>
           </>
         )}
       </div>
