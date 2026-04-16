@@ -258,7 +258,7 @@ export function DashboardHomeContent({
                     target="_blank"
                     className="text-sm text-[#8F00FF] hover:underline"
                   >
-                    beassistlink.com/{bioPage.username}
+                    beassist-link.com/{bioPage.username}
                   </Link>
                 </div>
               </div>

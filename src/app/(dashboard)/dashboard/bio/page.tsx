@@ -1263,7 +1263,7 @@ export default function BioPage() {
                 rel="noopener noreferrer"
                 className="text-sm font-medium text-[#8F00FF] hover:underline"
               >
-                beassistlink.com/{session?.user?.username}
+                beassist-link.com/{session?.user?.username}
               </a>
             </div>
           </div>

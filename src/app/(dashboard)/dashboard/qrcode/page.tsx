@@ -109,7 +109,7 @@ export default function QRCodePage() {
   const bioUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/${session?.user?.username || ""}`
-      : `https://beassistlink.com/${session?.user?.username || ""}`;
+      : `https://beassist-link.com/${session?.user?.username || ""}`;
 
   const [customUrl, setCustomUrl] = useState("");
   const [activeSource, setActiveSource] = useState<SourceType>("bio");
@@ -390,7 +390,7 @@ export default function QRCodePage() {
                 style={{ backgroundColor: bgColor }}
               >
                 <QRCodeCanvas
-                  value={isValidUrl ? qrValue : "https://beassistlink.com"}
+                  value={isValidUrl ? qrValue : "https://beassist-link.com"}
                   size={Math.min(size, 240)}
                   fgColor={fgColor}
                   bgColor={bgColor}

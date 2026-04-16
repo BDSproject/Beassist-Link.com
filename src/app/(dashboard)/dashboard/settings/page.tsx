@@ -204,7 +204,7 @@ export default function SettingsPage() {
                     username: e.target.value.toLowerCase().replace(/\s/g, ""),
                   }))
                 }
-                hint={`beassistlink.com/${profileForm.username || "username"}`}
+                hint={`beassist-link.com/${profileForm.username || "username"}`}
               />
             </div>
             <Input

@@ -57,7 +57,7 @@ export const fr = {
       titlePlaceholder: "Mon article de blog",
       aliasLabel: "Alias personnalisé (optionnel)",
       aliasPlaceholder: "mon-lien",
-      aliasHint: "Votre lien : beassistlink.com/r/mon-lien",
+      aliasHint: "Votre lien : beassist-link.com/r/mon-lien",
       aliasUnavailable: "Disponible avec Starter ou Pro",
       create: "Créer le lien",
       cancel: "Annuler",
@@ -470,7 +470,7 @@ export const fr = {
       {
         title: "Mets-le dans ta bio",
         description:
-          "Copie ton lien beassistlink.com/toi et colle-le dans ta bio Instagram, TikTok, YouTube… Tes abonnés n'ont plus qu'un clic à faire.",
+          "Copie ton lien beassist-link.com/toi et colle-le dans ta bio Instagram, TikTok, YouTube… Tes abonnés n'ont plus qu'un clic à faire.",
       },
     ],
   },
@@ -635,7 +635,7 @@ export const fr = {
       nameLabel: "Nom complet",
       namePlaceholder: "Julie Dupont",
       usernameLabel: "Nom d'utilisateur",
-      usernameHint: "Ce sera votre lien : beassistlink.com/{username}",
+      usernameHint: "Ce sera votre lien : beassist-link.com/{username}",
       emailLabel: "Email",
       passwordLabel: "Mot de passe",
       strengthPrefix: "Sécurité :",
@@ -743,7 +743,7 @@ export const en: typeof fr = {
       titlePlaceholder: "My blog post",
       aliasLabel: "Custom alias (optional)",
       aliasPlaceholder: "my-link",
-      aliasHint: "Your link: beassistlink.com/r/my-link",
+      aliasHint: "Your link: beassist-link.com/r/my-link",
       aliasUnavailable: "Available with Starter or Pro",
       create: "Create link",
       cancel: "Cancel",
@@ -1156,7 +1156,7 @@ export const en: typeof fr = {
       {
         title: "Drop it in your bio",
         description:
-          "Copy your beassistlink.com/you link and paste it in your Instagram, TikTok, YouTube bio… Your followers just need one click.",
+          "Copy your beassist-link.com/you link and paste it in your Instagram, TikTok, YouTube bio… Your followers just need one click.",
       },
     ],
   },
@@ -1320,7 +1320,7 @@ export const en: typeof fr = {
       nameLabel: "Full name",
       namePlaceholder: "John Doe",
       usernameLabel: "Username",
-      usernameHint: "This will be your link: beassistlink.com/{username}",
+      usernameHint: "This will be your link: beassist-link.com/{username}",
       emailLabel: "Email",
       passwordLabel: "Password",
       strengthPrefix: "Strength:",
