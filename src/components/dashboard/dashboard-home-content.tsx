@@ -208,11 +208,11 @@ export function DashboardHomeContent({
                   key={link.id}
                   className="flex items-center justify-between px-6 py-4 border-b border-gray-50 last:border-0 hover:bg-gray-50 transition-colors"
                 >
-                  <div className="min-w-0 flex-1">
-                    <p className="text-sm font-semibold text-gray-900 truncate">
+                  <div className="min-w-0 flex-1 overflow-hidden">
+                    <p className="text-sm font-semibold text-gray-900 overflow-x-auto whitespace-nowrap scrollbar-none">
                       {link.title || link.slug}
                     </p>
-                    <p className="text-xs text-gray-400 mt-0.5 truncate">
+                    <p className="text-xs text-gray-400 mt-0.5 overflow-x-auto whitespace-nowrap scrollbar-none">
                       {link.url}
                     </p>
                   </div>
