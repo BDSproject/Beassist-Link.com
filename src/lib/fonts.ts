@@ -59,6 +59,7 @@ export const fontBodoni = Bodoni_Moda({
   subsets: ["latin"],
   variable: "--font-bodoni",
   display: "swap",
+  adjustFontFallback: false,
 });
 
 // ── Style & Design (10 additional fonts) ─────────────────────────────────────
