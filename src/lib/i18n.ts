@@ -403,7 +403,7 @@ export const fr = {
   hero: {
     badge: "Alternative Linktree française — gratuit 🇫🇷",
     heading1: "Un seul lien en bio.",
-    heading2: "Une page. Toutes tes destinations.",
+    heading2: "Une page. Tout ton univers.",
     subheading:
       "Crée ta page de liens personnalisée en 30 secondes. Glisse-la dans ta bio Instagram, TikTok ou YouTube.",
     subheadingStrong: "Gratuit · Sans logo · Conforme RGPD.",
