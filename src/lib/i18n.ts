@@ -1091,6 +1091,7 @@ export const en: typeof fr = {
     badge: "The link in bio platform for creators 🔗",
     heading1: "Your link in bio.",
     heading2: "All your destinations.",
+    heading3: "All your universe.",
     subheading:
       "Group all your socials, collabs and content in one link. Drop it in your Instagram, TikTok or YouTube bio.",
     subheadingStrong: "Simple, branded, powerful.",
