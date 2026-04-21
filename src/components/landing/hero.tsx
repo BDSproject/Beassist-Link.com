@@ -91,8 +91,9 @@ export function Hero() {
 
             {/* Heading */}
             <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6">
-              {t.hero.heading1}{" "}
+              <span className="block">{t.hero.heading1}</span>
               <span
+                className="block"
                 style={{
                   background: "linear-gradient(135deg, #8F00FF 0%, #6200CC 100%)",
                   WebkitBackgroundClip: "text",
@@ -100,7 +101,18 @@ export function Hero() {
                   backgroundClip: "text",
                 }}
               >
-                {t.hero.heading2}{" "}{t.hero.heading3}
+                {t.hero.heading2}
+              </span>
+              <span
+                className="block"
+                style={{
+                  background: "linear-gradient(135deg, #8F00FF 0%, #6200CC 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                {t.hero.heading3}
               </span>
             </h1>
 
