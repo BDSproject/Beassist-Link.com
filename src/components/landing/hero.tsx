@@ -103,6 +103,8 @@ export function Hero() {
               >
                 {t.hero.heading2}
               </span>
+              <br />
+              {t.hero.heading3}
             </h1>
 
             {/* Subheading */}
