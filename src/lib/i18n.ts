@@ -1089,8 +1089,8 @@ export const en: typeof fr = {
   },
   hero: {
     badge: "The link in bio platform for creators 🔗",
-    heading1: "Un seul lien en bio.",
-    heading2: "One, link.",
+    heading1: "One, link in bio.",
+    heading2: "One page.",
     heading3: "All your universe.",
     subheading:
       "Group all your socials, collabs and content in one link. Drop it in your Instagram, TikTok or YouTube bio.",
