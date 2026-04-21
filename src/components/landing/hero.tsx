@@ -90,10 +90,10 @@ export function Hero() {
             </div>
 
             {/* Heading */}
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.05] mb-6">
-              <span className="block">{t.hero.heading1}</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.15] mb-6">
+              <span className="block whitespace-nowrap">{t.hero.heading1}</span>
               <span
-                className="block"
+                className="block whitespace-nowrap"
                 style={{
                   background: "linear-gradient(135deg, #8F00FF 0%, #6200CC 100%)",
                   WebkitBackgroundClip: "text",
@@ -104,7 +104,7 @@ export function Hero() {
                 {t.hero.heading2}
               </span>
               <span
-                className="block"
+                className="block whitespace-nowrap"
                 style={{
                   background: "linear-gradient(135deg, #8F00FF 0%, #6200CC 100%)",
                   WebkitBackgroundClip: "text",
