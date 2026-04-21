@@ -403,8 +403,8 @@ export const fr = {
   hero: {
     badge: "Alternative Linktree française — gratuit 🇫🇷",
     heading1: "Un seul lien en bio.",
-    heading2: "Une page. Tout ton univers.",
-    heading3:"Tout ton univers.",
+    heading2: "Une page.",
+    heading3: "Tout ton univers.",
     subheading:
       "Crée ta page de liens personnalisée en 30 secondes. Glisse-la dans ta bio Instagram, TikTok ou YouTube.",
     subheadingStrong: "Gratuit · Sans logo · Conforme RGPD.",
@@ -1089,8 +1089,8 @@ export const en: typeof fr = {
   },
   hero: {
     badge: "The link in bio platform for creators 🔗",
-    heading1: "Your link in bio.",
-    heading2: "All your destinations.",
+    heading1: "Un seul lien en bio.",
+    heading2: "One, link.",
     heading3: "All your universe.",
     subheading:
       "Group all your socials, collabs and content in one link. Drop it in your Instagram, TikTok or YouTube bio.",
