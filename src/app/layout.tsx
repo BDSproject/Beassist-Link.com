@@ -91,9 +91,10 @@ export const metadata: Metadata = {
     icon: [
       { url: "/favicon.png", type: "image/png" },
       { url: "/icon.svg", type: "image/svg+xml" },
+      { url: "/apple-touch-icon-180x180.png", type: "image/png", sizes: "180x180" },
     ],
     shortcut: "/favicon.png",
-    apple: "/apple-touch-icon.png",
+    apple: "/apple-touch-icon-180x180.png",
   },
   robots: {
     index: true,
