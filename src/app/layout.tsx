@@ -89,12 +89,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.png", type: "image/png" },
-      { url: "/icon.svg", type: "image/svg+xml" },
-      { url: "/apple-touch-icon-180x180.png", type: "image/png", sizes: "180x180" },
+      { url: "/favicon.png?v=2", type: "image/png" },
+      { url: "/icon.svg?v=2", type: "image/svg+xml" },
+      { url: "/apple-touch-icon-180x180.png?v=2", type: "image/png", sizes: "180x180" },
     ],
-    shortcut: "/favicon.png",
-    apple: "/apple-touch-icon-180x180.png",
+    shortcut: "/favicon.png?v=2",
+    apple: "/apple-touch-icon-180x180.png?v=2",
   },
   robots: {
     index: true,
