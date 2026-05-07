@@ -39,73 +39,6 @@ export default function QRCodePage() {
 
   const isFree = !session?.user?.plan || session.user.plan === "FREE";
 
-  if (isFree) {
-    return (
-      <div className="max-w-2xl mx-auto p-8 flex flex-col items-center text-center">
-        <div className="w-20 h-20 rounded-2xl bg-[#8F00FF]/10 flex items-center justify-center mb-6">
-          <Lock className="w-9 h-9 text-[#8F00FF]" />
-        </div>
-        <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          {lang === "fr" ? "QR Codes — Fonctionnalite payante" : "QR Codes — Paid feature"}
-        </h1>
-        <p className="text-gray-500 mb-8 max-w-md">
-          {lang === "fr"
-            ? "Generez des QR codes personnalises pour vos liens, flyers et cartes de visite. Disponible a partir du plan Starter."
-            : "Generate custom QR codes for your links, flyers, and business cards. Available from the Starter plan."}
-        </p>
-
-        {/* Feature preview */}
-        <div className="w-full bg-gray-50 rounded-2xl p-6 mb-8 relative overflow-hidden">
-          <div className="absolute inset-0 backdrop-blur-[2px] bg-white/60 z-10 flex items-center justify-center">
-            <div className="flex items-center gap-2 bg-[#8F00FF] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
-              <Lock className="w-3.5 h-3.5" />
-              {lang === "fr" ? "Disponible en Starter" : "Available in Starter"}
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4 opacity-40 pointer-events-none select-none">
-            <div className="bg-white rounded-xl p-4 border border-gray-200">
-              <div className="w-full aspect-square bg-gray-200 rounded-lg mb-2" />
-              <div className="h-2 bg-gray-200 rounded w-3/4 mx-auto" />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-gray-200">
-              <div className="w-full aspect-square bg-purple-100 rounded-lg mb-2" />
-              <div className="h-2 bg-gray-200 rounded w-2/3 mx-auto" />
-            </div>
-            <div className="bg-white rounded-xl p-4 border border-gray-200">
-              <div className="w-full aspect-square bg-blue-100 rounded-lg mb-2" />
-              <div className="h-2 bg-gray-200 rounded w-3/4 mx-auto" />
-            </div>
-          </div>
-        </div>
-
-        {/* Benefits list */}
-        <ul className="text-left space-y-3 mb-8 w-full max-w-sm">
-          {(lang === "fr"
-            ? ["Couleurs et logo personnalises", "Telechargement PNG haute resolution (512px)", "QR pour page bio ou n'importe quel lien", "Correction d'erreurs ajustable",]
-            : ["Custom colors and logo", "High-res PNG download (512px)", "QR for bio page or any link", "Adjustable error correction"]
-          ).map((item) => (
-            <li key={item} className="flex items-center gap-3 text-sm text-gray-700">
-              <Check className="w-4 h-4 text-[#8F00FF] flex-shrink-0" />
-              {item}
-            </li>
-          ))}
-        </ul>
-
-        <Button
-          onClick={() => router.push("/dashboard/billing")}
-          style={{ backgroundColor: "#8F00FF" }}
-          className="text-white hover:opacity-90 px-8 py-3 text-base font-semibold"
-        >
-          <Sparkles className="w-4 h-4 mr-2" />
-          {lang === "fr" ? "Passer au Starter — 6€/mois" : "Upgrade to Starter — €6/month"}
-        </Button>
-        <p className="text-xs text-gray-400 mt-3">
-          {lang === "fr" ? "Sans engagement · Annulez quand vous voulez" : "No commitment · Cancel anytime"}
-        </p>
-      </div>
-    );
-  }
-
   const bioUrl =
     typeof window !== "undefined"
       ? `${window.location.origin}/${session?.user?.username || ""}`
@@ -180,6 +113,73 @@ export default function QRCodePage() {
       : "Invalid URL. Start with https://",
     quickColors: isFr ? "Couleurs rapides" : "Quick colors",
   };
+
+  if (isFree) {
+    return (
+      <div className="max-w-2xl mx-auto p-8 flex flex-col items-center text-center">
+        <div className="w-20 h-20 rounded-2xl bg-[#8F00FF]/10 flex items-center justify-center mb-6">
+          <Lock className="w-9 h-9 text-[#8F00FF]" />
+        </div>
+        <h1 className="text-2xl font-bold text-gray-900 mb-2">
+          {lang === "fr" ? "QR Codes — Fonctionnalite payante" : "QR Codes — Paid feature"}
+        </h1>
+        <p className="text-gray-500 mb-8 max-w-md">
+          {lang === "fr"
+            ? "Generez des QR codes personnalises pour vos liens, flyers et cartes de visite. Disponible a partir du plan Starter."
+            : "Generate custom QR codes for your links, flyers, and business cards. Available from the Starter plan."}
+        </p>
+
+        {/* Feature preview */}
+        <div className="w-full bg-gray-50 rounded-2xl p-6 mb-8 relative overflow-hidden">
+          <div className="absolute inset-0 backdrop-blur-[2px] bg-white/60 z-10 flex items-center justify-center">
+            <div className="flex items-center gap-2 bg-[#8F00FF] text-white text-sm font-semibold px-4 py-2 rounded-full shadow-lg">
+              <Lock className="w-3.5 h-3.5" />
+              {lang === "fr" ? "Disponible en Starter" : "Available in Starter"}
+            </div>
+          </div>
+          <div className="grid grid-cols-3 gap-4 opacity-40 pointer-events-none select-none">
+            <div className="bg-white rounded-xl p-4 border border-gray-200">
+              <div className="w-full aspect-square bg-gray-200 rounded-lg mb-2" />
+              <div className="h-2 bg-gray-200 rounded w-3/4 mx-auto" />
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-gray-200">
+              <div className="w-full aspect-square bg-purple-100 rounded-lg mb-2" />
+              <div className="h-2 bg-gray-200 rounded w-2/3 mx-auto" />
+            </div>
+            <div className="bg-white rounded-xl p-4 border border-gray-200">
+              <div className="w-full aspect-square bg-blue-100 rounded-lg mb-2" />
+              <div className="h-2 bg-gray-200 rounded w-3/4 mx-auto" />
+            </div>
+          </div>
+        </div>
+
+        {/* Benefits list */}
+        <ul className="text-left space-y-3 mb-8 w-full max-w-sm">
+          {(lang === "fr"
+            ? ["Couleurs et logo personnalises", "Telechargement PNG haute resolution (512px)", "QR pour page bio ou n'importe quel lien", "Correction d'erreurs ajustable",]
+            : ["Custom colors and logo", "High-res PNG download (512px)", "QR for bio page or any link", "Adjustable error correction"]
+          ).map((item) => (
+            <li key={item} className="flex items-center gap-3 text-sm text-gray-700">
+              <Check className="w-4 h-4 text-[#8F00FF] flex-shrink-0" />
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        <Button
+          onClick={() => router.push("/dashboard/billing")}
+          style={{ backgroundColor: "#8F00FF" }}
+          className="text-white hover:opacity-90 px-8 py-3 text-base font-semibold"
+        >
+          <Sparkles className="w-4 h-4 mr-2" />
+          {lang === "fr" ? "Passer au Starter — 6€/mois" : "Upgrade to Starter — €6/month"}
+        </Button>
+        <p className="text-xs text-gray-400 mt-3">
+          {lang === "fr" ? "Sans engagement · Annulez quand vous voulez" : "No commitment · Cancel anytime"}
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-6xl mx-auto p-4 sm:p-6 lg:p-8">
