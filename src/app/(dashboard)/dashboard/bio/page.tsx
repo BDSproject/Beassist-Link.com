@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { useSession } from "next-auth/react";
+import { AdaptiveBioLink } from "@/components/ui/adaptive-bio-link";
 import { toast } from "react-hot-toast";
 import {
   Plus, Trash2, GripVertical, Eye, Palette, User, Globe, Pencil,
@@ -1257,14 +1258,9 @@ export default function BioPage() {
 
             <div className="mt-4 p-3 bg-gray-50 rounded-xl text-center">
               <p className="text-xs text-gray-500 mb-1">{b.yourLink}</p>
-              <a
-                href={`/${session?.user?.username}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-sm font-medium text-[#8F00FF] hover:underline"
-              >
-                beassist-link.com/{session?.user?.username}
-              </a>
+              {session?.user?.username && (
+                <AdaptiveBioLink username={session.user.username} />
+              )}
             </div>
           </div>
         </div>

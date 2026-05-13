@@ -16,6 +16,7 @@ import { Badge } from "@/components/ui/badge";
 import { formatNumber } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
 import { SocialIcon } from "@/components/ui/social-icon";
+import { AdaptiveBioLink } from "@/components/ui/adaptive-bio-link";
 
 interface BioLink {
   id: string;
@@ -253,13 +254,7 @@ export function DashboardHomeContent({
                   <h3 className="font-bold text-gray-900">
                     {bioPage.title || userName}
                   </h3>
-                  <Link
-                    href={`/${bioPage.username}`}
-                    target="_blank"
-                    className="inline-flex items-center rounded-md px-2 py-0.5 text-sm font-medium text-[#4B0082] bg-white/90 ring-1 ring-black/10 shadow-sm backdrop-blur-sm hover:bg-white hover:text-[#3D0068] hover:underline"
-                  >
-                    beassist-link.com/{bioPage.username}
-                  </Link>
+                  <AdaptiveBioLink username={bioPage.username} />
                 </div>
               </div>
 
