@@ -256,7 +256,7 @@ export function DashboardHomeContent({
                   <Link
                     href={`/${bioPage.username}`}
                     target="_blank"
-                    className="text-sm text-[#8F00FF] hover:underline"
+                    className="inline-flex items-center rounded-md px-2 py-0.5 text-sm font-medium text-[#4B0082] bg-white/90 ring-1 ring-black/10 shadow-sm backdrop-blur-sm hover:bg-white hover:text-[#3D0068] hover:underline"
                   >
                     beassist-link.com/{bioPage.username}
                   </Link>
