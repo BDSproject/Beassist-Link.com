@@ -6,14 +6,6 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
-// Style réutilisable pour le dégradé
-const gradientStyle = {
-  background: "linear-gradient(135deg, #8F00FF 0%, #6200CC 100%)",
-  WebkitBackgroundClip: "text",
-  WebkitTextFillColor: "transparent",
-  backgroundClip: "text",
-};
-
 function PhoneMockup() {
   return (
     <div
@@ -105,13 +97,17 @@ export function Hero() {
                 <span>{t.hero.badge}</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.15] mb-6">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.2] mb-6">
                 <span className="block">{t.hero.heading1}</span>
-                <span className="block" style={gradientStyle}>
-                  {t.hero.heading2}
+                <span className="block">
+                  <span className="inline-block pb-[0.12em] leading-[1.2] bg-gradient-to-br from-[#8F00FF] to-[#6200CC] bg-clip-text text-transparent">
+                    {t.hero.heading2}
+                  </span>
                 </span>
-                <span className="block" style={gradientStyle}>
-                  {t.hero.heading3}
+                <span className="block">
+                  <span className="inline-block pb-[0.12em] leading-[1.2] bg-gradient-to-br from-[#8F00FF] to-[#6200CC] bg-clip-text text-transparent">
+                    {t.hero.heading3}
+                  </span>
                 </span>
               </h1>
 
