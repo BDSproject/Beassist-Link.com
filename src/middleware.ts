@@ -9,6 +9,12 @@ import type { NextRequest } from "next/server";
 export function middleware(request: NextRequest) {
   const hostname = request.headers.get("host") ?? "";
 
+  if (hostname === "beassist-link.com") {
+    const redirectUrl = new URL(request.url);
+    redirectUrl.host = "www.beassist-link.com";
+    return NextResponse.redirect(redirectUrl, 301);
+  }
+
   const MAIN_DOMAINS = [
     "beassist-link.com",
     "www.beassist-link.com",

@@ -16,11 +16,11 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "BeassistLink — Alternative Linktree Française Gratuite",
+    default: "BeassistLink — Alternative Linktree Française optimisée",
     template: "%s | BeassistLink",
   },
   description:
-    "Créez votre page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube — gratuit, sans logo, conforme RGPD.",
+    "Créez votre page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans.",
   keywords: [
     // FR — haute intention
     "lien en bio instagram",
@@ -56,10 +56,6 @@ export const metadata: Metadata = {
   publisher: "BeassistLink",
   alternates: {
     canonical: BASE,
-    languages: {
-      "fr-FR": BASE,
-      "en-US": `${BASE}/en`,
-    },
   },
   openGraph: {
     title: "BeassistLink — Alternative Linktree Française Gratuite",
@@ -68,7 +64,6 @@ export const metadata: Metadata = {
     url: BASE,
     siteName: "BeassistLink",
     locale: "fr_FR",
-    alternateLocale: "en_US",
     type: "website",
     images: [
       {
@@ -125,9 +120,36 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": `${BASE}/#website`,
+        url: BASE,
+        name: "BeassistLink",
+        inLanguage: "fr-FR",
+      },
+      {
+        "@type": "Organization",
+        "@id": `${BASE}/#organization`,
+        name: "BeassistLink",
+        url: BASE,
+        logo: {
+          "@type": "ImageObject",
+          url: `${BASE}/icon.svg`,
+        },
+      },
+    ],
+  };
+
   return (
     <html lang="fr" suppressHydrationWarning className={`${inter.variable} ${fontVarClasses}`}>
       <body className="font-sans antialiased">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <Providers>{children}</Providers>
         <Analytics />
         <SpeedInsights />

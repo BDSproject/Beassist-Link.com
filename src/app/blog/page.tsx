@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
 
 export const metadata: Metadata = {
-  title: "Blog — Conseils Link in Bio, Comparatifs Linktree & Stratégies Créateur",
+  title: "Blog — Conseils Link in Bio, Comparatifs Linktree & Stratégies.",
   description:
     "Tutoriels, comparatifs et conseils pour optimiser votre lien bio Instagram, TikTok et YouTube. Alternative française à Linktree — articles en français.",
   keywords: [

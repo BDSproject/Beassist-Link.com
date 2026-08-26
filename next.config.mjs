@@ -1,6 +1,5 @@
-
-
 const nextConfig = {
+  trailingSlash: false,
   images: {
     remotePatterns: [
       { protocol: "https", hostname: "avatars.githubusercontent.com" },

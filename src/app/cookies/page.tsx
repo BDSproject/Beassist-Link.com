@@ -25,7 +25,7 @@ const CONTENT = {
     title: "Politique de cookies",
     updatedAt: "Dernière mise à jour : avril 2026",
     intro:
-      "Le site BeassistLink (beassistwebapp.fr) utilise des cookies et technologies similaires pour assurer le bon fonctionnement du service, améliorer votre expérience et mesurer l'audience. Cette page vous explique ce qu'est un cookie, quels cookies nous utilisons et comment vous pouvez les gérer.",
+      "Le site BeassistLink (beassist-link.com) utilise des cookies et technologies similaires pour assurer le bon fonctionnement du service, améliorer votre expérience et mesurer l'audience. Cette page vous explique ce qu'est un cookie, quels cookies nous utilisons et comment vous pouvez les gérer.",
     sections: [
       {
         title: "1. Qu'est-ce qu'un cookie ?",
@@ -102,7 +102,7 @@ const CONTENT = {
       },
       {
         title: "9. Contact",
-        text: "Pour toute question relative à notre utilisation des cookies ou à vos données personnelles, contactez-nous à : contact@beassistwebapp.fr — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+        text: "Pour toute question relative à notre utilisation des cookies ou à vos données personnelles, contactez-nous à : contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
       },
     ] as Section[],
     tableHeaders: ["Nom du cookie", "Finalité", "Durée", "Type"],
@@ -112,7 +112,7 @@ const CONTENT = {
     title: "Cookie Policy",
     updatedAt: "Last updated: April 2026",
     intro:
-      "The BeassistLink website (beassistwebapp.fr) uses cookies and similar technologies to ensure the service works properly, improve your experience and measure audience. This page explains what a cookie is, which cookies we use and how you can manage them.",
+      "The BeassistLink website (beassist-link.com) uses cookies and similar technologies to ensure the service works properly, improve your experience and measure audience. This page explains what a cookie is, which cookies we use and how you can manage them.",
     sections: [
       {
         title: "1. What is a cookie?",
@@ -189,7 +189,7 @@ const CONTENT = {
       },
       {
         title: "9. Contact",
-        text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassistwebapp.fr — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+        text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
       },
     ] as Section[],
     tableHeaders: ["Cookie name", "Purpose", "Duration", "Type"],

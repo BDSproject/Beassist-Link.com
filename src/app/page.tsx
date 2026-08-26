@@ -12,14 +12,14 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   title: "Alternative Linktree Française Gratuite — BeassistLink",
   description:
-    "BeassistLink est l'alternative française gratuite à Linktree. Créez votre page de liens bio pour Instagram, TikTok, YouTube en 30 secondes. Sans logo, sans abonnement, conforme RGPD.",
+    "BeassistLink est l'alternative française gratuite à Linktree. Créez votre page de liens bio pour Instagram, TikTok, YouTube en 30 secondes.",
   alternates: {
     canonical: BASE,
   },
   openGraph: {
     title: "Alternative Linktree Française Gratuite — BeassistLink",
     description:
-      "Plusieurs liens en bio Instagram, TikTok, YouTube. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
+      "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
   },
 };
@@ -34,7 +34,7 @@ const jsonLd = {
       url: BASE,
       name: "BeassistLink",
       description:
-        "Alternative française gratuite à Linktree — page de liens bio pour Instagram, TikTok, YouTube",
+        "Alternative française gratuite à Linktree — page de liens bio pour Instagram, TikTok, YouTube, OnlyFans, Facebook",
       inLanguage: "fr-FR",
       potentialAction: {
         "@type": "SearchAction",

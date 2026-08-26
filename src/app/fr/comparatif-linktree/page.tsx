@@ -7,9 +7,9 @@ import { Check, X, ArrowRight } from "lucide-react";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "Comparatif Linktree 2026 — Meilleure Alternative Française Gratuite",
+  title: "Comparatif Linktree 2026 — Meilleure Alternative Française.",
   description:
-    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Alternative française gratuite, sans logo, RGPD. Plusieurs liens en bio Instagram et TikTok.",
+    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Alternative française gratuite, sans logo, RGPD.",
   keywords: [
     "alternative linktree",
     "linktree sans logo",

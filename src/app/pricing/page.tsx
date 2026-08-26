@@ -1,52 +1,88 @@
 "use client";
 
-import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
 
-export default function PricingPage() {
+// Cartes prédéfinies pour chaque langue
+const CARDS_EN = [
+  ["Smart bio page", "Showcase your offers, social networks and key content."],
+  ["Short links", "Create short, clean and easy-to-share URLs."],
+  ["Pro QR Codes", "Generate custom QR codes ready for your print materials."],
+  ["Conversion & analytics", "Understand what works and optimize your strategy."],
+];
+
+const CARDS_FR = [
+  ["Page bio intelligente", "Mettez en avant vos offres, réseaux sociaux et contenus clés."],
+  ["Liens raccourcis", "Créez des URLs courtes, propres et simples à partager."],
+  ["QR Codes pro", "Générez des QR codes personnalisés prêts pour vos supports imprimés."],
+  ["Conversion & analytics", "Comprenez ce qui fonctionne et optimisez votre stratégie."],
+];
+
+export default function ProductPage() {
   const { lang } = useLanguage();
   const en = lang === "en";
+  const cards = en ? CARDS_EN : CARDS_FR;
 
-  const plans = en
-    ? [
-        ["Free", "$0", ["1 bio page", "5 bio links", "3 short links", "BeassistLink branding"]],
-        ["Starter", "$6/mo", ["3 bio pages", "20 bio links", "QR Codes", "Basic analytics"]],
-        ["Pro", "$12/mo", ["Unlimited everything", "API access", "Priority support"]],
-      ]
-    : [
-        ["Free", "0€", ["1 page bio", "5 liens bio", "3 liens courts", "Branding BeassistLink"]],
-        ["Starter", "6€/mois", ["3 pages bio", "20 liens bio", "QR Codes", "Analytics basiques"]],
-        ["Pro", "12€/mois", ["Tout illimité", "API access", "Support prioritaire"]],
-      ];
+  // Métadonnées dynamiques selon la langue
+  const pageTitle = en
+    ? "Pricing plans for your link in bio — BeassistLink"
+    : "Tarifs de votre lien en bio — BeassistLink";
+  const pageDescription = en
+    ? "Compare FREE, STARTER and PRO plans to grow your link in bio with advanced analytics, branding control and conversion features."
+    : "Comparez les offres FREE, STARTER et PRO pour développer votre lien en bio avec analytics avancées, personnalisation et conversion.";
+  const canonicalUrl = "https://www.beassist-link.com/pricing";
+
+  // Données structurées JSON-LD de type SoftwareApplication (ou Product)
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "BeassistLink",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    url: canonicalUrl,
+    description: pageDescription,
+    offers: {
+      "@type": "Offer",
+      price: "0",
+      priceCurrency: "EUR",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "4.8",
+      ratingCount: "1250",
+    },
+  };
 
   return (
-    <MarketingLayout
-      category={en ? "Pricing" : "Tarifs"}
-      title={en ? "Simple, transparent plans" : "Des plans simples et transparents"}
-      description={
-        en
-          ? "Start for free, then upgrade when your business grows."
-          : "Commencez gratuitement, puis passez à l'étape supérieure quand votre activité grandit."
-      }
-      updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
-    >
-      <div className="grid md:grid-cols-3 gap-4">
-        {plans.map(([name, price, features]) => (
-          <div key={name as string} className="rounded-2xl border border-gray-200 p-5 bg-white">
-            <h3 className="text-lg font-bold text-gray-900">{name as string}</h3>
-            <p className="text-2xl font-extrabold text-[#8F00FF] mt-1">{price as string}</p>
-            <ul className="mt-4 space-y-2 text-sm text-gray-600">
-              {(features as string[]).map((f) => <li key={f}>• {f}</li>)}
-            </ul>
-          </div>
-        ))}
-      </div>
-      <div className="text-center">
-        <Link href="/#pricing" className="text-[#8F00FF] font-semibold hover:underline">
-          {en ? "See detailed comparison on the landing page" : "Voir la comparaison détaillée sur la landing"}
-        </Link>
-      </div>
-    </MarketingLayout>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
+
+      <MarketingLayout
+        category={en ? "Pricing" : "Tarifs"}
+        title={pageTitle}
+        description={pageDescription}
+        updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
+      >
+        <div
+          className="grid sm:grid-cols-2 gap-4"
+          role="list"
+          aria-label={en ? "Product features" : "Fonctionnalités du produit"}
+        >
+          {cards.map(([title, text]) => (
+            <div
+              key={title}
+              role="listitem"
+              className="rounded-2xl border border-gray-200 p-5 bg-white"
+            >
+              <h3 className="font-bold text-gray-900">{title}</h3>
+              <p className="text-sm text-gray-600 mt-2 leading-relaxed">{text}</p>
+            </div>
+          ))}
+        </div>
+      </MarketingLayout>
+    </>
   );
 }

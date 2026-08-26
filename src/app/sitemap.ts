@@ -20,12 +20,6 @@ const staticRoutes: Array<{
   // Blog — high frequency
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
-  { path: "/blog/beassistlink-vs-linktree-2026", priority: 0.85, changeFrequency: "monthly" },
-  { path: "/blog/beassistlink-vs-bio-link-alternatives", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/blog/pourquoi-choisir-solution-francaise", priority: 0.8, changeFrequency: "monthly" },
-  { path: "/blog/optimiser-bio-convertir-2026", priority: 0.75, changeFrequency: "monthly" },
-  { path: "/blog/qr-codes-bonnes-pratiques", priority: 0.7, changeFrequency: "monthly" },
-  { path: "/blog/free-vs-starter-quand-upgrader", priority: 0.7, changeFrequency: "monthly" },
   // Support / docs
   { path: "/help", priority: 0.6, changeFrequency: "monthly" },
   { path: "/docs", priority: 0.6, changeFrequency: "monthly" },
