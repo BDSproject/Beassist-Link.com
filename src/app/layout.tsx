@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { ALL_FONT_VARIABLES } from "@/lib/fonts";
@@ -149,6 +150,12 @@ export default function RootLayout({
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        <Script
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          type="module"
+          strategy="afterInteractive"
+          data-cf-beacon='{"token": "83decaccac734cb99c3125cd0a755bb3"}'
         />
         <Providers>{children}</Providers>
         <Analytics />
