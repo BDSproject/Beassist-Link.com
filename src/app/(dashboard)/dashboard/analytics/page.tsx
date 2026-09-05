@@ -39,47 +39,99 @@ export default function AnalyticsPage() {
   const d = t.dashboard.analytics;
   const [links, setLinks] = useState<LinkStat[]>([]);
   const [bio, setBio] = useState<BioStat | null>(null);
+  const [granularity, setGranularity] = useState<"day" | "month" | "year">("month");
+  const [selectedDate, setSelectedDate] = useState<string>(() =>
+    new Date().toISOString().slice(0, 7)
+  );
   const [loading, setLoading] = useState(true);
 
-  const { plan: dbPlan } = usePlan();
-  const isPro = dbPlan === "STARTER" || dbPlan === "PRO";
+  // adjust default selectedDate when granularity changes
+  useEffect(() => {
+    if (granularity === "day") {
+      setSelectedDate(new Date().toISOString().slice(0, 10));
+    } else if (granularity === "month") {
+      setSelectedDate(new Date().toISOString().slice(0, 7));
+    } else {
+      setSelectedDate(String(new Date().getFullYear()));
+    }
+  }, [granularity]);
+
+  const { plan: dbPlan, loading: planLoading } = usePlan();
+  const hasPaidAnalytics = dbPlan === "STARTER" || dbPlan === "PRO";
+
+  const buildRange = (g: string, value: string) => {
+    if (g === "day") {
+      const start = new Date(value);
+      const end = new Date(start);
+      end.setDate(start.getDate() + 1);
+      return { start, end };
+    }
+    if (g === "month") {
+      const [y, m] = value.split("-");
+      const start = new Date(Number(y), Number(m) - 1, 1);
+      const end = new Date(Number(y), Number(m), 1);
+      return { start, end };
+    }
+    // year
+    const year = Number(value);
+    const start = new Date(year, 0, 1);
+    const end = new Date(year + 1, 0, 1);
+    return { start, end };
+  };
 
   const fetchData = useCallback(async () => {
-    try {
-      const [linksRes, bioRes, bioLinksRes] = await Promise.all([
-        fetch("/api/links"),
-        fetch("/api/bio"),
-        fetch("/api/bio/links"),
-      ]);
-      const linksData = await linksRes.json();
-      const bioData = await bioRes.json();
-      const bioLinksData = await bioLinksRes.json();
+    if (!hasPaidAnalytics) {
+      setLoading(false);
+      return;
+    }
 
-      setLinks(linksData.links || []);
-      if (bioData.bioPage) {
-        setBio({
-          title: bioData.bioPage.title,
-          views: bioData.bioPage.views || 0,
-          links: bioLinksData.links || [],
-        });
-      }
-    } catch {
+    setLoading(true);
+    try {
+      const { start, end } = buildRange(granularity, selectedDate);
+      const res = await fetch(
+        `/api/analytics?start=${encodeURIComponent(start.toISOString())}&end=${encodeURIComponent(
+          end.toISOString()
+        )}&groupBy=${granularity}`
+      );
+      const data = await res.json();
+
+      // map topLinks to LinkStat-like objects
+      const mappedLinks: LinkStat[] = (data.topLinks || []).map((t: any) => ({
+        id: t.linkId || "",
+        title: t.link?.title || "",
+        slug: t.link?.slug || "",
+        clicks: t.count || 0,
+        url: t.link?.url || "",
+      }));
+
+      setLinks(mappedLinks);
+      setBio((prev) => ({
+        title: prev?.title || "",
+        views: data.bioViews ?? prev?.views ?? 0,
+        links: prev?.links || [],
+      }));
+    } catch (err) {
       // silently fail
     } finally {
       setLoading(false);
     }
-  }, []);
+  }, [granularity, selectedDate, hasPaidAnalytics]);
 
   useEffect(() => {
+    if (planLoading) return;
+    if (!hasPaidAnalytics) {
+      setLoading(false);
+      return;
+    }
     fetchData();
-  }, [fetchData]);
+  }, [fetchData, hasPaidAnalytics, planLoading]);
 
   const totalClicks = links.reduce((acc, l) => acc + l.clicks, 0);
   const totalBioClicks =
     bio?.links.reduce((acc, l) => acc + l.clicks, 0) ?? 0;
   const topLink = [...links].sort((a, b) => b.clicks - a.clicks)[0];
 
-  if (loading) {
+  if (planLoading || loading) {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="w-8 h-8 border-2 border-[#8F00FF] border-t-transparent rounded-full animate-spin" />
@@ -88,7 +140,7 @@ export default function AnalyticsPage() {
   }
 
   // Free plan - show upgrade wall
-  if (!isPro) {
+  if (!hasPaidAnalytics) {
     return (
       <div className="max-w-4xl mx-auto p-4 sm:p-6 lg:p-8">
         <div className="mb-8">
@@ -163,11 +215,53 @@ export default function AnalyticsPage() {
             {d.subtitlePro}
           </p>
         </div>
-        <Badge
-          variant={session?.user?.plan === "PRO" ? "primary" : "outline"}
-        >
-          Plan {session?.user?.plan}
-        </Badge>
+        <div className="flex items-center gap-3">
+          <Badge
+            variant={session?.user?.plan === "PRO" ? "primary" : "outline"}
+          >
+            Plan {session?.user?.plan}
+          </Badge>
+
+          <div className="flex items-center gap-2">
+            <select
+              value={granularity}
+              onChange={(e) =>
+                setGranularity(e.target.value as "day" | "month" | "year")
+              }
+              className="border rounded px-2 py-1 text-sm"
+            >
+              <option value="day">Jour</option>
+              <option value="month">Mois</option>
+              <option value="year">Année</option>
+            </select>
+
+            {granularity === "day" ? (
+              <input
+                type="date"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="border rounded px-2 py-1 text-sm"
+              />
+            ) : granularity === "month" ? (
+              <input
+                type="month"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="border rounded px-2 py-1 text-sm"
+              />
+            ) : (
+              <input
+                type="number"
+                value={selectedDate}
+                onChange={(e) => setSelectedDate(e.target.value)}
+                className="border rounded px-2 py-1 text-sm w-20"
+              />
+            )}
+            <Button size="sm" onClick={() => fetchData()}>
+              Filtrer
+            </Button>
+          </div>
+        </div>
       </div>
 
       {/* Stats cards */}
