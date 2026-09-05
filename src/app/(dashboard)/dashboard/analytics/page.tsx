@@ -33,6 +33,8 @@ interface BioStat {
   links: { title: string; clicks: number }[];
 }
 
+type FilterPreset = "7d" | "30d" | "90d" | "12m" | "thisMonth";
+
 export default function AnalyticsPage() {
   const { data: session } = useSession();
   const { t } = useLanguage();
@@ -43,6 +45,7 @@ export default function AnalyticsPage() {
   const [selectedDate, setSelectedDate] = useState<string>(() =>
     new Date().toISOString().slice(0, 7)
   );
+  const [preset, setPreset] = useState<FilterPreset | null>("30d");
   const [loading, setLoading] = useState(true);
 
   // adjust default selectedDate when granularity changes
@@ -79,6 +82,35 @@ export default function AnalyticsPage() {
     return { start, end };
   };
 
+  const buildPresetRange = (p: FilterPreset) => {
+    const end = new Date();
+    const start = new Date(end);
+
+    if (p === "7d") {
+      start.setDate(end.getDate() - 7);
+      return { start, end, groupBy: "day" as const };
+    }
+
+    if (p === "30d") {
+      start.setDate(end.getDate() - 30);
+      return { start, end, groupBy: "day" as const };
+    }
+
+    if (p === "90d") {
+      start.setDate(end.getDate() - 90);
+      return { start, end, groupBy: "month" as const };
+    }
+
+    if (p === "12m") {
+      start.setMonth(end.getMonth() - 12);
+      return { start, end, groupBy: "month" as const };
+    }
+
+    // thisMonth
+    const monthStart = new Date(end.getFullYear(), end.getMonth(), 1);
+    return { start: monthStart, end, groupBy: "day" as const };
+  };
+
   const fetchData = useCallback(async () => {
     if (!hasPaidAnalytics) {
       setLoading(false);
@@ -87,12 +119,24 @@ export default function AnalyticsPage() {
 
     setLoading(true);
     try {
-      const { start, end } = buildRange(granularity, selectedDate);
+      const range = preset
+        ? buildPresetRange(preset)
+        : { ...buildRange(granularity, selectedDate), groupBy: granularity };
+
+      const { start, end, groupBy } = range;
+
       const res = await fetch(
         `/api/analytics?start=${encodeURIComponent(start.toISOString())}&end=${encodeURIComponent(
           end.toISOString()
-        )}&groupBy=${granularity}`
+        )}&groupBy=${groupBy}`
       );
+
+      if (!res.ok) {
+        setLinks([]);
+        setBio(null);
+        return;
+      }
+
       const data = await res.json();
 
       // map topLinks to LinkStat-like objects
@@ -115,7 +159,7 @@ export default function AnalyticsPage() {
     } finally {
       setLoading(false);
     }
-  }, [granularity, selectedDate, hasPaidAnalytics]);
+  }, [granularity, selectedDate, preset, hasPaidAnalytics]);
 
   useEffect(() => {
     if (planLoading) return;
@@ -223,11 +267,35 @@ export default function AnalyticsPage() {
           </Badge>
 
           <div className="flex items-center gap-2">
+            <div className="hidden md:flex items-center gap-1 mr-2">
+              {[
+                { key: "7d", label: "7j" },
+                { key: "30d", label: "30j" },
+                { key: "90d", label: "90j" },
+                { key: "12m", label: "12m" },
+                { key: "thisMonth", label: "Ce mois" },
+              ].map((p) => (
+                <button
+                  key={p.key}
+                  type="button"
+                  onClick={() => setPreset(p.key as FilterPreset)}
+                  className={`px-2 py-1 text-xs rounded border transition-colors ${
+                    preset === p.key
+                      ? "bg-[#8F00FF] text-white border-[#8F00FF]"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+
             <select
               value={granularity}
-              onChange={(e) =>
+              onChange={(e) => {
+                setPreset(null);
                 setGranularity(e.target.value as "day" | "month" | "year")
-              }
+              }}
               className="border rounded px-2 py-1 text-sm"
             >
               <option value="day">Jour</option>
@@ -239,21 +307,30 @@ export default function AnalyticsPage() {
               <input
                 type="date"
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => {
+                  setPreset(null);
+                  setSelectedDate(e.target.value);
+                }}
                 className="border rounded px-2 py-1 text-sm"
               />
             ) : granularity === "month" ? (
               <input
                 type="month"
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => {
+                  setPreset(null);
+                  setSelectedDate(e.target.value);
+                }}
                 className="border rounded px-2 py-1 text-sm"
               />
             ) : (
               <input
                 type="number"
                 value={selectedDate}
-                onChange={(e) => setSelectedDate(e.target.value)}
+                onChange={(e) => {
+                  setPreset(null);
+                  setSelectedDate(e.target.value);
+                }}
                 className="border rounded px-2 py-1 text-sm w-20"
               />
             )}
