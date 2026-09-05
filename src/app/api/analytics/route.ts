@@ -34,15 +34,26 @@ export async function GET(req: NextRequest) {
     const start = startParam ? new Date(startParam) : new Date(new Date().getFullYear(), 0, 1);
     const end = endParam ? new Date(endParam) : new Date();
 
-    // totals
+    // totals (selected period)
     const totalClicks = await db.analytics.count({
-      where: { userId, createdAt: { gte: start, lt: end } },
+      where: { userId, linkId: { not: null }, createdAt: { gte: start, lt: end } },
     });
 
     // bio views (analytics entries related to bio page)
     const bioViews = await db.analytics.count({
       where: { userId, bioPageId: { not: null }, createdAt: { gte: start, lt: end } },
     });
+
+    // totals (all-time history)
+    const [allTimeClicks, allTimeBioViews, allTimeLinksCount, allTimeBioClicksAgg] = await Promise.all([
+      db.analytics.count({ where: { userId, linkId: { not: null } } }),
+      db.analytics.count({ where: { userId, bioPageId: { not: null } } }),
+      db.link.count({ where: { userId } }),
+      db.bioLink.aggregate({
+        where: { bioPage: { userId } },
+        _sum: { clicks: true },
+      }),
+    ]);
 
     // top links (by analytics events)
     const topLinksRaw = await db.analytics.groupBy({
@@ -63,6 +74,16 @@ export async function GET(req: NextRequest) {
       count: r._count.linkId,
       link: links.find((l) => l.id === r.linkId) || null,
     }));
+
+    const topBioLinks = await db.bioLink.findMany({
+      where: { bioPage: { userId } },
+      orderBy: { clicks: "desc" },
+      take: 6,
+      select: {
+        title: true,
+        clicks: true,
+      },
+    });
 
     // top countries
     const topCountries = await db.analytics.groupBy({
@@ -100,9 +121,16 @@ export async function GET(req: NextRequest) {
       totalClicks,
       bioViews,
       topLinks,
+      topBioLinks,
       topCountries,
       topDevices,
       series,
+      allTime: {
+        totalClicks: allTimeClicks,
+        bioViews: allTimeBioViews,
+        totalLinks: allTimeLinksCount,
+        bioClicks: allTimeBioClicksAgg._sum.clicks ?? 0,
+      },
     });
   } catch (error) {
     console.error("Analytics GET error:", error);

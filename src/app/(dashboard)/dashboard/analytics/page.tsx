@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
   Link2,
   Eye,
+  SlidersHorizontal,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
@@ -37,7 +38,7 @@ type FilterPreset = "7d" | "30d" | "90d" | "12m" | "thisMonth";
 
 export default function AnalyticsPage() {
   const { data: session } = useSession();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const d = t.dashboard.analytics;
   const [links, setLinks] = useState<LinkStat[]>([]);
   const [bio, setBio] = useState<BioStat | null>(null);
@@ -47,6 +48,16 @@ export default function AnalyticsPage() {
   );
   const [preset, setPreset] = useState<FilterPreset | null>(null);
   const [loading, setLoading] = useState(true);
+  const [periodTotals, setPeriodTotals] = useState({
+    totalClicks: 0,
+    bioViews: 0,
+  });
+  const [allTimeTotals, setAllTimeTotals] = useState({
+    totalClicks: 0,
+    bioViews: 0,
+    bioClicks: 0,
+    totalLinks: 0,
+  });
 
   // adjust default selectedDate when granularity changes
   useEffect(() => {
@@ -151,9 +162,21 @@ export default function AnalyticsPage() {
       setLinks(mappedLinks);
       setBio((prev) => ({
         title: prev?.title || "",
-        views: data.bioViews ?? prev?.views ?? 0,
-        links: prev?.links || [],
+        views: data.bioViews ?? 0,
+        links: data.topBioLinks ?? [],
       }));
+
+      setPeriodTotals({
+        totalClicks: data.totalClicks ?? 0,
+        bioViews: data.bioViews ?? 0,
+      });
+
+      setAllTimeTotals({
+        totalClicks: data.allTime?.totalClicks ?? 0,
+        bioViews: data.allTime?.bioViews ?? 0,
+        bioClicks: data.allTime?.bioClicks ?? 0,
+        totalLinks: data.allTime?.totalLinks ?? 0,
+      });
     } catch (err) {
       // silently fail
     } finally {
@@ -170,10 +193,12 @@ export default function AnalyticsPage() {
     fetchData();
   }, [fetchData, hasPaidAnalytics, planLoading]);
 
-  const totalClicks = links.reduce((acc, l) => acc + l.clicks, 0);
-  const totalBioClicks =
-    bio?.links.reduce((acc, l) => acc + l.clicks, 0) ?? 0;
+  const totalClicks = periodTotals.totalClicks;
+  const totalBioClicks = allTimeTotals.bioClicks;
   const topLink = [...links].sort((a, b) => b.clicks - a.clicks)[0];
+  const periodLabel =
+    lang === "fr" ? "Période sélectionnée" : "Selected period";
+  const historyLabel = lang === "fr" ? "Cumul historique" : "All-time total";
 
   if (planLoading || loading) {
     return (
@@ -249,111 +274,47 @@ export default function AnalyticsPage() {
     );
   }
 
+  const presets = [
+    { key: "7d" as FilterPreset, label: "7j" },
+    { key: "30d" as FilterPreset, label: "30j" },
+    { key: "90d" as FilterPreset, label: "90j" },
+    { key: "12m" as FilterPreset, label: "12m" },
+    { key: "thisMonth" as FilterPreset, label: "Ce mois" },
+  ];
+
   return (
-    <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
-      {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-900">{d.title}</h1>
-          <p className="text-gray-500 mt-1">
-            {d.subtitlePro}
-          </p>
-        </div>
-        <div className="flex items-center gap-3">
-          <Badge
-            variant={session?.user?.plan === "PRO" ? "primary" : "outline"}
-          >
-            Plan {session?.user?.plan}
-          </Badge>
-
-          <div className="flex items-center gap-2">
-            <div className="hidden md:flex items-center gap-1 mr-2">
-              {[
-                { key: "7d", label: "7j" },
-                { key: "30d", label: "30j" },
-                { key: "90d", label: "90j" },
-                { key: "12m", label: "12m" },
-                { key: "thisMonth", label: "Ce mois" },
-              ].map((p) => (
-                <button
-                  key={p.key}
-                  type="button"
-                  onClick={() => setPreset(p.key as FilterPreset)}
-                  className={`px-2 py-1 text-xs rounded border transition-colors ${
-                    preset === p.key
-                      ? "bg-[#8F00FF] text-white border-[#8F00FF]"
-                      : "bg-white text-gray-600 border-gray-200 hover:border-gray-300"
-                  }`}
-                >
-                  {p.label}
-                </button>
-              ))}
+    <div className="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div className="lg:col-span-9">
+          {/* Header */}
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-8">
+            <div>
+              <h1 className="text-2xl font-bold text-gray-900">{d.title}</h1>
+              <p className="text-gray-500 mt-1">{d.subtitlePro}</p>
+              <p className="text-xs text-[#8F00FF] mt-2 font-medium">{historyLabel}</p>
             </div>
-
-            <select
-              value={granularity}
-              onChange={(e) => {
-                setPreset(null);
-                setGranularity(e.target.value as "day" | "month" | "year")
-              }}
-              className="border rounded px-2 py-1 text-sm"
+            <Badge
+              variant={session?.user?.plan === "PRO" ? "primary" : "outline"}
             >
-              <option value="day">Jour</option>
-              <option value="month">Mois</option>
-              <option value="year">Année</option>
-            </select>
-
-            {granularity === "day" ? (
-              <input
-                type="date"
-                value={selectedDate}
-                onChange={(e) => {
-                  setPreset(null);
-                  setSelectedDate(e.target.value);
-                }}
-                className="border rounded px-2 py-1 text-sm"
-              />
-            ) : granularity === "month" ? (
-              <input
-                type="month"
-                value={selectedDate}
-                onChange={(e) => {
-                  setPreset(null);
-                  setSelectedDate(e.target.value);
-                }}
-                className="border rounded px-2 py-1 text-sm"
-              />
-            ) : (
-              <input
-                type="number"
-                value={selectedDate}
-                onChange={(e) => {
-                  setPreset(null);
-                  setSelectedDate(e.target.value);
-                }}
-                className="border rounded px-2 py-1 text-sm w-20"
-              />
-            )}
-            <Button size="sm" onClick={() => fetchData()}>
-              Filtrer
-            </Button>
+              Plan {session?.user?.plan}
+            </Badge>
           </div>
-        </div>
-      </div>
 
-      {/* Stats cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          {/* Stats cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 mb-8">
         {[
           {
             label: d.totalClicks,
-            value: formatNumber(totalClicks),
+            value: formatNumber(allTimeTotals.totalClicks),
+            periodValue: formatNumber(totalClicks),
             icon: MousePointerClick,
             color: "text-blue-600",
             bg: "bg-blue-50",
           },
           {
             label: d.bioViews,
-            value: formatNumber(bio?.views ?? 0),
+            value: formatNumber(allTimeTotals.bioViews),
+            periodValue: formatNumber(periodTotals.bioViews),
             icon: Eye,
             color: "text-purple-600",
             bg: "bg-purple-50",
@@ -361,35 +322,40 @@ export default function AnalyticsPage() {
           {
             label: d.bioClicks,
             value: formatNumber(totalBioClicks),
+            periodValue: lang === "fr" ? "Historique" : "All-time",
             icon: Globe,
             color: "text-green-600",
             bg: "bg-green-50",
           },
           {
             label: d.totalLinks,
-            value: formatNumber(links.length),
+            value: formatNumber(allTimeTotals.totalLinks),
+            periodValue: lang === "fr" ? "Liens créés" : "Created links",
             icon: Link2,
             color: "text-orange-600",
             bg: "bg-orange-50",
           },
-        ].map((stat) => (
-          <Card key={stat.label} className="p-5">
-            <div className="flex items-center gap-3">
-              <div
-                className={`w-10 h-10 ${stat.bg} rounded-xl flex items-center justify-center`}
-              >
-                <stat.icon className={`w-5 h-5 ${stat.color}`} />
+          ].map((stat) => (
+            <Card key={stat.label} className="p-5">
+              <div className="flex items-center gap-3">
+                <div
+                  className={`w-10 h-10 ${stat.bg} rounded-xl flex items-center justify-center`}
+                >
+                  <stat.icon className={`w-5 h-5 ${stat.color}`} />
+                </div>
+                <div>
+                  <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
+                  <p className="text-xs text-gray-500 leading-tight">{stat.label}</p>
+                  <p className="text-[11px] text-gray-400 mt-0.5">
+                    {periodLabel}: {stat.periodValue}
+                  </p>
+                </div>
               </div>
-              <div>
-                <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
-                <p className="text-xs text-gray-500 leading-tight">{stat.label}</p>
-              </div>
-            </div>
-          </Card>
-        ))}
-      </div>
+            </Card>
+          ))}
+          </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Top short links */}
         <Card className="p-5">
           <div className="flex items-center gap-2 mb-4">
@@ -490,8 +456,8 @@ export default function AnalyticsPage() {
           )}
         </Card>
 
-        {/* Quick insights */}
-        <Card className="p-5 lg:col-span-2">
+            {/* Quick insights */}
+            <Card className="p-5 lg:col-span-2">
           <div className="flex items-center gap-2 mb-4">
             <Globe className="w-5 h-5 text-[#8F00FF]" />
             <h3 className="font-semibold text-gray-900">{d.quickInsights}</h3>
@@ -544,7 +510,117 @@ export default function AnalyticsPage() {
               </a>
             </div>
           )}
-        </Card>
+            </Card>
+          </div>
+        </div>
+
+        {/* Lateral filter panel */}
+        <aside className="lg:col-span-3 lg:sticky lg:top-24">
+          <Card className="relative overflow-hidden p-5 border border-[#8F00FF]/20 shadow-[0_20px_45px_-25px_rgba(143,0,255,0.45)] bg-gradient-to-b from-white via-[#FCF8FF] to-[#F5EBFF]">
+            <div className="pointer-events-none absolute -top-10 -right-10 w-32 h-32 rounded-full bg-[#8F00FF]/10 blur-2xl" />
+            <div className="pointer-events-none absolute -bottom-14 -left-10 w-36 h-36 rounded-full bg-[#6200CC]/10 blur-2xl" />
+            <div className="flex items-center gap-2 mb-4">
+              <div className="w-8 h-8 rounded-lg bg-[#8F00FF]/10 flex items-center justify-center">
+                <SlidersHorizontal className="w-4 h-4 text-[#8F00FF]" />
+              </div>
+              <h3 className="font-semibold text-gray-900">Filtres</h3>
+            </div>
+
+            <p className="text-xs text-gray-500 mb-3">Périodes rapides</p>
+            <div className="grid grid-cols-2 gap-2 mb-5">
+              {presets.map((p) => (
+                <button
+                  key={p.key}
+                  type="button"
+                  onClick={() => setPreset(p.key)}
+                  className={`px-2.5 py-2 text-xs rounded-lg border font-medium transition-colors ${
+                    preset === p.key
+                      ? "bg-[#8F00FF] text-white border-[#8F00FF]"
+                      : "bg-white text-gray-600 border-gray-200 hover:border-[#8F00FF]/40"
+                  }`}
+                >
+                  {p.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="space-y-3">
+              <div>
+                <label className="text-xs text-gray-500 mb-1.5 block">Granularité</label>
+                <select
+                  value={granularity}
+                  onChange={(e) => {
+                    setPreset(null);
+                    setGranularity(e.target.value as "day" | "month" | "year");
+                  }}
+                  className="w-full border rounded-lg px-3 py-2 text-sm"
+                >
+                  <option value="day">Jour</option>
+                  <option value="month">Mois</option>
+                  <option value="year">Année</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="text-xs text-gray-500 mb-1.5 block">Date</label>
+                {granularity === "day" ? (
+                  <input
+                    type="date"
+                    value={selectedDate}
+                    onChange={(e) => {
+                      setPreset(null);
+                      setSelectedDate(e.target.value);
+                    }}
+                    className="w-full border rounded-lg px-3 py-2 text-sm"
+                  />
+                ) : granularity === "month" ? (
+                  <input
+                    type="month"
+                    value={selectedDate}
+                    onChange={(e) => {
+                      setPreset(null);
+                      setSelectedDate(e.target.value);
+                    }}
+                    className="w-full border rounded-lg px-3 py-2 text-sm"
+                  />
+                ) : (
+                  <input
+                    type="number"
+                    value={selectedDate}
+                    onChange={(e) => {
+                      setPreset(null);
+                      setSelectedDate(e.target.value);
+                    }}
+                    className="w-full border rounded-lg px-3 py-2 text-sm"
+                  />
+                )}
+              </div>
+
+              <div className="flex gap-2 pt-1">
+                <Button
+                  size="sm"
+                  onClick={() => fetchData()}
+                  className="flex-1"
+                  style={{ backgroundColor: "#8F00FF", color: "white" }}
+                >
+                  Appliquer
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="flex-1"
+                  onClick={() => {
+                    setPreset(null);
+                    setGranularity("month");
+                    setSelectedDate(new Date().toISOString().slice(0, 7));
+                  }}
+                >
+                  Reset
+                </Button>
+              </div>
+            </div>
+          </Card>
+        </aside>
       </div>
     </div>
   );
