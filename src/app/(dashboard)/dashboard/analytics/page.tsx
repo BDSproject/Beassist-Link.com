@@ -45,7 +45,7 @@ export default function AnalyticsPage() {
   const [selectedDate, setSelectedDate] = useState<string>(() =>
     new Date().toISOString().slice(0, 7)
   );
-  const [preset, setPreset] = useState<FilterPreset | null>("30d");
+  const [preset, setPreset] = useState<FilterPreset | null>(null);
   const [loading, setLoading] = useState(true);
 
   // adjust default selectedDate when granularity changes
