@@ -1,11 +1,12 @@
 import type React from "react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
-import { getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
+import { getBrowserName, getDeviceType, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 
 interface Props {
   params: { username: string };
@@ -115,11 +116,30 @@ export default async function UserBioPage({ params }: Props) {
     notFound();
   }
 
-  // Incrémenter les vues en arrière-plan
-  await db.bioPage.update({
-    where: { id: bioPage.id },
-    data: { views: { increment: 1 } },
-  });
+  // Incrémenter les vues + tracer un événement analytique daté
+  const reqHeaders = headers();
+  const userAgent = reqHeaders.get("user-agent") || "";
+  const referer = reqHeaders.get("referer") || "";
+  const forwardedFor = reqHeaders.get("x-forwarded-for");
+  const ip = forwardedFor?.split(",")[0] || "unknown";
+
+  await Promise.all([
+    db.bioPage.update({
+      where: { id: bioPage.id },
+      data: { views: { increment: 1 } },
+    }),
+    db.analytics.create({
+      data: {
+        userId: bioPage.userId,
+        bioPageId: bioPage.id,
+        type: "bio_view",
+        device: getDeviceType(userAgent),
+        browser: getBrowserName(userAgent),
+        referrer: referer || undefined,
+        ip,
+      },
+    }),
+  ]);
 
   const primaryColor = bioPage.primaryColor || "#8F00FF";
   const theme = (bioPage.theme as keyof typeof THEME_STYLES) || "default";

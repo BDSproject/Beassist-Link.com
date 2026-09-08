@@ -181,3 +181,32 @@ textarea,
 .animate-float {
   animation: float 4s ease-in-out infinite;
 }
+
+/* ── Navbar animated orbs ─────────────────────────────────────────────────── */
+@keyframes navbarOrbFloat {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(10px, -8px, 0) scale(1.08);
+  }
+}
+
+@keyframes navbarOrbFloatDelayed {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-12px, 10px, 0) scale(1.06);
+  }
+}
+
+.navbar-orb-float {
+  animation: navbarOrbFloat 9s ease-in-out infinite;
+}
+
+.navbar-orb-float-delayed {
+  animation: navbarOrbFloatDelayed 11s ease-in-out infinite;
+}

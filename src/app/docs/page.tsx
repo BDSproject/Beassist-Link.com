@@ -9,26 +9,26 @@ export default function DocsPage() {
 
   const sections = en
     ? [
-        ["Quick start", "Create an account, configure your profile and publish your bio page."],
-        ["Link management", "Create short links, track clicks and optimize performance."],
-        ["Customization", "Edit themes, colors, buttons and social networks."],
-        ["Billing", "Understand plans and account upgrades."],
+        ["Quick start", "Create an account, set up your profile, and publish your bio page."],
+        ["Link management", "Create short links, see clicks, and improve what works."],
+        ["Customization", "Change themes, colors, buttons, and social links in a few clicks."],
+        ["Plans and payments", "Compare plans and switch anytime."],
       ]
     : [
-        ["Démarrage rapide", "Créer un compte, configurer son profil et publier sa page bio."],
-        ["Gestion des liens", "Créer des short links, suivre les clics et optimiser les performances."],
-        ["Personnalisation", "Modifier thèmes, couleurs, boutons et réseaux sociaux."],
-        ["Facturation", "Comprendre les plans et les upgrades de compte."],
+        ["Démarrage rapide", "Créer un compte, préparer votre profil et publier votre page bio."],
+        ["Gestion des liens", "Créer des liens courts, voir les clics et améliorer ce qui fonctionne."],
+        ["Personnalisation", "Changer le thème, les couleurs, les boutons et vos réseaux en quelques clics."],
+        ["Plans et paiements", "Comparer les plans et changer quand vous voulez."],
       ];
 
   return (
     <MarketingLayout
-      category="Documentation"
-      title={en ? "BeassistLink Documentation" : "Documentation BeassistLink"}
+      category={en ? "Guides" : "Guides"}
+      title={en ? "BeassistLink Guides" : "Guides BeassistLink"}
       description={
         en
-          ? "All the resources to get up and running with the platform quickly."
-          : "Toutes les ressources pour prendre en main la plateforme rapidement."
+          ? "Simple guides to start quickly and use BeassistLink without technical terms."
+          : "Des guides simples pour démarrer vite et utiliser BeassistLink sans jargon technique."
       }
       updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
     >

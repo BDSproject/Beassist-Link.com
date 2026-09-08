@@ -51,6 +51,7 @@ export default function AnalyticsPage() {
   const [periodTotals, setPeriodTotals] = useState({
     totalClicks: 0,
     bioViews: 0,
+    bioClicks: 0,
   });
   const [allTimeTotals, setAllTimeTotals] = useState({
     totalClicks: 0,
@@ -169,6 +170,7 @@ export default function AnalyticsPage() {
       setPeriodTotals({
         totalClicks: data.totalClicks ?? 0,
         bioViews: data.bioViews ?? 0,
+        bioClicks: data.bioClicks ?? 0,
       });
 
       setAllTimeTotals({
@@ -194,10 +196,7 @@ export default function AnalyticsPage() {
   }, [fetchData, hasPaidAnalytics, planLoading]);
 
   const totalClicks = periodTotals.totalClicks;
-  const totalBioClicks = allTimeTotals.bioClicks;
   const topLink = [...links].sort((a, b) => b.clicks - a.clicks)[0];
-  const periodLabel =
-    lang === "fr" ? "Période sélectionnée" : "Selected period";
   const historyLabel = lang === "fr" ? "Cumul historique" : "All-time total";
 
   if (planLoading || loading) {
@@ -305,24 +304,24 @@ export default function AnalyticsPage() {
         {[
           {
             label: d.totalClicks,
-            value: formatNumber(allTimeTotals.totalClicks),
-            periodValue: formatNumber(totalClicks),
+            value: formatNumber(totalClicks),
+            periodValue: formatNumber(allTimeTotals.totalClicks),
             icon: MousePointerClick,
             color: "text-blue-600",
             bg: "bg-blue-50",
           },
           {
             label: d.bioViews,
-            value: formatNumber(allTimeTotals.bioViews),
-            periodValue: formatNumber(periodTotals.bioViews),
+            value: formatNumber(periodTotals.bioViews),
+            periodValue: formatNumber(allTimeTotals.bioViews),
             icon: Eye,
             color: "text-purple-600",
             bg: "bg-purple-50",
           },
           {
             label: d.bioClicks,
-            value: formatNumber(totalBioClicks),
-            periodValue: lang === "fr" ? "Historique" : "All-time",
+            value: formatNumber(periodTotals.bioClicks),
+            periodValue: formatNumber(allTimeTotals.bioClicks),
             icon: Globe,
             color: "text-green-600",
             bg: "bg-green-50",
@@ -347,7 +346,7 @@ export default function AnalyticsPage() {
                   <p className="text-2xl font-bold text-gray-900">{stat.value}</p>
                   <p className="text-xs text-gray-500 leading-tight">{stat.label}</p>
                   <p className="text-[11px] text-gray-400 mt-0.5">
-                    {periodLabel}: {stat.periodValue}
+                    {historyLabel}: {stat.periodValue}
                   </p>
                 </div>
               </div>

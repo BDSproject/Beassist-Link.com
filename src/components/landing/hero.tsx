@@ -97,18 +97,20 @@ export function Hero() {
                 <span>{t.hero.badge}</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black tracking-tight leading-[1.2] mb-6">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-black tracking-tight leading-[1.2] mb-6">
                 <span className="block">{t.hero.heading1}</span>
                 <span className="block">
                   <span className="inline-block pb-[0.12em] leading-[1.2] bg-gradient-to-br from-[#8F00FF] to-[#6200CC] bg-clip-text text-transparent">
                     {t.hero.heading2}
                   </span>
                 </span>
-                <span className="block">
-                  <span className="inline-block pb-[0.12em] leading-[1.2] bg-gradient-to-br from-[#8F00FF] to-[#6200CC] bg-clip-text text-transparent">
-                    {t.hero.heading3}
+                {t.hero.heading3 ? (
+                  <span className="block">
+                    <span className="inline-block pb-[0.12em] leading-[1.2] bg-gradient-to-br from-[#8F00FF] to-[#6200CC] bg-clip-text text-transparent">
+                      {t.hero.heading3}
+                    </span>
                   </span>
-                </span>
+                ) : null}
               </h1>
 
               <p className="text-xl text-gray-500 leading-relaxed mb-10 max-w-xl mx-auto lg:mx-0">

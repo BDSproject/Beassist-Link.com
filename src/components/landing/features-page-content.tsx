@@ -10,16 +10,16 @@ export function FeaturesPageContent() {
   const items = en
     ? [
         ["Bio page editor", "Themes, colors, avatar, social links and live preview for a branded link in bio page."],
-        ["Short link management", "Create, edit, delete and track branded short links with click analytics."],
+        ["Short link management", "Create, edit, delete and track branded short links with clear click stats."],
         ["QR code generator", "Customize colors and size, then export a high-definition PNG for print or web."],
-        ["Scalable plans", "Start free, then upgrade to Starter or Pro when you need more customization and analytics."],
+        ["Scalable plans", "Start free, then upgrade to Starter or Pro when you need more customization and stats."],
         ["Performance", "Fast, mobile-first experience built with Next.js for creators, freelancers and businesses."],
       ]
     : [
         ["Éditeur de page bio", "Personnalisez votre lien en bio avec thèmes, couleurs, avatar, réseaux sociaux et aperçu en direct."],
         ["Gestion des liens courts", "Créez, modifiez et suivez vos liens raccourcis avec des statistiques de clics claires."],
         ["Générateur de QR code", "Choisissez la couleur, la taille et exportez un PNG haute définition pour le print et le web."],
-        ["Plans évolutifs", "Commencez gratuitement puis passez à Starter ou Pro selon vos besoins en personnalisation et analytics."],
+        ["Plans évolutifs", "Commencez gratuitement puis passez à Starter ou Pro selon vos besoins en personnalisation et statistiques."],
         ["Performance", "Une expérience rapide, responsive et pensée mobile-first pour les créateurs, freelances et entreprises."],
       ];
 
@@ -56,12 +56,12 @@ export function FeaturesPageContent() {
 
         <section className="rounded-2xl bg-[#F9F5FF] border border-[#EAD6FF] p-6">
           <h2 className="text-xl font-bold text-gray-900">
-            {en ? "Why these features matter for SEO and conversion" : "Pourquoi ces fonctionnalités comptent pour le SEO et la conversion"}
+            {en ? "Why these features improve Google visibility and clicks" : "Pourquoi ces fonctionnalités améliorent la visibilité Google et les clics"}
           </h2>
           <p className="mt-3 text-sm text-gray-700">
             {en
-              ? "A clean link in bio page improves discoverability, makes internal linking easier across your channels and gives visitors a clearer path to your most important content, offers or social profiles. Combined with fast loading times and mobile-first design, these features help both search visibility and user engagement."
-              : "Une page de lien en bio claire améliore la découvrabilité, facilite le maillage entre vos canaux et donne aux visiteurs un accès direct à vos contenus, offres et profils sociaux les plus importants. Associées à un chargement rapide et à un design mobile-first, ces fonctionnalités renforcent à la fois la visibilité SEO et l’engagement utilisateur."}
+              ? "A clear bio page helps people find you on Google, makes navigation easier between your social channels, and drives more clicks to your key offers and content. With fast loading and a mobile-first experience, visitors stay longer and interact more."
+              : "Une page bio claire aide vos clients à vous trouver sur Google, facilite la navigation entre vos réseaux et génère plus de clics vers vos contenus et offres importantes. Avec un chargement rapide et une expérience pensée mobile, vos visiteurs restent plus longtemps et interagissent davantage."}
           </p>
         </section>
       </div>

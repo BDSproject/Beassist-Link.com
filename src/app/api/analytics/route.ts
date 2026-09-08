@@ -36,23 +36,25 @@ export async function GET(req: NextRequest) {
 
     // totals (selected period)
     const totalClicks = await db.analytics.count({
-      where: { userId, linkId: { not: null }, createdAt: { gte: start, lt: end } },
+      where: { userId, type: "link_click", createdAt: { gte: start, lt: end } },
     });
 
-    // bio views (analytics entries related to bio page)
+    // bio views (selected period)
     const bioViews = await db.analytics.count({
-      where: { userId, bioPageId: { not: null }, createdAt: { gte: start, lt: end } },
+      where: { userId, type: "bio_view", createdAt: { gte: start, lt: end } },
+    });
+
+    // bio clicks (selected period)
+    const bioClicks = await db.analytics.count({
+      where: { userId, type: "bio_click", createdAt: { gte: start, lt: end } },
     });
 
     // totals (all-time history)
     const [allTimeClicks, allTimeBioViews, allTimeLinksCount, allTimeBioClicksAgg] = await Promise.all([
-      db.analytics.count({ where: { userId, linkId: { not: null } } }),
-      db.analytics.count({ where: { userId, bioPageId: { not: null } } }),
+      db.analytics.count({ where: { userId, type: "link_click" } }),
+      db.analytics.count({ where: { userId, type: "bio_view" } }),
       db.link.count({ where: { userId } }),
-      db.bioLink.aggregate({
-        where: { bioPage: { userId } },
-        _sum: { clicks: true },
-      }),
+      db.analytics.count({ where: { userId, type: "bio_click" } }),
     ]);
 
     // top links (by analytics events)
@@ -75,14 +77,34 @@ export async function GET(req: NextRequest) {
       link: links.find((l) => l.id === r.linkId) || null,
     }));
 
-    const topBioLinks = await db.bioLink.findMany({
-      where: { bioPage: { userId } },
-      orderBy: { clicks: "desc" },
-      take: 6,
-      select: {
-        title: true,
-        clicks: true,
+    const topBioRaw = await db.analytics.groupBy({
+      by: ["os"],
+      where: {
+        userId,
+        type: "bio_click",
+        os: { startsWith: "bioLink:" },
+        createdAt: { gte: start, lt: end },
       },
+      _count: { os: true },
+      orderBy: { _count: { os: "desc" } },
+      take: 6,
+    });
+
+    const bioLinkIds = topBioRaw
+      .map((r) => (r.os || "").replace("bioLink:", ""))
+      .filter(Boolean);
+
+    const bioLinks = bioLinkIds.length
+      ? await db.bioLink.findMany({ where: { id: { in: bioLinkIds } } })
+      : [];
+
+    const topBioLinks = topBioRaw.map((r) => {
+      const id = (r.os || "").replace("bioLink:", "");
+      const link = bioLinks.find((b) => b.id === id);
+      return {
+        title: link?.title || "Lien supprimé",
+        clicks: r._count.os,
+      };
     });
 
     // top countries
@@ -120,6 +142,7 @@ export async function GET(req: NextRequest) {
     return NextResponse.json({
       totalClicks,
       bioViews,
+      bioClicks,
       topLinks,
       topBioLinks,
       topCountries,
@@ -129,7 +152,7 @@ export async function GET(req: NextRequest) {
         totalClicks: allTimeClicks,
         bioViews: allTimeBioViews,
         totalLinks: allTimeLinksCount,
-        bioClicks: allTimeBioClicksAgg._sum.clicks ?? 0,
+        bioClicks: allTimeBioClicksAgg,
       },
     });
   } catch (error) {
