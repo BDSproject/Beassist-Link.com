@@ -15,7 +15,7 @@ import {
 import { Logo } from "@/components/shared/logo";
 import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/ui/language-switcher";
-import { AlignJustify, Sparkles, X } from "lucide-react";
+import { AlignJustify, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useLanguage } from "@/contexts/language-context";
 
@@ -170,16 +170,7 @@ export function Navbar() {
           <div className="relative flex items-center justify-between h-16 px-3 sm:px-4">
             {/* Logo */}
             <Link href="/" className="flex-shrink-0 group">
-              <div className="flex items-center gap-2">
-                <motion.div
-                  animate={{ rotate: [0, 12, -8, 0] }}
-                  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                  className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#8F00FF] to-[#5A00C2] text-white flex items-center justify-center shadow-[0_8px_24px_rgba(143,0,255,0.35)]"
-                >
-                  <Sparkles size={14} />
-                </motion.div>
-                <Logo size="md" className="group-hover:tracking-normal transition-all duration-300" />
-              </div>
+              <Logo size="md" className="group-hover:tracking-normal transition-all duration-300" />
             </Link>
 
             {/* Nav desktop */}
