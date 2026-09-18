@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { X, Cookie } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
-
-const STORAGE_KEY = "cookie_consent";
+import { getConsent, setConsent } from "@/lib/consent";
 
 const TEXT = {
   fr: {
@@ -32,17 +31,16 @@ export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (!stored) setVisible(true);
+    if (!getConsent()) setVisible(true);
   }, []);
 
   function handleAccept() {
-    localStorage.setItem(STORAGE_KEY, "all");
+    setConsent("all");
     setVisible(false);
   }
 
   function handleDecline() {
-    localStorage.setItem(STORAGE_KEY, "essential");
+    setConsent("essential");
     setVisible(false);
   }
 
