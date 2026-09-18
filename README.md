@@ -115,6 +115,25 @@ npm run dev
 
 Ouvrez [http://localhost:3000](http://localhost:3000) 🎉
 
+#### ⚠️ Apple Silicon : Node doit être natif arm64 (pas x86_64 sous Rosetta)
+
+Les dépendances natives (`@prisma/client`, `esbuild`/`tsx`) sont compilées pour une architecture
+précise. Si Node tourne en x86_64 via Rosetta alors que `node_modules` est en arm64 (ou
+l'inverse), vous obtiendrez :
+
+- `PrismaClientInitializationError: Prisma Client could not locate the Query Engine for runtime "darwin"` (client généré pour `darwin-arm64`)
+- une erreur esbuild d'architecture avec `tsx` (`Cannot find module '@esbuild/darwin-x64'`)
+
+Diagnostic et correctif :
+
+```bash
+node -p process.arch        # doit afficher "arm64" (et non "x64")
+
+# Installer un Node arm64 depuis un terminal NATIF (sans Rosetta), puis :
+nvm alias default <version-arm64>
+rm -rf node_modules && npm install   # si les binaires ont été installés pour la mauvaise arch
+```
+
 ---
 
 ## 💳 Configuration Stripe
