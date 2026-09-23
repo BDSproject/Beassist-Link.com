@@ -89,7 +89,7 @@ export default function QRCodePage() {
   const t = {
     title: isFr ? "Generateur de QR Codes" : "QR Code Generator",
     subtitle: isFr
-      ? "Creez des QR codes personnalises pour vos liens, flyers, cartes de visite et affiches."
+      ? "Cree des QR codes personnalises pour tes liens, flyers, cartes de visite et affiches."
       : "Create custom QR codes for your links, flyers, business cards, and posters.",
     sourceTab: isFr ? "Source du lien" : "Link source",
     myBioPage: isFr ? "Ma page bio" : "My bio page",
@@ -106,10 +106,10 @@ export default function QRCodePage() {
     preview: isFr ? "Apercu" : "Preview",
     resetColors: isFr ? "Reinitialiser" : "Reset",
     tip: isFr
-      ? "Astuce : Utilisez la correction H pour les QR sur supports imprimes (resiste aux dommages)."
+      ? "Astuce : Utilise la correction H pour les QR sur supports imprimes (resiste aux dommages)."
       : "Tip: Use H correction for printed QR codes (damage-resistant).",
     invalidUrl: isFr
-      ? "URL invalide. Commencez par https://"
+      ? "URL invalide. Commence par https://"
       : "Invalid URL. Start with https://",
     quickColors: isFr ? "Couleurs rapides" : "Quick colors",
   };
@@ -125,7 +125,7 @@ export default function QRCodePage() {
         </h1>
         <p className="text-gray-500 mb-8 max-w-md">
           {lang === "fr"
-            ? "Generez des QR codes personnalises pour vos liens, flyers et cartes de visite. Disponible a partir du plan Starter."
+            ? "Genere des QR codes personnalises pour tes liens, flyers et cartes de visite. Disponible a partir du plan Starter."
             : "Generate custom QR codes for your links, flyers, and business cards. Available from the Starter plan."}
         </p>
 
@@ -175,7 +175,7 @@ export default function QRCodePage() {
           {lang === "fr" ? "Passer au Starter — 6€/mois" : "Upgrade to Starter — €6/month"}
         </Button>
         <p className="text-xs text-gray-400 mt-3">
-          {lang === "fr" ? "Sans engagement · Annulez quand vous voulez" : "No commitment · Cancel anytime"}
+          {lang === "fr" ? "Sans engagement · Annule quand tu veux" : "No commitment · Cancel anytime"}
         </p>
       </div>
     );

@@ -22,7 +22,7 @@ async function main() {
         create: {
           username: "demo",
           title: "Demo User",
-          description: "Bienvenue sur ma page ! 👋 Retrouvez tous mes liens ici.",
+          description: "Bienvenue sur ma page ! 👋 Retrouve tous mes liens ici.",
           primaryColor: "#8F00FF",
           bgColor: "#FFFFFF",
           theme: "default",
@@ -88,7 +88,7 @@ async function main() {
           username: "procreator",
           title: "Pro Creator 🚀",
           description:
-            "Content creator | Tech enthusiast | Entrepreneur\nRejoignez ma communauté !",
+            "Content creator | Tech enthusiast | Entrepreneur\nRejoins ma communauté !",
           primaryColor: "#8F00FF",
           bgColor: "#0A0A0A",
           theme: "dark",

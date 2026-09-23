@@ -10,11 +10,11 @@ export default function ContactPage() {
   return (
     <MarketingLayout
       category="Contact"
-      title={en ? "Let's talk about your project" : "Parlons de votre projet"}
+      title={en ? "Let's talk about your project" : "Parlons de ton projet"}
       description={
         en
           ? "A commercial, technical or partnership question? Our team replies quickly."
-          : "Une question commerciale, technique ou partenariat ? Notre équipe vous répond rapidement."
+          : "Une question commerciale, technique ou partenariat ? Notre équipe te répond rapidement."
       }
       updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
     >

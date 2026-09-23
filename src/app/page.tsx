@@ -12,7 +12,7 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   title: "Alternative Linktree Française Gratuite — BeassistLink",
   description:
-    "BeassistLink est l'alternative française gratuite à Linktree. Créez votre page de liens bio pour Instagram, TikTok, YouTube en 30 secondes.",
+    "BeassistLink est l'alternative française gratuite à Linktree. Crée ta page de liens bio pour Instagram, TikTok, YouTube en 30 secondes.",
   alternates: {
     canonical: BASE,
   },
@@ -76,7 +76,7 @@ const jsonLd = {
         reviewCount: "127",
       },
       description:
-        "Créez votre page de liens personnalisée gratuitement. Alternative française à Linktree sans logo pour Instagram, TikTok, YouTube.",
+        "Crée ta page de liens personnalisée gratuitement. Alternative française à Linktree sans logo pour Instagram, TikTok, YouTube.",
     },
     {
       "@type": "FAQPage",
@@ -86,7 +86,7 @@ const jsonLd = {
           name: "Comment mettre plusieurs liens en bio Instagram ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Créez votre page BeassistLink gratuitement, ajoutez autant de liens que vous souhaitez, puis copiez votre URL personnalisée (beassist-link.com/votrenom) dans votre bio Instagram. Vos abonnés accèderont à tous vos liens depuis un seul endroit.",
+            text: "Crée ta page BeassistLink gratuitement, ajoute autant de liens que tu souhaites, puis copie ton URL personnalisée (beassist-link.com/tonnom) dans ta bio Instagram. Tes abonnés accèderont à tous tes liens depuis un seul endroit.",
           },
         },
         {
@@ -110,7 +110,7 @@ const jsonLd = {
           name: "Comment utiliser BeassistLink sur TikTok ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Créez votre page BeassistLink, puis ajoutez votre URL dans la bio de votre profil TikTok. Ajoutez vos liens Spotify, YouTube, boutique en ligne ou tout autre contenu en quelques clics.",
+            text: "Crée ta page BeassistLink, puis ajoute ton URL dans la bio de ton profil TikTok. Ajoute tes liens Spotify, YouTube, boutique en ligne ou tout autre contenu en quelques clics.",
           },
         },
       ],

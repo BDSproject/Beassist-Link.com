@@ -79,7 +79,7 @@ export default function ForgotPasswordPage() {
             <Input
               label={a.emailLabel}
               type="email"
-              placeholder="vous@exemple.com"
+              placeholder="exemple@exemple.com"
               leftIcon={<Mail size={16} />}
               error={errors.email?.message}
               {...register("email")}

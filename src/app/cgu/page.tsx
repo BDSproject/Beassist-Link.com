@@ -19,7 +19,7 @@ const SECTIONS: Record<string, Section[]> = {
     },
     {
       title: "2. Acceptation des CGU",
-      text: "L'accès et l'utilisation de la plateforme BeassistLink impliquent l'acceptation pleine et entière des présentes CGU. Si vous n'acceptez pas ces conditions, vous devez vous abstenir d'utiliser le service. BeassistLink se réserve le droit de modifier les présentes CGU à tout moment ; les utilisateurs en seront informés par tout moyen utile.",
+      text: "L'accès et l'utilisation de la plateforme BeassistLink impliquent l'acceptation pleine et entière des présentes CGU. Si tu n'acceptes pas ces conditions, tu dois t'abstenir d'utiliser le service. BeassistLink se réserve le droit de modifier les présentes CGU à tout moment ; les utilisateurs en seront informés par tout moyen utile.",
     },
     {
       title: "3. Description du service",

@@ -27,7 +27,7 @@ function resetEmailHtml({ resetUrl }: { resetUrl: string }): string {
               <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">
                 Beassist<span style="opacity:0.75;">Link</span>
               </p>
-              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Votre lien unique, votre identité.</p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Ton lien unique, ton identité.</p>
             </td>
           </tr>
           <tr>
@@ -36,7 +36,7 @@ function resetEmailHtml({ resetUrl }: { resetUrl: string }): string {
                 Réinitialisation de mot de passe 🔐
               </h1>
               <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4B5563;">
-                Nous avons reçu une demande de réinitialisation de mot de passe pour votre compte. Cliquez sur le bouton ci-dessous pour choisir un nouveau mot de passe.
+                Nous avons reçu une demande de réinitialisation de mot de passe pour ton compte. Clique sur le bouton ci-dessous pour choisir un nouveau mot de passe.
               </p>
               <p style="margin:0 0 8px;font-size:13px;color:#6B7280;">
                 Ce lien est valable pendant <strong>1 heure</strong>.
@@ -51,7 +51,7 @@ function resetEmailHtml({ resetUrl }: { resetUrl: string }): string {
                 </tr>
               </table>
               <p style="margin:0;font-size:13px;color:#9CA3AF;line-height:1.6;">
-                Si vous n'avez pas demandé cette réinitialisation, ignorez cet email. Votre mot de passe restera inchangé.
+                Si tu n'as pas demandé cette réinitialisation, ignore cet email. Ton mot de passe restera inchangé.
               </p>
             </td>
           </tr>
@@ -99,7 +99,7 @@ export async function POST(req: NextRequest) {
         await resend.emails.send({
           from: FROM,
           to: email,
-          subject: "Réinitialisation de votre mot de passe BeassistLink",
+          subject: "Réinitialisation de ton mot de passe BeassistLink",
           html: resetEmailHtml({ resetUrl }),
         });
       }
@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
     // Always return success to prevent email enumeration
     return NextResponse.json({
       message:
-        "Si un compte existe avec cet email, vous recevrez un lien de réinitialisation.",
+        "Si un compte existe avec cet email, tu recevras un lien de réinitialisation.",
     });
   } catch (err) {
     console.error("[forgot-password]", err);

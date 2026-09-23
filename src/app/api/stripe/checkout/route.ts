@@ -62,7 +62,7 @@ export async function POST(req: NextRequest) {
     if (!priceId) {
       console.error("[checkout] Price ID manquant pour", plan, billing);
       return NextResponse.json(
-        { error: "Prix non configuré. Contactez le support." },
+        { error: "Prix non configuré. Contacte le support." },
         { status: 500 }
       );
     }
@@ -78,7 +78,7 @@ export async function POST(req: NextRequest) {
     if (!/^https?:\/\//.test(appUrl)) {
       console.error("[checkout] appUrl invalide:", appUrl);
       return NextResponse.json(
-        { error: "Configuration URL invalide. Contactez le support." },
+        { error: "Configuration URL invalide. Contacte le support." },
         { status: 500 }
       );
     }

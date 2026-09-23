@@ -76,7 +76,7 @@ function LoginContent() {
         <div className="flex items-start gap-3 bg-green-50 border border-green-200 rounded-2xl p-4 mb-6">
           <CheckCircle className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
           <p className="text-sm text-green-800 font-medium">
-            Email vérifié ! Vous pouvez maintenant vous connecter.
+            Email vérifié ! Tu peux maintenant te connecter.
           </p>
         </div>
       )}
@@ -86,7 +86,7 @@ function LoginContent() {
         <div className="flex items-start gap-3 bg-amber-50 border border-amber-200 rounded-2xl p-4 mb-6">
           <AlertCircle className="w-5 h-5 text-amber-500 shrink-0 mt-0.5" />
           <p className="text-sm text-amber-800">
-            <span className="font-semibold">Vérifiez votre email.</span> Un lien de confirmation vous a été envoyé lors de votre inscription. Consultez vos spams si nécessaire.
+            <span className="font-semibold">Vérifie ton email.</span> Un lien de confirmation t'a été envoyé lors de ton inscription. Consulte tes spams si nécessaire.
           </p>
         </div>
       )}
@@ -137,7 +137,7 @@ function LoginContent() {
         <Input
           label={a.emailLabel}
           type="email"
-          placeholder="vous@exemple.com"
+          placeholder="exemple@exemple.com"
           leftIcon={<Mail size={16} />}
           error={errors.email?.message}
           {...register("email")}

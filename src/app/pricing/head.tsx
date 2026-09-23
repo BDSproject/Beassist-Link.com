@@ -1,7 +1,7 @@
 export default function Head() {
   const title = "Tarifs lien en bio FREE, STARTER, PRO | BeassistLink";
   const description =
-    "Comparez les plans BeassistLink FREE, STARTER et PRO pour développer votre lien en bio avec analytics avancées et personnalisation.";
+    "Compare les plans BeassistLink FREE, STARTER et PRO pour développer ton lien en bio avec analytics avancées et personnalisation.";
   const canonical = "https://www.beassist-link.com/pricing";
 
   return (

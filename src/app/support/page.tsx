@@ -19,17 +19,17 @@ export default function SupportPage() {
         ["Documentation", "/docs", "Guides d'installation, configuration et bonnes pratiques."],
         ["Centre d'aide", "/help", "FAQ et réponses aux questions les plus fréquentes."],
         ["Statut", "/status", "Disponibilité en temps réel des services BeassistLink."],
-        ["Contact", "/contact", "Ouvrez une demande ou contactez directement l'équipe."],
+        ["Contact", "/contact", "Ouvre une demande ou contacte directement l'équipe."],
       ];
 
   return (
     <MarketingLayout
       category="Support"
-      title={en ? "How can we help you?" : "Comment pouvons-nous vous aider ?"}
+      title={en ? "How can we help you?" : "Comment pouvons-nous t'aider ?"}
       description={
         en
           ? "Quickly access resources and assistance based on your needs."
-          : "Accédez rapidement aux ressources et à l'assistance selon votre besoin."
+          : "Accède rapidement aux ressources et à l'assistance selon ton besoin."
       }
       updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
     >

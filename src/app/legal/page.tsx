@@ -54,24 +54,24 @@ const LEGAL_CONTENT = {
       {
         title: "5. Données personnelles et RGPD",
         content: [
-          "Beassisted SASU s'engage à protéger vos données personnelles conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés.",
+          "Beassisted SASU s'engage à protéger tes données personnelles conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés.",
           "Les données collectées (nom, adresse e-mail, etc.) sont utilisées uniquement pour :",
           "• Fournir les services BeassistLink",
-          "• Vous envoyer des communications relatives à votre compte",
+          "• T'envoyer des communications relatives à ton compte",
           "• Améliorer nos services",
-          "Vous disposez des droits suivants concernant vos données : droit d'accès, de rectification, d'effacement, de portabilité, d'opposition et de limitation du traitement.",
-          "Pour exercer vos droits ou pour toute question relative à vos données personnelles, contactez-nous à : contact@beassist-link.com",
-          "En cas de réclamation non résolue, vous pouvez saisir la CNIL (Commission Nationale de l'Informatique et des Libertés) : www.cnil.fr",
+          "Tu disposes des droits suivants concernant tes données : droit d'accès, de rectification, d'effacement, de portabilité, d'opposition et de limitation du traitement.",
+          "Pour exercer tes droits ou pour toute question relative à tes données personnelles, contacte-nous à : contact@beassist-link.com",
+          "En cas de réclamation non résolue, tu peux saisir la CNIL (Commission Nationale de l'Informatique et des Libertés) : www.cnil.fr",
         ],
       },
       {
         title: "6. Cookies",
         content: [
-          "Le site BeassistLink utilise des cookies pour améliorer votre expérience de navigation.",
+          "Le site BeassistLink utilise des cookies pour améliorer ton expérience de navigation.",
           "Les cookies utilisés sont :",
           "• **Cookies de session** : nécessaires au fonctionnement du site (authentification, préférences de langue)",
           "• **Cookies analytiques** : pour mesurer l'audience et améliorer le site (données anonymisées)",
-          "Vous pouvez à tout moment désactiver les cookies via les paramètres de votre navigateur. Certaines fonctionnalités du site peuvent être affectées.",
+          "Tu peux à tout moment désactiver les cookies via les paramètres de ton navigateur. Certaines fonctionnalités du site peuvent être affectées.",
         ],
       },
       {

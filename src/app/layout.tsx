@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     template: "%s | BeassistLink",
   },
   description:
-    "Créez votre page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans.",
+    "Crée ta page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans.",
   keywords: [
     // FR — haute intention
     "lien en bio instagram",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink — Alternative Linktree Française Gratuite",
     description:
-      "Regroupez tous vos réseaux sociaux en un seul lien élégant. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
+      "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
     siteName: "BeassistLink",
     locale: "fr_FR",

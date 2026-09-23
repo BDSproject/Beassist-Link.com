@@ -7,14 +7,14 @@ const PAGE_URL = `${BASE}/features`;
 export const metadata: Metadata = {
   title: "Fonctionnalités lien en bio | BeassistLink",
   description:
-    "Découvrez les fonctionnalités BeassistLink : lien en bio, liens courts, QR codes, analytics et personnalisation pour créateurs et entreprises.",
+    "Découvre les fonctionnalités BeassistLink : lien en bio, liens courts, QR codes, analytics et personnalisation pour créateurs et entreprises.",
   alternates: {
     canonical: PAGE_URL,
   },
   openGraph: {
     title: "Fonctionnalités lien en bio | BeassistLink",
     description:
-      "Lien en bio, liens courts, QR codes et personnalisation : toutes les fonctionnalités BeassistLink pour mieux convertir votre audience.",
+      "Lien en bio, liens courts, QR codes et personnalisation : toutes les fonctionnalités BeassistLink pour mieux convertir ton audience.",
     url: PAGE_URL,
     type: "website",
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Fonctionnalités lien en bio | BeassistLink",
     description:
-      "Explorez les fonctionnalités BeassistLink pour créer un lien en bio performant et mieux convertir votre audience.",
+      "Explore les fonctionnalités BeassistLink pour créer un lien en bio performant et mieux convertir ton audience.",
     images: [`${BASE}/og-image.png`],
   },
 };

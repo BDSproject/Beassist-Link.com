@@ -1,7 +1,7 @@
 export default function Head() {
   const title = "Partenariat créateur : accès Pro à vie | BeassistLink";
   const description =
-    "Vous avez 1 000+ abonnés ? Rejoignez le programme partenariat BeassistLink et obtenez un accès Pro à vie.";
+    "Tu as 1 000+ abonnés ? Rejoins le programme partenariat BeassistLink et obtiens un accès Pro à vie.";
   const canonical = "https://www.beassist-link.com/partenariat";
 
   return (

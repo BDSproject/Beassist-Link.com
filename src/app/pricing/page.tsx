@@ -12,10 +12,10 @@ const CARDS_EN = [
 ];
 
 const CARDS_FR = [
-  ["Page bio intelligente", "Mettez en avant vos offres, réseaux sociaux et contenus clés."],
-  ["Liens raccourcis", "Créez des URLs courtes, propres et simples à partager."],
-  ["QR Codes pro", "Générez des QR codes personnalisés prêts pour vos supports imprimés."],
-  ["Conversion & analytics", "Comprenez ce qui fonctionne et optimisez votre stratégie."],
+  ["Page bio intelligente", "Mets en avant tes offres, réseaux sociaux et contenus clés."],
+  ["Liens raccourcis", "Crée des URLs courtes, propres et simples à partager."],
+  ["QR Codes pro", "Génère des QR codes personnalisés prêts pour tes supports imprimés."],
+  ["Conversion & analytics", "Comprends ce qui fonctionne et optimise ta stratégie."],
 ];
 
 export default function ProductPage() {
@@ -26,10 +26,10 @@ export default function ProductPage() {
   // Métadonnées dynamiques selon la langue
   const pageTitle = en
     ? "Pricing plans for your link in bio — BeassistLink"
-    : "Tarifs de votre lien en bio — BeassistLink";
+    : "Tarifs de ton lien en bio — BeassistLink";
   const pageDescription = en
     ? "Compare FREE, STARTER and PRO plans to grow your link in bio with advanced analytics, branding control and conversion features."
-    : "Comparez les offres FREE, STARTER et PRO pour développer votre lien en bio avec analytics avancées, personnalisation et conversion.";
+    : "Compare les offres FREE, STARTER et PRO pour développer ton lien en bio avec analytics avancées, personnalisation et conversion.";
   const canonicalUrl = "https://www.beassist-link.com/pricing";
 
   // Données structurées JSON-LD de type SoftwareApplication (ou Product)

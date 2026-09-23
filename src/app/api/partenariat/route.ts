@@ -79,7 +79,7 @@ function candidatureHtml(data: z.infer<typeof schema>): string {
               }
 
               <p style="margin:0;font-size:13px;color:#6B7280;">
-                Répondez directement à <a href="mailto:${data.email}" style="color:#8F00FF;">${data.email}</a> pour valider ou refuser la candidature.
+                Réponds directement à <a href="mailto:${data.email}" style="color:#8F00FF;">${data.email}</a> pour valider ou refuser la candidature.
               </p>
             </td>
           </tr>
@@ -121,7 +121,7 @@ function confirmationHtml(name: string): string {
               <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">
                 Beassist<span style="opacity:0.75;">Link</span>
               </p>
-              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Votre lien unique, votre identité.</p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Ton lien unique, ton identité.</p>
             </td>
           </tr>
 
@@ -132,14 +132,14 @@ function confirmationHtml(name: string): string {
                 Candidature reçue, ${name} ! 🎉
               </h1>
               <p style="margin:0 0 20px;font-size:15px;line-height:1.7;color:#4B5563;">
-                Merci d'avoir postulé au programme ambassadeur BeassistLink. Notre équipe examine votre candidature et vous répond sous <strong>48 heures</strong>.
+                Merci d'avoir postulé au programme ambassadeur BeassistLink. Notre équipe examine ta candidature et te répond sous <strong>48 heures</strong>.
               </p>
 
               <!-- Rappel de l'offre -->
               <table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F3FF;border-radius:12px;margin-bottom:28px;">
                 <tr>
                   <td style="padding:20px 24px;">
-                    <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#7C3AED;">Ce qui vous attend si votre candidature est acceptée :</p>
+                    <p style="margin:0 0 10px;font-size:13px;font-weight:700;color:#7C3AED;">Ce qui t'attend si ta candidature est acceptée :</p>
                     <p style="margin:3px 0;font-size:14px;color:#374151;">✓ Accès complet au plan Pro</p>
                     <p style="margin:3px 0;font-size:14px;color:#374151;">✓ Validité à vie, sans condition supplémentaire</p>
                     <p style="margin:3px 0;font-size:14px;color:#374151;">✓ Toutes les fonctionnalités futures incluses</p>
@@ -148,7 +148,7 @@ function confirmationHtml(name: string): string {
               </table>
 
               <p style="margin:0 0 24px;font-size:14px;color:#6B7280;line-height:1.6;">
-                En attendant, vous pouvez déjà créer votre compte gratuit et découvrir la plateforme par vous-même.
+                En attendant, tu peux déjà créer ton compte gratuit et découvrir la plateforme par toi-même.
               </p>
 
               <table width="100%" cellpadding="0" cellspacing="0">

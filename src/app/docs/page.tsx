@@ -15,10 +15,10 @@ export default function DocsPage() {
         ["Plans and payments", "Compare plans and switch anytime."],
       ]
     : [
-        ["Démarrage rapide", "Créer un compte, préparer votre profil et publier votre page bio."],
+        ["Démarrage rapide", "Créer un compte, préparer ton profil et publier ta page bio."],
         ["Gestion des liens", "Créer des liens courts, voir les clics et améliorer ce qui fonctionne."],
-        ["Personnalisation", "Changer le thème, les couleurs, les boutons et vos réseaux en quelques clics."],
-        ["Plans et paiements", "Comparer les plans et changer quand vous voulez."],
+        ["Personnalisation", "Changer le thème, les couleurs, les boutons et tes réseaux en quelques clics."],
+        ["Plans et paiements", "Comparer les plans et changer quand tu veux."],
       ];
 
   return (

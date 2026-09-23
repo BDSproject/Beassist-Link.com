@@ -14,7 +14,7 @@ export default function GdprPage() {
       description={
         en
           ? "BeassistLink applies GDPR principles to guarantee your rights over personal data."
-          : "BeassistLink applique les principes du RGPD pour garantir vos droits sur les données personnelles."
+          : "BeassistLink applique les principes du RGPD pour garantir tes droits sur les données personnelles."
       }
       updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
     >
@@ -26,7 +26,7 @@ export default function GdprPage() {
               "For any GDPR request: privacy@beassist-link.com",
             ]
           : [
-              "Droit d'accès, de rectification et de suppression: vous pouvez exercer ces droits à tout moment.",
+              "Droit d'accès, de rectification et de suppression: tu peux exercer ces droits à tout moment.",
               "Nous minimisons les données collectées et conservons uniquement ce qui est nécessaire au service.",
               "Pour toute demande RGPD: privacy@beassist-link.com",
             ]

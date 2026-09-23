@@ -9,7 +9,7 @@ const TEXT = {
     badge: "Erreur 404",
     title: "Cette page n’existe pas",
     description:
-      "Le lien est peut-être rompu, ou la page a été déplacée. Vérifiez l’adresse, ou repartez de l’accueil.",
+      "Le lien est peut-être rompu, ou la page a été déplacée. Vérifie l’adresse, ou repars de l’accueil.",
     home: "Retour à l’accueil",
     help: "Centre d’aide",
   },

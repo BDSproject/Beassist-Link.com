@@ -18,7 +18,7 @@ function verificationEmailHtml({
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vérifiez votre email — BeassistLink</title>
+  <title>Vérifie ton email — BeassistLink</title>
 </head>
 <body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
@@ -31,18 +31,18 @@ function verificationEmailHtml({
               <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">
                 Beassist<span style="opacity:0.75;">Link</span>
               </p>
-              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Votre lien unique, votre identité.</p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Ton lien unique, ton identité.</p>
             </td>
           </tr>
           <!-- Corps -->
           <tr>
             <td style="padding:40px 40px 32px;">
               <h1 style="margin:0 0 12px;font-size:22px;font-weight:700;color:#111827;">
-                Confirmez votre adresse email 📧
+                Confirme ton adresse email 📧
               </h1>
               <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4B5563;">
                 Bonjour ${name},<br/><br/>
-                Merci de vous être inscrit sur BeassistLink ! Pour activer votre compte, veuillez confirmer votre adresse email en cliquant sur le bouton ci-dessous.
+                Merci de t'être inscrit sur BeassistLink ! Pour activer ton compte, confirme ton adresse email en cliquant sur le bouton ci-dessous.
               </p>
               <!-- CTA -->
               <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
@@ -59,14 +59,14 @@ function verificationEmailHtml({
                 <tr>
                   <td style="padding:14px 20px;">
                     <p style="margin:0;font-size:13px;color:#92400E;">
-                      ⏰ Ce lien expire dans <strong>24 heures</strong>. Si vous n'avez pas créé de compte, ignorez cet email.
+                      ⏰ Ce lien expire dans <strong>24 heures</strong>. Si tu n'as pas créé de compte, ignore cet email.
                     </p>
                   </td>
                 </tr>
               </table>
               <!-- Fallback URL -->
               <p style="margin:0;font-size:12px;color:#9CA3AF;line-height:1.6;">
-                Si le bouton ne fonctionne pas, copiez ce lien dans votre navigateur :<br/>
+                Si le bouton ne fonctionne pas, copie ce lien dans ton navigateur :<br/>
                 <a href="${verificationUrl}" style="color:#8F00FF;word-break:break-all;">${verificationUrl}</a>
               </p>
             </td>
@@ -121,7 +121,7 @@ function welcomeEmailHtml({
               <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">
                 Beassist<span style="opacity:0.75;">Link</span>
               </p>
-              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Votre lien unique, votre identité.</p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Ton lien unique, ton identité.</p>
             </td>
           </tr>
 
@@ -132,14 +132,14 @@ function welcomeEmailHtml({
                 Bienvenue ${name} ! 🎉
               </h1>
               <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4B5563;">
-                Votre compte BeassistLink a été créé avec succès. Vous pouvez dès maintenant personnaliser votre page bio, créer vos liens raccourcis et partager votre lien unique avec le monde.
+                Ton compte BeassistLink a été créé avec succès. Tu peux dès maintenant personnaliser ta page bio, créer tes liens raccourcis et partager ton lien unique avec le monde.
               </p>
 
               <!-- Card lien bio -->
               <table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F3FF;border-radius:12px;margin-bottom:28px;">
                 <tr>
                   <td style="padding:16px 20px;">
-                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;color:#7C3AED;text-transform:uppercase;letter-spacing:0.5px;">Votre lien bio</p>
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;color:#7C3AED;text-transform:uppercase;letter-spacing:0.5px;">Ton lien bio</p>
                     <a href="${bioUrl}" style="font-size:15px;font-weight:700;color:#8F00FF;text-decoration:none;">${bioUrl}</a>
                   </td>
                 </tr>
@@ -149,9 +149,9 @@ function welcomeEmailHtml({
               <p style="margin:0 0 16px;font-size:14px;font-weight:600;color:#111827;">Pour bien démarrer :</p>
               <table width="100%" cellpadding="0" cellspacing="0">
                 ${[
-                  ["1", "Personnalisez votre page bio", "Ajoutez votre photo, bio et liens sociaux"],
-                  ["2", "Créez vos liens raccourcis", "Partagez des URLs courtes et mémorables"],
-                  ["3", "Analysez vos performances", "Suivez les clics et l'engagement (Starter+)"],
+                  ["1", "Personnalise ta page bio", "Ajoute ta photo, bio et liens sociaux"],
+                  ["2", "Crée tes liens raccourcis", "Partage des URLs courtes et mémorables"],
+                  ["3", "Analyse tes performances", "Suis les clics et l'engagement (Starter+)"],
                 ]
                   .map(
                     ([num, title, desc]) => `
@@ -191,8 +191,8 @@ function welcomeEmailHtml({
           <tr>
             <td style="background:#F9FAFB;padding:24px 40px;border-top:1px solid #E5E7EB;">
               <p style="margin:0;font-size:12px;color:#9CA3AF;text-align:center;line-height:1.6;">
-                Vous recevez cet email car vous venez de créer un compte sur BeassistLink.<br/>
-                Si vous n'êtes pas à l'origine de cette inscription, ignorez cet email.<br/><br/>
+                Tu reçois cet email car tu viens de créer un compte sur BeassistLink.<br/>
+                Si tu n'es pas à l'origine de cette inscription, ignore cet email.<br/><br/>
                 <a href="${BASE_URL}" style="color:#8F00FF;text-decoration:none;">beassist-link.com</a>
                 &nbsp;·&nbsp;
                 <a href="${BASE_URL}/legal" style="color:#9CA3AF;text-decoration:none;">Mentions légales</a>
@@ -263,7 +263,7 @@ export async function sendVerificationEmail({
     await resend.emails.send({
       from: FROM,
       to: email,
-      subject: "Vérifiez votre email BeassistLink 📧",
+      subject: "Vérifie ton email BeassistLink 📧",
       html: verificationEmailHtml({ name, verificationUrl }),
     });
   } catch (err) {

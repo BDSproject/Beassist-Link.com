@@ -84,13 +84,13 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
       {isSuccess && (
         <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 text-green-800">
           <CheckCircle2 size={20} className="flex-shrink-0 text-green-600" />
-          <p className="font-semibold text-sm">🎉 Paiement réussi ! Votre plan a été mis à jour.</p>
+          <p className="font-semibold text-sm">🎉 Paiement réussi ! Ton plan a été mis à jour.</p>
         </div>
       )}
       {isCanceled && (
         <div className="flex items-center gap-3 bg-yellow-50 border border-yellow-200 rounded-2xl p-4 mb-6 text-yellow-800">
           <XCircle size={20} className="flex-shrink-0 text-yellow-600" />
-          <p className="font-semibold text-sm">Paiement annulé. Votre abonnement n&apos;a pas été modifié.</p>
+          <p className="font-semibold text-sm">Paiement annulé. Ton abonnement n&apos;a pas été modifié.</p>
         </div>
       )}
       {checkoutError && (

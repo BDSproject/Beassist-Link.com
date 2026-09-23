@@ -92,15 +92,15 @@ const faqs = [
   },
   {
     q: "BeassistLink est-il conforme au RGPD ?",
-    a: "Oui. BeassistLink est une solution française dont les données sont hébergées en Europe. La conformité RGPD est native, pas une option payante. Aucun cookie de tracking tiers n'est injecté sur votre page bio.",
+    a: "Oui. BeassistLink est une solution française dont les données sont hébergées en Europe. La conformité RGPD est native, pas une option payante. Aucun cookie de tracking tiers n'est injecté sur ta page bio.",
   },
   {
     q: "Comment avoir plusieurs liens en bio Instagram ?",
-    a: "Créez votre page BeassistLink gratuite, ajoutez tous vos liens, puis copiez votre URL personnalisée dans la bio de votre profil Instagram. Tous vos liens seront accessibles en un clic.",
+    a: "Crée ta page BeassistLink gratuite, ajoute tous tes liens, puis copie ton URL personnalisée dans la bio de ton profil Instagram. Tous tes liens seront accessibles en un clic.",
   },
   {
     q: "BeassistLink fonctionne-t-il sur TikTok ?",
-    a: "Absolument. Ajoutez votre lien BeassistLink dans la bio de votre profil TikTok pour partager votre Spotify, YouTube, boutique et tous vos autres contenus depuis un seul endroit.",
+    a: "Absolument. Ajoute ton lien BeassistLink dans la bio de ton profil TikTok pour partager ton Spotify, YouTube, boutique et tous tes autres contenus depuis un seul endroit.",
   },
 ];
 
@@ -124,8 +124,8 @@ export default function ComparatifLinktreePage() {
               Alternative Linktree Française Gratuite
             </h1>
             <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Vous cherchez un outil pour mettre <strong>plusieurs liens en bio Instagram ou TikTok</strong> ?
-              Découvrez pourquoi des milliers de créateurs français ont choisi BeassistLink plutôt que Linktree.
+              Tu cherches un outil pour mettre <strong>plusieurs liens en bio Instagram ou TikTok</strong> ?
+              Découvre pourquoi des milliers de créateurs français ont choisi BeassistLink plutôt que Linktree.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -214,22 +214,22 @@ export default function ComparatifLinktreePage() {
                 {
                   emoji: "📸",
                   title: "Créateurs Instagram",
-                  desc: "Mettez plusieurs liens dans votre bio Instagram : YouTube, boutique, newsletter, Spotify, TikTok — tout en un.",
+                  desc: "Mets plusieurs liens dans ta bio Instagram : YouTube, boutique, newsletter, Spotify, TikTok — tout en un.",
                 },
                 {
                   emoji: "🎵",
                   title: "Artistes & musiciens",
-                  desc: "Partagez votre lien Spotify, Apple Music, SoundCloud et vos dates de concert depuis une seule page.",
+                  desc: "Partage ton lien Spotify, Apple Music, SoundCloud et tes dates de concert depuis une seule page.",
                 },
                 {
                   emoji: "🛒",
                   title: "E-commerçants",
-                  desc: "Redirigez votre audience vers votre boutique, vos offres du moment et votre newsletter sans friction.",
+                  desc: "Redirige ton audience vers ta boutique, tes offres du moment et ta newsletter sans friction.",
                 },
                 {
                   emoji: "🎬",
                   title: "TikTokeurs",
-                  desc: "Contournez la limite \"un seul lien\" sur TikTok avec une page bio complète et personnalisée.",
+                  desc: "Contourne la limite \"un seul lien\" sur TikTok avec une page bio complète et personnalisée.",
                 },
                 {
                   emoji: "💼",
@@ -267,10 +267,10 @@ export default function ComparatifLinktreePage() {
           {/* ── CTA ── */}
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 sm:p-12 text-center text-white">
             <h2 className="text-2xl sm:text-3xl font-black mb-3">
-              Créez votre page bio en 30 secondes
+              Crée ta page bio en 30 secondes
             </h2>
             <p className="text-purple-100 text-base mb-7 max-w-lg mx-auto leading-relaxed">
-              Gratuit, sans carte bancaire, sans logo forcé. L'alternative française à Linktree qui respecte vos visiteurs et votre vie privée.
+              Gratuit, sans carte bancaire, sans logo forcé. L'alternative française à Linktree qui respecte tes visiteurs et ta vie privée.
             </p>
             <Link
               href="/register"

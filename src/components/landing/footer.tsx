@@ -65,8 +65,8 @@ export function Footer() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "BeassistLink",
-    url: "https://www.votre-domaine.com",
-    logo: "https://www.votre-domaine.com/logo.png",
+    url: "https://www.beassist-link.com",
+    logo: "https://www.beassist-link.com/icon.svg",
     sameAs: [
       "https://www.facebook.com/beassistlink",
       "https://www.instagram.com/beassistlink",

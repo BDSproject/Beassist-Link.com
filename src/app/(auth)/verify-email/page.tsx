@@ -25,7 +25,7 @@ function VerifyEmailContent() {
         </div>
         <h1 className="text-2xl font-black text-gray-900 mb-2">Lien expiré</h1>
         <p className="text-gray-500 text-sm mb-6">
-          Ce lien de vérification a expiré (valide 24h). Créez un nouveau compte pour recevoir un nouvel email.
+          Ce lien de vérification a expiré (valide 24h). Crée un nouveau compte pour recevoir un nouvel email.
         </p>
         <Link href="/register" className={btnPrimary}>Créer un compte</Link>
       </div>
@@ -59,20 +59,20 @@ function VerifyEmailContent() {
           <Mail className="w-8 h-8 text-[#8F00FF]" />
         </div>
       </div>
-      <h1 className="text-2xl font-black text-gray-900 mb-2">Vérifiez votre email</h1>
+      <h1 className="text-2xl font-black text-gray-900 mb-2">Vérifie ton email</h1>
       <p className="text-gray-500 text-sm mb-2">Un email de confirmation a été envoyé à</p>
       {email && (
         <p className="font-semibold text-gray-800 text-sm mb-4">{decodeURIComponent(email)}</p>
       )}
       <p className="text-gray-400 text-xs mb-8">
-        Cliquez sur le lien dans l&apos;email pour activer votre compte.
+        Clique sur le lien dans l&apos;email pour activer ton compte.
         Le lien est valable <strong>24 heures</strong>.
       </p>
       <div className="bg-gray-50 rounded-xl p-4 text-left mb-6">
-        <p className="text-xs text-gray-500 font-medium mb-2">Vous n&apos;avez pas reçu l&apos;email ?</p>
+        <p className="text-xs text-gray-500 font-medium mb-2">Tu n&apos;as pas reçu l&apos;email ?</p>
         <ul className="text-xs text-gray-400 space-y-1 list-disc list-inside">
-          <li>Vérifiez vos spams / courrier indésirable</li>
-          <li>Attendez quelques minutes</li>
+          <li>Vérifie tes spams / courrier indésirable</li>
+          <li>Attends quelques minutes</li>
           <li>L&apos;email vient de <span className="text-gray-600">noreply@beassist-link.com</span></li>
         </ul>
       </div>

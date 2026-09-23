@@ -12,10 +12,10 @@ const FAQ_EN = [
 ];
 
 const FAQ_FR = [
-  ["Comment créer ma page bio ?", "Depuis le dashboard, ouvrez l'onglet Bio puis personnalisez vos sections."],
+  ["Comment créer ma page bio ?", "Depuis le dashboard, ouvre l'onglet Bio puis personnalise tes sections."],
   ["Pourquoi certaines fonctionnalités sont bloquées ?", "Certaines options (QR code, thèmes premium) sont réservées aux plans payants."],
   ["Puis-je annuler mon abonnement ?", "Oui, à tout moment depuis l'onglet Facturation."],
-  ["Comment contacter le support ?", "Utilisez la page Contact pour obtenir une réponse de l'équipe."],
+  ["Comment contacter le support ?", "Utilise la page Contact pour obtenir une réponse de l'équipe."],
 ];
 
 export default function HelpPage() {

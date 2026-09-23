@@ -25,18 +25,18 @@ const CONTENT = {
     title: "Politique de cookies",
     updatedAt: "Dernière mise à jour : avril 2026",
     intro:
-      "Le site BeassistLink (beassist-link.com) utilise des cookies et technologies similaires pour assurer le bon fonctionnement du service, améliorer votre expérience et mesurer l'audience. Cette page vous explique ce qu'est un cookie, quels cookies nous utilisons et comment vous pouvez les gérer.",
+      "Le site BeassistLink (beassist-link.com) utilise des cookies et technologies similaires pour assurer le bon fonctionnement du service, améliorer ton expérience et mesurer l'audience. Cette page t'explique ce qu'est un cookie, quels cookies nous utilisons et comment tu peux les gérer.",
     sections: [
       {
         title: "1. Qu'est-ce qu'un cookie ?",
-        text: "Un cookie est un petit fichier texte déposé sur votre terminal (ordinateur, smartphone, tablette) lors de votre visite sur un site web. Il permet au site de mémoriser vos actions et préférences (identifiant de session, langue, etc.) sur une période donnée, afin que vous n'ayez pas à les saisir de nouveau à chaque visite.",
+        text: "Un cookie est un petit fichier texte déposé sur ton terminal (ordinateur, smartphone, tablette) lors de ta visite sur un site web. Il permet au site de mémoriser tes actions et préférences (identifiant de session, langue, etc.) sur une période donnée, afin que tu n'aies pas à les saisir de nouveau à chaque visite.",
       },
       {
         title: "2. Cookies que nous utilisons",
         table: [
           {
             name: "next-auth.session-token",
-            purpose: "Maintenir votre session utilisateur après connexion",
+            purpose: "Maintenir ta session utilisateur après connexion",
             duration: "30 jours",
             type: "Essentiel",
           },
@@ -54,7 +54,7 @@ const CONTENT = {
           },
           {
             name: "cookie_consent",
-            purpose: "Mémoriser votre choix concernant les cookies",
+            purpose: "Mémoriser ton choix concernant les cookies",
             duration: "12 mois",
             type: "Fonctionnel",
           },
@@ -70,25 +70,25 @@ const CONTENT = {
         title: "3. Catégories de cookies",
         bullets: [
           "Cookies essentiels — indispensables au fonctionnement du site (authentification, sécurité). Ils ne peuvent pas être désactivés sans impacter le service.",
-          "Cookies fonctionnels — permettent de mémoriser vos préférences (langue, consentement cookie). Ils améliorent votre expérience sans vous identifier personnellement.",
-          "Cookies analytiques — utilisés pour mesurer le nombre de visiteurs et comprendre comment le site est utilisé. Les données sont anonymisées et ne permettent pas de vous identifier.",
+          "Cookies fonctionnels — permettent de mémoriser tes préférences (langue, consentement cookie). Ils améliorent ton expérience sans t'identifier personnellement.",
+          "Cookies analytiques — utilisés pour mesurer le nombre de visiteurs et comprendre comment le site est utilisé. Les données sont anonymisées et ne permettent pas de t'identifier.",
           "Cookies marketing / tiers — BeassistLink n'utilise pas de cookies publicitaires ou de tracking tiers à des fins commerciales.",
         ],
       },
       {
         title: "4. Base légale",
-        text: "Conformément au RGPD (Règlement UE 2016/679) et à la directive ePrivacy, les cookies strictement nécessaires sont déposés sans votre consentement préalable car ils sont indispensables au service. Pour les cookies fonctionnels et analytiques, nous recueillons votre consentement via la bannière qui s'affiche lors de votre première visite.",
+        text: "Conformément au RGPD (Règlement UE 2016/679) et à la directive ePrivacy, les cookies strictement nécessaires sont déposés sans ton consentement préalable car ils sont indispensables au service. Pour les cookies fonctionnels et analytiques, nous recueillons ton consentement via la bannière qui s'affiche lors de ta première visite.",
       },
       {
         title: "5. Durée de conservation",
-        text: "Les cookies de session sont supprimés à la fermeture du navigateur. Les cookies persistants ont une durée de vie maximale de 12 mois. Au-delà de cette durée, un nouveau consentement vous est demandé.",
+        text: "Les cookies de session sont supprimés à la fermeture du navigateur. Les cookies persistants ont une durée de vie maximale de 12 mois. Au-delà de cette durée, un nouveau consentement t'est demandé.",
       },
       {
-        title: "6. Vos droits et comment gérer les cookies",
+        title: "6. Tes droits et comment gérer les cookies",
         bullets: [
-          "Via notre bandeau : vous pouvez accepter ou refuser les cookies non essentiels lors de votre première visite. Vous pouvez modifier votre choix à tout moment en cliquant sur « Gérer les cookies » en bas de page.",
-          "Via votre navigateur : la plupart des navigateurs vous permettent de bloquer ou supprimer les cookies. Consultez l'aide de votre navigateur (Chrome, Firefox, Safari, Edge) pour plus d'informations.",
-          "Via des outils tiers : vous pouvez vous opposer à Google Analytics sur https://tools.google.com/dlpage/gaoptout.",
+          "Via notre bandeau : tu peux accepter ou refuser les cookies non essentiels lors de ta première visite. Tu peux modifier ton choix à tout moment en cliquant sur « Gérer les cookies » en bas de page.",
+          "Via ton navigateur : la plupart des navigateurs te permettent de bloquer ou supprimer les cookies. Consulte l'aide de ton navigateur (Chrome, Firefox, Safari, Edge) pour plus d'informations.",
+          "Via des outils tiers : tu peux t'opposer à Google Analytics sur https://tools.google.com/dlpage/gaoptout.",
           "Attention : désactiver certains cookies essentiels peut empêcher le bon fonctionnement du site (connexion impossible, perte de session).",
         ],
       },
@@ -98,11 +98,11 @@ const CONTENT = {
       },
       {
         title: "8. Mise à jour de la politique",
-        text: "Beassisted SASU se réserve le droit de modifier la présente politique de cookies à tout moment pour s'adapter aux évolutions réglementaires ou techniques. La date de dernière mise à jour figure en haut de cette page. Nous vous encourageons à la consulter régulièrement.",
+        text: "Beassisted SASU se réserve le droit de modifier la présente politique de cookies à tout moment pour s'adapter aux évolutions réglementaires ou techniques. La date de dernière mise à jour figure en haut de cette page. Nous t'encourageons à la consulter régulièrement.",
       },
       {
         title: "9. Contact",
-        text: "Pour toute question relative à notre utilisation des cookies ou à vos données personnelles, contactez-nous à : contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+        text: "Pour toute question relative à notre utilisation des cookies ou à tes données personnelles, contacte-nous à : contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
       },
     ] as Section[],
     tableHeaders: ["Nom du cookie", "Finalité", "Durée", "Type"],

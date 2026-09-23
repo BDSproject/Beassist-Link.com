@@ -14,7 +14,7 @@ export default function PrivacyPage() {
       description={
         en
           ? "We protect your data and apply high standards of security and transparency."
-          : "Nous protégeons vos données et appliquons des standards élevés de sécurité et de transparence."
+          : "Nous protégeons tes données et appliquons des standards élevés de sécurité et de transparence."
       }
       updatedAt={en ? "April 13, 2026" : "13 avril 2026"}
     >
@@ -27,8 +27,8 @@ export default function PrivacyPage() {
             ]
           : [
               "Nous collectons uniquement les données nécessaires au fonctionnement du service (compte, usage, facturation).",
-              "Vos données ne sont jamais revendues. Elles sont hébergées sur des infrastructures sécurisées.",
-              "Vous pouvez demander la modification ou suppression de vos données via la page Contact.",
+              "Tes données ne sont jamais revendues. Elles sont hébergées sur des infrastructures sécurisées.",
+              "Tu peux demander la modification ou suppression de tes données via la page Contact.",
             ]
         ).map((text) => (
           <p key={text}>{text}</p>

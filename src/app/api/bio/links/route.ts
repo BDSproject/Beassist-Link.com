@@ -57,7 +57,7 @@ export async function POST(req: NextRequest) {
       bioPage._count.links >= (planLimits?.maxBioLinks || 5)
     ) {
       return NextResponse.json(
-        { message: `Limite de liens bio atteinte (${planLimits?.maxBioLinks}). Passez au plan supérieur.` },
+        { message: `Limite de liens bio atteinte (${planLimits?.maxBioLinks}). Passe au plan supérieur.` },
         { status: 403 }
       );
     }

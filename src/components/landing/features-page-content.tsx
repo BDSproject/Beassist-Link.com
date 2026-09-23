@@ -16,10 +16,10 @@ export function FeaturesPageContent() {
         ["Performance", "Fast, mobile-first experience built with Next.js for creators, freelancers and businesses."],
       ]
     : [
-        ["Éditeur de page bio", "Personnalisez votre lien en bio avec thèmes, couleurs, avatar, réseaux sociaux et aperçu en direct."],
-        ["Gestion des liens courts", "Créez, modifiez et suivez vos liens raccourcis avec des statistiques de clics claires."],
-        ["Générateur de QR code", "Choisissez la couleur, la taille et exportez un PNG haute définition pour le print et le web."],
-        ["Plans évolutifs", "Commencez gratuitement puis passez à Starter ou Pro selon vos besoins en personnalisation et statistiques."],
+        ["Éditeur de page bio", "Personnalise ton lien en bio avec thèmes, couleurs, avatar, réseaux sociaux et aperçu en direct."],
+        ["Gestion des liens courts", "Crée, modifie et suis tes liens raccourcis avec des statistiques de clics claires."],
+        ["Générateur de QR code", "Choisis la couleur, la taille et exporte un PNG haute définition pour le print et le web."],
+        ["Plans évolutifs", "Commence gratuitement puis passe à Starter ou Pro selon tes besoins en personnalisation et statistiques."],
         ["Performance", "Une expérience rapide, responsive et pensée mobile-first pour les créateurs, freelances et entreprises."],
       ];
 
@@ -42,7 +42,7 @@ export function FeaturesPageContent() {
         <p>
           {en
             ? "BeassistLink is built for creators who want a fast, elegant and conversion-focused link in bio page. From social links to branded short URLs and QR codes, every feature is designed to make your profile easier to share and more effective to monetize."
-            : "BeassistLink est conçu pour les créateurs qui veulent une page de lien en bio rapide, élégante et pensée pour la conversion. Des réseaux sociaux aux liens raccourcis en passant par les QR codes, chaque fonctionnalité aide à mieux partager votre univers et à mieux monétiser votre audience."}
+            : "BeassistLink est conçu pour les créateurs qui veulent une page de lien en bio rapide, élégante et pensée pour la conversion. Des réseaux sociaux aux liens raccourcis en passant par les QR codes, chaque fonctionnalité aide à mieux partager ton univers et à mieux monétiser ton audience."}
         </p>
 
         <div className="grid gap-4">
@@ -61,7 +61,7 @@ export function FeaturesPageContent() {
           <p className="mt-3 text-sm text-gray-700">
             {en
               ? "A clear bio page helps people find you on Google, makes navigation easier between your social channels, and drives more clicks to your key offers and content. With fast loading and a mobile-first experience, visitors stay longer and interact more."
-              : "Une page bio claire aide vos clients à vous trouver sur Google, facilite la navigation entre vos réseaux et génère plus de clics vers vos contenus et offres importantes. Avec un chargement rapide et une expérience pensée mobile, vos visiteurs restent plus longtemps et interagissent davantage."}
+              : "Une page bio claire aide tes clients à te trouver sur Google, facilite la navigation entre tes réseaux et génère plus de clics vers tes contenus et offres importantes. Avec un chargement rapide et une expérience pensée mobile, tes visiteurs restent plus longtemps et interagissent davantage."}
           </p>
         </section>
       </div>

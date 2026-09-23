@@ -57,7 +57,7 @@ export function AvatarUpload({
 
   const handleFile = async (file: File) => {
     if (!file.type.startsWith("image/")) {
-      alert("Veuillez sélectionner une image.");
+      alert("Sélectionne une image.");
       return;
     }
     if (file.size > 5 * 1024 * 1024) {

@@ -5,7 +5,7 @@ import { MarketingLayout } from "@/components/landing/marketing-layout";
 export const metadata: Metadata = {
   title: "Blog — Conseils Link in Bio, Comparatifs Linktree & Stratégies.",
   description:
-    "Tutoriels, comparatifs et conseils pour optimiser votre lien bio Instagram, TikTok et YouTube. Alternative française à Linktree — articles en français.",
+    "Tutoriels, comparatifs et conseils pour optimiser ton lien bio Instagram, TikTok et YouTube. Alternative française à Linktree — articles en français.",
   keywords: [
     "blog lien bio",
     "comparatif linktree",
@@ -26,7 +26,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment avoir plusieurs liens sur Instagram sans payer",
     excerpt:
-      "Guide étape par étape : créez une page de liens personnalisée gratuite et mettez-la dans votre bio Instagram en 5 minutes — sans logo, sans abonnement.",
+      "Guide étape par étape : crée une page de liens personnalisée gratuite et mets-la dans ta bio Instagram en 5 minutes — sans logo, sans abonnement.",
     date: "14 avril 2026",
     readTime: "5 min",
     featured: false,
@@ -37,7 +37,7 @@ const posts = [
     tagColor: "bg-purple-100 text-purple-700",
     title: "BeassistLink vs Linktree en 2026 : le comparatif complet",
     excerpt:
-      "Prix, fonctionnalités, analytics, RGPD… On décortique chaque différence entre BeassistLink et Linktree pour vous aider à choisir.",
+      "Prix, fonctionnalités, analytics, RGPD… On décortique chaque différence entre BeassistLink et Linktree pour t'aider à choisir.",
     date: "12 avril 2026",
     readTime: "6 min",
     featured: true,
@@ -57,9 +57,9 @@ const posts = [
     slug: "pourquoi-choisir-solution-francaise",
     tag: "🇫🇷 Made in France",
     tagColor: "bg-blue-100 text-blue-700",
-    title: "Pourquoi choisir une solution française pour votre lien bio ?",
+    title: "Pourquoi choisir une solution française pour ton lien bio ?",
     excerpt:
-      "Hébergement en Europe, conformité RGPD native, support en français… Ce que les outils américains ne peuvent pas vous offrir.",
+      "Hébergement en Europe, conformité RGPD native, support en français… Ce que les outils américains ne peuvent pas t'offrir.",
     date: "5 avril 2026",
     readTime: "5 min",
     featured: false,
@@ -70,7 +70,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment optimiser sa bio pour convertir en 2026",
     excerpt:
-      "7 leviers simples pour transformer vos visiteurs en clients — des bonnes pratiques partagées par les créateurs qui gèrent leur présence en ligne avec soin.",
+      "7 leviers simples pour transformer tes visiteurs en clients — des bonnes pratiques partagées par les créateurs qui gèrent leur présence en ligne avec soin.",
     date: "1 avril 2026",
     readTime: "4 min",
     featured: false,
@@ -92,7 +92,7 @@ const posts = [
     tagColor: "bg-yellow-100 text-yellow-700",
     title: "FREE vs STARTER : quand passer au plan supérieur ?",
     excerpt:
-      "Les 5 signaux concrets qui montrent qu'il est temps d'upgrader et ce que vous gagnez vraiment en passant au Starter.",
+      "Les 5 signaux concrets qui montrent qu'il est temps d'upgrader et ce que tu gagnes vraiment en passant au Starter.",
     date: "22 mars 2026",
     readTime: "3 min",
     featured: false,
@@ -243,7 +243,7 @@ export default function BlogPage() {
         <div>
           <h2 className="font-black text-gray-900 text-lg">BeassistLink, fièrement français</h2>
           <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-            Conçu et développé en France, BeassistLink héberge vos données en Europe et respecte le RGPD nativement —
+            Conçu et développé en France, BeassistLink héberge tes données en Europe et respecte le RGPD nativement —
             pas comme une option payante, mais comme standard. Notre support répond en français, en heures ouvrées françaises.
             Pas de barrière de la langue, pas de délai à cause du décalage horaire.
           </p>
@@ -285,9 +285,9 @@ export default function BlogPage() {
       </div>
 
       <p className="text-sm text-gray-500">
-        Un sujet qui vous intéresse ?{" "}
+        Un sujet qui t'intéresse ?{" "}
         <Link href="/contact" className="text-[#8F00FF] hover:underline font-medium">
-          Proposez-le nous
+          Propose-le-nous
         </Link>
         .
       </p>

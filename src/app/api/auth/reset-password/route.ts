@@ -25,7 +25,7 @@ export async function POST(req: NextRequest) {
     if (!resetToken || resetToken.expires < new Date()) {
       await db.passwordResetToken.deleteMany({ where: { token } });
       return NextResponse.json(
-        { message: "Lien invalide ou expiré. Veuillez recommencer." },
+        { message: "Lien invalide ou expiré. Réessaie." },
         { status: 400 }
       );
     }

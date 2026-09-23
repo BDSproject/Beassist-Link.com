@@ -11,7 +11,7 @@ export default function CareersPage() {
   return (
     <MarketingLayout
       category={en ? "Careers" : "Carrières"}
-      title={en ? "Join the BeassistLink adventure" : "Rejoignez l'aventure BeassistLink"}
+      title={en ? "Join the BeassistLink adventure" : "Rejoins l'aventure BeassistLink"}
       description={
         en
           ? "We're building an ambitious product and looking for motivated profiles to accelerate our growth."

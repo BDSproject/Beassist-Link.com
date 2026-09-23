@@ -56,7 +56,7 @@ export async function POST(req: NextRequest) {
     ) {
       return NextResponse.json(
         {
-          message: `Limite de liens atteinte pour votre plan ${plan}. Passez au plan supérieur.`,
+          message: `Limite de liens atteinte pour ton plan ${plan}. Passe au plan supérieur.`,
         },
         { status: 403 }
       );

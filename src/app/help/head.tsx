@@ -1,7 +1,7 @@
 export default function Head() {
   const title = "FAQ lien en bio et support | BeassistLink";
   const description =
-    "Consultez la FAQ BeassistLink: création de page bio, liens raccourcis, QR codes, facturation et support.";
+    "Consulte la FAQ BeassistLink: création de page bio, liens raccourcis, QR codes, facturation et support.";
   const canonical = "https://www.beassist-link.com/help";
 
   return (

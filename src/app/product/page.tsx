@@ -12,10 +12,10 @@ const CARDS_EN = [
 ];
 
 const CARDS_FR = [
-  ["Page bio intelligente", "Mettez en avant vos offres, réseaux sociaux et contenus clés."],
-  ["Liens raccourcis", "Créez des URLs courtes, propres et simples à partager."],
-  ["QR Codes pro", "Générez des QR codes personnalisés prêts pour vos supports imprimés."],
-  ["Conversion & analytics", "Comprenez ce qui fonctionne et optimisez votre stratégie."],
+  ["Page bio intelligente", "Mets en avant tes offres, réseaux sociaux et contenus clés."],
+  ["Liens raccourcis", "Crée des URLs courtes, propres et simples à partager."],
+  ["QR Codes pro", "Génère des QR codes personnalisés prêts pour tes supports imprimés."],
+  ["Conversion & analytics", "Comprends ce qui fonctionne et optimise ta stratégie."],
 ];
 
 export default function ProductPage() {
@@ -26,10 +26,10 @@ export default function ProductPage() {
   // Métadonnées dynamiques selon la langue
   const pageTitle = en
     ? "BeassistLink: the all-in-one platform for your online presence"
-    : "BeassistLink: la plateforme tout-en-un pour votre présence en ligne";
+    : "BeassistLink: la plateforme tout-en-un pour ta présence en ligne";
   const pageDescription = en
     ? "Create a high-performing bio page, shorten your links, generate QR codes and track your results from a single dashboard."
-    : "Créez une page bio performante, raccourcissez vos liens, générez des QR codes et suivez vos résultats depuis un seul tableau de bord.";
+    : "Crée une page bio performante, raccourcis tes liens, génère des QR codes et suis tes résultats depuis un seul tableau de bord.";
   const canonicalUrl = "https://www.beassist-link.com/product";
 
   // Données structurées JSON-LD de type SoftwareApplication (ou Product)

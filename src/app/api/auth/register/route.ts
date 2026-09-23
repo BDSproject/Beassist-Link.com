@@ -106,7 +106,7 @@ export async function POST(req: NextRequest) {
     void sendVerificationEmail({ name: data.name, email: user.email, token });
 
     return NextResponse.json(
-      { message: "Compte créé. Vérifiez votre email.", needsVerification: true },
+      { message: "Compte créé. Vérifie ton email.", needsVerification: true },
       { status: 201 }
     );
   } catch (error) {

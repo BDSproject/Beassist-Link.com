@@ -28,7 +28,7 @@ export function MarketingLayout({
     ctaSubtext:
       lang === "en"
         ? "Create your link in bio in minutes and start converting your visitors."
-        : "Créez votre lien bio en quelques minutes et commencez à convertir vos visiteurs.",
+        : "Crée ton lien bio en quelques minutes et commence à convertir tes visiteurs.",
     ctaStart: lang === "en" ? "Get started" : "Commencer",
     ctaContact: lang === "en" ? "Contact us" : "Nous contacter",
   };

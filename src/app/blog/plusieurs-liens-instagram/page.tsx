@@ -11,7 +11,7 @@ const PUBLISHED = "2026-04-14";
 export const metadata: Metadata = {
   title: "Comment avoir plusieurs liens sur Instagram sans payer — Guide 2026",
   description:
-    "Tutoriel complet : mettez plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, sans logo, sans abonnement. Alternative gratuite à Linktree en français.",
+    "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, sans logo, sans abonnement. Alternative gratuite à Linktree en français.",
   keywords: [
     "plusieurs liens bio instagram",
     "lien en bio instagram",
@@ -56,25 +56,25 @@ const jsonLd = {
     {
       "@type": "HowToStep",
       name: "Créer un compte BeassistLink",
-      text: "Rendez-vous sur beassist-link.com/register et créez votre compte gratuit en 30 secondes. Aucune carte bancaire requise.",
+      text: "Rends-toi sur beassist-link.com/register et crée ton compte gratuit en 30 secondes. Aucune carte bancaire requise.",
       url: `${BASE}/register`,
     },
     {
       "@type": "HowToStep",
-      name: "Ajouter vos liens",
-      text: "Dans le tableau de bord, ajoutez autant de liens que vous souhaitez : YouTube, TikTok, boutique en ligne, Spotify, newsletter, etc.",
+      name: "Ajouter tes liens",
+      text: "Dans le tableau de bord, ajoute autant de liens que tu souhaites : YouTube, TikTok, boutique en ligne, Spotify, newsletter, etc.",
       url: `${BASE}/dashboard/links`,
     },
     {
       "@type": "HowToStep",
-      name: "Personnaliser votre page bio",
-      text: "Choisissez un thème, une couleur, ajoutez votre photo et une description courte pour rendre votre page à votre image.",
+      name: "Personnaliser ta page bio",
+      text: "Choisis un thème, une couleur, ajoute ta photo et une description courte pour rendre ta page à ton image.",
       url: `${BASE}/dashboard/bio`,
     },
     {
       "@type": "HowToStep",
-      name: "Copier votre lien dans la bio Instagram",
-      text: "Copiez votre URL personnalisée (ex. beassist-link.com/votrenom) et collez-la dans le champ « Site web » de votre profil Instagram.",
+      name: "Copier ton lien dans la bio Instagram",
+      text: "Copie ton URL personnalisée (ex. beassist-link.com/tonnom) et colle-la dans le champ « Site web » de ton profil Instagram.",
     },
   ],
 };
@@ -100,7 +100,7 @@ export default function BlogPlusieursLiensInstagram() {
               Comment avoir plusieurs liens sur Instagram sans payer
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Instagram ne vous permet qu'un seul lien dans votre bio. Voici comment en mettre autant que vous voulez —
+              Instagram ne te permet qu'un seul lien dans ta bio. Voici comment en mettre autant que tu veux —
               <strong> gratuitement</strong>, sans logo imposé, en moins de 5 minutes.
             </p>
           </div>
@@ -118,7 +118,7 @@ export default function BlogPlusieursLiensInstagram() {
             </p>
             <p>
               La solution ? Créer une <strong>page de liens personnalisée</strong> (aussi appelée <em>lien en bio</em> ou
-              <em>link in bio</em>) qui centralise tous vos liens. Ce guide vous explique comment faire avec
+              <em>link in bio</em>) qui centralise tous tes liens. Ce guide t'explique comment faire avec
               <strong> BeassistLink</strong>, l'alternative française gratuite à Linktree.
             </p>
           </div>
@@ -131,7 +131,7 @@ export default function BlogPlusieursLiensInstagram() {
             <div className="text-[15px] text-gray-600 leading-relaxed space-y-3">
               <p>
                 Linktree est la solution la plus connue, mais le plan gratuit impose un <strong>logo Linktree visible</strong>
-                sur votre page, bloque les analytics détaillées et limite la personnalisation. Le plan payant est facturé
+                sur ta page, bloque les analytics détaillées et limite la personnalisation. Le plan payant est facturé
                 <strong> en dollars américains</strong> (environ 9 $/mois en 2026).
               </p>
               <p>
@@ -150,14 +150,14 @@ export default function BlogPlusieursLiensInstagram() {
               {[
                 {
                   n: 1,
-                  title: "Créer votre compte BeassistLink (gratuit)",
+                  title: "Créer ton compte BeassistLink (gratuit)",
                   body: (
                     <>
-                      Rendez-vous sur{" "}
+                      Rends-toi sur{" "}
                       <Link href="/register" className="text-[#8F00FF] font-semibold hover:underline">
                         beassist-link.com/register
                       </Link>{" "}
-                      et créez votre compte en 30 secondes. Choisissez votre nom d'utilisateur — il deviendra votre URL
+                      et crée ton compte en 30 secondes. Choisis ton nom d'utilisateur — il deviendra ton URL
                       personnalisée (ex.{" "}
                       <code className="text-xs bg-gray-100 rounded px-1.5 py-0.5">beassist-link.com/juliedupont</code>).
                     </>
@@ -165,22 +165,22 @@ export default function BlogPlusieursLiensInstagram() {
                 },
                 {
                   n: 2,
-                  title: "Ajouter tous vos liens",
-                  body: "Dans le tableau de bord, cliquez sur « Liens » puis « Ajouter un lien ». Vous pouvez ajouter autant de liens que vous voulez : YouTube, TikTok, boutique en ligne, Spotify, newsletter, formulaire de contact, etc.",
+                  title: "Ajouter tous tes liens",
+                  body: "Dans le tableau de bord, clique sur « Liens » puis « Ajouter un lien ». Tu peux ajouter autant de liens que tu veux : YouTube, TikTok, boutique en ligne, Spotify, newsletter, formulaire de contact, etc.",
                 },
                 {
                   n: 3,
-                  title: "Personnaliser votre page bio",
-                  body: "Dans l'onglet « Bio », choisissez votre thème, votre couleur principale, ajoutez votre photo de profil et une courte description. Votre page se prévisualise en temps réel.",
+                  title: "Personnaliser ta page bio",
+                  body: "Dans l'onglet « Bio », choisis ton thème, ta couleur principale, ajoute ta photo de profil et une courte description. Ta page se prévisualise en temps réel.",
                 },
                 {
                   n: 4,
-                  title: "Copier votre lien dans la bio Instagram",
+                  title: "Copier ton lien dans la bio Instagram",
                   body: (
                     <>
-                      Ouvrez votre profil Instagram → <strong>Modifier le profil</strong> → champ{" "}
-                      <strong>« Site web »</strong>. Collez votre URL BeassistLink. Sauvegardez.
-                      Vos abonnés verront désormais un bouton cliquable qui mène à tous vos liens.
+                      Ouvre ton profil Instagram → <strong>Modifier le profil</strong> → champ{" "}
+                      <strong>« Site web »</strong>. Colle ton URL BeassistLink. Sauvegarde.
+                      Tes abonnés verront désormais un bouton cliquable qui mène à tous tes liens.
                     </>
                   ),
                 },
@@ -201,15 +201,15 @@ export default function BlogPlusieursLiensInstagram() {
           {/* Tips */}
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-4">
-              5 liens à mettre en priorité dans votre bio Instagram
+              5 liens à mettre en priorité dans ta bio Instagram
             </h2>
             <div className="space-y-3">
               {[
-                ["🎥", "Votre dernière vidéo YouTube ou Reel", "Le contenu chaud converti mieux qu'une page statique."],
-                ["🛒", "Votre boutique ou offre principale", "Lien direct vers votre produit star ou votre page de paiement."],
+                ["🎥", "Ta dernière vidéo YouTube ou Reel", "Le contenu chaud converti mieux qu'une page statique."],
+                ["🛒", "Ta boutique ou offre principale", "Lien direct vers ton produit star ou ta page de paiement."],
                 ["🎵", "Lien Spotify ou musique", "Indispensable pour les artistes qui veulent scorer des écoutes."],
-                ["📧", "Votre newsletter ou formulaire de contact", "Pour convertir vos followers en abonnés email que vous posséderez."],
-                ["🔗", "Votre profil TikTok / YouTube", "Faites croître tous vos réseaux en cross-promouvant depuis Instagram."],
+                ["📧", "Ta newsletter ou formulaire de contact", "Pour convertir tes followers en abonnés email que tu posséderas."],
+                ["🔗", "Ton profil TikTok / YouTube", "Fais croître tous tes réseaux en cross-promouvant depuis Instagram."],
               ].map(([emoji, title, tip]) => (
                 <div key={title as string} className="flex gap-3 p-4 rounded-xl border border-gray-200">
                   <span className="text-xl">{emoji}</span>
@@ -233,15 +233,15 @@ export default function BlogPlusieursLiensInstagram() {
                 },
                 {
                   q: "Peut-on mettre son lien Spotify dans sa bio Instagram ?",
-                  a: "Oui. Ajoutez votre URL Spotify dans BeassistLink, puis mettez votre lien BeassistLink dans votre bio Instagram. Vos followers accèdent à votre musique en un clic.",
+                  a: "Oui. Ajoute ton URL Spotify dans BeassistLink, puis mets ton lien BeassistLink dans ta bio Instagram. Tes followers accèdent à ta musique en un clic.",
                 },
                 {
                   q: "BeassistLink est-il vraiment gratuit sans logo ?",
-                  a: "Oui. Le plan FREE n'affiche aucun logo BeassistLink sur votre page bio — c'est ce qui nous distingue de Linktree qui impose son badge sur les plans gratuits.",
+                  a: "Oui. Le plan FREE n'affiche aucun logo BeassistLink sur ta page bio — c'est ce qui nous distingue de Linktree qui impose son badge sur les plans gratuits.",
                 },
                 {
                   q: "Combien de liens peut-on ajouter ?",
-                  a: "Sur le plan FREE, vous pouvez ajouter jusqu'à 10 liens. Les plans Starter et Pro permettent des liens illimités avec analytics avancées.",
+                  a: "Sur le plan FREE, tu peux ajouter jusqu'à 10 liens. Les plans Starter et Pro permettent des liens illimités avec analytics avancées.",
                 },
               ].map(({ q, a }) => (
                 <div key={q} className="rounded-2xl border border-gray-200 p-5">
@@ -254,9 +254,9 @@ export default function BlogPlusieursLiensInstagram() {
 
           {/* CTA */}
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
-            <h2 className="text-2xl font-black mb-2">Prêt à ajouter plusieurs liens dans votre bio ?</h2>
+            <h2 className="text-2xl font-black mb-2">Prêt à ajouter plusieurs liens dans ta bio ?</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Créez votre page BeassistLink en 30 secondes. Gratuit, sans logo, sans carte bancaire.
+              Crée ta page BeassistLink en 30 secondes. Gratuit, sans logo, sans carte bancaire.
             </p>
             <Link
               href="/register"

@@ -65,11 +65,11 @@ export function Hero() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "BeassistLink",
-    url: "https://www.votre-domaine.com",
+    url: "https://www.beassist-link.com",
     description: t.hero.subheading,
     potentialAction: {
       "@type": "SearchAction",
-      target: "https://www.votre-domaine.com/search?q={search_term_string}",
+      target: "https://www.beassist-link.com/search?q={search_term_string}",
       "query-input": "required name=search_term_string",
     },
   };

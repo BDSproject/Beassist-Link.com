@@ -10,7 +10,7 @@ const TEXT = {
   fr: {
     title: "🍪 Cookies",
     message:
-      "Nous utilisons des cookies essentiels au fonctionnement du site et des cookies analytiques anonymisés pour améliorer votre expérience.",
+      "Nous utilisons des cookies essentiels au fonctionnement du site et des cookies analytiques anonymisés pour améliorer ton expérience.",
     policy: "Politique de cookies",
     accept: "Tout accepter",
     decline: "Essentiels uniquement",

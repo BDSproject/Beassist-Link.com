@@ -95,7 +95,7 @@ export default function OnboardingPage() {
             <CheckCircle className="w-10 h-10 text-green-500" />
           </div>
           <h2 className="text-2xl font-bold text-gray-900 mb-2">Profil complété !</h2>
-          <p className="text-gray-500">Redirection vers votre tableau de bord…</p>
+          <p className="text-gray-500">Redirection vers ton tableau de bord…</p>
           <div className="mt-6 w-8 h-8 border-4 border-violet-600 border-t-transparent rounded-full animate-spin mx-auto" />
         </div>
       </div>
@@ -112,7 +112,7 @@ export default function OnboardingPage() {
           </div>
           <h1 className="text-3xl font-bold text-gray-900">Bienvenue !</h1>
           <p className="text-gray-500 mt-2 text-center max-w-sm">
-            Complétez votre profil pour accéder à votre espace et faciliter la facturation en toute simplicité.
+            Complète ton profil pour accéder à ton espace et faciliter la facturation en toute simplicité.
           </p>
         </header>
 
@@ -164,7 +164,7 @@ export default function OnboardingPage() {
                 <Input
                   id="company"
                   {...register("company")}
-                  placeholder="Nom de votre société"
+                  placeholder="Nom de ta société"
                   className="pl-10 h-12 rounded-xl border-gray-200 focus:border-violet-500 focus:ring-violet-500"
                 />
               </div>
@@ -186,7 +186,7 @@ export default function OnboardingPage() {
                 />
               </div>
               <p className="mt-1 text-xs text-gray-400">
-                Ces informations apparaîtront sur vos factures Stripe.
+                Ces informations apparaîtront sur tes factures Stripe.
               </p>
             </div>
 

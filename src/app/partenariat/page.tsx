@@ -46,7 +46,7 @@ export default function PartnershipPage() {
       alert(
         en
           ? "An error occurred. Please try again or contact us directly."
-          : "Une erreur est survenue. Réessayez ou contactez-nous directement."
+          : "Une erreur est survenue. Réessaie ou contacte-nous directement."
       );
     } finally {
       setLoading(false);
@@ -83,27 +83,27 @@ export default function PartnershipPage() {
     : [
         {
           number: "01",
-          title: "Vous postulez",
+          title: "Tu postules",
           description:
-            "Remplissez le formulaire ci-dessous avec votre profil, votre audience et la plateforme sur laquelle vous êtes actif.",
+            "Remplis le formulaire ci-dessous avec ton profil, ton audience et la plateforme sur laquelle tu es actif.",
         },
         {
           number: "02",
-          title: "On valide votre profil",
+          title: "On valide ton profil",
           description:
-            "Notre équipe examine votre candidature sous 48 h. Minimum 1 000 abonnés requis sur votre plateforme principale — ensuite, c'est l'engagement et l'authenticité du contenu qui comptent.",
+            "Notre équipe examine ta candidature sous 48 h. Minimum 1 000 abonnés requis sur ta plateforme principale — ensuite, c'est l'engagement et l'authenticité du contenu qui comptent.",
         },
         {
           number: "03",
-          title: "Vous créez votre vidéo",
+          title: "Tu crées ta vidéo",
           description:
-            "Présentez BeassistLink à votre audience à votre façon : tuto, avis honnête, intégration naturelle. Vous restez libre sur le format.",
+            "Présente BeassistLink à ton audience à ta façon : tuto, avis honnête, intégration naturelle. Tu restes libre sur le format.",
         },
         {
           number: "04",
           title: "Abonnement Pro à vie 🎁",
           description:
-            "Une fois la vidéo publiée et validée, vous recevez immédiatement votre accès Pro BeassistLink à vie — aucune limite, aucune condition.",
+            "Une fois la vidéo publiée et validée, tu reçois immédiatement ton accès Pro BeassistLink à vie — aucune limite, aucune condition.",
         },
       ];
 
@@ -117,9 +117,9 @@ export default function PartnershipPage() {
         "Content must remain online for at least 12 months",
       ]
     : [
-        "Avoir minimum 1 000 abonnés / followers sur votre plateforme principale",
+        "Avoir minimum 1 000 abonnés / followers sur ta plateforme principale",
         "Être actif sur au moins une plateforme (YouTube, TikTok, Instagram, Twitch…)",
-        "Publier une vidéo ou story/reel présentant BeassistLink à votre communauté",
+        "Publier une vidéo ou story/reel présentant BeassistLink à ta communauté",
         "Mentionner au moins une fonctionnalité clé (lien en bio, analytics, QR code…)",
         "Inclure un lien vers beassist-link.com dans ta description ou ta bio",
         "Le contenu doit rester en ligne au moins 12 mois",
@@ -169,11 +169,11 @@ export default function PartnershipPage() {
     : [
         {
           q: "Y a-t-il un minimum d'abonnés ?",
-          a: "Oui. Nous demandons un minimum de 1 000 abonnés / followers sur votre plateforme principale. Ce seuil nous assure que votre audience peut réellement découvrir BeassistLink.",
+          a: "Oui. Nous demandons un minimum de 1 000 abonnés / followers sur ta plateforme principale. Ce seuil nous assure que ton audience peut réellement découvrir BeassistLink.",
         },
         {
           q: "Le contenu doit-il être sponsorisé / déclaré comme pub ?",
-          a: 'Oui, conformément à la loi française sur la publicité digitale (ARPP). Indiquez clairement "contenu sponsorisé" ou "partenariat".',
+          a: 'Oui, conformément à la loi française sur la publicité digitale (ARPP). Indique clairement "contenu sponsorisé" ou "partenariat".',
         },
         {
           q: "Que se passe-t-il si je supprime la vidéo ?",
@@ -181,17 +181,17 @@ export default function PartnershipPage() {
         },
         {
           q: "Peut-on collaborer plusieurs fois ?",
-          a: "Ce programme offre un abonnement Pro à vie. Pour les collaborations long terme (affiliation, ambassador), contactez-nous directement.",
+          a: "Ce programme offre un abonnement Pro à vie. Pour les collaborations long terme (affiliation, ambassador), contacte-nous directement.",
         },
       ];
 
   // Métadonnées dynamiques
   const pageTitle = en
     ? "Become a BeassistLink Ambassador 🌍"
-    : "Devenez ambassadeur BeassistLink 🇫🇷";
+    : "Deviens ambassadeur BeassistLink 🇫🇷";
   const pageDescription = en
     ? "Got 1,000+ followers? Present BeassistLink to your community in a video and get lifetime Pro access — free, no hidden conditions."
-    : "Vous avez +1 000 abonnés ? Présentez BeassistLink à votre communauté dans une vidéo, et décrochez un accès Pro à vie — offert, sans condition cachée.";
+    : "Tu as +1 000 abonnés ? Présente BeassistLink à ta communauté dans une vidéo, et décroche un accès Pro à vie — offert, sans condition cachée.";
   const canonicalUrl = en
     ? "https://www.beassist-link.com/en/partnership"
     : "https://www.beassist-link.com/partenariat";
@@ -283,7 +283,7 @@ export default function PartnershipPage() {
               <p className="text-sm text-gray-600 mt-3 leading-relaxed">
                 {en
                   ? "We genuinely believe in our product — and we know the best ad is someone who actually uses it. If you love BeassistLink, tell your community about it. In return, we give you full access to all Pro features, "
-                  : "On croit sincèrement en notre produit — et on sait que la meilleure pub, c'est quelqu'un qui l'utilise vraiment. Si vous aimez BeassistLink, parlez-en à votre communauté. En échange, on vous offre l'accès complet à toutes les fonctionnalités Pro, "}
+                  : "On croit sincèrement en notre produit — et on sait que la meilleure pub, c'est quelqu'un qui l'utilise vraiment. Si tu aimes BeassistLink, parles-en à ta communauté. En échange, on t'offre l'accès complet à toutes les fonctionnalités Pro, "}
                 <strong>{en ? "for life" : "à vie"}</strong>
                 {en ? ", no additional strings attached." : ", sans contrepartie supplémentaire."}
               </p>
@@ -297,7 +297,7 @@ export default function PartnershipPage() {
               <div className="rounded-xl bg-[#8F00FF]/10 border border-[#8F00FF]/20 p-4 text-center">
                 <Video size={24} className="text-[#8F00FF] mx-auto mb-2" aria-hidden="true" />
                 <p className="text-sm font-bold text-gray-900">{en ? "1 video" : "1 vidéo"}</p>
-                <p className="text-xs text-gray-500 mt-0.5">{en ? "your way" : "à votre façon"}</p>
+                <p className="text-xs text-gray-500 mt-0.5">{en ? "your way" : "à ta façon"}</p>
               </div>
               <div className="flex items-center justify-center text-2xl font-black text-gray-300" aria-hidden="true">
                 ⇓
@@ -320,7 +320,7 @@ export default function PartnershipPage() {
             id="whats-included-title"
             className="font-black text-gray-900 text-lg mb-4"
           >
-            {en ? "What you get (full Pro plan)" : "Ce que vous obtenez (plan Pro complet)"}
+            {en ? "What you get (full Pro plan)" : "Ce que tu obtiens (plan Pro complet)"}
           </h2>
           <ul className="grid sm:grid-cols-2 gap-2 list-none p-0">
             {included.map((item) => (
@@ -335,7 +335,7 @@ export default function PartnershipPage() {
             <span className="font-semibold text-gray-600">{en ? "$144/year" : "144 €/an"}</span>
             {en
               ? " — free for life once your video is validated."
-              : " — offert à vie dès validation de votre vidéo."}
+              : " — offert à vie dès validation de ta vidéo."}
           </p>
         </section>
 
@@ -395,7 +395,7 @@ export default function PartnershipPage() {
               <p className="text-sm text-gray-600">
                 {en
                   ? "We'll get back to you within 48 h at the address provided. In the meantime, you can already create your free account and try BeassistLink."
-                  : "On revient vers vous sous 48 h à l'adresse indiquée. En attendant, vous pouvez déjà créer votre compte gratuit et tester BeassistLink."}
+                  : "On revient vers toi sous 48 h à l'adresse indiquée. En attendant, tu peux déjà créer ton compte gratuit et tester BeassistLink."}
               </p>
               <Link
                 href="/register"
@@ -410,7 +410,7 @@ export default function PartnershipPage() {
                 {en ? "Apply to the program" : "Postuler au programme"}
               </h2>
               <p className="text-sm text-gray-500 mb-6">
-                {en ? "No commitment. We reply within 48 h." : "Aucun engagement. On vous répond sous 48 h."}
+                {en ? "No commitment. We reply within 48 h." : "Aucun engagement. On te répond sous 48 h."}
               </p>
 
               <form onSubmit={handleSubmit} className="space-y-4">
@@ -441,7 +441,7 @@ export default function PartnershipPage() {
                       type="email"
                       aria-required="true"
                       className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8F00FF]/40 focus:border-[#8F00FF]"
-                      placeholder={en ? "you@example.com" : "vous@exemple.com"}
+                      placeholder={en ? "you@example.com" : "exemple@exemple.com"}
                       value={form.email}
                       onChange={(e) => setForm({ ...form, email: e.target.value })}
                     />
@@ -451,11 +451,11 @@ export default function PartnershipPage() {
                 {/* Platform selector */}
                 <div className="flex flex-col gap-1">
                   <label className="text-sm font-semibold text-gray-700">
-                    {en ? "Your main platform *" : "Votre plateforme principale *"}
+                    {en ? "Your main platform *" : "Ta plateforme principale *"}
                   </label>
                   <div
                     role="group"
-                    aria-label={en ? "Select your main platform" : "Sélectionnez votre plateforme principale"}
+                    aria-label={en ? "Select your main platform" : "Sélectionne ta plateforme principale"}
                     className="flex flex-wrap gap-2"
                   >
                     {platforms.map((p) => (
@@ -482,7 +482,7 @@ export default function PartnershipPage() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1">
                     <label htmlFor="handle" className="text-sm font-semibold text-gray-700">
-                      {en ? "Your handle / channel *" : "Votre handle / chaîne *"}
+                      {en ? "Your handle / channel *" : "Ton handle / chaîne *"}
                     </label>
                     <input
                       id="handle"
@@ -490,14 +490,14 @@ export default function PartnershipPage() {
                       required
                       aria-required="true"
                       className="rounded-xl border border-gray-200 px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#8F00FF]/40 focus:border-[#8F00FF]"
-                      placeholder={en ? "@yourhandle or URL" : "@votrepseudo ou URL"}
+                      placeholder={en ? "@yourhandle or URL" : "@tonpseudo ou URL"}
                       value={form.handle}
                       onChange={(e) => setForm({ ...form, handle: e.target.value })}
                     />
                   </div>
                   <div className="flex flex-col gap-1">
                     <label htmlFor="audience" className="text-sm font-semibold text-gray-700">
-                      {en ? "Your audience size" : "Taille de votre audience"}
+                      {en ? "Your audience size" : "Taille de ton audience"}
                     </label>
                     <select
                       id="audience"
@@ -517,7 +517,7 @@ export default function PartnershipPage() {
 
                 <div className="flex flex-col gap-1">
                   <label htmlFor="message" className="text-sm font-semibold text-gray-700">
-                    {en ? "Why do you want to collaborate? (optional)" : "Pourquoi voulez-vous collaborer ? (optionnel)"}
+                    {en ? "Why do you want to collaborate? (optional)" : "Pourquoi veux-tu collaborer ? (optionnel)"}
                   </label>
                   <textarea
                     id="message"
@@ -527,7 +527,7 @@ export default function PartnershipPage() {
                     placeholder={
                       en
                         ? "Describe your audience, your content, why BeassistLink suits you…"
-                        : "Décrivez votre audience, votre contenu, pourquoi BeassistLink vous correspond…"
+                        : "Décris ton audience, ton contenu, pourquoi BeassistLink te correspond…"
                     }
                     value={form.message}
                     onChange={(e) => setForm({ ...form, message: e.target.value })}
