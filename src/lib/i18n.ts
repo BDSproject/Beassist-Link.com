@@ -415,7 +415,7 @@ export const fr = {
   features: {
     badge: "✨ Fonctionnalités",
     heading1: "Tout ce dont vous avez besoin,",
-    heading2: "rien de plus.",
+    heading2: "rien de plus",
     subheading:
       "BeassistLink concentre tous les outils dont un créateur de contenu a besoin dans une interface simple et élégante.",
     items: [
@@ -454,7 +454,7 @@ export const fr = {
   howItWorks: {
     badge: "🚀 Comment ça marche",
     heading1: "En 3 étapes simples,",
-    heading2: "vous êtes prêt.",
+    heading2: "vous êtes prêt",
     subheading:
       "Pas besoin de compétences techniques. BeassistLink a été conçu pour être aussi simple qu'envoyer un email.",
     steps: [
@@ -478,7 +478,7 @@ export const fr = {
   pricing: {
     badge: "💰 Tarifs transparents",
     heading1: "Commencez gratuitement,",
-    heading2: "évoluez à votre rythme.",
+    heading2: "évoluez à votre rythme",
     subheading:
       "Aucune surprise, pas de frais cachés. Annulez quand vous voulez.",
     monthly: "Mensuel",
@@ -542,7 +542,7 @@ export const fr = {
   testimonials: {
     badge: "❤️ Ils nous font confiance",
     heading1: "Des milliers de créateurs",
-    heading2: "nous adorent.",
+    heading2: "nous adorent",
     subheading:
       "Rejoignez une communauté de créateurs, entrepreneurs et marques qui utilisent BeassistLink au quotidien.",
     items: [
@@ -675,8 +675,8 @@ export const fr = {
       passwordLabel: "Nouveau mot de passe",
       confirmLabel: "Confirmer le mot de passe",
       submitBtn: "Réinitialiser le mot de passe",
-      successMessage: "Mot de passe mis à jour ! Vous pouvez maintenant vous connecter.",
-      invalidToken: "Lien invalide ou expiré. Veuillez recommencer.",
+      successMessage: "Mot de passe mis à jour ! Vous pouvez maintenant vous connecter",
+      invalidToken: "Lien invalide ou expiré. Veuillez recommencer",
       passwordMismatch: "Les mots de passe ne correspondent pas.",
       errorGeneral: "Une erreur est survenue",
       passwordMin: "Minimum 8 caractères",
@@ -1089,9 +1089,9 @@ export const en: typeof fr = {
   },
   hero: {
     badge: "The link in bio platform for creators 🔗",
-    heading1: "One, link in bio.",
-    heading2: "One page.",
-    heading3: "All your universe.",
+    heading1: "One, link in bio",
+    heading2: "One page",
+    heading3: "All your universe",
     subheading:
       "Group all your socials, collabs and content in one link. Drop it in your Instagram, TikTok or YouTube bio.",
     subheadingStrong: "Simple, branded, powerful.",
@@ -1102,7 +1102,7 @@ export const en: typeof fr = {
   features: {
     badge: "✨ Features",
     heading1: "Everything you need,",
-    heading2: "nothing more.",
+    heading2: "nothing more",
     subheading:
       "BeassistLink brings together all the tools a content creator needs in a simple and elegant interface.",
     items: [
@@ -1141,7 +1141,7 @@ export const en: typeof fr = {
   howItWorks: {
     badge: "🚀 How it works",
     heading1: "3 simple steps,",
-    heading2: "and you're ready.",
+    heading2: "and you're ready",
     subheading:
       "No technical skills needed. BeassistLink was designed to be as easy as sending an email.",
     steps: [
@@ -1165,7 +1165,7 @@ export const en: typeof fr = {
   pricing: {
     badge: "💰 Transparent pricing",
     heading1: "Start for free,",
-    heading2: "grow at your own pace.",
+    heading2: "grow at your own pace",
     subheading: "No surprises, no hidden fees. Cancel anytime.",
     monthly: "Monthly",
     yearly: "Yearly",
@@ -1228,7 +1228,7 @@ export const en: typeof fr = {
   testimonials: {
     badge: "❤️ They trust us",
     heading1: "Thousands of creators",
-    heading2: "love us.",
+    heading2: "love us",
     subheading:
       "Join a community of creators, entrepreneurs and brands who use BeassistLink every day.",
     items: [
@@ -1361,8 +1361,8 @@ export const en: typeof fr = {
       passwordLabel: "New password",
       confirmLabel: "Confirm password",
       submitBtn: "Reset password",
-      successMessage: "Password updated! You can now sign in.",
-      invalidToken: "Invalid or expired link. Please try again.",
+      successMessage: "Password updated! You can now sign in",
+      invalidToken: "Invalid or expired link. Please try again",
       passwordMismatch: "Passwords do not match.",
       errorGeneral: "An error occurred",
       passwordMin: "Minimum 8 characters",
