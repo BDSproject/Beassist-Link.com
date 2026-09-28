@@ -96,12 +96,15 @@ export async function POST(req: NextRequest) {
 
       if (process.env.RESEND_API_KEY) {
         const resend = new Resend(process.env.RESEND_API_KEY);
-        await resend.emails.send({
+        const { error } = await resend.emails.send({
           from: FROM,
           to: email,
           subject: "Réinitialisation de ton mot de passe BeassistLink",
           html: resetEmailHtml({ resetUrl }),
         });
+        if (error) {
+          console.error(`[forgot-password] Échec envoi email de réinitialisation à ${email}:`, error);
+        }
       }
     }
 

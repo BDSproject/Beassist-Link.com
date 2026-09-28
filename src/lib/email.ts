@@ -219,23 +219,29 @@ export async function sendWelcomeEmail({
   name: string;
   email: string;
   username: string;
-}): Promise<void> {
+}): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("[email] RESEND_API_KEY manquante — email non envoyé");
-    return;
+    console.warn("[email] RESEND_API_KEY manquante — email de bienvenue non envoyé");
+    return false;
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM,
       to: email,
       subject: `Bienvenue sur BeassistLink, ${name} ! 🎉`,
       html: welcomeEmailHtml({ name, username }),
     });
+    if (error) {
+      console.error(`[email] Échec envoi email de bienvenue à ${email}:`, error);
+      return false;
+    }
+    return true;
   } catch (err) {
-    console.error("[email] Erreur envoi welcome email:", err);
+    console.error("[email] Exception envoi welcome email:", err);
+    return false;
   }
 }
 
@@ -250,23 +256,29 @@ export async function sendVerificationEmail({
   name: string;
   email: string;
   token: string;
-}): Promise<void> {
+}): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("[email] RESEND_API_KEY manquante — email non envoyé");
-    return;
+    console.warn("[email] RESEND_API_KEY manquante — email de vérification non envoyé");
+    return false;
   }
 
   const verificationUrl = `${BASE_URL}/api/auth/verify-email?token=${token}`;
   const resend = new Resend(process.env.RESEND_API_KEY);
 
   try {
-    await resend.emails.send({
+    const { error } = await resend.emails.send({
       from: FROM,
       to: email,
       subject: "Vérifie ton email BeassistLink 📧",
       html: verificationEmailHtml({ name, verificationUrl }),
     });
+    if (error) {
+      console.error(`[email] Échec envoi email de vérification à ${email}:`, error);
+      return false;
+    }
+    return true;
   } catch (err) {
-    console.error("[email] Erreur envoi verification email:", err);
+    console.error("[email] Exception envoi verification email:", err);
+    return false;
   }
 }

@@ -188,7 +188,7 @@ export async function POST(req: NextRequest) {
     const resend = new Resend(process.env.RESEND_API_KEY);
 
     // Envoyer les deux emails en parallèle
-    await Promise.all([
+    const [notif, confirm] = await Promise.all([
       // 1. Notification interne
       resend.emails.send({
         from: FROM,
@@ -205,6 +205,11 @@ export async function POST(req: NextRequest) {
         html: confirmationHtml(data.name),
       }),
     ]);
+
+    if (notif.error || confirm.error) {
+      console.error("[partenariat] Échec envoi emails:", notif.error, confirm.error);
+      return NextResponse.json({ error: "Erreur lors de l'envoi de l'email" }, { status: 500 });
+    }
 
     return NextResponse.json({ ok: true });
   } catch (err) {
