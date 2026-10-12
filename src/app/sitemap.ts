@@ -20,6 +20,8 @@ const staticRoutes: Array<{
   // Blog — high frequency
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
+  { path: "/blog/7-erreurs-lien-en-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
+  { path: "/blog/10-liens-bio-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
   // Support / docs
   { path: "/help", priority: 0.6, changeFrequency: "monthly" },
   { path: "/docs", priority: 0.6, changeFrequency: "monthly" },

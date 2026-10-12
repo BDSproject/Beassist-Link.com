@@ -21,6 +21,28 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "7-erreurs-lien-en-bio",
+    tag: "Stratégie",
+    tagColor: "bg-green-100 text-green-700",
+    title: "7 erreurs qui font fuir les visiteurs de ton lien en bio",
+    excerpt:
+      "Lien mort, page impersonnelle, zéro appel à l'action : les 7 erreurs qui coûtent des clients aux créateurs — et comment les corriger en 10 minutes.",
+    date: "28 septembre 2026",
+    readTime: "6 min",
+    featured: true,
+  },
+  {
+    slug: "10-liens-bio-instagram",
+    tag: "Idées",
+    tagColor: "bg-orange-100 text-orange-700",
+    title: "10 liens à mettre dans ta bio Instagram pour convertir",
+    excerpt:
+      "Boutique, newsletter, rendez-vous, Spotify… Les 10 liens qui transforment vraiment tes abonnés en clients — et comment les réunir en un seul.",
+    date: "28 septembre 2026",
+    readTime: "5 min",
+    featured: false,
+  },
+  {
     slug: "plusieurs-liens-instagram",
     tag: "Tutoriel",
     tagColor: "bg-green-100 text-green-700",
