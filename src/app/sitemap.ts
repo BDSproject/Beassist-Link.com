@@ -22,6 +22,12 @@ const staticRoutes: Array<{
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
   { path: "/blog/7-erreurs-lien-en-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
   { path: "/blog/10-liens-bio-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
+  { path: "/blog/beassistlink-vs-linktree-2026", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-12" },
+  { path: "/blog/beassistlink-vs-bio-link-alternatives", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-08" },
+  { path: "/blog/pourquoi-choisir-solution-francaise", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-05" },
+  { path: "/blog/optimiser-bio-convertir-2026", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-01" },
+  { path: "/blog/qr-codes-bonnes-pratiques", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-28" },
+  { path: "/blog/free-vs-starter-quand-upgrader", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-22" },
   // Support / docs
   { path: "/help", priority: 0.6, changeFrequency: "monthly" },
   { path: "/docs", priority: 0.6, changeFrequency: "monthly" },
