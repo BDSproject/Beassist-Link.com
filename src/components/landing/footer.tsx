@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import Head from "next/head";
+import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
 import { Facebook } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
@@ -23,7 +24,23 @@ function IconTikTok({ size = 16 }: { size?: number }) {
   );
 }
 
-const FOOTER_LINKS_CONFIG = {
+type FooterCategory = "Produit" | "Entreprise" | "Support" | "Légal";
+type FooterLinkKey =
+  | "Fonctionnalités"
+  | "Tarifs"
+  | "À propos"
+  | "Blog"
+  | "Partenariat"
+  | "Documentation"
+  | "Centre d'aide"
+  | "Contact"
+  | "Confidentialité"
+  | "CGU"
+  | "Cookies"
+  | "RGPD";
+type FooterLink = { key: FooterLinkKey; href: string; hrefEn?: string };
+
+const FOOTER_LINKS_CONFIG: Record<FooterCategory, FooterLink[]> = {
   Produit: [
     { key: "Fonctionnalités", href: "/features" },
     { key: "Tarifs", href: "/pricing" },
@@ -39,14 +56,12 @@ const FOOTER_LINKS_CONFIG = {
     { key: "Contact", href: "/contact" },
   ],
   Légal: [
-    { key: "Confidentialité", href: "/privacy" },
-    { key: "CGU", href: "/cgu" },
+    { key: "Confidentialité", href: "/privacy", hrefEn: "/en/privacy" },
+    { key: "CGU", href: "/cgu", hrefEn: "/en/terms" },
     { key: "Cookies", href: "/cookies" },
     { key: "RGPD", href: "/gdpr" },
   ],
-} as const;
-
-type FooterCategory = keyof typeof FOOTER_LINKS_CONFIG;
+};
 
 const FOOTER_CATEGORY_HREFS: Record<FooterCategory, string> = {
   Produit: "/product",
@@ -59,6 +74,8 @@ const FOOTER_CATEGORIES = Object.keys(FOOTER_LINKS_CONFIG) as FooterCategory[];
 
 export function Footer() {
   const { t, lang } = useLanguage();
+  const pathname = usePathname();
+  const isEn = pathname?.startsWith("/en");
 
   // Données structurées JSON-LD pour l'organisation
   const organizationJsonLd = {
@@ -128,7 +145,7 @@ export function Footer() {
                     {FOOTER_LINKS_CONFIG[category].map((link) => (
                       <li key={link.key}>
                         <Link
-                          href={link.href}
+                          href={isEn && link.hrefEn ? link.hrefEn : link.href}
                           className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                         >
                           {t.footer.links[link.key]}
