@@ -71,6 +71,7 @@ export async function POST(req: NextRequest) {
         email: data.email,
         password: hashedPassword,
         plan: "FREE",
+        onboardingCompleted: false,
         // Créer la page bio par défaut
         bioPage: {
           create: {
