@@ -52,6 +52,9 @@ const staticRoutes: Array<{
   { path: "/cgu", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
   { path: "/gdpr", priority: 0.3, changeFrequency: "yearly" },
+  // Legal — English (US)
+  { path: "/en/terms", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/en/privacy", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {
