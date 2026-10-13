@@ -33,6 +33,7 @@ export interface Plan {
   };
   limits: PlanLimits;
   badge?: string;
+  badgeEn?: string;
   highlighted?: boolean;
   ctaLabel: string;
 }
@@ -93,6 +94,7 @@ export const PLANS: Record<PlanName, Plan> = {
       hasPrioritySupport: false,
     },
     badge: "⭐ Populaire",
+    badgeEn: "⭐ Popular",
     highlighted: true,
     ctaLabel: "Commencer avec Starter",
   },

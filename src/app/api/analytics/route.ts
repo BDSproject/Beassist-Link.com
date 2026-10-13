@@ -125,6 +125,15 @@ export async function GET(req: NextRequest) {
       take: 6,
     });
 
+    // top browsers
+    const topBrowsers = await db.analytics.groupBy({
+      by: ["browser"],
+      where: { userId, browser: { not: null }, createdAt: { gte: start, lt: end } },
+      _count: { browser: true },
+      orderBy: { _count: { browser: "desc" } },
+      take: 6,
+    });
+
     // series by date_trunc using native query for Postgres
     const validGran = groupBy === "month" || groupBy === "year" ? groupBy : "day";
     const rows: Array<{ label: string; count: string }> = await db.$queryRaw`
@@ -147,6 +156,7 @@ export async function GET(req: NextRequest) {
       topBioLinks,
       topCountries,
       topDevices,
+      topBrowsers,
       series,
       allTime: {
         totalClicks: allTimeClicks,

@@ -46,11 +46,6 @@ export default function ProductPage() {
       price: "0",
       priceCurrency: "EUR",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1250",
-    },
   };
 
   return (

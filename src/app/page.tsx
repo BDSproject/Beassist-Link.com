@@ -75,11 +75,6 @@ const jsonLd = {
         price: "0",
         priceCurrency: "EUR",
       },
-      aggregateRating: {
-        "@type": "AggregateRating",
-        ratingValue: "4.9",
-        reviewCount: "127",
-      },
       description:
         "Crée ta page de liens personnalisée gratuitement pour Instagram, TikTok et YouTube.",
     },

@@ -2,6 +2,7 @@
 
 import { useLanguage } from "@/contexts/language-context";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
+import { Pricing } from "@/components/landing/pricing";
 
 // Cartes prédéfinies pour chaque langue
 const CARDS_EN = [
@@ -46,11 +47,6 @@ export default function ProductPage() {
       price: "0",
       priceCurrency: "EUR",
     },
-    aggregateRating: {
-      "@type": "AggregateRating",
-      ratingValue: "4.8",
-      ratingCount: "1250",
-    },
   };
 
   return (
@@ -83,6 +79,8 @@ export default function ProductPage() {
           ))}
         </div>
       </MarketingLayout>
+
+      <Pricing />
     </>
   );
 }

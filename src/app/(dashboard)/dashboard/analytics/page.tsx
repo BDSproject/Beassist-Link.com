@@ -36,6 +36,36 @@ interface BioStat {
 
 type FilterPreset = "7d" | "30d" | "90d" | "12m" | "thisMonth";
 
+interface TopRow {
+  value: string;
+  count: number;
+  share: number;
+}
+
+interface InsightStat {
+  countries: TopRow[];
+  devices: TopRow[];
+  browsers: TopRow[];
+  ctr: number | null;
+}
+
+const toTopRows = (raw: any[], key: string): TopRow[] => {
+  const rows = (raw || [])
+    .map((r) => ({ value: (r?.[key] as string) || "", count: r?._count?.[key] ?? 0 }))
+    .filter((r) => r.value);
+  const total = rows.reduce((s, r) => s + r.count, 0);
+  return rows.map((r) => ({
+    ...r,
+    share: total > 0 ? Math.round((r.count / total) * 100) : 0,
+  }));
+};
+
+const LABELS: Record<string, string> = {
+  mobile: "Mobile",
+  desktop: "Desktop",
+  tablet: "Tablet",
+};
+
 export default function AnalyticsPage() {
   const { data: session } = useSession();
   const { t, lang } = useLanguage();
@@ -59,6 +89,7 @@ export default function AnalyticsPage() {
     bioClicks: 0,
     totalLinks: 0,
   });
+  const [insights, setInsights] = useState<InsightStat | null>(null);
 
   // adjust default selectedDate when granularity changes
   useEffect(() => {
@@ -146,6 +177,7 @@ export default function AnalyticsPage() {
       if (!res.ok) {
         setLinks([]);
         setBio(null);
+        setInsights(null);
         return;
       }
 
@@ -178,6 +210,15 @@ export default function AnalyticsPage() {
         bioViews: data.allTime?.bioViews ?? 0,
         bioClicks: data.allTime?.bioClicks ?? 0,
         totalLinks: data.allTime?.totalLinks ?? 0,
+      });
+
+      const periodViews = data.bioViews ?? 0;
+      const periodBioClicks = data.bioClicks ?? 0;
+      setInsights({
+        countries: toTopRows(data.topCountries, "country"),
+        devices: toTopRows(data.topDevices, "device"),
+        browsers: toTopRows(data.topBrowsers, "browser"),
+        ctr: periodViews > 0 ? (periodBioClicks / periodViews) * 100 : null,
       });
     } catch (err) {
       // silently fail
@@ -274,9 +315,9 @@ export default function AnalyticsPage() {
   }
 
   const presets = [
-    { key: "7d" as FilterPreset, label: "7j" },
-    { key: "30d" as FilterPreset, label: "30j" },
-    { key: "90d" as FilterPreset, label: "90j" },
+    { key: "7d" as FilterPreset, label: lang === "fr" ? "7j" : "7d" },
+    { key: "30d" as FilterPreset, label: lang === "fr" ? "30j" : "30d" },
+    { key: "90d" as FilterPreset, label: lang === "fr" ? "90j" : "90d" },
     { key: "12m" as FilterPreset, label: "12m" },
     { key: "thisMonth" as FilterPreset, label: lang === "fr" ? "Ce mois" : "This month" },
   ];
@@ -468,23 +509,62 @@ export default function AnalyticsPage() {
           </div>
 
           {session?.user?.plan === "PRO" ? (
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {[
-                { label: d.insightCountry, value: "France 🇫🇷", sub: lang === "fr" ? "68% du trafic" : "68% of traffic" },
-                { label: d.insightDevice, value: "Mobile 📱", sub: "82% mobile" },
-                { label: d.insightBrowser, value: "Chrome", sub: lang === "fr" ? "54% d'utilisation" : "54% usage" },
-                { label: d.insightCTR, value: "12.4%", sub: "vs 8.1% avg" },
-              ].map((insight) => (
-                <div
-                  key={insight.label}
-                  className="bg-gray-50 rounded-xl p-3 text-center"
-                >
-                  <p className="text-lg font-bold text-gray-900">{insight.value}</p>
-                  <p className="text-xs font-medium text-gray-700">{insight.label}</p>
-                  <p className="text-xs text-gray-400 mt-0.5">{insight.sub}</p>
+            (() => {
+              const topCountry = insights?.countries[0];
+              const topDevice = insights?.devices[0];
+              const topBrowser = insights?.browsers[0];
+              const cards = [
+                topCountry && {
+                  label: d.insightCountry,
+                  value: topCountry.value,
+                  sub:
+                    lang === "fr"
+                      ? `${topCountry.share}% du trafic`
+                      : `${topCountry.share}% of traffic`,
+                },
+                topDevice && {
+                  label: d.insightDevice,
+                  value: LABELS[topDevice.value] || topDevice.value,
+                  sub: lang === "fr" ? `${topDevice.share}% du trafic` : `${topDevice.share}% of traffic`,
+                },
+                topBrowser && {
+                  label: d.insightBrowser,
+                  value: topBrowser.value,
+                  sub:
+                    lang === "fr"
+                      ? `${topBrowser.share}% d'utilisation`
+                      : `${topBrowser.share}% usage`,
+                },
+                insights?.ctr != null && {
+                  label: d.insightCTR,
+                  value: `${insights.ctr.toFixed(1)}%`,
+                  sub: lang === "fr" ? "vues → clics" : "views → clicks",
+                },
+              ].filter(Boolean) as { label: string; value: string; sub: string }[];
+
+              if (cards.length === 0) {
+                return (
+                  <div className="flex items-center justify-center py-6">
+                    <p className="text-sm text-gray-500">{d.noData}</p>
+                  </div>
+                );
+              }
+
+              return (
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                  {cards.map((insight) => (
+                    <div
+                      key={insight.label}
+                      className="bg-gray-50 rounded-xl p-3 text-center"
+                    >
+                      <p className="text-lg font-bold text-gray-900">{insight.value}</p>
+                      <p className="text-xs font-medium text-gray-700">{insight.label}</p>
+                      <p className="text-xs text-gray-400 mt-0.5">{insight.sub}</p>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              );
+            })()
           ) : (
             <div className="flex items-center gap-4 p-4 bg-gradient-to-r from-[#8F00FF]/5 to-purple-50 rounded-xl border border-[#8F00FF]/10">
               <div className="w-10 h-10 bg-[#8F00FF]/10 rounded-xl flex items-center justify-center flex-shrink-0">

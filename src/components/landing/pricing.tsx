@@ -121,7 +121,20 @@ export function Pricing() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {planOrder.map((planKey, index) => {
             const plan = PLANS[planKey];
-            const price = yearly ? plan.price.yearlyPerMonth : plan.price.monthly;
+            // Les montants USD sont distincts des montants EUR (voir PLANS.price.usd)
+            const amounts =
+              lang === "en"
+                ? {
+                    monthly: plan.price.usd.monthly,
+                    yearly: plan.price.usd.yearly,
+                    yearlyPerMonth: plan.price.usd.yearlyPerMonth,
+                  }
+                : {
+                    monthly: plan.price.monthly,
+                    yearly: plan.price.yearly,
+                    yearlyPerMonth: plan.price.yearlyPerMonth,
+                  };
+            const price = yearly ? amounts.yearlyPerMonth : amounts.monthly;
             const isHighlighted = plan.highlighted;
 
             return (
@@ -155,7 +168,7 @@ export function Pricing() {
                 {plan.badge && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <span className="bg-white text-[#8F00FF] text-xs font-bold px-4 py-1.5 rounded-full shadow-lg border border-[#EAD6FF] whitespace-nowrap">
-                      {plan.badge}
+                      {lang === "en" && plan.badgeEn ? plan.badgeEn : plan.badge}
                     </span>
                   </div>
                 )}
@@ -207,7 +220,7 @@ export function Pricing() {
                         isHighlighted ? "text-purple-200" : "text-[#8F00FF]"
                       }`}
                     >
-                      {t.pricing.billedYearly} {fp(plan.price.yearly)}
+                      {t.pricing.billedYearly} {fp(amounts.yearly)}
                       {t.pricing.perYear} · {t.pricing.save} {plan.price.savings}%
                     </p>
                   )}
