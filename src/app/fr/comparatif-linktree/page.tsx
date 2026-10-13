@@ -124,7 +124,8 @@ export default function ComparatifLinktreePage() {
             </h1>
             <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Tu cherches un outil pour mettre <strong>plusieurs liens en bio Instagram ou TikTok</strong> ?
-              Découvre pourquoi des milliers de créateurs français ont choisi BeassistLink plutôt que Linktree.
+              Compare les deux outils point par point : prix, fonctionnalités, respect des données et
+              encaissement mobile money.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -278,7 +279,7 @@ export default function ComparatifLinktreePage() {
               Commencer gratuitement
               <ArrowRight size={16} />
             </Link>
-            <p className="mt-4 text-xs text-purple-300">Déjà utilisé par des créateurs dans toute l'Europe 🇫🇷 🇧🇪 🇨🇭</p>
+            <p className="mt-4 text-xs text-purple-300">Encaissement Wave, Orange Money et MTN inclus, dès l&apos;offre gratuite.</p>
           </section>
 
           {/* ── Internal links ── */}

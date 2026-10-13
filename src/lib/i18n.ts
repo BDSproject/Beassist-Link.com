@@ -594,33 +594,6 @@ export const fr = {
       },
     },
   },
-  testimonials: {
-    badge: "❤️ Ils nous font confiance",
-    heading1: "Des milliers de créateurs",
-    heading2: "nous adorent",
-    subheading:
-      "Rejoins une communauté de créateurs, entrepreneurs et marques qui utilisent BeassistLink au quotidien.",
-    items: [
-      {
-        text: "BeassistLink a changé ma façon de partager mes contenus. Mon lien en bio est stylisé et mes abonnés cliquent dessus en masse !",
-      },
-      {
-        text: "En tant que freelance, j'utilise BeassistLink pour centraliser tous mes portfolios et réseaux. C'est devenu indispensable.",
-      },
-      {
-        text: "Les statistiques Pro m'ont aidé à comprendre d'où viennent mes clics. J'ai augmenté mon engagement de 40% en 2 mois !",
-      },
-      {
-        text: "Simple, rapide, efficace. Exactement ce qu'il me fallait. Le plan gratuit est déjà très généreux pour commencer.",
-      },
-      {
-        text: "Je partage mes créations sur 5 plateformes différentes. Avec BeassistLink, mes fans n'ont qu'un seul lien à retenir.",
-      },
-      {
-        text: "La génération de QR codes me permet de mettre mon lien bio sur tous mes flyers. Mes streams Twitch ont explosé.",
-      },
-    ],
-  },
   cta: {
     badge: "✨ Rejoins la communauté",
     heading1: "Prêt à passer",
@@ -1352,33 +1325,6 @@ export const en: typeof fr = {
         ],
       },
     },
-  },
-  testimonials: {
-    badge: "❤️ They trust us",
-    heading1: "Thousands of creators",
-    heading2: "love us",
-    subheading:
-      "Join a community of creators, entrepreneurs and brands who use BeassistLink every day.",
-    items: [
-      {
-        text: "BeassistLink changed the way I share my content. My link in bio looks amazing and my followers click on it all the time!",
-      },
-      {
-        text: "As a freelancer, I use BeassistLink to centralize all my portfolios and social networks. It's become indispensable.",
-      },
-      {
-        text: "Pro stats helped me understand where my clicks come from. I increased my engagement by 40% in 2 months!",
-      },
-      {
-        text: "Simple, fast, effective. Exactly what I needed. The free plan is already very generous to get started.",
-      },
-      {
-        text: "I share my creations on 5 different platforms. With BeassistLink, my fans only need to remember one link.",
-      },
-      {
-        text: "QR code generation lets me put my bio link on all my flyers. My Twitch streams have exploded.",
-      },
-    ],
   },
   cta: {
     badge: "✨ Join the community",
