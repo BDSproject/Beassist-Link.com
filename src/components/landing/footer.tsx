@@ -129,6 +129,25 @@ export function Footer() {
                   <IconInstagram size={16} />
                 </a>
               </div>
+
+              {/* Badge Product Hunt */}
+              <a
+                href="https://www.producthunt.com/products/beassistlink-gather-share-grow?embed=true&utm_source=badge-featured&utm_medium=badge&utm_campaign=badge-beassistlink-gather-share-grow"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-6 inline-block"
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1279102&theme=light&t=1791902135342"
+                  alt="BeassistLink - Gather. Share. Grow - A link in bio page,short links and QR codes, all in one. | Product Hunt"
+                  width={250}
+                  height={54}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full max-w-[250px] h-auto"
+                />
+              </a>
             </div>
 
             {/* Navigation liens */}
