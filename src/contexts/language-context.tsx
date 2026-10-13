@@ -8,6 +8,7 @@ import {
   type ReactNode,
 } from "react";
 import { translations, type Language, type Translations } from "@/lib/i18n";
+import { usePathname } from "next/navigation";
 
 interface LanguageContextType {
   lang: Language;
@@ -29,9 +30,10 @@ export function LanguageProvider({
   initialLang?: Language;
 }) {
   const [lang, setLang] = useState<Language>(initialLang);
+  const pathname = usePathname();
 
-  // Load persisted language or auto-detect browser language on first visit.
-  // Skipped when the language is forced (ex. routes /en).
+  // Charge la langue enregistrée, ou détecte celle du navigateur à la première
+  // visite. Les routes /en imposent l'anglais : leur URL fait foi.
   useEffect(() => {
     if (initialLang === "en") return;
     try {
@@ -45,7 +47,10 @@ export function LanguageProvider({
         setLang(detected);
       }
     } catch {}
-  }, [initialLang]);
+    // pathname est en dépendance : après une navigation, on relit la
+    // préférence enregistrée. Sans cela, un fournisseur parent conserverait
+    // l'ancienne langue et écraserait le choix de l'utilisateur.
+  }, [initialLang, pathname]);
 
   const handleSetLang = (l: Language) => {
     setLang(l);

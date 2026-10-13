@@ -1,11 +1,15 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import { Globe, Check } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
+import { localeTargetPath, type Locale } from "@/lib/locale-routes";
 
 export function LanguageSwitcher({ className = "" }: { className?: string }) {
   const { lang, setLang } = useLanguage();
+  const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -23,6 +27,19 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
     { value: "en" as const, label: "English", flag: "🇬🇧" },
   ];
 
+  // Change la langue et, quand la langue visée possède sa propre arborescence
+  // d'URL, navigue vers l'URL correspondante. Sans ce changement d'URL, une
+  // page anglaise resterait anglaise : le fournisseur de langue force
+  // l'anglais sur /en, et le choix de l'utilisateur était perdu.
+  const choose = (value: Locale) => {
+    setLang(value);
+    setOpen(false);
+    const target = localeTargetPath(pathname || "/", value);
+    if (target && target !== pathname) {
+      router.push(target);
+    }
+  };
+
   return (
     <div ref={ref} className={"relative " + className}>
       <button
@@ -39,7 +56,7 @@ export function LanguageSwitcher({ className = "" }: { className?: string }) {
           {options.map((opt) => (
             <button
               key={opt.value}
-              onClick={() => { setLang(opt.value); setOpen(false); }}
+              onClick={() => choose(opt.value)}
               className={
                 "w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors " +
                 (lang === opt.value
