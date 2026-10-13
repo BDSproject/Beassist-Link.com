@@ -4,7 +4,7 @@ import { LanguageProvider } from "@/contexts/language-context";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "BeassistLink — Gather. Share. Grow.",
+  title: { absolute: "BeassistLink — Gather. Share. Grow." },
   description:
     "Create your link in bio, shorten links and generate QR codes from one simple dashboard. The all-in-one toolkit for creators and small businesses.",
   alternates: {
