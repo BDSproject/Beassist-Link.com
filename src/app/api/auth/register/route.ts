@@ -14,6 +14,7 @@ const schema = z.object({
     .regex(/^[a-z0-9_.-]+$/),
   email: z.string().email(),
   password: z.string().min(8),
+  lang: z.enum(["fr", "en"]).optional(),
 });
 
 // Noms d'utilisateur réservés
@@ -103,7 +104,7 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    void sendVerificationEmail({ name: data.name, email: user.email, token });
+    void sendVerificationEmail({ name: data.name, email: user.email, token, lang: data.lang });
 
     return NextResponse.json(
       { message: "Compte créé. Vérifie ton email.", needsVerification: true },

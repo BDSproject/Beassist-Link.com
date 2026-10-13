@@ -9,6 +9,7 @@ const APP_URL = "https://www.beassist-link.com";
 export async function GET(req: NextRequest) {
   const { searchParams } = new URL(req.url);
   const token = searchParams.get("token");
+  const lang = searchParams.get("lang") === "en" ? "en" : "fr";
 
   if (!token) {
     return NextResponse.redirect(`${APP_URL}/verify-email?error=missing`);
@@ -59,6 +60,7 @@ export async function GET(req: NextRequest) {
     name: user.name || user.username,
     email: user.email,
     username: user.username,
+    lang,
   });
 
   return NextResponse.redirect(`${APP_URL}/login?verified=true`);

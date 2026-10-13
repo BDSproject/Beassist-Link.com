@@ -18,6 +18,8 @@ const staticRoutes: Array<{
   { path: "/fr/comparatif-linktree", priority: 0.95, changeFrequency: "monthly", lastModified: "2026-04-14" },
   { path: "/features", priority: 0.85, changeFrequency: "monthly" },
   { path: "/pricing", priority: 0.85, changeFrequency: "weekly" },
+  { path: "/en/features", priority: 0.85, changeFrequency: "monthly" },
+  { path: "/en/pricing", priority: 0.85, changeFrequency: "weekly" },
   // Blog — high frequency
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },

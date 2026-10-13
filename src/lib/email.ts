@@ -209,16 +209,162 @@ function welcomeEmailHtml({
 }
 
 // ---------------------------------------------------------------------------
+// Type + templates EN
+// ---------------------------------------------------------------------------
+export type EmailLang = "fr" | "en";
+
+function verificationEmailHtmlEn({
+  name,
+  verificationUrl,
+}: {
+  name: string;
+  verificationUrl: string;
+}): string {
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify your email — BeassistLink</title>
+</head>
+<body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+          <tr>
+            <td style="background:linear-gradient(135deg,#8F00FF,#6200CC);padding:40px 40px 32px;text-align:center;">
+              <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">Beassist<span style="opacity:0.75;">Link</span></p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Your unique link, your identity.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:40px 40px 32px;">
+              <h1 style="margin:0 0 12px;font-size:22px;font-weight:700;color:#111827;">Confirm your email 📧</h1>
+              <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4B5563;">
+                Hi ${name},<br/><br/>
+                Thanks for signing up to BeassistLink! To activate your account, confirm your email by clicking the button below.
+              </p>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-bottom:28px;">
+                <tr>
+                  <td align="center">
+                    <a href="${verificationUrl}" style="display:inline-block;background:linear-gradient(135deg,#8F00FF,#6200CC);color:#ffffff;text-decoration:none;font-size:15px;font-weight:700;padding:14px 36px;border-radius:12px;letter-spacing:0.2px;">✅ Verify my email</a>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:#FFF7ED;border-radius:12px;margin-bottom:20px;">
+                <tr>
+                  <td style="padding:14px 20px;">
+                    <p style="margin:0;font-size:13px;color:#92400E;">⏰ This link expires in <strong>24 hours</strong>. If you didn't create an account, ignore this email.</p>
+                  </td>
+                </tr>
+              </table>
+              <p style="margin:0;font-size:12px;color:#9CA3AF;line-height:1.6;">
+                If the button doesn't work, copy this link into your browser:<br/>
+                <a href="${verificationUrl}" style="color:#8F00FF;word-break:break-all;">${verificationUrl}</a>
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td style="background:#F9FAFB;padding:24px 40px;border-top:1px solid #E5E7EB;">
+              <p style="margin:0;font-size:12px;color:#9CA3AF;text-align:center;line-height:1.6;">
+                <a href="${BASE_URL}" style="color:#8F00FF;text-decoration:none;">beassist-link.com</a>
+                &nbsp;·&nbsp;
+                <a href="${BASE_URL}/legal" style="color:#9CA3AF;text-decoration:none;">Legal notice</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+function welcomeEmailHtmlEn({
+  name,
+  username,
+}: {
+  name: string;
+  username: string;
+}): string {
+  const bioUrl = `${BASE_URL}/${username}`;
+  const dashboardUrl = `${BASE_URL}/dashboard`;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Welcome to BeassistLink</title>
+</head>
+<body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
+    <tr>
+      <td align="center">
+        <table width="560" cellpadding="0" cellspacing="0" style="max-width:560px;width:100%;background:#ffffff;border-radius:20px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.06);">
+          <tr>
+            <td style="background:linear-gradient(135deg,#8F00FF,#6200CC);padding:40px 40px 32px;text-align:center;">
+              <p style="margin:0;font-size:26px;font-weight:800;color:#ffffff;letter-spacing:-0.5px;">Beassist<span style="opacity:0.75;">Link</span></p>
+              <p style="margin:8px 0 0;font-size:13px;color:rgba(255,255,255,0.7);">Your unique link, your identity.</p>
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:40px 40px 32px;">
+              <h1 style="margin:0 0 12px;font-size:22px;font-weight:700;color:#111827;">Welcome ${name}! 🎉</h1>
+              <p style="margin:0 0 24px;font-size:15px;line-height:1.7;color:#4B5563;">
+                Your BeassistLink account is ready. You can now customize your bio page, create short links and share your unique link with the world.
+              </p>
+              <table width="100%" cellpadding="0" cellspacing="0" style="background:#F5F3FF;border-radius:12px;margin-bottom:28px;">
+                <tr>
+                  <td style="padding:16px 20px;">
+                    <p style="margin:0 0 4px;font-size:11px;font-weight:600;color:#7C3AED;text-transform:uppercase;letter-spacing:0.5px;">Your bio link</p>
+                    <a href="${bioUrl}" style="font-size:15px;font-weight:700;color:#8F00FF;text-decoration:none;">${bioUrl}</a>
+                  </td>
+                </tr>
+              </table>
+              <table width="100%" cellpadding="0" cellspacing="0" style="margin-top:32px;">
+                <tr>
+                  <td align="center">
+                    <a href="${dashboardUrl}" style="display:inline-block;background:linear-gradient(135deg,#8F00FF,#6200CC);color:#ffffff;font-size:15px;font-weight:700;text-decoration:none;padding:14px 36px;border-radius:12px;">Go to my dashboard →</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr>
+            <td style="background:#F9FAFB;padding:24px 40px;border-top:1px solid #E5E7EB;">
+              <p style="margin:0;font-size:12px;color:#9CA3AF;text-align:center;line-height:1.6;">
+                You're receiving this email because you just created a BeassistLink account.<br/>
+                If you didn't sign up, ignore this email.<br/><br/>
+                <a href="${BASE_URL}" style="color:#8F00FF;text-decoration:none;">beassist-link.com</a>
+                &nbsp;·&nbsp;
+                <a href="${BASE_URL}/legal" style="color:#9CA3AF;text-decoration:none;">Legal notice</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>`;
+}
+
+// ---------------------------------------------------------------------------
 // Fonction exportée : envoi de l'email de bienvenue
 // ---------------------------------------------------------------------------
 export async function sendWelcomeEmail({
   name,
   email,
   username,
+  lang = "fr",
 }: {
   name: string;
   email: string;
   username: string;
+  lang?: EmailLang;
 }): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
     console.warn("[email] RESEND_API_KEY manquante — email de bienvenue non envoyé");
@@ -226,13 +372,18 @@ export async function sendWelcomeEmail({
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
+  const isEn = lang === "en";
 
   try {
     const { error } = await resend.emails.send({
       from: FROM,
       to: email,
-      subject: `Bienvenue sur BeassistLink, ${name} ! 🎉`,
-      html: welcomeEmailHtml({ name, username }),
+      subject: isEn
+        ? `Welcome to BeassistLink, ${name}! 🎉`
+        : `Bienvenue sur BeassistLink, ${name} ! 🎉`,
+      html: isEn
+        ? welcomeEmailHtmlEn({ name, username })
+        : welcomeEmailHtml({ name, username }),
     });
     if (error) {
       console.error(`[email] Échec envoi email de bienvenue à ${email}:`, error);
@@ -252,25 +403,30 @@ export async function sendVerificationEmail({
   name,
   email,
   token,
+  lang = "fr",
 }: {
   name: string;
   email: string;
   token: string;
+  lang?: EmailLang;
 }): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
     console.warn("[email] RESEND_API_KEY manquante — email de vérification non envoyé");
     return false;
   }
 
-  const verificationUrl = `${BASE_URL}/api/auth/verify-email?token=${token}`;
+  const verificationUrl = `${BASE_URL}/api/auth/verify-email?token=${token}&lang=${lang}`;
   const resend = new Resend(process.env.RESEND_API_KEY);
+  const isEn = lang === "en";
 
   try {
     const { error } = await resend.emails.send({
       from: FROM,
       to: email,
-      subject: "Vérifie ton email BeassistLink 📧",
-      html: verificationEmailHtml({ name, verificationUrl }),
+      subject: isEn ? "Verify your email on BeassistLink 📧" : "Vérifie ton email BeassistLink 📧",
+      html: isEn
+        ? verificationEmailHtmlEn({ name, verificationUrl })
+        : verificationEmailHtml({ name, verificationUrl }),
     });
     if (error) {
       console.error(`[email] Échec envoi email de vérification à ${email}:`, error);

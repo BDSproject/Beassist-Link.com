@@ -10,6 +10,11 @@ export const metadata: Metadata = {
     "Découvre les fonctionnalités BeassistLink : lien en bio, liens courts, QR codes, analytics et personnalisation pour créateurs et entreprises.",
   alternates: {
     canonical: PAGE_URL,
+    languages: {
+      "fr": PAGE_URL,
+      "en": `${BASE}/en/features`,
+      "x-default": PAGE_URL,
+    },
   },
   openGraph: {
     title: "Fonctionnalités lien en bio | BeassistLink",
