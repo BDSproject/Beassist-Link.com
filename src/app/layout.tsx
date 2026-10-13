@@ -18,7 +18,7 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "BeassistLink — Le lien en bio des créateurs francophones",
+    default: "BeassistLink — Rassemble. Partage. Grandis.",
     template: "%s | BeassistLink",
   },
   description:
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     canonical: BASE,
   },
   openGraph: {
-    title: "BeassistLink — Le lien en bio des créateurs francophones",
+    title: "BeassistLink — Rassemble. Partage. Grandis.",
     description:
       "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
@@ -78,7 +78,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeassistLink — Le lien en bio des créateurs francophones 🇫🇷",
+    title: "BeassistLink — Rassemble. Partage. Grandis. 🇫🇷",
     description:
       "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     creator: "@beassistlink",
