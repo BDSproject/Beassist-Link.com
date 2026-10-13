@@ -117,18 +117,22 @@ model BioPage {
 }
 
 model BioLink {
-  id        String   @id @default(cuid())
-  bioPageId String
-  title     String
-  url       String
-  icon      String?
-  platform  String?
-  order     Int      @default(0)
-  active    Boolean  @default(true)
-  clicks    Int      @default(0)
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  bioPage   BioPage  @relation(fields: [bioPageId], references: [id], onDelete: Cascade)
+  id            String   @id @default(cuid())
+  bioPageId     String
+  title         String
+  url           String
+  icon          String?
+  platform      String?
+  kind          String   @default("link") // link | payment | tip
+  amount        Float?
+  currency      String? // EUR, CAD, CHF, XOF, XAF, USD, ...
+  paymentMethod String? // lydia, paypal, wave, orange-money, mtn, stripe, other
+  order         Int      @default(0)
+  active        Boolean  @default(true)
+  clicks        Int      @default(0)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  bioPage       BioPage  @relation(fields: [bioPageId], references: [id], onDelete: Cascade)
 }
 
 model Subscription {

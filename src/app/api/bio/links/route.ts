@@ -11,6 +11,10 @@ const linkSchema = z.object({
   icon: z.string().optional(),
   platform: z.string().optional(),
   order: z.number().int().min(0).optional(),
+  kind: z.enum(["link", "payment", "tip"]).optional(),
+  amount: z.number().positive().optional(),
+  currency: z.string().optional(),
+  paymentMethod: z.string().optional(),
 });
 
 // POST - Ajouter un lien bio
@@ -70,6 +74,10 @@ export async function POST(req: NextRequest) {
         icon: data.icon,
         platform: data.platform,
         order: data.order ?? bioPage._count.links,
+        kind: data.kind ?? "link",
+        amount: data.amount,
+        currency: data.currency,
+        paymentMethod: data.paymentMethod,
       },
     });
 

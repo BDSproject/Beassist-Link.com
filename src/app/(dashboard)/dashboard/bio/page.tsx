@@ -34,6 +34,7 @@ import { SOCIAL_PLATFORMS } from "@/lib/utils";
 import { SocialIcon } from "@/components/ui/social-icon";
 import { AvatarUpload } from "@/components/ui/avatar-upload";
 import { canUserDo } from "@/lib/plans";
+import { CURRENCIES, PAYMENT_METHODS } from "@/lib/payment";
 import { useLanguage } from "@/contexts/language-context";
 
 interface BioPageData {
@@ -56,6 +57,10 @@ interface BioLink {
   url: string;
   icon: string | null;
   platform: string | null;
+  kind: string;
+  amount: number | null;
+  currency: string | null;
+  paymentMethod: string | null;
   order: number;
   clicks: number;
   active: boolean;
@@ -120,13 +125,13 @@ type TabId = "links" | "appearance" | "background" | "style" | "social";
 
 // ── Composant ligne sortable (drag-and-drop) ──────────────────────────────────
 interface SortableLinkRowProps {
-  link: { id: string; title: string; url: string; icon: string | null; platform: string | null; active: boolean; clicks: number; order: number };
+  link: BioLink;
   isFree: boolean;
   editingLink: string | null;
   iconMenuLinkId: string | null;
   setEditingLink: (id: string | null) => void;
   setIconMenuLinkId: (id: string | null) => void;
-  setBioLinks: React.Dispatch<React.SetStateAction<{ id: string; title: string; url: string; icon: string | null; platform: string | null; order: number; clicks: number; active: boolean }[]>>;
+  setBioLinks: React.Dispatch<React.SetStateAction<BioLink[]>>;
   toggleLink: (id: string, active: boolean) => void;
   deleteLink: (id: string) => void;
   removeLinkIcon: (id: string) => void;
@@ -293,7 +298,15 @@ export default function BioPage() {
   const [uploadIconLinkId, setUploadIconLinkId] = useState<string | null>(null);
   const [iconMenuLinkId, setIconMenuLinkId] = useState<string | null>(null);
 
-  const [newLink, setNewLink] = useState({ title: "", url: "", platform: "" });
+  const [newLink, setNewLink] = useState({
+    title: "",
+    url: "",
+    platform: "",
+    kind: "link" as "link" | "payment" | "tip",
+    amount: "",
+    currency: "EUR",
+    paymentMethod: "lydia",
+  });
 
   const [pageForm, setPageForm] = useState({
     title: "",
@@ -380,12 +393,16 @@ export default function BioPage() {
           url: newLink.url,
           platform: newLink.platform || undefined,
           order: bioLinks.length,
+          kind: newLink.kind,
+          amount: newLink.kind !== "link" && newLink.amount ? Number(newLink.amount) : undefined,
+          currency: newLink.kind !== "link" ? newLink.currency : undefined,
+          paymentMethod: newLink.kind !== "link" ? newLink.paymentMethod : undefined,
         }),
       });
       const data = await res.json();
       if (!res.ok) throw new Error(data.message);
       setBioLinks((prev) => [...prev, data.link]);
-      setNewLink({ title: "", url: "", platform: "" });
+      setNewLink({ title: "", url: "", platform: "", kind: "link", amount: "", currency: "EUR", paymentMethod: "lydia" });
       setShowAddLink(false);
       toast.success(b.linkAdded);
     } catch (err: unknown) {
@@ -625,45 +642,111 @@ export default function BioPage() {
                     </button>
                   </div>
                   <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 mb-2">{b.platform}</label>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                      {SOCIAL_PLATFORMS.filter(p => !ADULT_PLATFORM_IDS.includes(p.id)).map((p) => (
+                    <label className="block text-sm font-medium text-gray-700 mb-2">{b.typeLabel}</label>
+                    <div className="grid grid-cols-3 gap-2">
+                      {([
+                        ["link", "🔗", b.typeLink],
+                        ["payment", "💳", b.typePayment],
+                        ["tip", "💝", b.typeTip],
+                      ] as const).map(([k, emoji, label]) => (
                         <button
-                          key={p.id}
-                          onClick={() => setNewLink((prev) => ({ ...prev, platform: p.id, title: prev.title || p.label }))}
-                          className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all ${
-                            newLink.platform === p.id
+                          key={k}
+                          type="button"
+                          onClick={() => setNewLink((prev) => ({ ...prev, kind: k }))}
+                          className={`flex items-center justify-center gap-1.5 p-2 rounded-lg border text-xs font-medium transition-all ${
+                            newLink.kind === k
                               ? "border-[#8F00FF] bg-[#8F00FF]/5 text-[#8F00FF]"
                               : "border-gray-200 hover:border-gray-300 text-gray-600"
                           }`}
                         >
-                          <SocialIcon platform={p.id} size={18} />
-                          <span className="truncate w-full text-center">{p.label}</span>
-                        </button>
-                      ))}
-                    </div>
-                    <div className="flex items-center gap-2 mt-3 mb-2">
-                      <div className="flex-1 h-px bg-gray-200" />
-                      <span className="text-xs text-gray-400 font-medium px-1">🔞 Plateformes adultes</span>
-                      <div className="flex-1 h-px bg-gray-200" />
-                    </div>
-                    <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
-                      {SOCIAL_PLATFORMS.filter(p => ADULT_PLATFORM_IDS.includes(p.id)).map((p) => (
-                        <button
-                          key={p.id}
-                          onClick={() => setNewLink((prev) => ({ ...prev, platform: p.id, title: prev.title || p.label }))}
-                          className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all ${
-                            newLink.platform === p.id
-                              ? "border-[#FF3366] bg-[#FF3366]/5 text-[#FF3366]"
-                              : "border-gray-200 hover:border-gray-300 text-gray-600"
-                          }`}
-                        >
-                          <SocialIcon platform={p.id} size={18} />
-                          <span className="truncate w-full text-center">{p.label}</span>
+                          <span>{emoji}</span>
+                          {label}
                         </button>
                       ))}
                     </div>
                   </div>
+
+                  {newLink.kind === "link" ? (
+                    <div className="mb-4">
+                      <label className="block text-sm font-medium text-gray-700 mb-2">{b.platform}</label>
+                      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                        {SOCIAL_PLATFORMS.filter(p => !ADULT_PLATFORM_IDS.includes(p.id)).map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => setNewLink((prev) => ({ ...prev, platform: p.id, title: prev.title || p.label }))}
+                            className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all ${
+                              newLink.platform === p.id
+                                ? "border-[#8F00FF] bg-[#8F00FF]/5 text-[#8F00FF]"
+                                : "border-gray-200 hover:border-gray-300 text-gray-600"
+                            }`}
+                          >
+                            <SocialIcon platform={p.id} size={18} />
+                            <span className="truncate w-full text-center">{p.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                      <div className="flex items-center gap-2 mt-3 mb-2">
+                        <div className="flex-1 h-px bg-gray-200" />
+                        <span className="text-xs text-gray-400 font-medium px-1">🔞 Plateformes adultes</span>
+                        <div className="flex-1 h-px bg-gray-200" />
+                      </div>
+                      <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
+                        {SOCIAL_PLATFORMS.filter(p => ADULT_PLATFORM_IDS.includes(p.id)).map((p) => (
+                          <button
+                            key={p.id}
+                            onClick={() => setNewLink((prev) => ({ ...prev, platform: p.id, title: prev.title || p.label }))}
+                            className={`flex flex-col items-center gap-1 p-2 rounded-lg border text-xs transition-all ${
+                              newLink.platform === p.id
+                                ? "border-[#FF3366] bg-[#FF3366]/5 text-[#FF3366]"
+                                : "border-gray-200 hover:border-gray-300 text-gray-600"
+                            }`}
+                          >
+                            <SocialIcon platform={p.id} size={18} />
+                            <span className="truncate w-full text-center">{p.label}</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="mb-4">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                        <Input
+                          label={b.amountLabel}
+                          type="number"
+                          min="0"
+                          step="0.01"
+                          placeholder="10"
+                          value={newLink.amount}
+                          onChange={(e) => setNewLink((p) => ({ ...p, amount: e.target.value }))}
+                        />
+                        <div>
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{b.currencyLabel}</label>
+                          <select
+                            value={newLink.currency}
+                            onChange={(e) => setNewLink((p) => ({ ...p, currency: e.target.value }))}
+                            className="w-full h-10 rounded-xl border border-gray-200 px-3 text-sm bg-white"
+                          >
+                            {CURRENCIES.map((c) => (
+                              <option key={c.code} value={c.code}>{c.label}</option>
+                            ))}
+                          </select>
+                        </div>
+                        <div className="col-span-2 sm:col-span-1">
+                          <label className="block text-sm font-medium text-gray-700 mb-1.5">{b.paymentMethodLabel}</label>
+                          <select
+                            value={newLink.paymentMethod}
+                            onChange={(e) => setNewLink((p) => ({ ...p, paymentMethod: e.target.value }))}
+                            className="w-full h-10 rounded-xl border border-gray-200 px-3 text-sm bg-white"
+                          >
+                            {PAYMENT_METHODS.map((m) => (
+                              <option key={m.id} value={m.id}>{m.emoji} {m.label}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+                      <p className="text-xs text-gray-400 mt-2">{b.paymentHint}</p>
+                    </div>
+                  )}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
                     <Input
                       label={b.titleLabel}

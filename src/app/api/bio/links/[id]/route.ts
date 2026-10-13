@@ -11,6 +11,10 @@ const updateSchema = z.object({
   platform: z.string().optional(),
   active: z.boolean().optional(),
   order: z.number().int().min(0).optional(),
+  kind: z.enum(["link", "payment", "tip"]).optional(),
+  amount: z.number().positive().nullable().optional(),
+  currency: z.string().nullable().optional(),
+  paymentMethod: z.string().nullable().optional(),
 });
 
 // PATCH - Modifier un lien bio

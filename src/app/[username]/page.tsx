@@ -2,6 +2,7 @@ import type React from "react";
 import { db } from "@/database/client";
 import { notFound } from "next/navigation";
 import { getBrowserName, getDeviceType, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
+import { formatAmount, getPaymentMethod } from "@/lib/payment";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -313,10 +314,17 @@ export default async function UserBioPage({ params }: Props) {
                       >
                         {link.title}
                       </span>
-                      {link.platform && link.platform !== "other" && platform && (
+                      {link.kind === "payment" || link.kind === "tip" ? (
                         <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
-                          {getPlatformLabel(link.platform)}
+                          {link.amount ? `${formatAmount(link.amount, link.currency)} · ` : ""}
+                          {getPaymentMethod(link.paymentMethod).emoji} {getPaymentMethod(link.paymentMethod).label}
                         </span>
+                      ) : (
+                        link.platform && link.platform !== "other" && platform && (
+                          <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
+                            {getPlatformLabel(link.platform)}
+                          </span>
+                        )
                       )}
                     </div>
                   </div>
