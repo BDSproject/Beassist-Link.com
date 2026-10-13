@@ -218,11 +218,11 @@ export default function RegisterPage() {
 
         <p className="text-center text-xs text-gray-400 leading-relaxed">
           {a.termsText}{" "}
-          <Link href="/terms" className="text-[#8F00FF] hover:underline">
+          <Link href={lang === "en" ? "/en/terms" : "/cgu"} className="text-[#8F00FF] hover:underline">
             {a.termsLink}
           </Link>{" "}
           {a.privacyConjunction}{" "}
-          <Link href="/privacy" className="text-[#8F00FF] hover:underline">
+          <Link href={lang === "en" ? "/en/privacy" : "/privacy"} className="text-[#8F00FF] hover:underline">
             {a.privacyLink}
           </Link>
           .

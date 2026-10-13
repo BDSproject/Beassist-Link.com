@@ -89,6 +89,7 @@ export async function POST(req: NextRequest) {
       mode: "subscription",
       payment_method_types: ["card"],
       line_items: [{ price: priceId, quantity: 1 }],
+      automatic_tax: { enabled: true },
       success_url: `${appUrl}/dashboard/billing?success=true`,
       cancel_url: `${appUrl}/dashboard/billing?canceled=true`,
       metadata: {

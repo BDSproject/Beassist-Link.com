@@ -10,7 +10,7 @@ export default function AuthLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
 
   return (
     <div className="min-h-[100svh] bg-gradient-to-br from-[#F5EBFF] via-white to-white flex flex-col">
@@ -32,8 +32,8 @@ export default function AuthLayout({
       {/* Footer minimal */}
       <footer className="px-6 py-4 text-center text-xs text-gray-400" style={{ paddingBottom: 'max(1rem, env(safe-area-inset-bottom, 0px))' }}>
         © {new Date().getFullYear()} BeassistLink · 
-        <Link href="/privacy" className="hover:text-[#8F00FF] ml-1">{t.auth.privacy}</Link> · 
-        <Link href="/terms" className="hover:text-[#8F00FF] ml-1">{t.auth.terms}</Link>
+        <Link href={lang === "en" ? "/en/privacy" : "/privacy"} className="hover:text-[#8F00FF] ml-1">{t.auth.privacy}</Link> · 
+        <Link href={lang === "en" ? "/en/terms" : "/cgu"} className="hover:text-[#8F00FF] ml-1">{t.auth.terms}</Link>
       </footer>
     </div>
   );
