@@ -18,11 +18,11 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "BeassistLink — Alternative Linktree Française optimisée",
+    default: "BeassistLink — Page de liens bio, liens courts et QR codes",
     template: "%s | BeassistLink",
   },
   description:
-    "Crée ta page de liens personnalisée en quelques secondes. Alternative française à Linktree : plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans.",
+    "Crée ta page de liens bio en quelques secondes : tous tes liens, tes réseaux et tes offres au même endroit. Liens courts, QR codes et statistiques inclus.",
   keywords: [
     // FR — haute intention
     "lien en bio instagram",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     canonical: BASE,
   },
   openGraph: {
-    title: "BeassistLink — Alternative Linktree Française Gratuite",
+    title: "BeassistLink — Page de liens bio, liens courts et QR codes",
     description:
       "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
@@ -72,15 +72,15 @@ export const metadata: Metadata = {
         url: `${BASE}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "BeassistLink — Alternative Linktree Française",
+        alt: "BeassistLink — page de liens bio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeassistLink — Alternative Linktree Gratuite 🇫🇷",
+    title: "BeassistLink — Page de liens bio gratuite 🇫🇷",
     description:
-      "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Alternative française à Linktree.",
+      "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     creator: "@beassistlink",
     images: [`${BASE}/og-image.png`],
   },

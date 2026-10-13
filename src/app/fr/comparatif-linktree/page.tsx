@@ -7,9 +7,9 @@ import { Check, X, ArrowRight } from "lucide-react";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "Comparatif Linktree 2026 — Meilleure Alternative Française.",
+  title: "Comparatif Linktree 2026 — Que choisir ?",
   description:
-    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Alternative française gratuite et conforme RGPD.",
+    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Solution française gratuite et conforme RGPD.",
   keywords: [
     "alternative linktree",
     "linktree gratuit",
@@ -29,9 +29,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Comparatif Linktree 2026 — Alternative Française Gratuite",
+    title: "Comparatif Linktree 2026 — BeassistLink face à Linktree",
     description:
-      "Linktree vs BeassistLink : prix, fonctionnalités, RGPD. L'alternative française qui surpasse Linktree à moindre coût.",
+      "Linktree vs BeassistLink : prix, fonctionnalités, RGPD. La solution française qui surpasse Linktree à moindre coût.",
     url: `${BASE}/fr/comparatif-linktree`,
     type: "article",
   },
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "Alternative Linktree Française Gratuite — Comparatif 2026",
+  headline: "BeassistLink face à Linktree — comparatif 2026",
   description:
     "Comparatif complet entre BeassistLink, Linktree, Milkshake et Later Link in Bio. Fonctionnalités, prix, conformité RGPD.",
   datePublished: "2026-04-14",
@@ -83,7 +83,7 @@ function Cell({ val }: { val: CellValue }) {
 const faqs = [
   {
     q: "Quelle est la meilleure alternative gratuite à Linktree ?",
-    a: "BeassistLink est l'alternative française la plus complète : liens illimités, analytics intégrées et hébergement en Europe conforme au RGPD — tout ça gratuitement.",
+    a: "BeassistLink est la solution française la plus complète : liens illimités, analytics intégrées et hébergement en Europe conforme au RGPD — tout ça gratuitement.",
   },
   {
     q: "Les statistiques sont-elles incluses dans le plan gratuit ?",
@@ -120,7 +120,7 @@ export default function ComparatifLinktreePage() {
               Comparatif 2026
             </span>
             <h1 className="text-3xl sm:text-5xl font-black text-gray-900 leading-tight tracking-tight">
-              Alternative Linktree Française Gratuite
+              BeassistLink face à Linktree
             </h1>
             <p className="mt-5 text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Tu cherches un outil pour mettre <strong>plusieurs liens en bio Instagram ou TikTok</strong> ?
@@ -150,7 +150,7 @@ export default function ComparatifLinktreePage() {
           {/* ── Why ── */}
           <section>
             <h2 className="text-2xl font-black text-gray-900 mb-4">
-              Pourquoi choisir une alternative à Linktree ?
+              Pourquoi choisir BeassistLink ?
             </h2>
             <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-4 text-[15px]">
               <p>
@@ -269,7 +269,7 @@ export default function ComparatifLinktreePage() {
               Crée ta page bio en 30 secondes
             </h2>
             <p className="text-purple-100 text-base mb-7 max-w-lg mx-auto leading-relaxed">
-              Gratuit, sans carte bancaire. L'alternative française à Linktree qui respecte tes visiteurs et ta vie privée.
+              Gratuit, sans carte bancaire. L'outil lien en bio qui respecte tes visiteurs et ta vie privée.
             </p>
             <Link
               href="/register"

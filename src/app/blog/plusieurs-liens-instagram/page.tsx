@@ -11,7 +11,7 @@ const PUBLISHED = "2026-04-14";
 export const metadata: Metadata = {
   title: "Comment avoir plusieurs liens sur Instagram sans payer — Guide 2026",
   description:
-    "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, gratuite et sans abonnement. Alternative gratuite à Linktree en français.",
+    "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, gratuite et sans abonnement.",
   keywords: [
     "plusieurs liens bio instagram",
     "lien en bio instagram",
@@ -119,7 +119,7 @@ export default function BlogPlusieursLiensInstagram() {
             <p>
               La solution ? Créer une <strong>page de liens personnalisée</strong> (aussi appelée <em>lien en bio</em> ou
               <em>link in bio</em>) qui centralise tous tes liens. Ce guide t'explique comment faire avec
-              <strong> BeassistLink</strong>, l'alternative française gratuite à Linktree.
+              <strong> BeassistLink</strong>, l'outil gratuit et simple à prendre en main.
             </p>
           </div>
 
@@ -135,7 +135,7 @@ export default function BlogPlusieursLiensInstagram() {
                 <strong> en dollars américains</strong> (environ 9 $/mois en 2026).
               </p>
               <p>
-                <strong>BeassistLink</strong> est une alternative française qui offre tout cela gratuitement : liens
+                <strong>BeassistLink</strong> offre tout cela gratuitement : liens
                 illimités, avec analytics et hébergement en Europe conforme au <strong>RGPD</strong>.
               </p>
             </div>

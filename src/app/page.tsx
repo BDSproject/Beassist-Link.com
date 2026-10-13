@@ -10,9 +10,9 @@ import { Footer } from "@/components/landing/footer";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "Alternative Linktree Française Gratuite — BeassistLink",
+  title: "BeassistLink — Page de liens bio, liens courts et QR codes",
   description:
-    "BeassistLink est l'alternative française gratuite à Linktree. Crée ta page de liens bio pour Instagram, TikTok, YouTube en 30 secondes.",
+    "Crée ta page de liens bio pour Instagram, TikTok et YouTube en 30 secondes. Gratuit, sans carte bancaire.",
   alternates: {
     canonical: BASE,
     languages: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Alternative Linktree Française Gratuite — BeassistLink",
+    title: "BeassistLink — Page de liens bio, liens courts et QR codes",
     description:
       "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
@@ -39,7 +39,7 @@ const jsonLd = {
       url: BASE,
       name: "BeassistLink",
       description:
-        "Alternative française gratuite à Linktree — page de liens bio pour Instagram, TikTok, YouTube, OnlyFans, Facebook",
+        "Page de liens bio, liens courts et QR codes pour Instagram, TikTok, YouTube, OnlyFans et Facebook",
       inLanguage: "fr-FR",
       potentialAction: {
         "@type": "SearchAction",
@@ -81,7 +81,7 @@ const jsonLd = {
         reviewCount: "127",
       },
       description:
-        "Crée ta page de liens personnalisée gratuitement. Alternative française à Linktree pour Instagram, TikTok et YouTube.",
+        "Crée ta page de liens personnalisée gratuitement pour Instagram, TikTok et YouTube.",
     },
     {
       "@type": "FAQPage",
@@ -99,7 +99,7 @@ const jsonLd = {
           name: "BeassistLink est-il une bonne alternative à Linktree ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Oui. BeassistLink est une alternative française à Linktree qui offre des liens illimités et des analytics avancées, gratuitement. Les données sont hébergées en Europe, conformément au RGPD.",
+            text: "Oui. BeassistLink offre des liens illimités et des analytics avancées, gratuitement. Les données sont hébergées en Europe, conformément au RGPD.",
           },
         },
         {
