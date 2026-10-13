@@ -6,6 +6,7 @@ import { formatAmount, getPaymentMethod } from "@/lib/payment";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
+import { PayButton } from "@/components/bio/pay-button";
 import type { Metadata } from "next";
 import { headers } from "next/headers";
 
@@ -110,12 +111,24 @@ export default async function UserBioPage({ params }: Props) {
         where: { active: true },
         orderBy: { order: "asc" },
       },
+      user: {
+        select: {
+          // Sert uniquement à savoir si l'encaissement réel est possible.
+          paymentAccounts: {
+            where: { active: true },
+            select: { id: true },
+            take: 1,
+          },
+        },
+      },
     },
   });
 
   if (!bioPage) {
     notFound();
   }
+
+  const canCollectPayments = bioPage.user.paymentAccounts.length > 0;
 
   // Incrémenter les vues + tracer un événement analytique daté
   const reqHeaders = headers();
@@ -271,8 +284,76 @@ export default async function UserBioPage({ params }: Props) {
         <div className="space-y-3">
           {bioPage.links.map((link) => {
             const platform = SOCIAL_PLATFORMS.find((p) => p.id === link.platform);
+            const isPayable =
+              canCollectPayments &&
+              (link.kind === "payment" || link.kind === "tip") &&
+              !!link.amount &&
+              link.amount > 0;
 
-            return (
+            const content = (
+              <div
+                className={`relative flex items-center w-full px-4 py-4 sm:py-5 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
+                style={{
+                  backgroundColor: isOutlineBtn ? "transparent" : primaryColor,
+                  border: isOutlineBtn ? `2px solid ${primaryColor}` : undefined,
+                  color: isOutlineBtn ? primaryColor : "white",
+                }}
+              >
+                {/* Reflet lumineux */}
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
+
+                <div className="flex items-center gap-3 flex-1 min-w-0">
+                  {link.icon && link.icon.startsWith("data:") ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={link.icon}
+                      alt=""
+                      className={`${resolvedIconImg} rounded object-cover flex-shrink-0`}
+                    />
+                  ) : (
+                    <SocialIcon
+                      platform={link.platform || "other"}
+                      size={resolvedIconSize}
+                      color={fontColor || (isOutlineBtn ? primaryColor : "white")}
+                      className="flex-shrink-0"
+                    />
+                  )}
+                  <div className="flex-1 min-w-0">
+                    <span
+                      className={`${DESC_SIZE_MAP[fontSize]} font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}
+                      style={fontColor ? { color: fontColor } : undefined}
+                    >
+                      {link.title}
+                    </span>
+                    {link.kind === "payment" || link.kind === "tip" ? (
+                      <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
+                        {link.amount ? `${formatAmount(link.amount, link.currency)} · ` : ""}
+                        {getPaymentMethod(link.paymentMethod).emoji} {getPaymentMethod(link.paymentMethod).label}
+                      </span>
+                    ) : (
+                      link.platform && link.platform !== "other" && platform && (
+                        <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
+                          {getPlatformLabel(link.platform)}
+                        </span>
+                      )
+                    )}
+                  </div>
+                </div>
+
+                <ExternalLink
+                  size={14}
+                  className={`transition-colors flex-shrink-0 ml-2 ${isOutlineBtn ? "opacity-50 group-hover:opacity-90" : "text-white/60 group-hover:text-white/90"}`}
+                />
+              </div>
+            );
+
+            // Encaissement réel : le clic crée une facture chez le prestataire
+            // du créateur. Sinon on retombe sur le lien simple configuré.
+            return isPayable ? (
+              <PayButton key={link.id} linkId={link.id} enabled className="group block w-full text-left">
+                {content}
+              </PayButton>
+            ) : (
               <a
                 key={link.id}
                 href={`/api/bio/click/${link.id}`}
@@ -280,60 +361,7 @@ export default async function UserBioPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="group block w-full"
               >
-                <div
-                  className={`relative flex items-center w-full px-4 py-4 sm:py-5 ${btnCls} font-semibold text-sm shadow-md hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.98] transition-all duration-200 overflow-hidden`}
-                  style={{
-                    backgroundColor: isOutlineBtn ? "transparent" : primaryColor,
-                    border: isOutlineBtn ? `2px solid ${primaryColor}` : undefined,
-                    color: isOutlineBtn ? primaryColor : "white",
-                  }}
-                >
-                  {/* Reflet lumineux */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent pointer-events-none" />
-
-                  <div className="flex items-center gap-3 flex-1 min-w-0">
-                    {link.icon && link.icon.startsWith("data:") ? (
-                      // eslint-disable-next-line @next/next/no-img-element
-                      <img
-                        src={link.icon}
-                        alt=""
-                        className={`${resolvedIconImg} rounded object-cover flex-shrink-0`}
-                      />
-                    ) : (
-                      <SocialIcon
-                        platform={link.platform || "other"}
-                        size={resolvedIconSize}
-                        color={fontColor || (isOutlineBtn ? primaryColor : "white")}
-                        className="flex-shrink-0"
-                      />
-                    )}
-                    <div className="flex-1 min-w-0">
-                      <span
-                        className={`${DESC_SIZE_MAP[fontSize]} font-semibold truncate block ${isOutlineBtn ? "" : "text-white"}`}
-                        style={fontColor ? { color: fontColor } : undefined}
-                      >
-                        {link.title}
-                      </span>
-                      {link.kind === "payment" || link.kind === "tip" ? (
-                        <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
-                          {link.amount ? `${formatAmount(link.amount, link.currency)} · ` : ""}
-                          {getPaymentMethod(link.paymentMethod).emoji} {getPaymentMethod(link.paymentMethod).label}
-                        </span>
-                      ) : (
-                        link.platform && link.platform !== "other" && platform && (
-                          <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
-                            {getPlatformLabel(link.platform)}
-                          </span>
-                        )
-                      )}
-                    </div>
-                  </div>
-
-                  <ExternalLink
-                    size={14}
-                    className={`transition-colors flex-shrink-0 ml-2 ${isOutlineBtn ? "opacity-50 group-hover:opacity-90" : "text-white/60 group-hover:text-white/90"}`}
-                  />
-                </div>
+                {content}
               </a>
             );
           })}

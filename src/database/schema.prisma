@@ -9,26 +9,97 @@ datasource db {
 }
 
 model User {
-  id                  String        @id @default(cuid())
+  id                  String           @id @default(cuid())
   name                String?
-  email               String        @unique
+  email               String           @unique
   emailVerified       DateTime?
   image               String?
   password            String?
-  username            String        @unique
-  plan                Plan          @default(FREE)
-  createdAt           DateTime      @default(now())
-  updatedAt           DateTime      @updatedAt
+  username            String           @unique
+  plan                Plan             @default(FREE)
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
   billingAddress      String?
   company             String?
-  customDomain        String?       @unique
-  onboardingCompleted Boolean       @default(true)
+  customDomain        String?          @unique
+  onboardingCompleted Boolean          @default(true)
   accounts            Account[]
   analytics           Analytics[]
   bioPage             BioPage?
   links               Link[]
+  paymentAccounts     PaymentAccount[]
+  payments            Payment[]
   sessions            Session[]
   subscription        Subscription?
+}
+
+// Compte marchand d'un créateur chez un prestataire de paiement.
+// Les identifiants sont chiffrés (AES-256-GCM) et ne sortent jamais de l'API.
+// Modèle « apportez votre propre compte » : l'argent du payeur va directement
+// sur le compte du créateur, BeassistLink ne détient jamais de fonds pour autrui.
+model PaymentAccount {
+  id          String              @id @default(cuid())
+  userId      String
+  provider    PaymentProviderKind @default(PAYDUNYA)
+  label       String?
+  mode        PaymentAccountMode  @default(SANDBOX)
+  // Identifiants chiffrés : { masterKey, privateKey, token } pour PayDunya
+  credentials String
+  active      Boolean             @default(true)
+  createdAt   DateTime            @default(now())
+  updatedAt   DateTime            @updatedAt
+  user        User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  payments    Payment[]
+
+  @@index([userId, provider])
+}
+
+model Payment {
+  id               String              @id @default(cuid())
+  userId           String
+  paymentAccountId String?
+  bioLinkId        String?
+  provider         PaymentProviderKind @default(PAYDUNYA)
+  // Référence chez le prestataire (token de facture PayDunya)
+  providerToken    String?
+  providerRef      String?
+  amount           Float
+  currency         String              @default("XOF")
+  status           PaymentStatus       @default(PENDING)
+  description      String?
+  payerName        String?
+  payerEmail       String?
+  payerPhone       String?
+  receiptUrl       String?
+  failureReason    String?
+  paidAt           DateTime?
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
+  user             User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  paymentAccount   PaymentAccount?     @relation(fields: [paymentAccountId], references: [id], onDelete: SetNull)
+  bioLink          BioLink?            @relation(fields: [bioLinkId], references: [id], onDelete: SetNull)
+
+  @@index([userId, createdAt])
+  @@index([providerToken])
+}
+
+enum PaymentProviderKind {
+  PAYDUNYA
+  // Prestataire de simulation : sert uniquement à tester le parcours complet
+  // en local sans compte marchand réel. Jamais actif par défaut.
+  SIMULATION
+}
+
+enum PaymentAccountMode {
+  SANDBOX
+  LIVE
+}
+
+enum PaymentStatus {
+  PENDING
+  COMPLETED
+  FAILED
+  CANCELLED
 }
 
 model Account {
@@ -101,13 +172,13 @@ model BioPage {
   theme        String    @default("default")
   primaryColor String    @default("#8F00FF")
   bgColor      String    @default("#FFFFFF")
-  bgImage      String?   // base64 or URL background image
-  buttonStyle  String    @default("rounded")  // rounded | pill | square | outline | shadow
-  fontStyle    String    @default("sans")     // sans | serif | mono
-  fontColor    String?                        // custom text color (STARTER+)
-  fontSize     String    @default("md")       // sm | md | lg
-  iconSize     String    @default("md")       // sm | md | lg
-  socialLinks  String?   // JSON: [{platform, url}]
+  bgImage      String? // base64 or URL background image
+  buttonStyle  String    @default("rounded") // rounded | pill | square | outline | shadow
+  fontStyle    String    @default("sans") // sans | serif | mono
+  fontColor    String? // custom text color (STARTER+)
+  fontSize     String    @default("md") // sm | md | lg
+  iconSize     String    @default("md") // sm | md | lg
+  socialLinks  String? // JSON: [{platform, url}]
   views        Int       @default(0)
   active       Boolean   @default(true)
   createdAt    DateTime  @default(now())
@@ -117,22 +188,23 @@ model BioPage {
 }
 
 model BioLink {
-  id            String   @id @default(cuid())
+  id            String    @id @default(cuid())
   bioPageId     String
   title         String
   url           String
   icon          String?
   platform      String?
-  kind          String   @default("link") // link | payment | tip
+  kind          String    @default("link") // link | payment | tip
   amount        Float?
   currency      String? // EUR, CAD, CHF, XOF, XAF, USD, ...
   paymentMethod String? // lydia, paypal, wave, orange-money, mtn, stripe, other
-  order         Int      @default(0)
-  active        Boolean  @default(true)
-  clicks        Int      @default(0)
-  createdAt     DateTime @default(now())
-  updatedAt     DateTime @updatedAt
-  bioPage       BioPage  @relation(fields: [bioPageId], references: [id], onDelete: Cascade)
+  order         Int       @default(0)
+  active        Boolean   @default(true)
+  clicks        Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  bioPage       BioPage   @relation(fields: [bioPageId], references: [id], onDelete: Cascade)
+  payments      Payment[]
 }
 
 model Subscription {
