@@ -26,7 +26,7 @@ export function LegalDoc({
 }: {
   title: string;
   updatedAt: string;
-  sections: { title: string; content: string[] }[];
+  sections: { title: string; content: string[]; id?: string }[];
 }) {
   return (
     <div className="min-h-screen bg-white">
@@ -71,7 +71,7 @@ export function LegalDoc({
 
         <div className="space-y-12">
           {sections.map((section) => (
-            <section key={section.title}>
+            <section key={section.title} id={section.id}>
               <h2 className="text-xl font-bold text-gray-900 mb-4 pb-2 border-b border-gray-100">
                 {section.title}
               </h2>

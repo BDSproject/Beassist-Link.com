@@ -55,6 +55,7 @@ const staticRoutes: Array<{
   // Legal — English (US)
   { path: "/en/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/en/privacy", priority: 0.3, changeFrequency: "yearly" },
+  { path: "/en/cookies", priority: 0.3, changeFrequency: "yearly" },
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

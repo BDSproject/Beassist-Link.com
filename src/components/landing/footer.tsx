@@ -58,8 +58,8 @@ const FOOTER_LINKS_CONFIG: Record<FooterCategory, FooterLink[]> = {
   Légal: [
     { key: "Confidentialité", href: "/privacy", hrefEn: "/en/privacy" },
     { key: "CGU", href: "/cgu", hrefEn: "/en/terms" },
-    { key: "Cookies", href: "/cookies" },
-    { key: "RGPD", href: "/gdpr" },
+    { key: "Cookies", href: "/cookies", hrefEn: "/en/cookies" },
+    { key: "RGPD", href: "/gdpr", hrefEn: "/en/privacy#california" },
   ],
 };
 
@@ -148,7 +148,7 @@ export function Footer() {
                           href={isEn && link.hrefEn ? link.hrefEn : link.href}
                           className="text-sm text-gray-400 hover:text-white transition-colors duration-200"
                         >
-                          {t.footer.links[link.key]}
+                          {isEn && link.key === "RGPD" ? "CCPA" : t.footer.links[link.key]}
                         </Link>
                       </li>
                     ))}

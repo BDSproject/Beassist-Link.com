@@ -88,6 +88,7 @@ const sections = [
   },
   {
     title: "9. California Residents (CCPA / CPRA)",
+    id: "california",
     content: [
       "This section supplements the rest of this policy and applies to residents of California under the **California Consumer Privacy Act**, as amended by the **California Privacy Rights Act**.",
       "**Categories of personal information collected in the past 12 months:** identifiers (name, email), account information, content you create, payment information (via Stripe), usage data and communications. See Section 2.",
