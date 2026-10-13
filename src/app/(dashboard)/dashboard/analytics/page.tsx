@@ -278,7 +278,7 @@ export default function AnalyticsPage() {
     { key: "30d" as FilterPreset, label: "30j" },
     { key: "90d" as FilterPreset, label: "90j" },
     { key: "12m" as FilterPreset, label: "12m" },
-    { key: "thisMonth" as FilterPreset, label: "Ce mois" },
+    { key: "thisMonth" as FilterPreset, label: lang === "fr" ? "Ce mois" : "This month" },
   ];
 
   return (
@@ -470,9 +470,9 @@ export default function AnalyticsPage() {
           {session?.user?.plan === "PRO" ? (
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
               {[
-                { label: d.insightCountry, value: "France 🇫🇷", sub: "68% du trafic" },
+                { label: d.insightCountry, value: "France 🇫🇷", sub: lang === "fr" ? "68% du trafic" : "68% of traffic" },
                 { label: d.insightDevice, value: "Mobile 📱", sub: "82% mobile" },
-                { label: d.insightBrowser, value: "Chrome", sub: "54% d'utilisation" },
+                { label: d.insightBrowser, value: "Chrome", sub: lang === "fr" ? "54% d'utilisation" : "54% usage" },
                 { label: d.insightCTR, value: "12.4%", sub: "vs 8.1% avg" },
               ].map((insight) => (
                 <div
@@ -522,10 +522,10 @@ export default function AnalyticsPage() {
               <div className="w-8 h-8 rounded-lg bg-[#8F00FF]/10 flex items-center justify-center">
                 <SlidersHorizontal className="w-4 h-4 text-[#8F00FF]" />
               </div>
-              <h3 className="font-semibold text-gray-900">Filtres</h3>
+              <h3 className="font-semibold text-gray-900">{lang === "fr" ? "Filtres" : "Filters"}</h3>
             </div>
 
-            <p className="text-xs text-gray-500 mb-3">Périodes rapides</p>
+            <p className="text-xs text-gray-500 mb-3">{lang === "fr" ? "Périodes rapides" : "Quick periods"}</p>
             <div className="grid grid-cols-2 gap-2 mb-5">
               {presets.map((p) => (
                 <button
@@ -545,7 +545,7 @@ export default function AnalyticsPage() {
 
             <div className="space-y-3">
               <div>
-                <label className="text-xs text-gray-500 mb-1.5 block">Granularité</label>
+                <label className="text-xs text-gray-500 mb-1.5 block">{lang === "fr" ? "Granularité" : "Granularity"}</label>
                 <select
                   value={granularity}
                   onChange={(e) => {
@@ -554,9 +554,9 @@ export default function AnalyticsPage() {
                   }}
                   className="w-full border rounded-lg px-3 py-2 text-sm"
                 >
-                  <option value="day">Jour</option>
-                  <option value="month">Mois</option>
-                  <option value="year">Année</option>
+                  <option value="day">{lang === "fr" ? "Jour" : "Day"}</option>
+                  <option value="month">{lang === "fr" ? "Mois" : "Month"}</option>
+                  <option value="year">{lang === "fr" ? "Année" : "Year"}</option>
                 </select>
               </div>
 
@@ -602,7 +602,7 @@ export default function AnalyticsPage() {
                   className="flex-1"
                   style={{ backgroundColor: "#8F00FF", color: "white" }}
                 >
-                  Appliquer
+                  {lang === "fr" ? "Appliquer" : "Apply"}
                 </Button>
                 <Button
                   size="sm"
