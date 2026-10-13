@@ -145,7 +145,7 @@ export default function BlogErreursLienEnBio() {
                 n: 3,
                 title: "Une page qui ne te ressemble pas",
                 body: "Une page de liens générique, avec un logo imposé et un thème par défaut, ressemble à de la publicité. Tes abonnés doutent : « c'est bien la bonne personne ? »",
-                fix: "Ajoute ta photo, ton nom et une courte bio, puis personnalise les couleurs avec ton identité. Sur BeassistLink, la page est à toi en quelques clics — sans logo imposé, même en plan gratuit.",
+                fix: "Ajoute ta photo, ton nom et une courte bio, puis personnalise les couleurs avec ton identité. Sur BeassistLink, la page est à toi en quelques clics — personnalise les couleurs et ta mise en page, même en plan gratuit.",
               },
               {
                 n: 4,
@@ -241,7 +241,7 @@ export default function BlogErreursLienEnBio() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Corrige tes erreurs dès aujourd'hui</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Crée ta page BeassistLink en 30 secondes, personnalisée, sans logo et sans carte bancaire.
+              Crée ta page BeassistLink en 30 secondes, personnalisée et sans carte bancaire.
             </p>
             <Link
               href="/register"

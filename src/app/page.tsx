@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Alternative Linktree Française Gratuite — BeassistLink",
     description:
-      "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
+      "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
   },
 };
@@ -76,7 +76,7 @@ const jsonLd = {
         reviewCount: "127",
       },
       description:
-        "Crée ta page de liens personnalisée gratuitement. Alternative française à Linktree sans logo pour Instagram, TikTok, YouTube.",
+        "Crée ta page de liens personnalisée gratuitement. Alternative française à Linktree pour Instagram, TikTok et YouTube.",
     },
     {
       "@type": "FAQPage",
@@ -94,7 +94,7 @@ const jsonLd = {
           name: "BeassistLink est-il une bonne alternative à Linktree ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Oui. BeassistLink est une alternative française à Linktree qui offre des liens illimités, des analytics avancées et aucun logo imposé — tout cela gratuitement. Les données sont hébergées en Europe, conformément au RGPD.",
+            text: "Oui. BeassistLink est une alternative française à Linktree qui offre des liens illimités et des analytics avancées, gratuitement. Les données sont hébergées en Europe, conformément au RGPD.",
           },
         },
         {

@@ -28,7 +28,7 @@ export default function ProductPage() {
     ? "Pricing plans for your link in bio — BeassistLink"
     : "Tarifs de ton lien en bio — BeassistLink";
   const pageDescription = en
-    ? "Compare FREE, STARTER and PRO plans to grow your link in bio with advanced analytics, branding control and conversion features."
+    ? "Compare FREE, STARTER and PRO plans to grow your link in bio with advanced analytics, customization and conversion features."
     : "Compare les offres FREE, STARTER et PRO pour développer ton lien en bio avec analytics avancées, personnalisation et conversion.";
   const canonicalUrl = "https://www.beassist-link.com/pricing";
 

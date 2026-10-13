@@ -137,7 +137,6 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Couleurs & image de fond", included: false },
     { label: "Statistiques des clics", included: false },
     { label: "QR Code", included: false },
-    { label: "Sans logo BeassistLink", included: false },
     { label: "Lien personnalisé", included: false },
   ],
   STARTER: [
@@ -147,7 +146,6 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Thèmes premium + couleurs custom", included: true },
     { label: "Image de fond personnalisée", included: true },
     { label: "Toutes les typographies", included: true },
-    { label: "Sans logo BeassistLink", included: true },
     { label: "Statistiques des clics", included: true },
     { label: "QR Code", included: true },
     { label: "Lien personnalisé", included: true },
@@ -159,7 +157,6 @@ export const PLAN_FEATURE_LISTS: Record<PlanName, { label: string; included: boo
     { label: "Tous les thèmes + couleurs custom", included: true },
     { label: "Toutes les typographies", included: true },
     { label: "Plateformes adultes (OF, MYM, Fansly…)", included: true },
-    { label: "Sans logo BeassistLink", included: true },
     { label: "Statistiques avancées", included: true },
     { label: "QR codes illimités", included: true },
     { label: "Liens personnalisés illimités", included: true },

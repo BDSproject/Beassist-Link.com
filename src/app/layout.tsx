@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     "page de liens personnalisée",
     "outil lien dans bio",
     // FR — longue traîne
-    "linktree sans logo",
+    "linktree gratuit",
     "mettre lien spotify dans bio",
     "créer page redirection gratuite",
     "alternative linktree française",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     "free link in bio tool",
     "bio link website",
     // EN — conversion
-    "no logo link in bio",
+    "link in bio tool",
     "unlimited links bio",
     "custom bio link page",
     "best link in bio for tiktok",
@@ -61,7 +61,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink — Alternative Linktree Française Gratuite",
     description:
-      "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit, sans logo, conforme RGPD. Fait en France 🇫🇷",
+      "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
     siteName: "BeassistLink",
     locale: "fr_FR",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "BeassistLink — Alternative Linktree Gratuite 🇫🇷",
     description:
-      "Plusieurs liens en bio Instagram / TikTok. Gratuit, sans logo, RGPD. Alternative française à Linktree.",
+      "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Alternative française à Linktree.",
     creator: "@beassistlink",
     images: [`${BASE}/og-image.png`],
   },

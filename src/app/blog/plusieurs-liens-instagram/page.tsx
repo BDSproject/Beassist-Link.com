@@ -11,14 +11,14 @@ const PUBLISHED = "2026-04-14";
 export const metadata: Metadata = {
   title: "Comment avoir plusieurs liens sur Instagram sans payer — Guide 2026",
   description:
-    "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, sans logo, sans abonnement. Alternative gratuite à Linktree en français.",
+    "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, gratuite et sans abonnement. Alternative gratuite à Linktree en français.",
   keywords: [
     "plusieurs liens bio instagram",
     "lien en bio instagram",
     "mettre plusieurs liens instagram",
     "outil lien dans bio",
     "page de liens personnalisée",
-    "linktree sans logo",
+    "linktree gratuit",
     "créer page redirection gratuite",
     "lien bio gratuit",
     "comment avoir plusieurs liens instagram",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Comment avoir plusieurs liens sur Instagram sans payer",
     description:
-      "Guide étape par étape pour mettre plusieurs liens en bio Instagram — gratuit, sans logo, conforme RGPD avec BeassistLink 🇫🇷",
+      "Guide étape par étape pour mettre plusieurs liens en bio Instagram — gratuit et conforme RGPD avec BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -101,7 +101,7 @@ export default function BlogPlusieursLiensInstagram() {
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
               Instagram ne te permet qu'un seul lien dans ta bio. Voici comment en mettre autant que tu veux —
-              <strong> gratuitement</strong>, sans logo imposé, en moins de 5 minutes.
+              <strong> gratuitement</strong>, en moins de 5 minutes.
             </p>
           </div>
         </header>
@@ -136,7 +136,7 @@ export default function BlogPlusieursLiensInstagram() {
               </p>
               <p>
                 <strong>BeassistLink</strong> est une alternative française qui offre tout cela gratuitement : liens
-                illimités, sans logo, avec analytics et hébergement en Europe conforme au <strong>RGPD</strong>.
+                illimités, avec analytics et hébergement en Europe conforme au <strong>RGPD</strong>.
               </p>
             </div>
           </section>
@@ -236,8 +236,8 @@ export default function BlogPlusieursLiensInstagram() {
                   a: "Oui. Ajoute ton URL Spotify dans BeassistLink, puis mets ton lien BeassistLink dans ta bio Instagram. Tes followers accèdent à ta musique en un clic.",
                 },
                 {
-                  q: "BeassistLink est-il vraiment gratuit sans logo ?",
-                  a: "Oui. Le plan FREE n'affiche aucun logo BeassistLink sur ta page bio — c'est ce qui nous distingue de Linktree qui impose son badge sur les plans gratuits.",
+                  q: "BeassistLink est-il vraiment gratuit ?",
+                  a: "Oui. Le plan FREE permet de créer une page de lien en bio sans carte bancaire. Les plans payants ajoutent les statistiques, les QR codes et la personnalisation avancée.",
                 },
                 {
                   q: "Combien de liens peut-on ajouter ?",
@@ -256,7 +256,7 @@ export default function BlogPlusieursLiensInstagram() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Prêt à ajouter plusieurs liens dans ta bio ?</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Crée ta page BeassistLink en 30 secondes. Gratuit, sans logo, sans carte bancaire.
+              Crée ta page BeassistLink en 30 secondes. Gratuit, sans carte bancaire.
             </p>
             <Link
               href="/register"

@@ -132,7 +132,6 @@ export default function PartnershipPage() {
         "Advanced analytics",
         "Unlimited QR codes",
         "All themes + custom colors",
-        "Branding removal",
         "Custom domain",
         "Priority support",
       ]
@@ -142,7 +141,6 @@ export default function PartnershipPage() {
         "Analytics avancées",
         "QR codes illimités",
         "Tous les thèmes + couleurs custom",
-        "Suppression du branding",
         "Domaine personnalisé",
         "Support prioritaire",
       ];

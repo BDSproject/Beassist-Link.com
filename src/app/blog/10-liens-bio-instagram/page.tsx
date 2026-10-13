@@ -75,7 +75,7 @@ const jsonLd = {
           name: "Est-ce que BeassistLink est vraiment gratuit ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Le plan FREE comprend une page de lien en bio avec plusieurs liens, sans logo et sans carte bancaire. Les plans payants ajoutent les statistiques, les QR codes et la personnalisation avancée.",
+            text: "Le plan FREE comprend une page de lien en bio avec plusieurs liens, sans carte bancaire. Les plans payants ajoutent les statistiques, les QR codes et la personnalisation avancée.",
           },
         },
       ],
@@ -181,7 +181,7 @@ export default function BlogDixLiensBioInstagram() {
                 },
                 {
                   q: "Est-ce que BeassistLink est vraiment gratuit ?",
-                  a: "Le plan FREE comprend une page de lien en bio avec plusieurs liens, sans logo et sans carte bancaire. Les plans payants ajoutent les statistiques, les QR codes et la personnalisation avancée.",
+                  a: "Le plan FREE comprend une page de lien en bio avec plusieurs liens, sans carte bancaire. Les plans payants ajoutent les statistiques, les QR codes et la personnalisation avancée.",
                 },
               ].map(({ q, a }) => (
                 <div key={q} className="rounded-2xl border border-gray-200 p-5">
@@ -196,7 +196,7 @@ export default function BlogDixLiensBioInstagram() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Réunis tes 10 liens en un seul</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Crée ta page de liens en 30 secondes, personnalisée à tes couleurs. Gratuit, sans logo, sans carte bancaire.
+              Crée ta page de liens en 30 secondes, personnalisée à tes couleurs. Gratuit, sans carte bancaire.
             </p>
             <Link
               href="/register"

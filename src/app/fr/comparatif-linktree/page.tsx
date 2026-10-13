@@ -9,16 +9,16 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   title: "Comparatif Linktree 2026 — Meilleure Alternative Française.",
   description:
-    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Alternative française gratuite, sans logo, RGPD.",
+    "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Alternative française gratuite et conforme RGPD.",
   keywords: [
     "alternative linktree",
-    "linktree sans logo",
+    "linktree gratuit",
     "comparatif linktree",
     "alternative linktree française",
-    "linktree gratuit sans logo",
+    "linktree alternative gratuite",
     "meilleur outil lien bio",
     "linktree alternative free",
-    "no logo link in bio",
+    "link in bio tool",
     "custom bio link page",
     "lien en bio instagram",
   ],
@@ -59,7 +59,6 @@ type CellValue = boolean | string;
 
 const rows: { feature: string; beassist: CellValue; linktree: CellValue; milkshake: CellValue; later: CellValue }[] = [
   { feature: "Liens illimités (plan gratuit)", beassist: true, linktree: false, milkshake: true, later: false },
-  { feature: "Sans logo sur le plan gratuit", beassist: true, linktree: false, milkshake: false, later: false },
   { feature: "Analytics avancées (clics, sources)", beassist: true, linktree: false, milkshake: false, later: false },
   { feature: "QR Code intégré", beassist: true, linktree: false, milkshake: false, later: false },
   { feature: "URL courte personnalisée", beassist: true, linktree: false, milkshake: false, later: false },
@@ -84,11 +83,11 @@ function Cell({ val }: { val: CellValue }) {
 const faqs = [
   {
     q: "Quelle est la meilleure alternative gratuite à Linktree ?",
-    a: "BeassistLink est l'alternative française la plus complète : liens illimités, sans logo imposé, analytics intégrées et hébergement en Europe conforme au RGPD — tout ça gratuitement.",
+    a: "BeassistLink est l'alternative française la plus complète : liens illimités, analytics intégrées et hébergement en Europe conforme au RGPD — tout ça gratuitement.",
   },
   {
-    q: "Peut-on utiliser BeassistLink sans logo visible ?",
-    a: "Oui. Contrairement à Linktree qui affiche son logo sur tous les plans gratuits, BeassistLink propose une page propre sans aucun badge obligatoire, même sur le plan FREE.",
+    q: "Les statistiques sont-elles incluses dans le plan gratuit ?",
+    a: "Non. Le plan FREE n'inclut pas de statistiques : elles arrivent avec le plan STARTER à 6 €/mois, et le PRO ajoute les données avancées (pays, appareils, sources de trafic).",
   },
   {
     q: "BeassistLink est-il conforme au RGPD ?",
@@ -161,7 +160,7 @@ export default function ComparatifLinktreePage() {
               </p>
               <p>
                 <strong>BeassistLink</strong> a été créé pour les créateurs et entrepreneurs francophones qui veulent
-                une solution complète, sans compromise, hébergée en Europe. Zéro logo forcé. Zéro cookie tiers.
+                une solution complète, hébergée en Europe. Zéro cookie tiers.
                 Support en français. Prix en euros.
               </p>
             </div>
@@ -270,7 +269,7 @@ export default function ComparatifLinktreePage() {
               Crée ta page bio en 30 secondes
             </h2>
             <p className="text-purple-100 text-base mb-7 max-w-lg mx-auto leading-relaxed">
-              Gratuit, sans carte bancaire, sans logo forcé. L'alternative française à Linktree qui respecte tes visiteurs et ta vie privée.
+              Gratuit, sans carte bancaire. L'alternative française à Linktree qui respecte tes visiteurs et ta vie privée.
             </p>
             <Link
               href="/register"

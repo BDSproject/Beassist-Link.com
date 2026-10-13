@@ -48,7 +48,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment avoir plusieurs liens sur Instagram sans payer",
     excerpt:
-      "Guide étape par étape : crée une page de liens personnalisée gratuite et mets-la dans ta bio Instagram en 5 minutes — sans logo, sans abonnement.",
+      "Guide étape par étape : crée une page de liens personnalisée gratuite et mets-la dans ta bio Instagram en 5 minutes — gratuitement, sans abonnement.",
     date: "14 avril 2026",
     readTime: "5 min",
     featured: false,
