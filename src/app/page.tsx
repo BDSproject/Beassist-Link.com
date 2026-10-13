@@ -15,6 +15,11 @@ export const metadata: Metadata = {
     "BeassistLink est l'alternative française gratuite à Linktree. Crée ta page de liens bio pour Instagram, TikTok, YouTube en 30 secondes.",
   alternates: {
     canonical: BASE,
+    languages: {
+      "fr": BASE,
+      "en": `${BASE}/en`,
+      "x-default": BASE,
+    },
   },
   openGraph: {
     title: "Alternative Linktree Française Gratuite — BeassistLink",

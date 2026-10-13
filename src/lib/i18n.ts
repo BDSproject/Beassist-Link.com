@@ -1085,7 +1085,7 @@ export const en: typeof fr = {
   },
   hero: {
     badge: "The link in bio platform for creators 🔗",
-    heading1: "One, link in bio",
+    heading1: "One link in bio",
     heading2: "One page",
     heading3: "All your universe",
     subheading:

@@ -21,11 +21,19 @@ const LanguageContext = createContext<LanguageContextType>({
   t: translations.fr,
 });
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLang] = useState<Language>("fr");
+export function LanguageProvider({
+  children,
+  initialLang = "fr",
+}: {
+  children: ReactNode;
+  initialLang?: Language;
+}) {
+  const [lang, setLang] = useState<Language>(initialLang);
 
-  // Load persisted language or auto-detect browser language on first visit
+  // Load persisted language or auto-detect browser language on first visit.
+  // Skipped when the language is forced (ex. routes /en).
   useEffect(() => {
+    if (initialLang === "en") return;
     try {
       const saved = localStorage.getItem("beassist-lang") as Language | null;
       if (saved === "fr" || saved === "en") {
@@ -37,7 +45,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         setLang(detected);
       }
     } catch {}
-  }, []);
+  }, [initialLang]);
 
   const handleSetLang = (l: Language) => {
     setLang(l);

@@ -11,6 +11,7 @@ const staticRoutes: Array<{
 }> = [
   // Core — highest priority
   { path: "", priority: 1.0, changeFrequency: "weekly" },
+  { path: "/en", priority: 1.0, changeFrequency: "weekly" },
   { path: "/register", priority: 0.9, changeFrequency: "monthly" },
   { path: "/login", priority: 0.7, changeFrequency: "monthly" },
   // SEO landing pages
