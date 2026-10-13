@@ -409,7 +409,7 @@ export const fr = {
     dashboard: "Tableau de bord",
   },
   hero: {
-    badge: "La plateforme lien en bio des créateurs — gratuit 🇫🇷",
+    badge: "Le lien en bio des créateurs francophones 🇫🇷",
     heading1: "Un seul lien en bio",
     heading2: "Une page",
     heading3: "Tout ton univers",

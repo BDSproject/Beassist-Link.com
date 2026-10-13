@@ -10,7 +10,7 @@ import { Footer } from "@/components/landing/footer";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "BeassistLink — Page de liens bio, liens courts et QR codes",
+  title: "BeassistLink — Le lien en bio des créateurs francophones",
   description:
     "Crée ta page de liens bio pour Instagram, TikTok et YouTube en 30 secondes. Gratuit, sans carte bancaire.",
   alternates: {
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "BeassistLink — Page de liens bio, liens courts et QR codes",
+    title: "BeassistLink — Le lien en bio des créateurs francophones",
     description:
       "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit et conforme RGPD. Fait en France 🇫🇷",
     url: BASE,
