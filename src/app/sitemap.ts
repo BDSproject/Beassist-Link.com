@@ -31,6 +31,17 @@ const staticRoutes: Array<{
   { path: "/blog/optimiser-bio-convertir-2026", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-01" },
   { path: "/blog/qr-codes-bonnes-pratiques", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-28" },
   { path: "/blog/free-vs-starter-quand-upgrader", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-22" },
+  // Blog — English (US)
+  { path: "/en/blog", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/en/blog/link-in-bio-mistakes", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
+  { path: "/en/blog/links-instagram-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
+  { path: "/en/blog/multiple-links-instagram-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
+  { path: "/en/blog/beassistlink-vs-linktree", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-12" },
+  { path: "/en/blog/link-in-bio-alternatives", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-08" },
+  { path: "/en/blog/privacy-first-link-in-bio", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-05" },
+  { path: "/en/blog/optimize-bio-convert", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-01" },
+  { path: "/en/blog/qr-code-printing-tips", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-28" },
+  { path: "/en/blog/free-vs-starter-upgrade", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-22" },
   // Support / docs
   { path: "/help", priority: 0.6, changeFrequency: "monthly" },
   { path: "/docs", priority: 0.6, changeFrequency: "monthly" },

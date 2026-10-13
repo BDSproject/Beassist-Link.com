@@ -16,6 +16,11 @@ export const metadata: Metadata = {
   ],
   alternates: {
     canonical: "https://www.beassist-link.com/blog",
+    languages: {
+      "fr": "https://www.beassist-link.com/blog",
+      "en": "https://www.beassist-link.com/en/blog",
+      "x-default": "https://www.beassist-link.com/blog",
+    },
   },
 };
 
