@@ -7,6 +7,13 @@ import { ArrowRight, Sparkles } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 function PhoneMockup() {
+  const { lang } = useLanguage();
+  const en = lang === "en";
+  const labels = en
+    ? ["🎥 My latest YouTube video", "📸 My Instagram", "🎵 My TikTok", "🛒 My online store", "📧 Contact me"]
+    : ["🎥 Ma dernière vidéo YouTube", "📸 Mon Instagram", "🎵 Mon TikTok", "🛒 Ma boutique en ligne", "📧 Me contacter"];
+  const colors = ["#FF0000", "#E1306C", "#000000", "#8F00FF", "#6200CC"];
+
   return (
     <div
       className="relative mx-auto w-[280px] h-[560px] bg-white rounded-[36px] border-[6px] border-gray-900 shadow-2xl overflow-hidden
@@ -21,33 +28,28 @@ function PhoneMockup() {
           </div>
           <h3 className="mt-3 text-sm font-bold text-gray-900">@Matthieu</h3>
           <p className="text-xs text-gray-500 mt-1 text-center leading-relaxed">
-            Créatrice de contenu ✨
+            {en ? "Content creator ✨" : "Créatrice de contenu ✨"}
             <br />
-            Mode & Lifestyle
+            {en ? "Fashion & Lifestyle" : "Mode & Lifestyle"}
           </p>
         </div>
 
         <div className="space-y-2.5">
-          {[
-            { label: "🎥 Ma dernière vidéo YouTube", bg: "#FF0000" },
-            { label: "📸 Mon Instagram", bg: "#E1306C" },
-            { label: "🎵 Mon TikTok", bg: "#000000" },
-            { label: "🛒 Ma boutique en ligne", bg: "#8F00FF" },
-            { label: "📧 Me contacter", bg: "#6200CC" },
-          ].map((item, i) => (
+          {labels.map((label, i) => (
             <div
               key={i}
               className="w-full px-3 py-2.5 rounded-xl text-white text-xs font-semibold text-center shadow-sm"
-              style={{ backgroundColor: item.bg }}
+              style={{ backgroundColor: colors[i] }}
             >
-              {item.label}
+              {label}
             </div>
           ))}
         </div>
 
         <div className="mt-4 text-center">
           <span className="text-[9px] text-gray-400">
-            Créé avec <span className="font-bold text-black">Beassist</span>
+            {en ? "Made with " : "Créé avec "}
+            <span className="font-bold text-black">Beassist</span>
             <span className="font-bold" style={{ color: "#8F00FF" }}>
               Link
             </span>
