@@ -45,7 +45,14 @@ const staticRoutes: Array<{
   // Support / docs
   { path: "/help", priority: 0.6, changeFrequency: "monthly" },
   { path: "/docs", priority: 0.6, changeFrequency: "monthly" },
+  { path: "/api-docs", priority: 0.4, changeFrequency: "monthly" },
   { path: "/contact", priority: 0.6, changeFrequency: "monthly" },
+  // Entreprise
+  { path: "/about", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/product", priority: 0.7, changeFrequency: "monthly" },
+  { path: "/partenariat", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/support", priority: 0.5, changeFrequency: "monthly" },
+  { path: "/careers", priority: 0.4, changeFrequency: "monthly" },
   // Legal
   { path: "/legal", priority: 0.3, changeFrequency: "yearly" },
   { path: "/privacy", priority: 0.3, changeFrequency: "yearly" },
