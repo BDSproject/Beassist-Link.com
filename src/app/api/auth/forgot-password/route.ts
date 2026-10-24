@@ -133,7 +133,7 @@ export async function POST(req: NextRequest) {
     const body = await req.json();
     const { email, lang } = schema.parse(body);
 
-    // Check if user exists — but don't leak info: always return 200
+    // Check if user exists : but don't leak info: always return 200
     const user = await db.user.findUnique({ where: { email } });
 
     if (user && user.password) {

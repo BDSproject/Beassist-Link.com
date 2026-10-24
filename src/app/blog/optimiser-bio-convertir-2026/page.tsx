@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Comment optimiser sa bio pour convertir en 2026",
     description:
-      "7 leviers simples pour transformer tes visiteurs en clients — par l'équipe BeassistLink 🇫🇷",
+      "7 leviers simples pour transformer tes visiteurs en clients : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -104,7 +104,7 @@ export default function BlogOptimiserBioConvertir2026() {
               Comment optimiser sa bio pour convertir en 2026
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              7 leviers simples pour transformer tes visiteurs en clients — des bonnes pratiques partagées par les
+              7 leviers simples pour transformer tes visiteurs en clients : des bonnes pratiques partagées par les
               créateurs qui gèrent leur présence en ligne avec soin.
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function BlogOptimiserBioConvertir2026() {
             </p>
             <p>
               Voici 7 leviers simples et concrets, partagés par les créateurs qui gèrent leur page de liens avec
-              soin — avec un exemple à appliquer pour chacun.
+              soin : avec un exemple à appliquer pour chacun.
             </p>
           </div>
 
@@ -132,7 +132,7 @@ export default function BlogOptimiserBioConvertir2026() {
               {
                 n: 1,
                 title: "Mets ton lien le plus important en première position",
-                body: "Le premier lien de ta page reçoit toujours le plus de clics. Si tu places un lien secondaire en haut, tu gaspilles ta meilleure position — et ton visiteur part avant d'avoir vu l'essentiel.",
+                body: "Le premier lien de ta page reçoit toujours le plus de clics. Si tu places un lien secondaire en haut, tu gaspilles ta meilleure position : et ton visiteur part avant d'avoir vu l'essentiel.",
                 example: "Tu lances ta boutique cette semaine ? Mets son lien tout en haut, au-dessus de tes réseaux sociaux. L'essentiel doit être visible sans scroller.",
               },
               {
@@ -144,7 +144,7 @@ export default function BlogOptimiserBioConvertir2026() {
               {
                 n: 3,
                 title: "Reste cohérent avec le reste de ton profil",
-                body: "Ta page de liens prolonge ton profil Instagram ou TikTok : mêmes couleurs, même photo, même ton. Un visiteur qui reconnaît ton univers est en confiance — et la confiance précède le clic.",
+                body: "Ta page de liens prolonge ton profil Instagram ou TikTok : mêmes couleurs, même photo, même ton. Un visiteur qui reconnaît ton univers est en confiance : et la confiance précède le clic.",
                 example: "Ton feed est en tons pastel ? Choisis un thème aux couleurs proches et reprends ta photo de profil. La transition entre ton profil et ta page doit être invisible.",
               },
               {
@@ -156,7 +156,7 @@ export default function BlogOptimiserBioConvertir2026() {
               {
                 n: 5,
                 title: "Mets ta page à jour chaque semaine",
-                body: "Une page vivante convertit mieux qu'une page figée. À chaque lancement, chaque promo, chaque nouveau contenu, ta page doit refléter ce qui compte maintenant — pas ce qui comptait le mois dernier.",
+                body: "Une page vivante convertit mieux qu'une page figée. À chaque lancement, chaque promo, chaque nouveau contenu, ta page doit refléter ce qui compte maintenant : pas ce qui comptait le mois dernier.",
                 example: "Chaque dimanche, mets en avant ton dernier contenu et retire les promos expirées. Avec les liens programmés du plan PRO de BeassistLink, tu peux planifier ces changements à l'avance.",
               },
               {
@@ -285,7 +285,7 @@ export default function BlogOptimiserBioConvertir2026() {
                 → Pourquoi choisir une solution française pour ton lien bio ?
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

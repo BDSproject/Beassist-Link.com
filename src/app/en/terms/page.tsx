@@ -126,7 +126,7 @@ const sections = [
   {
     title: "14. Contact",
     content: [
-      "Questions about these Terms may be sent to: **contact@beassist-link.com** — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+      "Questions about these Terms may be sent to: **contact@beassist-link.com** : Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
     ],
   },
 ];

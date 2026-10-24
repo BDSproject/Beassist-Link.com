@@ -18,19 +18,19 @@ const BASE = "https://www.beassist-link.com";
 export const metadata: Metadata = {
   metadataBase: new URL(BASE),
   title: {
-    default: "BeassistLink — Rassemble. Partage. Grandis.",
+    default: "BeassistLink · Rassemble. Partage. Grandis.",
     template: "%s | BeassistLink",
   },
   description:
     "Crée ta page de liens bio en quelques secondes : tous tes liens, tes réseaux et tes offres au même endroit. Liens courts, QR codes et statistiques inclus.",
   keywords: [
-    // FR — haute intention
+    // FR : haute intention
     "lien en bio instagram",
     "alternative linktree",
     "plusieurs liens bio instagram",
     "page de liens personnalisée",
     "outil lien dans bio",
-    // FR — longue traîne
+    // FR : longue traîne
     "linktree gratuit",
     "mettre lien spotify dans bio",
     "créer page redirection gratuite",
@@ -38,12 +38,12 @@ export const metadata: Metadata = {
     "lien bio gratuit france",
     "page bio instagram",
     "lien bio tiktok",
-    // EN — volume
+    // EN : volume
     "link in bio",
     "linktree alternative",
     "free link in bio tool",
     "bio link website",
-    // EN — conversion
+    // EN : conversion
     "link in bio tool",
     "unlimited links bio",
     "custom bio link page",
@@ -60,7 +60,7 @@ export const metadata: Metadata = {
     canonical: BASE,
   },
   openGraph: {
-    title: "BeassistLink — Rassemble. Partage. Grandis.",
+    title: "BeassistLink · Rassemble. Partage. Grandis.",
     description:
       "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France",
     url: BASE,
@@ -72,13 +72,13 @@ export const metadata: Metadata = {
         url: `${BASE}/og-image.png`,
         width: 1200,
         height: 630,
-        alt: "BeassistLink — page de liens bio",
+        alt: "BeassistLink · page de liens bio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeassistLink — Rassemble. Partage. Grandis.",
+    title: "BeassistLink · Rassemble. Partage. Grandis.",
     description:
       "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Fait en France",
     creator: "@beassistlink",

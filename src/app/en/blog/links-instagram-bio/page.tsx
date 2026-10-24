@@ -11,7 +11,7 @@ const PUBLISHED = "2026-09-28";
 export const metadata: Metadata = {
   title: "10 Links to Put in Your Instagram Bio to Convert Followers",
   description:
-    "Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers — gathered in one link.",
+    "Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers : gathered in one link.",
   keywords: [
     "links to put in instagram bio",
     "link in bio ideas",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "10 Links to Put in Your Instagram Bio to Convert Followers",
     description:
-      "The 10 links that turn followers into customers — by the BeassistLink team",
+      "The 10 links that turn followers into customers : by the BeassistLink team",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -72,7 +72,7 @@ const jsonLd = {
           name: "Can I change my links regularly?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes, and you should. Plenty of creators swap their main link every week to match their current content — a video, a promo, a launch.",
+            text: "Yes, and you should. Plenty of creators swap their main link every week to match their current content : a video, a promo, a launch.",
           },
         },
         {
@@ -109,7 +109,7 @@ export default function BlogLinksInstagramBio() {
               10 Links to Put in Your Instagram Bio to Convert Followers
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers — gathered
+              Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers : gathered
               in <strong>one link</strong>.
             </p>
           </div>
@@ -123,7 +123,7 @@ export default function BlogLinksInstagramBio() {
             <p>
               Your Instagram bio is a hallway: followers walk through it for a few seconds before deciding where to
               go. Every link you put there needs a clear job. Here are the <strong>10 links that actually convert</strong>,
-              no matter your niche — and how to gather them into one.
+              no matter your niche : and how to gather them into one.
             </p>
             <p>
               Whether you're a TikTok creator, an Etsy seller or a local bakery, the rule is the same: don't make
@@ -138,11 +138,11 @@ export default function BlogLinksInstagramBio() {
               {[
                 ["🛒", "Your store or main offer", "The link that makes you money. Put your hero product, Shopify store or Etsy shop first: it's what followers should see the moment they land."],
                 ["🎥", "Your latest Reel or YouTube video", "Fresh content makes people want to tap. Swap this link every time you post to stay current."],
-                ["📱", "Your TikTok or YouTube channel", "Cross-promotion is the easiest way to grow several platforms at once — an Instagram follower becomes a TikTok follower."],
+                ["📱", "Your TikTok or YouTube channel", "Cross-promotion is the easiest way to grow several platforms at once : an Instagram follower becomes a TikTok follower."],
                 ["💌", "Your newsletter or freebie", "Turn followers into email subscribers you actually own. The algorithm can hide your posts; it can't hide your email list."],
                 ["🎵", "Your Spotify or Apple Music link", "A must for artists: one page for streams, tracks and tour dates."],
                 ["📅", "Your booking link", "Coaching, services, appointments: a direct link to your Calendly or scheduler removes all friction between 'I want it' and 'I booked it'."],
-                ["⚡", "A short link to your current promo", "A short, memorable URL you can drop in stories, captions or a flyer — with a QR code generated in one click."],
+                ["⚡", "A short link to your current promo", "A short, memorable URL you can drop in stories, captions or a flyer : with a QR code generated in one click."],
                 ["🤝", "Your media kit or brand partnerships page", "Brands looking to work with you want your numbers. Make them one click away and you become easy to contact."],
                 ["💰", "Your affiliate program", "Every recommendation can become income. A clean, trackable link beats a wall of promo codes."],
                 ["🌟", "Your members-only platform (Patreon, OnlyFans, Substack…)", "If you sell exclusive content, your link page should lead there quietly but reliably."],
@@ -164,12 +164,12 @@ export default function BlogLinksInstagramBio() {
             <div className="text-[15px] text-gray-600 leading-relaxed space-y-3">
               <p>
                 Instagram only allows <strong>one clickable link</strong> in the bio. The fix: a link page that gathers
-                your 10 destinations, ordered by priority — the most important on top, the rest just below.
+                your 10 destinations, ordered by priority : the most important on top, the rest just below.
               </p>
               <p>
                 With <Link href="/en" className="text-[#8F00FF] font-semibold hover:underline">BeassistLink</Link>, you
                 build that page free in 30 seconds: choose your username (it becomes your URL), add your links and pick
-                a theme. Paid plans add click stats on every link and full customization —{" "}
+                a theme. Paid plans add click stats on every link and full customization :{" "}
                 <Link href="/en/pricing" className="text-[#8F00FF] font-semibold hover:underline">see pricing</Link>.
               </p>
               <p>
@@ -190,7 +190,7 @@ export default function BlogLinksInstagramBio() {
                 },
                 {
                   q: "Can I change my links regularly?",
-                  a: "Yes, and you should. Plenty of creators swap their main link every week to match their current content — a video, a promo, a launch.",
+                  a: "Yes, and you should. Plenty of creators swap their main link every week to match their current content : a video, a promo, a launch.",
                 },
                 {
                   q: "Is BeassistLink really free?",
@@ -231,7 +231,7 @@ export default function BlogLinksInstagramBio() {
                 → How to Add Multiple Links to Your Instagram Bio (Free)
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
             </div>
           </nav>

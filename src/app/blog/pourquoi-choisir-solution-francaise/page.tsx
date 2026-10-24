@@ -116,14 +116,14 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
           {/* Intro */}
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
-              Ton lien en bio est le carrefour de toute ta présence en ligne. Chaque clic y passe — et chaque clic
+              Ton lien en bio est le carrefour de toute ta présence en ligne. Chaque clic y passe : et chaque clic
               transporte des données : les tiennes, et celles de tes visiteurs. La question n'est donc pas seulement
               « quel outil choisir ? », mais aussi <strong>« à qui je confie ces données ? »</strong>.
             </p>
             <p>
               Les outils américains dominent le marché, mais ils traînent avec eux des choix qui ne sont pas les
               tiens : serveurs hors d'Europe, support en anglais, facturation en dollars. Une solution française
-              comme BeassistLink — hébergée en Europe, RGPD natif, support en français — répond à ces limites une
+              comme BeassistLink · hébergée en Europe, RGPD natif, support en français : répond à ces limites une
               par une. Voici pourquoi ça change tout, concrètement.
             </p>
           </div>
@@ -140,7 +140,7 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
               <p className="text-[15px] text-gray-600 leading-relaxed">
                 BeassistLink est hébergé en Europe et a été conçu avec le RGPD comme exigence de départ : stockage
                 européen, transparence sur l'usage des données, aucun partage avec des tiers à des fins
-                publicitaires. Résultat : tu peux dire à ton audience où passent ses données — preuves à l'appui —
+                publicitaires. Résultat : tu peux dire à ton audience où passent ses données : preuves à l'appui :
                 sans naviguer dans les méandres des clauses contractuelles.
               </p>
             </div>
@@ -155,7 +155,7 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
               <p className="text-[15px] text-gray-600 leading-relaxed">
                 En choisissant un outil français et européen, tes données restent sous la protection du droit
                 européen. Pour un créateur qui bâtit sa réputation sur la confiance, c'est un argument fort : ton
-                audience est de plus en plus sensible au sujet — et toi, tu dors mieux.
+                audience est de plus en plus sensible au sujet : et toi, tu dors mieux.
               </p>
             </div>
 
@@ -163,7 +163,7 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
               <h2 className="text-xl font-black text-gray-900 mb-3">Un support en français, sur le même fuseau horaire</h2>
               <p className="text-[15px] text-gray-600 leading-relaxed mb-3">
                 Imagine : un lien tombe en panne le dimanche soir, juste avant ton lancement. Avec un outil
-                américain, tu ouvres un ticket en anglais et tu attends la réponse — souvent au milieu de ta nuit,
+                américain, tu ouvres un ticket en anglais et tu attends la réponse : souvent au milieu de ta nuit,
                 heure de la côte ouest.
               </p>
               <p className="text-[15px] text-gray-600 leading-relaxed">
@@ -212,7 +212,7 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
           <section className="rounded-2xl border border-blue-100 bg-blue-50/60 p-6 sm:p-8">
             <h2 className="text-xl font-black text-gray-900 mb-4">Et face aux outils américains, ça donne quoi ?</h2>
             <p className="text-[15px] text-gray-700 leading-relaxed mb-4">
-              Comparons honnêtement. Les géants américains ont de l'ancienneté et une base gratuite — c'est réel.
+              Comparons honnêtement. Les géants américains ont de l'ancienneté et une base gratuite : c'est réel.
               Mais sur les points qui comptent pour un créateur européen, l'écart se creuse :
             </p>
             <ul className="space-y-3 text-[15px] text-gray-700">
@@ -311,7 +311,7 @@ export default function BlogPourquoiChoisirSolutionFrancaise() {
                 → 7 erreurs qui font fuir les visiteurs de ton lien en bio
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

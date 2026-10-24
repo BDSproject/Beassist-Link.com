@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Why Privacy Matters for Your Link in Bio",
     description:
-      "European hosting, GDPR by default, no third-party tracking cookies: what most US link-in-bio tools can't offer — by the BeassistLink team.",
+      "European hosting, GDPR by default, no third-party tracking cookies: what most US link-in-bio tools can't offer : by the BeassistLink team.",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -64,7 +64,7 @@ const jsonLd = {
           name: "Are my visitors' data really hosted in Europe?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. BeassistLink is hosted in Europe and built with GDPR as the default, so your data and your visitors' data stay under strong European data-protection rules — no transfer to servers outside Europe.",
+            text: "Yes. BeassistLink is hosted in Europe and built with GDPR as the default, so your data and your visitors' data stay under strong European data-protection rules : no transfer to servers outside Europe.",
           },
         },
         {
@@ -121,7 +121,7 @@ export default function BlogPrivacyFirstLinkInBio() {
           {/* Intro */}
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
-              Your link in bio is the crossroads of your entire online presence. Every tap passes through it — and
+              Your link in bio is the crossroads of your entire online presence. Every tap passes through it : and
               every tap carries data: yours, and your visitors'. So the question isn't just "which tool?" but{" "}
               <strong>"who am I trusting with that data?"</strong>
             </p>
@@ -130,7 +130,7 @@ export default function BlogPrivacyFirstLinkInBio() {
               audience now expects.{" "}
               <Link href="/en" className="text-[#8F00FF] font-medium hover:underline">BeassistLink</Link>{" "}
               takes a different route: European hosting, GDPR by default and no third-party tracking cookies. Here's
-              why that matters in practice — for any creator, anywhere.
+              why that matters in practice : for any creator, anywhere.
             </p>
           </div>
 
@@ -139,7 +139,7 @@ export default function BlogPrivacyFirstLinkInBio() {
             <h2 className="text-xl font-black text-gray-900 mb-3">Your bio page is a data gateway</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed">
               Every time someone opens your link page, a chain of requests fires: the page itself, images, fonts and
-              — on many tools — third-party trackers that log where the visitor came from and what they click. Those
+              : on many tools : third-party trackers that log where the visitor came from and what they click. Those
               trackers aren't yours; they belong to the platform and its ad partners. You don't see them, but your
               visitors' browsers do. BeassistLink doesn't inject third-party tracking cookies on your page. What your
               audience visits stays between you and them.
@@ -151,7 +151,7 @@ export default function BlogPrivacyFirstLinkInBio() {
             <h2 className="text-xl font-black text-gray-900 mb-3">European hosting, GDPR by default</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed">
               GDPR is the strictest data-protection law in the world, and it sets the bar for how personal data
-              should be handled. BeassistLink is hosted in Europe and built with GDPR as the starting point — not as
+              should be handled. BeassistLink is hosted in Europe and built with GDPR as the starting point : not as
               an afterthought bolted on to satisfy a compliance checklist. For your visitors, that means their data
               is handled under strong protections; for you, it means a cleaner answer when someone asks "where does
               my data go?"
@@ -177,7 +177,7 @@ export default function BlogPrivacyFirstLinkInBio() {
               Choosing privacy shouldn't mean choosing a bare-bones tool. BeassistLink is a full toolkit: a link in
               bio, short links, QR codes and analytics in one place. The FREE plan costs $0 and includes one bio
               page, 5 links, 3 short links and a theme. STARTER is $7/month (or $76/year), and PRO is $13/month (or
-              $140/year) with everything unlimited — advanced stats, unlimited QR codes, scheduled links, a custom
+              $140/year) with everything unlimited : advanced stats, unlimited QR codes, scheduled links, a custom
               domain and priority support. Full details on the{" "}
               <Link href="/en/pricing" className="text-[#8F00FF] font-medium hover:underline">pricing page</Link>.
             </p>
@@ -195,7 +195,7 @@ export default function BlogPrivacyFirstLinkInBio() {
             <h2 className="text-xl font-black text-gray-900 mb-3">Trust is the conversion you can't measure</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed">
               A flashy page gets the click; a trustworthy one gets the follow, the sale and the repeat visit. Privacy
-              isn't a niche feature — it's becoming the default expectation. With BeassistLink, you get a page that
+              isn't a niche feature : it's becoming the default expectation. With BeassistLink, you get a page that
               converts and a hosting choice you can stand behind.
             </p>
           </section>
@@ -207,7 +207,7 @@ export default function BlogPrivacyFirstLinkInBio() {
               {[
                 {
                   q: "Are my visitors' data really hosted in Europe?",
-                  a: "Yes. BeassistLink is hosted in Europe and built with GDPR as the default, so your data and your visitors' data stay under strong European data-protection rules — no transfer to servers outside Europe.",
+                  a: "Yes. BeassistLink is hosted in Europe and built with GDPR as the default, so your data and your visitors' data stay under strong European data-protection rules : no transfer to servers outside Europe.",
                 },
                 {
                   q: "What does no third-party cookies actually mean?",
@@ -256,7 +256,7 @@ export default function BlogPrivacyFirstLinkInBio() {
                 → How to Add Multiple Links to Your Instagram Bio (Free)
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
             </div>
           </nav>

@@ -1,5 +1,5 @@
 /**
- * Google Fonts — loaded via next/font/google.
+ * Google Fonts : loaded via next/font/google.
  * ALL_FONT_VARIABLES must be applied to the <html> element in layout.tsx
  * so that the CSS custom properties (e.g. --font-playfair) are available globally.
  */
@@ -24,14 +24,14 @@ import {
 
 // ── Top créatrices / models (5 must-haves) ────────────────────────────────────
 
-/** Luxury editorial — #1 choice among OnlyFans / MYM creators */
+/** Luxury editorial : #1 choice among OnlyFans / MYM creators */
 export const fontPlayfair = Playfair_Display({
   subsets: ["latin"],
   variable: "--font-playfair",
   display: "swap",
 });
 
-/** Romantic brush script — very popular with content creators */
+/** Romantic brush script : very popular with content creators */
 export const fontGreatVibes = Great_Vibes({
   subsets: ["latin"],
   variable: "--font-greatvibes",
@@ -39,14 +39,14 @@ export const fontGreatVibes = Great_Vibes({
   display: "swap",
 });
 
-/** Feminine handwritten script — used across adult platforms */
+/** Feminine handwritten script : used across adult platforms */
 export const fontDancing = Dancing_Script({
   subsets: ["latin"],
   variable: "--font-dancing",
   display: "swap",
 });
 
-/** High-fashion serif — Vogue / premium glamour aesthetic */
+/** High-fashion serif : Vogue / premium glamour aesthetic */
 export const fontCormorant = Cormorant_Garamond({
   subsets: ["latin"],
   variable: "--font-cormorant",
@@ -54,7 +54,7 @@ export const fontCormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-/** Bold editorial serif — Vogue / Playboy magazine style */
+/** Bold editorial serif : Vogue / Playboy magazine style */
 export const fontBodoni = Bodoni_Moda({
   subsets: ["latin"],
   variable: "--font-bodoni",
@@ -64,7 +64,7 @@ export const fontBodoni = Bodoni_Moda({
 
 // ── Style & Design (10 additional fonts) ─────────────────────────────────────
 
-/** Geometric modern — very versatile, clean brand identity */
+/** Geometric modern : very versatile, clean brand identity */
 export const fontMontserrat = Montserrat({
   subsets: ["latin"],
   variable: "--font-montserrat",
@@ -78,7 +78,7 @@ export const fontRaleway = Raleway({
   display: "swap",
 });
 
-/** Geometric chic — stylish minimalist */
+/** Geometric chic : stylish minimalist */
 export const fontJosefin = Josefin_Sans({
   subsets: ["latin"],
   variable: "--font-josefin",
@@ -92,7 +92,7 @@ export const fontCinzel = Cinzel({
   display: "swap",
 });
 
-/** Bold decorative — strong personality */
+/** Bold decorative : strong personality */
 export const fontLobster = Lobster({
   subsets: ["latin"],
   variable: "--font-lobster",
@@ -100,7 +100,7 @@ export const fontLobster = Lobster({
   display: "swap",
 });
 
-/** All-caps impact — bold branding */
+/** All-caps impact : bold branding */
 export const fontBebas = Bebas_Neue({
   subsets: ["latin"],
   variable: "--font-bebas",
@@ -139,7 +139,7 @@ export const fontSatisfy = Satisfy({
   display: "swap",
 });
 
-/** Clean professional — versatile sans */
+/** Clean professional : versatile sans */
 export const fontLato = Lato({
   subsets: ["latin"],
   variable: "--font-lato",

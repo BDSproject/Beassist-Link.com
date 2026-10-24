@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink vs Linktree in 2026: The Full Comparison",
     description:
-      "Pricing, free plan, analytics, QR codes and privacy: every difference between BeassistLink and Linktree — by the BeassistLink team.",
+      "Pricing, free plan, analytics, QR codes and privacy: every difference between BeassistLink and Linktree : by the BeassistLink team.",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -72,7 +72,7 @@ const jsonLd = {
           name: "Are analytics included in the free plan?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "No. The FREE plan doesn't include analytics — that's the main trade-off of the free tier. Click analytics start with STARTER, and PRO adds advanced data by country, device and traffic source.",
+            text: "No. The FREE plan doesn't include analytics : that's the main trade-off of the free tier. Click analytics start with STARTER, and PRO adds advanced data by country, device and traffic source.",
           },
         },
         {
@@ -122,7 +122,7 @@ export default function BlogBeassistlinkVsLinktree() {
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
               Linktree is the name everyone knows. But in 2026, the best-known link-in-bio tool is no longer the
-              only serious option — and for US creators watching their costs and their visitors' data,{" "}
+              only serious option : and for US creators watching their costs and their visitors' data,{" "}
               <Link href="/en" className="text-[#8F00FF] font-medium hover:underline">BeassistLink</Link>{" "}
               has become a credible alternative to the category leader.
             </p>
@@ -151,7 +151,7 @@ export default function BlogBeassistlinkVsLinktree() {
             <h2 className="text-xl font-black text-gray-900 mb-3">The free plan: what you actually get at $0</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-3">
               The real test of a link-in-bio tool is its free tier. BeassistLink's FREE plan is genuinely usable:
-              one bio page, 5 links, 3 short links and a theme — no credit card and no time limit. Linktree also has
+              one bio page, 5 links, 3 short links and a theme : no credit card and no time limit. Linktree also has
               a free plan, but it stays limited and keeps its own branding front and center until you pay.
             </p>
             <p className="text-[15px] text-gray-600 leading-relaxed">
@@ -165,7 +165,7 @@ export default function BlogBeassistlinkVsLinktree() {
             <h2 className="text-xl font-black text-gray-900 mb-3">Customization: your page should look like you</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed">
               A generic bio page doesn't convert. BeassistLink lets you add your photo, name, bio and colors right
-              from the start, and the paid plans unlock full customization so the page feels like yours — not like a
+              from the start, and the paid plans unlock full customization so the page feels like yours : not like a
               template. Linktree customizes well, but its best options sit behind the paywall. If your visual
               identity matters, check exactly what each tier includes before you commit.
             </p>
@@ -177,7 +177,7 @@ export default function BlogBeassistlinkVsLinktree() {
             <p className="text-[15px] text-gray-600 leading-relaxed">
               A link page without data is decoration. On BeassistLink, click analytics arrive with STARTER, and PRO
               adds advanced breakdowns by country, device and traffic source. The FREE plan doesn't include
-              analytics — that's the trade-off of the free tier, and it's worth knowing before you choose. Linktree
+              analytics : that's the trade-off of the free tier, and it's worth knowing before you choose. Linktree
               has historically reserved its analytics for paid plans, often the pricier ones. If you want to know
               which link converts your audience, compare what each plan actually includes.
             </p>
@@ -250,7 +250,7 @@ export default function BlogBeassistlinkVsLinktree() {
             </div>
             <p className="text-[15px] text-gray-600 leading-relaxed mt-5">
               For most creators, the verdict is clear: BeassistLink checks more boxes for less. The best way to
-              decide is to test it — creating a page takes under 30 seconds, and the FREE plan costs nothing.
+              decide is to test it : creating a page takes under 30 seconds, and the FREE plan costs nothing.
             </p>
           </section>
 
@@ -284,7 +284,7 @@ export default function BlogBeassistlinkVsLinktree() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Put both to the test</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Create your BeassistLink page in 30 seconds and judge for yourself — free, no credit card required.
+              Create your BeassistLink page in 30 seconds and judge for yourself : free, no credit card required.
             </p>
             <Link
               href="/register"
@@ -309,7 +309,7 @@ export default function BlogBeassistlinkVsLinktree() {
                 → How to Add Multiple Links to Your Instagram Bio (Free)
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
             </div>
           </nav>

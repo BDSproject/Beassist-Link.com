@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Linktree, Beacons, Milkshake, Stan Store… Which One?",
     description:
-      "Tour of the main link-in-bio tools in 2026: strengths, weaknesses and the right pick by profile — by the BeassistLink team.",
+      "Tour of the main link-in-bio tools in 2026: strengths, weaknesses and the right pick by profile : by the BeassistLink team.",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -72,7 +72,7 @@ const jsonLd = {
           name: "Is Beacons enough to sell products?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "For tips and lightweight selling, yes — Beacons is built for monetization. If you need a full storefront with checkout, Stan Store is stronger but costs around $29/month in 2026. If you only need to link to existing products, BeassistLink covers it for less.",
+            text: "For tips and lightweight selling, yes : Beacons is built for monetization. If you need a full storefront with checkout, Stan Store is stronger but costs around $29/month in 2026. If you only need to link to existing products, BeassistLink covers it for less.",
           },
         },
         {
@@ -80,7 +80,7 @@ const jsonLd = {
           name: "Why does European hosting matter for a US creator?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Because your visitors' data is protected under GDPR, with no third-party tracking cookies on your page. As US audiences become more privacy-aware, that's a trust advantage — and a signal that the tool treats data seriously.",
+            text: "Because your visitors' data is protected under GDPR, with no third-party tracking cookies on your page. As US audiences become more privacy-aware, that's a trust advantage : and a signal that the tool treats data seriously.",
           },
         },
       ],
@@ -109,7 +109,7 @@ export default function BlogLinkInBioAlternatives() {
               Linktree, Beacons, Milkshake, Stan Store… Which One?
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              A tour of the main link-in-bio tools in 2026 — and how{" "}
+              A tour of the main link-in-bio tools in 2026 : and how{" "}
               <strong>BeassistLink stands out on price and privacy</strong>.
             </p>
           </div>
@@ -122,7 +122,7 @@ export default function BlogLinkInBioAlternatives() {
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
               Five tools, one spot in your Instagram or TikTok bio. Linktree still dominates the category, Beacons
-              pushes monetization, Milkshake courts creators, Stan Store targets sellers — and{" "}
+              pushes monetization, Milkshake courts creators, Stan Store targets sellers : and{" "}
               <Link href="/en" className="text-[#8F00FF] font-medium hover:underline">BeassistLink</Link>{" "}
               bundles everything into one affordable, privacy-first toolkit. Here's the 2026 tour, tool by tool, so
               you can choose with confidence.
@@ -263,7 +263,7 @@ export default function BlogLinkInBioAlternatives() {
             <h2 className="text-xl font-black text-gray-900 mb-3">Stan Store: built for selling, at a price</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-4">
               Stan Store is a storefront-first tool for creators selling digital products, courses and bookings.
-              It's powerful, but it's a different category — and it's priced like it.
+              It's powerful, but it's a different category : and it's priced like it.
             </p>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-xl bg-green-50 border border-green-100 p-4">
@@ -309,7 +309,7 @@ export default function BlogLinkInBioAlternatives() {
             </p>
             <p className="text-[15px] text-gray-600 leading-relaxed mb-3">
               STARTER ($7/month or $76/year) adds click analytics, QR codes and more, while PRO ($13/month or
-              $140/year) unlocks everything unlimited — advanced stats, unlimited QR codes, scheduled links, a custom
+              $140/year) unlocks everything unlimited : advanced stats, unlimited QR codes, scheduled links, a custom
               domain and priority support. The full details are on our{" "}
               <Link href="/en/pricing" className="text-[#8F00FF] font-medium hover:underline">pricing page</Link>.
             </p>
@@ -394,7 +394,7 @@ export default function BlogLinkInBioAlternatives() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Your bio page deserves the right tool</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Try BeassistLink free in 30 seconds and compare for yourself — no credit card required.
+              Try BeassistLink free in 30 seconds and compare for yourself : no credit card required.
             </p>
             <Link
               href="/register"
@@ -419,7 +419,7 @@ export default function BlogLinkInBioAlternatives() {
                 → 7 Link in Bio Mistakes That Make Visitors Leave
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
             </div>
           </nav>

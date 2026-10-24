@@ -6,7 +6,7 @@ import { ArrowRight } from "lucide-react";
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "Blog — Link in Bio Tips, Comparisons & Creator Strategy | BeassistLink",
+  title: "Blog : Link in Bio Tips, Comparisons & Creator Strategy | BeassistLink",
   description:
     "Tutorials, comparisons and advice to optimize your link in bio on Instagram, TikTok and YouTube. English articles from BeassistLink.",
   alternates: {
@@ -18,9 +18,9 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Blog — Link in Bio Tips & Comparisons | BeassistLink",
+    title: "Blog : Link in Bio Tips & Comparisons | BeassistLink",
     description:
-      "Tutorials, comparisons and strategies to grow with your link in bio — by the BeassistLink team.",
+      "Tutorials, comparisons and strategies to grow with your link in bio : by the BeassistLink team.",
     url: `${BASE}/en/blog`,
     type: "website",
   },
@@ -33,7 +33,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "7 Link in Bio Mistakes That Make Visitors Leave",
     excerpt:
-      "Dead links, a generic page, no call to action: the 7 mistakes costing you customers — and how to fix them in 10 minutes.",
+      "Dead links, a generic page, no call to action: the 7 mistakes costing you customers : and how to fix them in 10 minutes.",
     date: "September 28, 2026",
     readTime: "6 min",
     featured: true,
@@ -44,7 +44,7 @@ const posts = [
     tagColor: "bg-orange-100 text-orange-700",
     title: "10 Links to Put in Your Instagram Bio to Convert Followers",
     excerpt:
-      "Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers — gathered in one link.",
+      "Store, newsletter, booking, Spotify… the 10 links that actually turn followers into customers : gathered in one link.",
     date: "September 28, 2026",
     readTime: "5 min",
     featured: false,
@@ -55,7 +55,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "How to Add Multiple Links to Your Instagram Bio (Free)",
     excerpt:
-      "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes — no credit card required.",
+      "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes : no credit card required.",
     date: "April 14, 2026",
     readTime: "5 min",
     featured: false,
@@ -77,7 +77,7 @@ const posts = [
     tagColor: "bg-purple-100 text-purple-700",
     title: "Linktree, Beacons, Milkshake, Stan Store… Which One?",
     excerpt:
-      "A tour of the main link-in-bio tools in 2026 — and how BeassistLink stands out on price and privacy.",
+      "A tour of the main link-in-bio tools in 2026 : and how BeassistLink stands out on price and privacy.",
     date: "April 8, 2026",
     readTime: "8 min",
     featured: false,
@@ -99,7 +99,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "How to Optimize Your Bio to Convert in 2026",
     excerpt:
-      "7 simple levers to turn visitors into customers — best practices from creators who treat their bio seriously.",
+      "7 simple levers to turn visitors into customers : best practices from creators who treat their bio seriously.",
     date: "April 1, 2026",
     readTime: "4 min",
     featured: false,
@@ -121,7 +121,7 @@ const posts = [
     tagColor: "bg-yellow-100 text-yellow-700",
     title: "FREE vs STARTER: When Should You Upgrade?",
     excerpt:
-      "The 5 concrete signs it's time to upgrade — and what you actually gain with the Starter plan.",
+      "The 5 concrete signs it's time to upgrade : and what you actually gain with the Starter plan.",
     date: "March 22, 2026",
     readTime: "3 min",
     featured: false,
@@ -135,7 +135,7 @@ export default function EnBlogPage() {
     <MarketingLayout
       category="Blog"
       title="Link in bio tips, comparisons & creator strategy"
-      description="Tutorials, comparisons and analyses to perform better online — by the BeassistLink team."
+      description="Tutorials, comparisons and analyses to perform better online : by the BeassistLink team."
       updatedAt="September 28, 2026"
     >
       {/* Featured article */}
@@ -189,7 +189,7 @@ export default function EnBlogPage() {
       <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
         <h2 className="text-2xl font-black mb-2">Put your links to work</h2>
         <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-          Create your link in bio in 30 seconds — free, no credit card required.
+          Create your link in bio in 30 seconds : free, no credit card required.
         </p>
         <Link
           href="/register"

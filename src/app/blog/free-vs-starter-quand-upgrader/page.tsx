@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "FREE vs STARTER : quand passer au plan supérieur ?",
     description:
-      "Les 5 signaux concrets qui montrent qu'il est temps d'upgrader et ce que tu gagnes vraiment en passant au Starter — par l'équipe BeassistLink 🇫🇷",
+      "Les 5 signaux concrets qui montrent qu'il est temps d'upgrader et ce que tu gagnes vraiment en passant au Starter : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -123,7 +123,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
             <p>
               Ce n'est pas une question de budget, mais de besoins : les créateurs qui passent au plan STARTER le font
               presque toujours pour la même poignée de raisons. Voici les 5 signaux qui montrent qu'il est temps
-              d'upgrader — et ce que tu gagnes vraiment en passant au Starter.
+              d'upgrader : et ce que tu gagnes vraiment en passant au Starter.
             </p>
           </div>
 
@@ -132,7 +132,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
             <h2 className="text-xl font-black text-gray-900 mb-4">Ce que contient chaque plan</h2>
             <div className="space-y-4">
               <div className="rounded-xl bg-white border border-gray-200 p-4">
-                <h3 className="font-bold text-gray-900 text-[15px] mb-2">FREE — 0 €</h3>
+                <h3 className="font-bold text-gray-900 text-[15px] mb-2">FREE : 0 €</h3>
                 <ul className="space-y-1.5 text-sm text-gray-600">
                   <li>• 1 page bio et 5 liens sur la page</li>
                   <li>• 3 liens courts et 1 thème de base</li>
@@ -140,7 +140,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
                 </ul>
               </div>
               <div className="rounded-xl bg-white border border-[#8F00FF]/30 p-4">
-                <h3 className="font-bold text-gray-900 text-[15px] mb-2">STARTER — 6 €/mois ou 65 €/an</h3>
+                <h3 className="font-bold text-gray-900 text-[15px] mb-2">STARTER : 6 €/mois ou 65 €/an</h3>
                 <ul className="space-y-1.5 text-sm text-gray-600">
                   <li>• 3 pages bio et 20 liens sur la page</li>
                   <li>• 20 liens courts et 5 thèmes premium</li>
@@ -148,7 +148,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
                 </ul>
               </div>
               <div className="rounded-xl bg-white border border-gray-200 p-4">
-                <h3 className="font-bold text-gray-900 text-[15px] mb-2">PRO — 12 €/mois ou 130 €/an</h3>
+                <h3 className="font-bold text-gray-900 text-[15px] mb-2">PRO : 12 €/mois ou 130 €/an</h3>
                 <ul className="space-y-1.5 text-sm text-gray-600">
                   <li>• Tout illimité, statistiques avancées et QR illimités</li>
                   <li>• Liens programmés, domaine personnalisé et support prioritaire</li>
@@ -174,7 +174,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
               {
                 n: 2,
                 title: "Tu veux suivre tes clics",
-                body: "Sans statistiques, tu publies à l'aveugle : tu ne sais pas quel lien convertit, ni d'où viennent tes visiteurs. Le Starter débloque les statistiques des clics — visites, pays, appareils, sources de trafic — pour savoir ce qui marche et corriger le reste.",
+                body: "Sans statistiques, tu publies à l'aveugle : tu ne sais pas quel lien convertit, ni d'où viennent tes visiteurs. Le Starter débloque les statistiques des clics : visites, pays, appareils, sources de trafic : pour savoir ce qui marche et corriger le reste.",
               },
               {
                 n: 3,
@@ -185,7 +185,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
               {
                 n: 4,
                 title: "Tu veux 3 pages bio ou des thèmes premium",
-                body: "Une page par projet : ta musique, ton coaching, ta boutique. Le Starter te donne 3 pages bio et 5 thèmes premium pour que chaque page ressemble vraiment à ce que tu fais — sans repartir d'une page vierge à chaque fois.",
+                body: "Une page par projet : ta musique, ton coaching, ta boutique. Le Starter te donne 3 pages bio et 5 thèmes premium pour que chaque page ressemble vraiment à ce que tu fais : sans repartir d'une page vierge à chaque fois.",
               },
               {
                 n: 5,
@@ -234,7 +234,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
                 },
                 {
                   t: "Le lien personnalisé",
-                  b: "Une URL courte à ton nom, plus pro à partager en story, en description ou sur un support imprimé — et plus simple à retenir pour ton audience.",
+                  b: "Une URL courte à ton nom, plus pro à partager en story, en description ou sur un support imprimé : et plus simple à retenir pour ton audience.",
                 },
               ].map(({ t, b }) => (
                 <div key={t} className="rounded-xl border border-gray-200 p-5">
@@ -249,7 +249,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
           <section className="rounded-2xl border border-[#8F00FF]/20 bg-[#F9F5FF] p-6 sm:p-8">
             <h2 className="text-xl font-black text-gray-900 mb-4">Le prix, en clair</h2>
             <p className="text-[15px] text-gray-700 leading-relaxed mb-3">
-              Le plan STARTER coûte <strong>6 €/mois</strong>, ou <strong>65 €/an</strong> — soit environ
+              Le plan STARTER coûte <strong>6 €/mois</strong>, ou <strong>65 €/an</strong> : soit environ
               5,40 €/mois en paiement annuel. C'est le prix d'un café par semaine pour transformer ta bio en outil de
               travail.
             </p>
@@ -342,7 +342,7 @@ export default function BlogFreeVsStarterQuandUpgrader() {
                 → 10 liens à mettre dans ta bio Instagram pour convertir
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

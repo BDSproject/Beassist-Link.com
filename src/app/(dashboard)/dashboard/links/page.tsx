@@ -33,7 +33,7 @@ import { usePlan } from "@/hooks/use-plan";
 import { SocialIcon } from "@/components/ui/social-icon";
 
 const linkSchema = z.object({
-  url: z.string().url("URL invalide — ex: https://exemple.com"),
+  url: z.string().url("URL invalide : ex: https://exemple.com"),
   title: z.string().optional(),
   slug: z
     .string()
@@ -389,7 +389,7 @@ export default function LinksPage() {
                 }`}
               >
                 <div className="flex items-center gap-2 sm:gap-4">
-                  {/* Platform icon STARTER+ — desktop */}
+                  {/* Platform icon STARTER+ : desktop */}
                   {planLimits?.hasCustomAlias && (
                     <div className="hidden sm:flex flex-shrink-0">
                       <SocialIcon platform={detectPlatformFromUrl(link.url)} size={20} />
@@ -399,7 +399,7 @@ export default function LinksPage() {
                   {/* Info lien */}
                   <div className="flex-1 min-w-0">
                     <div className="flex items-center gap-1.5 mb-0.5 overflow-x-auto scrollbar-none">
-                      {/* Platform icon STARTER+ — mobile */}
+                      {/* Platform icon STARTER+ : mobile */}
                       {planLimits?.hasCustomAlias && (
                         <div className="sm:hidden flex-shrink-0">
                           <SocialIcon platform={detectPlatformFromUrl(link.url)} size={15} />
@@ -411,7 +411,7 @@ export default function LinksPage() {
                       <Badge variant={link.active ? "success" : "gray"} size="sm" className="flex-shrink-0">
                         {link.active ? d.active : d.inactive}
                       </Badge>
-                      {/* Clics inline — mobile */}
+                      {/* Clics inline : mobile */}
                       <span className="sm:hidden text-xs text-gray-400 ml-auto flex-shrink-0">
                         {formatNumber(link.clicks)}
                       </span>
@@ -468,7 +468,7 @@ export default function LinksPage() {
                     </div>
                   </div>
 
-                  {/* Clics — desktop */}
+                  {/* Clics : desktop */}
                   <div className="text-center hidden sm:block flex-shrink-0">
                     <p className="text-lg font-black text-gray-900">
                       {formatNumber(link.clicks)}
@@ -489,7 +489,7 @@ export default function LinksPage() {
                     >
                       <Copy size={14} />
                     </button>
-                    {/* Lien externe — desktop */}
+                    {/* Lien externe : desktop */}
                     <a
                       href={link.url}
                       target="_blank"

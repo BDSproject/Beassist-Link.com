@@ -21,7 +21,7 @@ const createSchema = z.object({
   verify: z.boolean().default(true),
 });
 
-// GET — liste des comptes marchands du créateur. Aucun secret ne sort d'ici.
+// GET : liste des comptes marchands du créateur. Aucun secret ne sort d'ici.
 export async function GET() {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
@@ -75,7 +75,7 @@ export async function GET() {
   });
 }
 
-// POST — enregistre (ou remplace) le compte marchand du créateur.
+// POST : enregistre (ou remplace) le compte marchand du créateur.
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {
@@ -142,7 +142,7 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ account, currencyNote: provider.supportedCurrencies }, { status: 201 });
 }
 
-// DELETE — supprime un compte marchand. Les paiements déjà enregistrés sont
+// DELETE : supprime un compte marchand. Les paiements déjà enregistrés sont
 // conservés (paymentAccountId passe à null) pour ne pas perdre l'historique.
 export async function DELETE(req: NextRequest) {
   const session = await getServerSession(authOptions);

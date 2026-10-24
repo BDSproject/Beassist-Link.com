@@ -25,7 +25,7 @@ export function middleware(request: NextRequest) {
   const isMainDomain = MAIN_DOMAINS.some((d) => hostname.includes(d));
   if (isMainDomain) return NextResponse.next();
 
-  // Custom domain — rewrite / to /domain/[hostname]
+  // Custom domain : rewrite / to /domain/[hostname]
   const path = request.nextUrl.pathname;
   const rewriteUrl = new URL(
     `/domain/${encodeURIComponent(hostname)}${path === "/" ? "" : path}`,

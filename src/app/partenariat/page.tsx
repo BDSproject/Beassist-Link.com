@@ -65,7 +65,7 @@ export default function PartnershipPage() {
           number: "02",
           title: "We validate your profile",
           description:
-            "Our team reviews your application within 48 h. Minimum 1,000 followers required on your main platform — after that, engagement and authentic content are what matter.",
+            "Our team reviews your application within 48 h. Minimum 1,000 followers required on your main platform : after that, engagement and authentic content are what matter.",
         },
         {
           number: "03",
@@ -77,7 +77,7 @@ export default function PartnershipPage() {
           number: "04",
           title: "Lifetime Pro subscription",
           description:
-            "Once the video is published and validated, you immediately receive your lifetime BeassistLink Pro access — no limits, no hidden conditions.",
+            "Once the video is published and validated, you immediately receive your lifetime BeassistLink Pro access : no limits, no hidden conditions.",
         },
       ]
     : [
@@ -91,7 +91,7 @@ export default function PartnershipPage() {
           number: "02",
           title: "On valide ton profil",
           description:
-            "Notre équipe examine ta candidature sous 48 h. Minimum 1 000 abonnés requis sur ta plateforme principale — ensuite, c'est l'engagement et l'authenticité du contenu qui comptent.",
+            "Notre équipe examine ta candidature sous 48 h. Minimum 1 000 abonnés requis sur ta plateforme principale : ensuite, c'est l'engagement et l'authenticité du contenu qui comptent.",
         },
         {
           number: "03",
@@ -103,7 +103,7 @@ export default function PartnershipPage() {
           number: "04",
           title: "Abonnement Pro à vie",
           description:
-            "Une fois la vidéo publiée et validée, tu reçois immédiatement ton accès Pro BeassistLink à vie — aucune limite, aucune condition.",
+            "Une fois la vidéo publiée et validée, tu reçois immédiatement ton accès Pro BeassistLink à vie : aucune limite, aucune condition.",
         },
       ];
 
@@ -188,8 +188,8 @@ export default function PartnershipPage() {
     ? "Become a BeassistLink Ambassador"
     : "Deviens ambassadeur BeassistLink";
   const pageDescription = en
-    ? "Got 1,000+ followers? Present BeassistLink to your community in a video and get lifetime Pro access — free, no hidden conditions."
-    : "Tu as +1 000 abonnés ? Présente BeassistLink à ta communauté dans une vidéo, et décroche un accès Pro à vie — offert, sans condition cachée.";
+    ? "Got 1,000+ followers? Present BeassistLink to your community in a video and get lifetime Pro access : free, no hidden conditions."
+    : "Tu as +1 000 abonnés ? Présente BeassistLink à ta communauté dans une vidéo, et décroche un accès Pro à vie : offert, sans condition cachée.";
   const canonicalUrl = en
     ? "https://www.beassist-link.com/en/partnership"
     : "https://www.beassist-link.com/partenariat";
@@ -280,8 +280,8 @@ export default function PartnershipPage() {
               </h2>
               <p className="text-sm text-gray-600 mt-3 leading-relaxed">
                 {en
-                  ? "We genuinely believe in our product — and we know the best ad is someone who actually uses it. If you love BeassistLink, tell your community about it. In return, we give you full access to all Pro features, "
-                  : "On croit sincèrement en notre produit — et on sait que la meilleure pub, c'est quelqu'un qui l'utilise vraiment. Si tu aimes BeassistLink, parles-en à ta communauté. En échange, on t'offre l'accès complet à toutes les fonctionnalités Pro, "}
+                  ? "We genuinely believe in our product : and we know the best ad is someone who actually uses it. If you love BeassistLink, tell your community about it. In return, we give you full access to all Pro features, "
+                  : "On croit sincèrement en notre produit : et on sait que la meilleure pub, c'est quelqu'un qui l'utilise vraiment. Si tu aimes BeassistLink, parles-en à ta communauté. En échange, on t'offre l'accès complet à toutes les fonctionnalités Pro, "}
                 <strong>{en ? "for life" : "à vie"}</strong>
                 {en ? ", no additional strings attached." : ", sans contrepartie supplémentaire."}
               </p>
@@ -332,8 +332,8 @@ export default function PartnershipPage() {
             {en ? "Estimated value: " : "Valeur estimée : "}
             <span className="font-semibold text-gray-600">{en ? "$144/year" : "144 €/an"}</span>
             {en
-              ? " — free for life once your video is validated."
-              : " — offert à vie dès validation de ta vidéo."}
+              ? " : free for life once your video is validated."
+              : " : offert à vie dès validation de ta vidéo."}
           </p>
         </section>
 
@@ -505,9 +505,9 @@ export default function PartnershipPage() {
                       onChange={(e) => setForm({ ...form, audience: e.target.value })}
                     >
                       <option value="">{en ? "-- Select --" : "-- Sélectionner --"}</option>
-                      <option>1,000 – 10,000</option>
-                      <option>10,000 – 50,000</option>
-                      <option>50,000 – 200,000</option>
+                      <option>1,000 - 10,000</option>
+                      <option>10,000 - 50,000</option>
+                      <option>50,000 - 200,000</option>
                       <option>{en ? "Over 200,000" : "Plus de 200 000"}</option>
                     </select>
                   </div>

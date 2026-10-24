@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Optimize Your Bio to Convert in 2026",
     description:
-      "7 simple levers to turn your visitors into customers — by the BeassistLink team",
+      "7 simple levers to turn your visitors into customers : by the BeassistLink team",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -109,7 +109,7 @@ export default function BlogOptimizeBioConvert() {
               How to Optimize Your Bio to Convert in 2026
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              7 simple levers to turn visitors into customers — best practices from creators who treat their bio{" "}
+              7 simple levers to turn visitors into customers : best practices from creators who treat their bio{" "}
               <strong>seriously</strong>.
             </p>
           </div>
@@ -121,12 +121,12 @@ export default function BlogOptimizeBioConvert() {
           {/* Intro */}
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
-              Your link in bio gets traffic every day. The real question isn't how to attract visitors — it's how to{" "}
+              Your link in bio gets traffic every day. The real question isn't how to attract visitors : it's how to{" "}
               <strong>turn them into customers, subscribers or readers</strong>. In 2026, the competition is tougher
               than ever, and the difference comes down to the details.
             </p>
             <p>
-              Here are 7 simple, concrete levers, shared by creators who treat their link page seriously — with an
+              Here are 7 simple, concrete levers, shared by creators who treat their link page seriously : with an
               example you can apply for each one.
             </p>
           </div>
@@ -137,19 +137,19 @@ export default function BlogOptimizeBioConvert() {
               {
                 n: 1,
                 title: "Put your most important link first",
-                body: "The first link on your page always gets the most clicks. If you place a secondary link at the top, you're wasting your best position — and your visitor leaves before seeing what matters.",
+                body: "The first link on your page always gets the most clicks. If you place a secondary link at the top, you're wasting your best position : and your visitor leaves before seeing what matters.",
                 example: "Launching your store this week? Put that link right at the top, above your social profiles. The essentials should be visible without scrolling.",
               },
               {
                 n: 2,
                 title: "Write labels that make people want to click",
                 body: "Labels like 'My site' or 'My links' say nothing. A good label has a verb and a benefit: it answers 'why click?' before anyone even asks.",
-                example: "Swap 'Shop' for 'Shop my new collection — 20% off'. The click becomes obvious, not a guessing game.",
+                example: "Swap 'Shop' for 'Shop my new collection : 20% off'. The click becomes obvious, not a guessing game.",
               },
               {
                 n: 3,
                 title: "Stay consistent with the rest of your profile",
-                body: "Your link page extends your Instagram or TikTok profile: same colors, same photo, same tone. Visitors who recognize your world trust you — and trust comes before the click.",
+                body: "Your link page extends your Instagram or TikTok profile: same colors, same photo, same tone. Visitors who recognize your world trust you : and trust comes before the click.",
                 example: "Your feed uses pastels? Pick a theme with matching colors and reuse your profile photo. Moving from your profile to your page should feel seamless.",
               },
               {
@@ -161,7 +161,7 @@ export default function BlogOptimizeBioConvert() {
               {
                 n: 5,
                 title: "Update your page every week",
-                body: "A living page converts better than a frozen one. Every launch, promo or new piece of content should show up on your page — what matters now, not what mattered last month.",
+                body: "A living page converts better than a frozen one. Every launch, promo or new piece of content should show up on your page : what matters now, not what mattered last month.",
                 example: "Every Sunday, feature your latest content and remove expired promos. With the PRO plan of BeassistLink, you can schedule these changes in advance.",
               },
               {
@@ -205,10 +205,10 @@ export default function BlogOptimizeBioConvert() {
               <Link href="/en/pricing" className="text-[#8F00FF] hover:underline">
                 pricing page
               </Link>
-              , and note the free plan already includes a bio page with 5 links — no credit card required.
+              , and note the free plan already includes a bio page with 5 links : no credit card required.
             </p>
             <p className="text-[15px] text-gray-700 leading-relaxed mt-3">
-              Your links, short links, QR codes and analytics live in one tool —{" "}
+              Your links, short links, QR codes and analytics live in one tool :{" "}
               <Link href="/en" className="text-[#8F00FF] hover:underline">
                 learn more about BeassistLink
               </Link>
@@ -290,7 +290,7 @@ export default function BlogOptimizeBioConvert() {
                 → FREE vs STARTER: When Should You Upgrade?
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree Comparison 2026 — which alternative should you choose?
+                → Linktree Comparison 2026 : which alternative should you choose?
               </Link>
             </div>
           </nav>

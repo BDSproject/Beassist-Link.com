@@ -16,10 +16,10 @@ import { useRouter } from "next/navigation";
 
 const SIZES = [128, 200, 256, 512];
 const ERROR_LEVELS = [
-  { id: "L", label: "L — 7%", desc: "Faible", descEn: "Low" },
-  { id: "M", label: "M — 15%", desc: "Moyen", descEn: "Medium" },
-  { id: "Q", label: "Q — 25%", desc: "Eleve", descEn: "High" },
-  { id: "H", label: "H — 30%", desc: "Max", descEn: "Max" },
+  { id: "L", label: "L : 7%", desc: "Faible", descEn: "Low" },
+  { id: "M", label: "M : 15%", desc: "Moyen", descEn: "Medium" },
+  { id: "Q", label: "Q : 25%", desc: "Eleve", descEn: "High" },
+  { id: "H", label: "H : 30%", desc: "Max", descEn: "Max" },
 ] as const;
 
 const PRESET_COLORS = [
@@ -121,7 +121,7 @@ export default function QRCodePage() {
           <Lock className="w-9 h-9 text-[#8F00FF]" />
         </div>
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
-          {lang === "fr" ? "QR Codes — Fonctionnalite payante" : "QR Codes — Paid feature"}
+          {lang === "fr" ? "QR Codes : Fonctionnalite payante" : "QR Codes : Paid feature"}
         </h1>
         <p className="text-gray-500 mb-8 max-w-md">
           {lang === "fr"
@@ -172,7 +172,7 @@ export default function QRCodePage() {
           className="text-white hover:opacity-90 px-8 py-3 text-base font-semibold"
         >
           <Sparkles className="w-4 h-4 mr-2" />
-          {lang === "fr" ? "Passer au Starter — 6€/mois" : "Upgrade to Starter — $7/month"}
+          {lang === "fr" ? "Passer au Starter : 6€/mois" : "Upgrade to Starter : $7/month"}
         </Button>
         <p className="text-xs text-gray-400 mt-3">
           {lang === "fr" ? "Sans engagement · Annule quand tu veux" : "No commitment · Cancel anytime"}

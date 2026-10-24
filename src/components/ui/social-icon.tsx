@@ -29,7 +29,7 @@ type IconComponent = (props: { size?: number; className?: string; style?: React.
 
 // Icônes custom pour les plateformes sans icône react-icons
 
-/** MYM — badge arrondi rose avec « mym » en blanc gras */
+/** MYM : badge arrondi rose avec « mym » en blanc gras */
 const MymIcon: IconComponent = ({ size = 20, className, style }) => (
   <svg
     width={size}
@@ -40,7 +40,7 @@ const MymIcon: IconComponent = ({ size = 20, className, style }) => (
     className={className}
     style={style}
   >
-    {/* Fond badge arrondi — currentColor = #FF3366 (ou blanc sur fond sombre) */}
+    {/* Fond badge arrondi : currentColor = #FF3366 (ou blanc sur fond sombre) */}
     <rect width="100" height="100" rx="22" fill="currentColor" />
     {/* Texte blanc centré */}
     <text
@@ -59,7 +59,7 @@ const MymIcon: IconComponent = ({ size = 20, className, style }) => (
   </svg>
 );
 
-/** Fansly — cercle bleu avec « F » en blanc gras */
+/** Fansly : cercle bleu avec « F » en blanc gras */
 const FanslyIcon: IconComponent = ({ size = 20, className, style }) => (
   <svg
     width={size}

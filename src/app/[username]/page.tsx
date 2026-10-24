@@ -188,7 +188,7 @@ export default async function UserBioPage({ params }: Props) {
   let socialLinks: { platform: string; url: string }[] = [];
   try { socialLinks = JSON.parse((bioPage as { socialLinks?: string | null }).socialLinks || "[]"); } catch { /* ignore */ }
 
-  // Calcule la luminance perçue d'une couleur hex (#RRGGBB) — retourne 0 (noir) à 1 (blanc)
+  // Calcule la luminance perçue d'une couleur hex (#RRGGBB) : retourne 0 (noir) à 1 (blanc)
   function hexLuminance(hex: string): number {
     const h = hex.replace("#", "");
     if (h.length < 6) return 1;
@@ -394,7 +394,7 @@ export default async function UserBioPage({ params }: Props) {
           </div>
         )}
 
-        {/* Marketing footer — toujours visible quel que soit l'arrière-plan */}
+        {/* Marketing footer : toujours visible quel que soit l'arrière-plan */}
         <div className="mt-10 flex justify-center">
           <a
             href="https://www.beassist-link.com"

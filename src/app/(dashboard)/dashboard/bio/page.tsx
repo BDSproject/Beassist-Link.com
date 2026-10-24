@@ -172,7 +172,7 @@ function SortableLinkRow({
         <GripVertical className="w-4 h-4" />
       </div>
 
-      {/* Icon zone — popover menu for STARTER+ */}
+      {/* Icon zone : popover menu for STARTER+ */}
       <div className="relative flex-shrink-0">
         <div
           className={`relative w-8 h-8 flex items-center justify-center rounded-lg group/icon ${

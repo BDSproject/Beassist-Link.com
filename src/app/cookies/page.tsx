@@ -69,10 +69,10 @@ const CONTENT = {
       {
         title: "3. Catégories de cookies",
         bullets: [
-          "Cookies essentiels — indispensables au fonctionnement du site (authentification, sécurité). Ils ne peuvent pas être désactivés sans impacter le service.",
-          "Cookies fonctionnels — permettent de mémoriser tes préférences (langue, consentement cookie). Ils améliorent ton expérience sans t'identifier personnellement.",
-          "Cookies analytiques — utilisés pour mesurer le nombre de visiteurs et comprendre comment le site est utilisé. Les données sont anonymisées et ne permettent pas de t'identifier.",
-          "Cookies marketing / tiers — BeassistLink n'utilise pas de cookies publicitaires ou de tracking tiers à des fins commerciales.",
+          "Cookies essentiels : indispensables au fonctionnement du site (authentification, sécurité). Ils ne peuvent pas être désactivés sans impacter le service.",
+          "Cookies fonctionnels : permettent de mémoriser tes préférences (langue, consentement cookie). Ils améliorent ton expérience sans t'identifier personnellement.",
+          "Cookies analytiques : utilisés pour mesurer le nombre de visiteurs et comprendre comment le site est utilisé. Les données sont anonymisées et ne permettent pas de t'identifier.",
+          "Cookies marketing / tiers : BeassistLink n'utilise pas de cookies publicitaires ou de tracking tiers à des fins commerciales.",
         ],
       },
       {
@@ -102,7 +102,7 @@ const CONTENT = {
       },
       {
         title: "9. Contact",
-        text: "Pour toute question relative à notre utilisation des cookies ou à tes données personnelles, contacte-nous à : contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+        text: "Pour toute question relative à notre utilisation des cookies ou à tes données personnelles, contacte-nous à : contact@beassist-link.com : Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
       },
     ] as Section[],
     tableHeaders: ["Nom du cookie", "Finalité", "Durée", "Type"],
@@ -156,10 +156,10 @@ const CONTENT = {
       {
         title: "3. Cookie categories",
         bullets: [
-          "Essential cookies — required for the site to function (authentication, security). They cannot be disabled without impacting the service.",
-          "Functional cookies — remember your preferences (language, cookie consent). They improve your experience without identifying you personally.",
-          "Analytics cookies — used to count visitors and understand how the site is used. Data is anonymised and cannot be used to identify you.",
-          "Marketing / third-party cookies — BeassistLink does not use advertising or third-party tracking cookies for commercial purposes.",
+          "Essential cookies : required for the site to function (authentication, security). They cannot be disabled without impacting the service.",
+          "Functional cookies : remember your preferences (language, cookie consent). They improve your experience without identifying you personally.",
+          "Analytics cookies : used to count visitors and understand how the site is used. Data is anonymised and cannot be used to identify you.",
+          "Marketing / third-party cookies : BeassistLink does not use advertising or third-party tracking cookies for commercial purposes.",
         ],
       },
       {
@@ -189,7 +189,7 @@ const CONTENT = {
       },
       {
         title: "9. Contact",
-        text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+        text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassist-link.com : Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
       },
     ] as Section[],
     tableHeaders: ["Cookie name", "Purpose", "Duration", "Type"],
@@ -314,7 +314,7 @@ export default function CookiesPage() {
         {/* Footer note */}
         <div className="mt-16 pt-8 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-400">
-            © {new Date().getFullYear()} Beassisted SASU —{" "}
+            © {new Date().getFullYear()} Beassisted SASU :{" "}
             {lang === "fr" ? "Tous droits réservés" : "All rights reserved"}
           </p>
           <div className="flex items-center justify-center gap-4 mt-3 text-xs text-[#8F00FF]">

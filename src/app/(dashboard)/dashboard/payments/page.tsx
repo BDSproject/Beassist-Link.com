@@ -213,7 +213,7 @@ export default function PaymentsPage() {
                     <dt className="text-gray-400 uppercase tracking-wide">
                       {provider?.credentialFields.find((f) => f.key === key)?.label ?? key}
                     </dt>
-                    <dd className="font-mono text-gray-700 mt-0.5">{value || "—"}</dd>
+                    <dd className="font-mono text-gray-700 mt-0.5">{value || ":"}</dd>
                   </div>
                 ))}
               </dl>
@@ -435,10 +435,10 @@ export default function PaymentsPage() {
                       </Badge>
                     </td>
                     <td className="py-3 pr-4 text-gray-600 max-w-[220px] truncate">
-                      {p.bioLink?.title ?? p.description ?? "—"}
+                      {p.bioLink?.title ?? p.description ?? ":"}
                     </td>
                     <td className="py-3 pr-4 text-gray-600">
-                      {p.payerName || p.payerPhone || "—"}
+                      {p.payerName || p.payerPhone || ":"}
                     </td>
                     <td className="py-3">
                       {p.receiptUrl ? (
@@ -451,7 +451,7 @@ export default function PaymentsPage() {
                           {d.receipt}
                         </a>
                       ) : (
-                        <span className="text-gray-300">—</span>
+                        <span className="text-gray-300">✗</span>
                       )}
                     </td>
                   </tr>

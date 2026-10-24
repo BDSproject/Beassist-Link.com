@@ -26,8 +26,8 @@ export default function ProductPage() {
 
   // Métadonnées dynamiques selon la langue
   const pageTitle = en
-    ? "Pricing plans for your link in bio — BeassistLink"
-    : "Tarifs de ton lien en bio — BeassistLink";
+    ? "Pricing plans for your link in bio : BeassistLink"
+    : "Tarifs de ton lien en bio : BeassistLink";
   const pageDescription = en
     ? "Compare FREE, STARTER and PRO plans to grow your link in bio with advanced analytics, customization and conversion features."
     : "Compare les offres FREE, STARTER et PRO pour développer ton lien en bio avec analytics avancées, personnalisation et conversion.";

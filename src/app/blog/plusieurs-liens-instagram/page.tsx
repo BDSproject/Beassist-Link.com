@@ -9,7 +9,7 @@ const SLUG = "plusieurs-liens-instagram";
 const PUBLISHED = "2026-04-14";
 
 export const metadata: Metadata = {
-  title: "Comment avoir plusieurs liens sur Instagram sans payer — Guide 2026",
+  title: "Comment avoir plusieurs liens sur Instagram sans payer : Guide 2026",
   description:
     "Tutoriel complet : mets plusieurs liens en bio Instagram gratuitement. Page de liens personnalisée, gratuite et sans abonnement.",
   keywords: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Comment avoir plusieurs liens sur Instagram sans payer",
     description:
-      "Guide étape par étape pour mettre plusieurs liens en bio Instagram — gratuit et conforme RGPD avec BeassistLink 🇫🇷",
+      "Guide étape par étape pour mettre plusieurs liens en bio Instagram : gratuit et conforme RGPD avec BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -100,7 +100,7 @@ export default function BlogPlusieursLiensInstagram() {
               Comment avoir plusieurs liens sur Instagram sans payer
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Instagram ne te permet qu'un seul lien dans ta bio. Voici comment en mettre autant que tu veux —
+              Instagram ne te permet qu'un seul lien dans ta bio. Voici comment en mettre autant que tu veux :
               <strong> gratuitement</strong>, en moins de 5 minutes.
             </p>
           </div>
@@ -157,7 +157,7 @@ export default function BlogPlusieursLiensInstagram() {
                       <Link href="/register" className="text-[#8F00FF] font-semibold hover:underline">
                         beassist-link.com/register
                       </Link>{" "}
-                      et crée ton compte en 30 secondes. Choisis ton nom d'utilisateur — il deviendra ton URL
+                      et crée ton compte en 30 secondes. Choisis ton nom d'utilisateur : il deviendra ton URL
                       personnalisée (ex.{" "}
                       <code className="text-xs bg-gray-100 rounded px-1.5 py-0.5">beassist-link.com/juliedupont</code>).
                     </>
@@ -272,7 +272,7 @@ export default function BlogPlusieursLiensInstagram() {
             <p className="text-sm font-semibold text-gray-500 mb-3">À lire aussi</p>
             <div className="flex flex-col gap-2 text-sm">
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
               <Link href="/blog/beassistlink-vs-linktree-2026" className="text-[#8F00FF] hover:underline">
                 → BeassistLink vs Linktree : le comparatif complet

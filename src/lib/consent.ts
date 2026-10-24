@@ -24,7 +24,7 @@ export function getConsent(): ConsentValue | null {
     const stored = window.localStorage.getItem(CONSENT_STORAGE_KEY);
     return stored === "all" || stored === "essential" ? stored : null;
   } catch {
-    // localStorage can throw (private mode, blocked storage) — treat as "no choice".
+    // localStorage can throw (private mode, blocked storage) : treat as "no choice".
     return null;
   }
 }

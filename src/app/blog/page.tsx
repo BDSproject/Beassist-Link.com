@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
 
 export const metadata: Metadata = {
-  title: "Blog — Conseils Link in Bio, Comparatifs Linktree & Stratégies.",
+  title: "Blog : Conseils Link in Bio, Comparatifs Linktree & Stratégies.",
   description:
     "Tutoriels, comparatifs et conseils pour optimiser ton lien bio Instagram, TikTok et YouTube. Articles en français.",
   keywords: [
@@ -31,7 +31,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "7 erreurs qui font fuir les visiteurs de ton lien en bio",
     excerpt:
-      "Lien mort, page impersonnelle, zéro appel à l'action : les 7 erreurs qui coûtent des clients aux créateurs — et comment les corriger en 10 minutes.",
+      "Lien mort, page impersonnelle, zéro appel à l'action : les 7 erreurs qui coûtent des clients aux créateurs : et comment les corriger en 10 minutes.",
     date: "28 septembre 2026",
     readTime: "6 min",
     featured: true,
@@ -42,7 +42,7 @@ const posts = [
     tagColor: "bg-orange-100 text-orange-700",
     title: "10 liens à mettre dans ta bio Instagram pour convertir",
     excerpt:
-      "Boutique, newsletter, rendez-vous, Spotify… Les 10 liens qui transforment vraiment tes abonnés en clients — et comment les réunir en un seul.",
+      "Boutique, newsletter, rendez-vous, Spotify… Les 10 liens qui transforment vraiment tes abonnés en clients : et comment les réunir en un seul.",
     date: "28 septembre 2026",
     readTime: "5 min",
     featured: false,
@@ -53,7 +53,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment avoir plusieurs liens sur Instagram sans payer",
     excerpt:
-      "Guide étape par étape : crée une page de liens personnalisée gratuite et mets-la dans ta bio Instagram en 5 minutes — gratuitement, sans abonnement.",
+      "Guide étape par étape : crée une page de liens personnalisée gratuite et mets-la dans ta bio Instagram en 5 minutes : gratuitement, sans abonnement.",
     date: "14 avril 2026",
     readTime: "5 min",
     featured: false,
@@ -97,7 +97,7 @@ const posts = [
     tagColor: "bg-green-100 text-green-700",
     title: "Comment optimiser sa bio pour convertir en 2026",
     excerpt:
-      "7 leviers simples pour transformer tes visiteurs en clients — des bonnes pratiques partagées par les créateurs qui gèrent leur présence en ligne avec soin.",
+      "7 leviers simples pour transformer tes visiteurs en clients : des bonnes pratiques partagées par les créateurs qui gèrent leur présence en ligne avec soin.",
     date: "1 avril 2026",
     readTime: "4 min",
     featured: false,
@@ -204,7 +204,7 @@ export default function BlogPage() {
     <MarketingLayout
       category="Blog"
       title="Conseils, comparatifs & stratégies créateur"
-      description="Retours d'expérience, tutoriels et analyses pour mieux performer en ligne — par l'équipe BeassistLink 🇫🇷"
+      description="Retours d'expérience, tutoriels et analyses pour mieux performer en ligne : par l'équipe BeassistLink 🇫🇷"
       updatedAt="14 avril 2026"
     >
       {/* ── Article vedette ── */}
@@ -270,7 +270,7 @@ export default function BlogPage() {
         <div>
           <h2 className="font-black text-gray-900 text-lg">BeassistLink, fièrement français</h2>
           <p className="text-sm text-gray-600 mt-2 leading-relaxed">
-            Conçu et développé en France, BeassistLink héberge tes données en Europe et respecte le RGPD nativement —
+            Conçu et développé en France, BeassistLink héberge tes données en Europe et respecte le RGPD nativement :
             pas comme une option payante, mais comme standard. Notre support répond en français, en heures ouvrées françaises.
             Pas de barrière de la langue, pas de délai à cause du décalage horaire.
           </p>

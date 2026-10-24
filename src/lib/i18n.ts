@@ -83,7 +83,7 @@ export const fr = {
       deleteError: "Erreur lors de la suppression",
       aliasRequiresPlan: "Les alias personnalisés nécessitent un plan Starter ou Pro.",
       aliasEditRequiresPlan: "Modification d'alias disponible dès le plan Starter.",
-      aliasInvalid: "Alias invalide — uniquement lettres, chiffres, - et _",
+      aliasInvalid: "Alias invalide : uniquement lettres, chiffres, - et _",
       aliasSaved: "Alias mis à jour !",
       aliasSaveError: "Erreur lors de la mise à jour de l'alias",
       useUsername: "Utiliser {username}",
@@ -305,7 +305,7 @@ export const fr = {
         intro: "Bienvenue sur BeassistLink ! Voici comment démarrer en moins de 5 minutes.",
         steps: [
           "Crée ton compte sur beassist-link.com",
-          "Choisis un nom d'utilisateur — il deviendra l'URL de ta page bio",
+          "Choisis un nom d'utilisateur : il deviendra l'URL de ta page bio",
           "Complète ton profil dans Paramètres (nom, email, photo)",
           "Configure ta page bio dans l'onglet Lien en Bio",
           "Partage ton lien dans tes réseaux sociaux",
@@ -491,7 +491,7 @@ export const fr = {
       {
         title: "Mets en avant l'offre du moment",
         description:
-          "Redirige tes visiteurs vers ta dernière promo, ton lancement ou un événement — sans jamais changer ton lien en bio.",
+          "Redirige tes visiteurs vers ta dernière promo, ton lancement ou un événement : sans jamais changer ton lien en bio.",
       },
       {
         title: "Sais ce qui clique",
@@ -551,7 +551,7 @@ export const fr = {
     note: "✓ Annulation à tout moment   ✓ Aucune carte requise pour l'offre gratuite   ✓ Migration facile entre les plans",
     plans: {
       FREE: {
-        description: "Crée ta première page de lien en bio gratuitement — sans carte bancaire.",
+        description: "Crée ta première page de lien en bio gratuitement : sans carte bancaire.",
         ctaLabel: "Commencer gratuitement",
         features: [
           { label: "1 page de lien en bio", included: true },
@@ -816,7 +816,7 @@ export const en: typeof fr = {
       deleteError: "Failed to delete",
       aliasRequiresPlan: "Custom aliases require a Starter or Pro plan.",
       aliasEditRequiresPlan: "Alias editing available from the Starter plan.",
-      aliasInvalid: "Invalid alias — letters, numbers, - and _ only",
+      aliasInvalid: "Invalid alias : letters, numbers, - and _ only",
       aliasSaved: "Alias updated!",
       aliasSaveError: "Error updating alias",
       useUsername: "Use {username}",
@@ -1038,7 +1038,7 @@ export const en: typeof fr = {
         intro: "Welcome to BeassistLink! Here's how to get started in under 5 minutes.",
         steps: [
           "Create your account at beassist-link.com",
-          "Choose a username — it will become your bio page URL",
+          "Choose a username : it will become your bio page URL",
           "Complete your profile in Settings (name, email, photo)",
           "Set up your bio page in the Link in Bio tab",
           "Share your link on your social media profiles",
@@ -1198,7 +1198,7 @@ export const en: typeof fr = {
     heading2: "One page",
     heading3: "All your universe",
     subheading:
-      "Your socials, offers and content on one page that looks like you. Your followers click — you convert.",
+      "Your socials, offers and content on one page that looks like you. Your followers click, you convert.",
     subheadingStrong: "Create your page in 30 seconds, free.",
     cta1: "Create my link in bio",
     cta2: "See how it works",
@@ -1224,7 +1224,7 @@ export const en: typeof fr = {
       {
         title: "Spotlight the offer of the moment",
         description:
-          "Send your visitors to your latest promo, launch or event — without ever changing your bio link.",
+          "Send your visitors to your latest promo, launch or event : without ever changing your bio link.",
       },
       {
         title: "Know what clicks",
@@ -1283,7 +1283,7 @@ export const en: typeof fr = {
     note: "✓ Cancel anytime   ✓ No card required for the free plan   ✓ Easy plan migration",
     plans: {
       FREE: {
-        description: "Create your first link in bio page for free — no credit card required.",
+        description: "Create your first link in bio page for free : no credit card required.",
         ctaLabel: "Get started for free",
         features: [
           { label: "1 link in bio page", included: true },

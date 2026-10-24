@@ -19,7 +19,7 @@ const SELECT = {
   bioLink: { select: { title: true } },
 } as const;
 
-// GET — paiements reçus par le créateur connecté.
+// GET : paiements reçus par le créateur connecté.
 export async function GET(req: NextRequest) {
   const session = await getServerSession(authOptions);
   if (!session?.user?.id) {

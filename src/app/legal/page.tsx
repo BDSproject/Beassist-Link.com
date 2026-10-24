@@ -54,7 +54,7 @@ const LEGAL_CONTENT = {
       {
         title: "5. Données personnelles et RGPD",
         content: [
-          "Beassisted SASU s'engage à protéger tes données personnelles conformément au Règlement Général sur la Protection des Données (RGPD — Règlement UE 2016/679) et à la loi Informatique et Libertés.",
+          "Beassisted SASU s'engage à protéger tes données personnelles conformément au Règlement Général sur la Protection des Données (RGPD : Règlement UE 2016/679) et à la loi Informatique et Libertés.",
           "Les données collectées (nom, adresse e-mail, etc.) sont utilisées uniquement pour :",
           "• Fournir les services BeassistLink",
           "• T'envoyer des communications relatives à ton compte",
@@ -149,7 +149,7 @@ const LEGAL_CONTENT = {
       {
         title: "5. Personal Data & GDPR",
         content: [
-          "Beassisted SASU is committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR — EU Regulation 2016/679) and the French Data Protection Act.",
+          "Beassisted SASU is committed to protecting your personal data in accordance with the General Data Protection Regulation (GDPR : EU Regulation 2016/679) and the French Data Protection Act.",
           "Data collected (name, email address, etc.) is used solely for:",
           "• Providing BeassistLink services",
           "• Sending you communications related to your account",
@@ -296,8 +296,8 @@ export default function LegalPage() {
         <div className="mt-16 pt-8 border-t border-gray-100 text-center">
           <p className="text-xs text-gray-400">
             {lang === "fr"
-              ? "© 2025 Beassisted SASU — Tous droits réservés"
-              : "© 2025 Beassisted SASU — All rights reserved"}
+              ? "© 2025 Beassisted SASU : Tous droits réservés"
+              : "© 2025 Beassisted SASU : All rights reserved"}
           </p>
           <Link
             href="/"

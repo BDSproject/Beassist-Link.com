@@ -77,7 +77,7 @@ export function Pricing() {
 
           {/* Slide toggle pill */}
           <div className="mt-8 relative inline-grid grid-cols-2 bg-gray-100 rounded-2xl p-1.5">
-            {/* Sliding white background — left-1.5 aligns with inner padding, translateX(100%) moves exactly one column */}
+            {/* Sliding white background : left-1.5 aligns with inner padding, translateX(100%) moves exactly one column */}
             <div
               className="absolute left-1.5 top-1.5 bottom-1.5 w-[calc(50%-6px)] rounded-xl bg-white shadow-sm transition-transform duration-300 ease-out pointer-events-none"
               style={{ transform: yearly ? "translateX(100%)" : "translateX(0)" }}
@@ -191,7 +191,7 @@ export function Pricing() {
                   </p>
                 </div>
 
-                {/* Price — key changes on toggle to retrigger pop animation */}
+                {/* Price : key changes on toggle to retrigger pop animation */}
                 <div className="mb-8">
                   <div className="flex items-end gap-1">
                     <span

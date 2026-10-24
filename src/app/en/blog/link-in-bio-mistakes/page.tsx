@@ -11,7 +11,7 @@ const PUBLISHED = "2026-09-28";
 export const metadata: Metadata = {
   title: "7 Link in Bio Mistakes That Make Visitors Leave",
   description:
-    "Dead links, a generic page, no call to action: the 7 mistakes costing you customers — and how to fix them in 10 minutes.",
+    "Dead links, a generic page, no call to action: the 7 mistakes costing you customers : and how to fix them in 10 minutes.",
   keywords: [
     "link in bio mistakes",
     "optimize link in bio",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "7 Link in Bio Mistakes That Make Visitors Leave",
     description:
-      "The 7 most common link page mistakes (and their fixes) — by the BeassistLink team",
+      "The 7 most common link page mistakes (and their fixes) : by the BeassistLink team",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -64,7 +64,7 @@ const jsonLd = {
           name: "How many links should I put in my Instagram bio?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Instagram only allows one clickable link in the bio — that's why a link page is essential. On that page, feature 3 to 5 essential links instead of a long list: visitors click more when they have fewer choices.",
+            text: "Instagram only allows one clickable link in the bio : that's why a link page is essential. On that page, feature 3 to 5 essential links instead of a long list: visitors click more when they have fewer choices.",
           },
         },
         {
@@ -80,7 +80,7 @@ const jsonLd = {
           name: "How do I know if my link in bio is working?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Look at your click stats: visits, countries, devices, traffic sources. If a link gets few clicks, move it or rewrite its label — the data tells you what to fix.",
+            text: "Look at your click stats: visits, countries, devices, traffic sources. If a link gets few clicks, move it or rewrite its label : the data tells you what to fix.",
           },
         },
       ],
@@ -109,7 +109,7 @@ export default function BlogLinkInBioMistakes() {
               7 Link in Bio Mistakes That Make Visitors Leave
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Dead links, a generic page, no call to action: the 7 mistakes costing you customers — and how to fix
+              Dead links, a generic page, no call to action: the 7 mistakes costing you customers : and how to fix
               them <strong>in 10 minutes</strong>.
             </p>
           </div>
@@ -121,17 +121,17 @@ export default function BlogLinkInBioMistakes() {
           {/* Intro */}
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
-              Every day, followers tap the link in your Instagram or TikTok bio — or scroll right past it. The
+              Every day, followers tap the link in your Instagram or TikTok bio : or scroll right past it. The
               difference rarely comes down to your content: it comes down to <strong>how you present your links</strong>.
               We analyzed hundreds of pages built with{" "}
               <Link href="/en" className="text-[#8F00FF] font-semibold hover:underline">BeassistLink</Link>, and the
               same mistakes show up again and again.
             </p>
             <p>
-              The good news: they're all simple to fix. Here are the 7 most common — with the fix to apply right now.
+              The good news: they're all simple to fix. Here are the 7 most common : with the fix to apply right now.
             </p>
             <p>
-              BeassistLink puts your bio page, short links, QR codes and click analytics in one tool — hosted in
+              BeassistLink puts your bio page, short links, QR codes and click analytics in one tool : hosted in
               Europe, GDPR-friendly, with no third-party cookies on your page.{" "}
               <Link href="/en/pricing" className="text-[#8F00FF] font-semibold hover:underline">Plans start free</Link>,
               and paid plans add stats and full customization.
@@ -145,7 +145,7 @@ export default function BlogLinkInBioMistakes() {
                 n: 1,
                 title: "Your link points to a dead page",
                 body: "A broken link, a deleted page, a typo in the URL: it's mistake number one, and it happens more often than you'd think. A visitor who lands on a 404 won't come back.",
-                fix: "Check your link every week — from a different account than your own. If you switch destinations often, use a short link you can retarget: keep the same URL in your bio and change the target whenever you want.",
+                fix: "Check your link every week : from a different account than your own. If you switch destinations often, use a short link you can retarget: keep the same URL in your bio and change the target whenever you want.",
               },
               {
                 n: 2,
@@ -156,8 +156,8 @@ export default function BlogLinkInBioMistakes() {
               {
                 n: 3,
                 title: "A page that doesn't look like you",
-                body: "A generic link page — with a default theme and someone else's branding — reads like an ad. Followers hesitate: 'is this even the right account?'",
-                fix: "Add your photo, your name and a short bio, then pick a theme that matches your vibe. On a paid BeassistLink plan you get full customization — your colors, your layout, your domain.",
+                body: "A generic link page : with a default theme and someone else's branding : reads like an ad. Followers hesitate: 'is this even the right account?'",
+                fix: "Add your photo, your name and a short bio, then pick a theme that matches your vibe. On a paid BeassistLink plan you get full customization : your colors, your layout, your domain.",
               },
               {
                 n: 4,
@@ -174,13 +174,13 @@ export default function BlogLinkInBioMistakes() {
               {
                 n: 6,
                 title: "Links that never get updated",
-                body: "An expired promo, an old pinned post, a sold-out product: it's the signal of an abandoned bio — and a creator who doesn't take care of their audience.",
+                body: "An expired promo, an old pinned post, a sold-out product: it's the signal of an abandoned bio : and a creator who doesn't take care of their audience.",
                 fix: "Set a monthly reminder to refresh your links. With scheduled links on BeassistLink PRO, you can even turn links on and off ahead of your launches.",
               },
               {
                 n: 7,
                 title: "Never looking at your stats",
-                body: "Without data, you're optimizing blind. You don't know which link converts or what your audience actually cares about — and you leave money on the table.",
+                body: "Without data, you're optimizing blind. You don't know which link converts or what your audience actually cares about : and you leave money on the table.",
                 fix: "Track your page's clicks: visits, countries, devices, traffic sources. Keep what works, rewrite or remove what doesn't. That's how a decorative bio becomes a bio that sells.",
               },
             ].map(({ n, title, body, fix }) => (
@@ -230,7 +230,7 @@ export default function BlogLinkInBioMistakes() {
               {[
                 {
                   q: "How many links should I put in my Instagram bio?",
-                  a: "Instagram only allows one clickable link in the bio — that's why a link page is essential. On that page, feature 3 to 5 essential links instead of a long list.",
+                  a: "Instagram only allows one clickable link in the bio : that's why a link page is essential. On that page, feature 3 to 5 essential links instead of a long list.",
                 },
                 {
                   q: "How often should I update my link in bio?",
@@ -253,7 +253,7 @@ export default function BlogLinkInBioMistakes() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Fix your mistakes today</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Create your BeassistLink page in 30 seconds — personalized, no credit card required.
+              Create your BeassistLink page in 30 seconds : personalized, no credit card required.
             </p>
             <Link
               href="/register"
@@ -275,7 +275,7 @@ export default function BlogLinkInBioMistakes() {
                 → How to Add Multiple Links to Your Instagram Bio (Free)
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
             </div>
           </nav>

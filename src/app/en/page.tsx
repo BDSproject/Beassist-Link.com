@@ -17,7 +17,7 @@ const jsonLd = {
       url: `${BASE}/en`,
       name: "BeassistLink",
       description:
-        "Link in bio, short links, QR codes and analytics for creators and small businesses — all in one simple tool.",
+        "Link in bio, short links, QR codes and analytics for creators and small businesses : all in one simple tool.",
       inLanguage: "en-US",
     },
     {

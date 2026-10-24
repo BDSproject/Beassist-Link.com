@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "QR codes : les bonnes pratiques pour l'impression",
     description:
-      "Taille, contraste, correction d'erreurs, test sur différents fonds : le guide pratique pour des QR codes qui se scannent à coup sûr — par l'équipe BeassistLink 🇫🇷",
+      "Taille, contraste, correction d'erreurs, test sur différents fonds : le guide pratique pour des QR codes qui se scannent à coup sûr : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -117,7 +117,7 @@ export default function BlogQrCodesBonnesPratiques() {
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
               Un QR code, c'est trois secondes pour convaincre quelqu'un de sortir son téléphone. Encore faut-il qu'il
-              se scanne. À l'écran, un QR code flou ou trop petit pardonne rarement — et sur papier, l'erreur coûte
+              se scanne. À l'écran, un QR code flou ou trop petit pardonne rarement : et sur papier, l'erreur coûte
               cher : un flyer, une affiche ou une carte de visite déjà imprimés ne se corrigent pas.
             </p>
             <p>
@@ -154,7 +154,7 @@ export default function BlogQrCodesBonnesPratiques() {
               {
                 n: 5,
                 title: "Des tests sur plusieurs téléphones",
-                body: "Teste avant d'imprimer, avec un iPhone et un Android, dans les vraies conditions de lumière : extérieur en plein soleil, intérieur tamisé, écran sale. Si un seul modèle échoue, agrandis le code ou renforce le contraste — c'est plus simple avant l'impression qu'après.",
+                body: "Teste avant d'imprimer, avec un iPhone et un Android, dans les vraies conditions de lumière : extérieur en plein soleil, intérieur tamisé, écran sale. Si un seul modèle échoue, agrandis le code ou renforce le contraste : c'est plus simple avant l'impression qu'après.",
               },
               {
                 n: 6,
@@ -191,7 +191,7 @@ export default function BlogQrCodesBonnesPratiques() {
               <p>
                 Sur BeassistLink, chaque lien a son QR code. Depuis ton tableau de bord, ouvre le lien concerné, clique
                 sur l'onglet QR code, puis choisis <strong>la couleur et la taille</strong> de ton code. Tu peux
-                générer un code aux couleurs de ta marque — à condition de garder un contraste suffisant — puis
+                générer un code aux couleurs de ta marque : à condition de garder un contraste suffisant : puis
                 l'exporter en <strong>PNG haute définition</strong> pour le web ou en <strong>SVG</strong> pour le
                 print.
               </p>
@@ -314,7 +314,7 @@ export default function BlogQrCodesBonnesPratiques() {
                 → 10 liens à mettre dans ta bio Instagram pour convertir
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

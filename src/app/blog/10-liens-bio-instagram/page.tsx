@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "10 liens à mettre dans ta bio Instagram pour convertir",
     description:
-      "Les 10 liens qui transforment tes abonnés en clients — par l'équipe BeassistLink 🇫🇷",
+      "Les 10 liens qui transforment tes abonnés en clients : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -67,7 +67,7 @@ const jsonLd = {
           name: "Peut-on changer ses liens régulièrement ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Oui, et c'est recommandé. Beaucoup de créateurs changent leur lien principal chaque semaine pour suivre leur contenu du moment — une vidéo, une promo, un lancement.",
+            text: "Oui, et c'est recommandé. Beaucoup de créateurs changent leur lien principal chaque semaine pour suivre leur contenu du moment : une vidéo, une promo, un lancement.",
           },
         },
         {
@@ -118,7 +118,7 @@ export default function BlogDixLiensBioInstagram() {
             <p>
               Ta bio Instagram est un couloir : tes abonnés y passent quelques secondes avant de décider où aller.
               Chaque lien que tu y mets doit donc avoir un rôle précis. Voici les <strong>10 liens qui convertissent
-              vraiment</strong>, quel que soit ton domaine — puis comment les réunir en un seul.
+              vraiment</strong>, quel que soit ton domaine : puis comment les réunir en un seul.
             </p>
           </div>
 
@@ -129,14 +129,14 @@ export default function BlogDixLiensBioInstagram() {
               {[
                 ["🛒", "Ta boutique ou ton offre principale", "Le lien qui rapporte. Mets ton produit star ou ta page de paiement en premier : c'est ce que tes abonnés doivent voir en arrivant."],
                 ["🎥", "Ta dernière vidéo YouTube ou ton Reel", "Le contenu chaud donne envie de cliquer. Remplace ce lien à chaque nouvelle publication pour rester dans l'instant."],
-                ["📱", "Ton profil TikTok ou ta chaîne YouTube", "La cross-promo est le moyen le plus simple de faire grandir plusieurs réseaux à la fois — un abonné Instagram devient un abonné TikTok."],
+                ["📱", "Ton profil TikTok ou ta chaîne YouTube", "La cross-promo est le moyen le plus simple de faire grandir plusieurs réseaux à la fois : un abonné Instagram devient un abonné TikTok."],
                 ["💌", "Ta newsletter ou ton cadeau de bienvenue", "Transforme tes followers en abonnés email que tu possèdes vraiment. L'algorithme pourra te cacher des posts, jamais ton fichier email."],
                 ["🎵", "Ton lien Spotify ou Apple Music", "Indispensable pour les artistes : une seule page pour les écoutes, les clips et les dates de concert."],
                 ["📅", "Ton lien de prise de rendez-vous", "Coaching, prestations, services : un lien direct vers ton agenda supprime toutes les frictions entre l'envie et la réservation."],
-                ["⚡", "Le lien court de ta promo du moment", "Une URL courte et mémorable que tu peux coller en story, en légende ou sur un flyer — avec un QR code généré en un clic."],
+                ["⚡", "Le lien court de ta promo du moment", "Une URL courte et mémorable que tu peux coller en story, en légende ou sur un flyer : avec un QR code généré en un clic."],
                 ["🤝", "Ton media kit ou ta page partenariats", "Les marques qui veulent collaborer cherchent tes chiffres. Rends-les accessibles en un clic et tu deviens facile à contacter."],
                 ["💰", "Ton programme d'affiliation", "Chaque recommandation peut devenir une source de revenus. Un lien propre et traçable vaut mieux qu'une liste interminable de codes promo."],
-                ["🌟", "Ta plateforme exclusive (OnlyFans, MYM, Fansly…)", "Si tu proposes du contenu exclusif, ta page de liens doit y mener discrètement mais sûrement — accessible sans en faire la une."],
+                ["🌟", "Ta plateforme exclusive (OnlyFans, MYM, Fansly…)", "Si tu proposes du contenu exclusif, ta page de liens doit y mener discrètement mais sûrement : accessible sans en faire la une."],
               ].map(([emoji, title, tip]) => (
                 <div key={title as string} className="flex gap-4 p-4 rounded-xl border border-gray-200 hover:border-[#8F00FF]/40 transition-colors">
                   <span className="text-2xl">{emoji}</span>
@@ -160,7 +160,7 @@ export default function BlogDixLiensBioInstagram() {
               </p>
               <p>
                 Avec <strong>BeassistLink</strong>, tu crées cette page gratuitement en 30 secondes : tu choisis ton
-                nom d'utilisateur (il devient ton URL), tu ajoutes tes liens, tu personnalises les couleurs — et tu
+                nom d'utilisateur (il devient ton URL), tu ajoutes tes liens, tu personnalises les couleurs : et tu
                 suis les clics sur chaque lien pour savoir ce qui convertit.
               </p>
             </div>
@@ -177,7 +177,7 @@ export default function BlogDixLiensBioInstagram() {
                 },
                 {
                   q: "Peut-on changer ses liens régulièrement ?",
-                  a: "Oui, et c'est recommandé. Beaucoup de créateurs changent leur lien principal chaque semaine pour suivre leur contenu du moment — une vidéo, une promo, un lancement.",
+                  a: "Oui, et c'est recommandé. Beaucoup de créateurs changent leur lien principal chaque semaine pour suivre leur contenu du moment : une vidéo, une promo, un lancement.",
                 },
                 {
                   q: "Est-ce que BeassistLink est vraiment gratuit ?",

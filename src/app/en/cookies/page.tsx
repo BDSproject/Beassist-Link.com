@@ -43,10 +43,10 @@ const sections: Section[] = [
   {
     title: "3. Cookie categories",
     bullets: [
-      "Essential cookies — required for the site to function (authentication, security). They cannot be disabled without impacting the service.",
-      "Functional cookies — remember your preferences (language, cookie consent). They improve your experience without identifying you personally.",
-      "Analytics cookies — used to count visitors and understand how the site is used. Data is anonymised and cannot be used to identify you.",
-      "Marketing / third-party cookies — BeassistLink does not use advertising or third-party tracking cookies for commercial purposes.",
+      "Essential cookies : required for the site to function (authentication, security). They cannot be disabled without impacting the service.",
+      "Functional cookies : remember your preferences (language, cookie consent). They improve your experience without identifying you personally.",
+      "Analytics cookies : used to count visitors and understand how the site is used. Data is anonymised and cannot be used to identify you.",
+      "Marketing / third-party cookies : BeassistLink does not use advertising or third-party tracking cookies for commercial purposes.",
     ],
   },
   {
@@ -76,7 +76,7 @@ const sections: Section[] = [
   },
   {
     title: "9. Contact",
-    text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassist-link.com — Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
+    text: "For any questions regarding our use of cookies or your personal data, contact us at: contact@beassist-link.com : Beassisted SASU, 9 Rue de Paris, 94450 Limeil-Brévannes, France.",
   },
 ];
 
@@ -170,7 +170,7 @@ export default function EnCookiesPage() {
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-100 text-center">
-          <p className="text-xs text-gray-400">© {new Date().getFullYear()} Beassisted SASU — All rights reserved</p>
+          <p className="text-xs text-gray-400">© {new Date().getFullYear()} Beassisted SASU : All rights reserved</p>
           <div className="flex items-center justify-center gap-4 mt-3 text-xs text-[#8F00FF]">
             <Link href="/en/privacy" className="hover:underline">Privacy Policy</Link>
             <span className="text-gray-300">·</span>

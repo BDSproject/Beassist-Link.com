@@ -209,7 +209,7 @@ export default function CGU() {
         </div>
 
         <p className="mt-4 text-center text-xs text-slate-400">
-          © {new Date().getFullYear()} BeassistLink — beassist-link.com
+          © {new Date().getFullYear()} BeassistLink · beassist-link.com
         </p>
       </div>
     </div>

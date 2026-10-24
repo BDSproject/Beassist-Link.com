@@ -9,7 +9,7 @@ import {
   type ProviderMode,
 } from "../types";
 
-// Adaptateur PayDunya — API « PAR » (Paiement Avec Redirection).
+// Adaptateur PayDunya : API « PAR » (Paiement Avec Redirection).
 // Doc : https://developers.paydunya.com/doc/FR/http_json
 //
 // Flux : POST checkout-invoice/create -> on redirige le payeur vers l'URL

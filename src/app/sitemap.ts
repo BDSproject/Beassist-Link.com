@@ -9,7 +9,7 @@ const staticRoutes: Array<{
   changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"];
   lastModified?: string;
 }> = [
-  // Core — highest priority
+  // Core : highest priority
   { path: "", priority: 1.0, changeFrequency: "weekly" },
   { path: "/en", priority: 1.0, changeFrequency: "weekly" },
   { path: "/register", priority: 0.9, changeFrequency: "monthly" },
@@ -20,7 +20,7 @@ const staticRoutes: Array<{
   { path: "/pricing", priority: 0.85, changeFrequency: "weekly" },
   { path: "/en/features", priority: 0.85, changeFrequency: "monthly" },
   { path: "/en/pricing", priority: 0.85, changeFrequency: "weekly" },
-  // Blog — high frequency
+  // Blog : high frequency
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
   { path: "/blog/7-erreurs-lien-en-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
@@ -31,7 +31,7 @@ const staticRoutes: Array<{
   { path: "/blog/optimiser-bio-convertir-2026", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-04-01" },
   { path: "/blog/qr-codes-bonnes-pratiques", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-28" },
   { path: "/blog/free-vs-starter-quand-upgrader", priority: 0.85, changeFrequency: "monthly", lastModified: "2026-03-22" },
-  // Blog — English (US)
+  // Blog : English (US)
   { path: "/en/blog", priority: 0.8, changeFrequency: "weekly" },
   { path: "/en/blog/link-in-bio-mistakes", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
   { path: "/en/blog/links-instagram-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
@@ -59,7 +59,7 @@ const staticRoutes: Array<{
   { path: "/cgu", priority: 0.3, changeFrequency: "yearly" },
   { path: "/cookies", priority: 0.3, changeFrequency: "yearly" },
   { path: "/gdpr", priority: 0.3, changeFrequency: "yearly" },
-  // Legal — English (US)
+  // Legal : English (US)
   { path: "/en/terms", priority: 0.3, changeFrequency: "yearly" },
   { path: "/en/privacy", priority: 0.3, changeFrequency: "yearly" },
   { path: "/en/cookies", priority: 0.3, changeFrequency: "yearly" },

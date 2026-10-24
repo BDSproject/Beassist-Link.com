@@ -15,7 +15,7 @@ declare global {
 }
 
 /**
- * Loads the Google Analytics (gtag.js) tag — but only once the visitor has
+ * Loads the Google Analytics (gtag.js) tag : but only once the visitor has
  * explicitly accepted analytics cookies via the cookie banner.
  *
  * Nothing is requested from googletagmanager.com before that consent, so the

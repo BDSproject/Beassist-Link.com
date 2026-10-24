@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "QR Codes: Best Practices for Printing",
     description:
-      "Size, contrast, error correction, testing: the practical guide to QR codes that scan every time — by the BeassistLink team",
+      "Size, contrast, error correction, testing: the practical guide to QR codes that scan every time : by the BeassistLink team",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -121,7 +121,7 @@ export default function BlogQrCodePrintingTips() {
           {/* Intro */}
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
-              A QR code gives you about three seconds to convince someone to pull out their phone — assuming it scans
+              A QR code gives you about three seconds to convince someone to pull out their phone : assuming it scans
               at all. On screen, a blurry or undersized QR code rarely forgives you. On paper, a mistake costs real
               money: a flyer, poster or business card already printed can't be fixed.
             </p>
@@ -144,7 +144,7 @@ export default function BlogQrCodePrintingTips() {
               {
                 n: 2,
                 title: "Maximum contrast",
-                body: "A QR code should be dark on a light background — black on white remains the most reliable. Avoid inversions (a light code on a dark background) and colors that are too close: if the contrast is weak, the camera struggles to separate the modules.",
+                body: "A QR code should be dark on a light background : black on white remains the most reliable. Avoid inversions (a light code on a dark background) and colors that are too close: if the contrast is weak, the camera struggles to separate the modules.",
               },
               {
                 n: 3,
@@ -159,7 +159,7 @@ export default function BlogQrCodePrintingTips() {
               {
                 n: 5,
                 title: "Test on several phones",
-                body: "Test before you print, on both an iPhone and an Android, in real lighting conditions: outdoors in full sun, indoors in dim light, a dirty screen. If even one device fails, enlarge the code or boost the contrast — far easier before printing than after.",
+                body: "Test before you print, on both an iPhone and an Android, in real lighting conditions: outdoors in full sun, indoors in dim light, a dirty screen. If even one device fails, enlarge the code or boost the contrast : far easier before printing than after.",
               },
               {
                 n: 6,
@@ -174,7 +174,7 @@ export default function BlogQrCodePrintingTips() {
               {
                 n: 8,
                 title: "Put the code within reach",
-                body: "On a flyer, avoid the folded corner or the bottom edge near the trim. On a poster, place the code between 3 and 5 feet off the ground. Scanning should stay comfortable — nobody crouches down to scan a QR code.",
+                body: "On a flyer, avoid the folded corner or the bottom edge near the trim. On a poster, place the code between 3 and 5 feet off the ground. Scanning should stay comfortable : nobody crouches down to scan a QR code.",
               },
             ].map(({ n, title, body }) => (
               <div key={n} className="flex gap-4">
@@ -195,8 +195,8 @@ export default function BlogQrCodePrintingTips() {
             <div className="space-y-3 text-[15px] text-gray-700">
               <p>
                 On BeassistLink, every link has its own QR code. From your dashboard, open the link, click the QR code
-                tab, then choose the <strong>color and size</strong>. You can generate a code in your brand colors —
-                as long as you keep enough contrast — then export it as <strong>high-definition PNG</strong> for the
+                tab, then choose the <strong>color and size</strong>. You can generate a code in your brand colors :
+                as long as you keep enough contrast : then export it as <strong>high-definition PNG</strong> for the
                 web or <strong>SVG</strong> for print.
               </p>
               <p>
@@ -208,7 +208,7 @@ export default function BlogQrCodePrintingTips() {
               <p>
                 One reminder: <strong>one QR code = one link</strong>. To point people to your full bio page, generate
                 the QR code of your BeassistLink link rather than multiplying codes across different pages. Your
-                links, QR codes and analytics all live in one tool —{" "}
+                links, QR codes and analytics all live in one tool :{" "}
                 <Link href="/en" className="text-[#8F00FF] font-semibold hover:underline">learn more about BeassistLink</Link>.
               </p>
             </div>
@@ -318,7 +318,7 @@ export default function BlogQrCodePrintingTips() {
                 → FREE vs STARTER: When Should You Upgrade?
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree Comparison 2026 — which alternative should you choose?
+                → Linktree Comparison 2026 : which alternative should you choose?
               </Link>
             </div>
           </nav>

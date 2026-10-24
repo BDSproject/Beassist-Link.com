@@ -29,16 +29,16 @@ export const PAYMENT_METHODS: {
 ];
 
 export const CURRENCIES: { code: string; label: string }[] = [
-  { code: "EUR", label: "€ — Euro" },
-  { code: "CAD", label: "$ — Dollar canadien" },
-  { code: "USD", label: "$ — Dollar US" },
-  { code: "CHF", label: "CHF — Franc suisse" },
-  { code: "GBP", label: "£ — Livre sterling" },
-  { code: "XOF", label: "FCFA — Afrique de l'Ouest" },
-  { code: "XAF", label: "FCFA — Afrique centrale" },
-  { code: "MAD", label: "MAD — Dirham marocain" },
-  { code: "DZD", label: "DZD — Dinar algérien" },
-  { code: "TND", label: "TND — Dinar tunisien" },
+  { code: "EUR", label: "€ · Euro" },
+  { code: "CAD", label: "$ · Dollar canadien" },
+  { code: "USD", label: "$ · Dollar US" },
+  { code: "CHF", label: "CHF · Franc suisse" },
+  { code: "GBP", label: "£ · Livre sterling" },
+  { code: "XOF", label: "FCFA · Afrique de l'Ouest" },
+  { code: "XAF", label: "FCFA · Afrique centrale" },
+  { code: "MAD", label: "MAD · Dirham marocain" },
+  { code: "DZD", label: "DZD · Dinar algérien" },
+  { code: "TND", label: "TND · Dinar tunisien" },
 ];
 
 export function getPaymentMethod(id?: string | null) {
@@ -47,7 +47,7 @@ export function getPaymentMethod(id?: string | null) {
 
 export function formatAmount(amount: number, currency?: string | null): string {
   if (!currency) currency = "EUR";
-  // FCFA n'est pas géré proprement par Intl — formatage manuel
+  // FCFA n'est pas géré proprement par Intl : formatage manuel
   if (currency === "XOF" || currency === "XAF") {
     return `${new Intl.NumberFormat("fr-FR", { maximumFractionDigits: 0 }).format(amount)} FCFA`;
   }

@@ -9,7 +9,7 @@ const SLUG = "7-erreurs-lien-en-bio";
 const PUBLISHED = "2026-09-28";
 
 export const metadata: Metadata = {
-  title: "7 erreurs qui font fuir les visiteurs de ton lien en bio — et comment les corriger",
+  title: "7 erreurs qui font fuir les visiteurs de ton lien en bio : et comment les corriger",
   description:
     "Lien mort, page impersonnelle, zéro appel à l'action : découvre les 7 erreurs qui font fuir les visiteurs de ton lien en bio, et corrige-les en 10 minutes pour enfin convertir.",
   keywords: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "7 erreurs qui font fuir les visiteurs de ton lien en bio",
     description:
-      "Les 7 erreurs les plus fréquentes sur les pages de liens (et leurs correctifs) — par l'équipe BeassistLink 🇫🇷",
+      "Les 7 erreurs les plus fréquentes sur les pages de liens (et leurs correctifs) : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -59,7 +59,7 @@ const jsonLd = {
           name: "Combien de liens faut-il mettre dans sa bio Instagram ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Instagram n'autorise qu'un seul lien cliquable dans la bio — c'est pourquoi une page de liens est indispensable. Sur cette page, mets en avant 3 à 5 liens essentiels plutôt qu'une longue liste : le visiteur clique plus quand il a moins de choix.",
+            text: "Instagram n'autorise qu'un seul lien cliquable dans la bio : c'est pourquoi une page de liens est indispensable. Sur cette page, mets en avant 3 à 5 liens essentiels plutôt qu'une longue liste : le visiteur clique plus quand il a moins de choix.",
           },
         },
         {
@@ -75,7 +75,7 @@ const jsonLd = {
           name: "Comment savoir si mon lien en bio fonctionne ?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Regarde les statistiques de clics : nombre de visites, pays, appareils, sources de trafic. Si un lien reçoit peu de clics, déplace-le ou reformule son libellé — les données te disent quoi corriger.",
+            text: "Regarde les statistiques de clics : nombre de visites, pays, appareils, sources de trafic. Si un lien reçoit peu de clics, déplace-le ou reformule son libellé : les données te disent quoi corriger.",
           },
         },
       ],
@@ -104,7 +104,7 @@ export default function BlogErreursLienEnBio() {
               7 erreurs qui font fuir les visiteurs de ton lien en bio
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Ta bio Instagram est la porte d'entrée de ton business. Voici les 7 erreurs qui te coûtent des clients —
+              Ta bio Instagram est la porte d'entrée de ton business. Voici les 7 erreurs qui te coûtent des clients :
               et comment les corriger <strong>en 10 minutes</strong>.
             </p>
           </div>
@@ -145,7 +145,7 @@ export default function BlogErreursLienEnBio() {
                 n: 3,
                 title: "Une page qui ne te ressemble pas",
                 body: "Une page de liens générique, avec un logo imposé et un thème par défaut, ressemble à de la publicité. Tes abonnés doutent : « c'est bien la bonne personne ? »",
-                fix: "Ajoute ta photo, ton nom et une courte bio, puis personnalise les couleurs avec ton identité. Sur BeassistLink, la page est à toi en quelques clics — personnalise les couleurs et ta mise en page, même en plan gratuit.",
+                fix: "Ajoute ta photo, ton nom et une courte bio, puis personnalise les couleurs avec ton identité. Sur BeassistLink, la page est à toi en quelques clics : personnalise les couleurs et ta mise en page, même en plan gratuit.",
               },
               {
                 n: 4,
@@ -168,7 +168,7 @@ export default function BlogErreursLienEnBio() {
               {
                 n: 7,
                 title: "Ne jamais regarder ses statistiques",
-                body: "Sans données, tu optimises à l'aveugle. Tu ne sais pas quel lien convertit, ni ce qui intéresse vraiment ton audience — et tu laisses de l'argent sur la table.",
+                body: "Sans données, tu optimises à l'aveugle. Tu ne sais pas quel lien convertit, ni ce qui intéresse vraiment ton audience : et tu laisses de l'argent sur la table.",
                 fix: "Suis les clics de ta page : visites, pays, appareils, sources de trafic. Garde ce qui marche, reformule ou supprime ce qui ne marche pas. C'est comme ça qu'une bio décorative devient une bio qui vend.",
               },
             ].map(({ n, title, body, fix }) => (
@@ -218,7 +218,7 @@ export default function BlogErreursLienEnBio() {
               {[
                 {
                   q: "Combien de liens faut-il mettre dans sa bio Instagram ?",
-                  a: "Instagram n'autorise qu'un seul lien cliquable dans la bio — c'est pourquoi une page de liens est indispensable. Sur cette page, mets en avant 3 à 5 liens essentiels plutôt qu'une longue liste.",
+                  a: "Instagram n'autorise qu'un seul lien cliquable dans la bio : c'est pourquoi une page de liens est indispensable. Sur cette page, mets en avant 3 à 5 liens essentiels plutôt qu'une longue liste.",
                 },
                 {
                   q: "À quelle fréquence faut-il mettre à jour son lien en bio ?",
@@ -263,7 +263,7 @@ export default function BlogErreursLienEnBio() {
                 → Comment avoir plusieurs liens sur Instagram sans payer
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

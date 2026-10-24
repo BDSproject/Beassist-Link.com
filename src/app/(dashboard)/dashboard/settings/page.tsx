@@ -65,7 +65,7 @@ export default function SettingsPage() {
 
   const saveProfile = async () => {
     if (!profileForm.name.trim() || !profileForm.username.trim()) {
-      toast.error(d.profileTitle + " — " + d.fullName + " & " + d.username);
+      toast.error(d.profileTitle + " : " + d.fullName + " & " + d.username);
       return;
     }
     if (!/^[a-zA-Z0-9_-]{3,30}$/.test(profileForm.username)) {
@@ -93,7 +93,7 @@ export default function SettingsPage() {
 
   const savePassword = async () => {
     if (passwordForm.newPassword.length < 8) {
-      toast.error(d.newPassword + " — 8+ characters required");
+      toast.error(d.newPassword + " : 8+ characters required");
       return;
     }
     if (passwordForm.newPassword !== passwordForm.confirmPassword) {

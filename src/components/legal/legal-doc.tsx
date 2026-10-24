@@ -87,7 +87,7 @@ export function LegalDoc({
         </div>
 
         <div className="mt-16 pt-8 border-t border-gray-100 text-center">
-          <p className="text-xs text-gray-400">© 2026 Beassisted SASU — All rights reserved</p>
+          <p className="text-xs text-gray-400">© 2026 Beassisted SASU : All rights reserved</p>
           <Link href="/en" className="inline-block mt-3 text-xs text-[#8F00FF] hover:underline">
             ← Back to site
           </Link>

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink vs Linktree en 2026 : le comparatif complet",
     description:
-      "Prix, plan gratuit, statistiques, QR codes et RGPD : chaque différence entre BeassistLink et Linktree passée au crible — par l'équipe BeassistLink 🇫🇷",
+      "Prix, plan gratuit, statistiques, QR codes et RGPD : chaque différence entre BeassistLink et Linktree passée au crible : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -159,7 +159,7 @@ export default function BlogBeassistlinkVsLinktree2026() {
           <section>
             <h2 className="text-xl font-black text-gray-900 mb-3">La personnalisation : ta page doit te ressembler</h2>
             <p className="text-[15px] text-gray-600 leading-relaxed">
-              Une page bio générique ne convertit pas — on l'explique en détail dans notre article sur{" "}
+              Une page bio générique ne convertit pas : on l'explique en détail dans notre article sur{" "}
               <Link href="/blog/7-erreurs-lien-en-bio" className="text-[#8F00FF] font-medium hover:underline">
                 les 7 erreurs qui font fuir les visiteurs de ton lien en bio
               </Link>
@@ -176,7 +176,7 @@ export default function BlogBeassistlinkVsLinktree2026() {
             <p className="text-[15px] text-gray-600 leading-relaxed">
               Une page de liens sans données, c'est de la décoration. BeassistLink intègre les statistiques des clics
               dès le plan STARTER, et le PRO ajoute les données avancées : pays, appareils, sources de trafic. Le plan
-              FREE n'inclut pas de statistiques — c'est le compromis du gratuit, et il est important de le savoir avant
+              FREE n'inclut pas de statistiques : c'est le compromis du gratuit, et il est important de le savoir avant
               de choisir. Chez Linktree, les analytics sont historiquement réservées aux plans payants, souvent l'offre
               la plus chère. Si tu veux savoir quel lien convertit ton audience, compare bien ce que chaque formule
               inclut.
@@ -259,7 +259,7 @@ export default function BlogBeassistlinkVsLinktree2026() {
             </div>
             <p className="text-[15px] text-gray-600 leading-relaxed mt-5">
               Pour la grande majorité des créateurs francophones, le verdict est clair : BeassistLink coche plus de
-              cases, pour moins cher. Le mieux reste de tester — la création d'une page prend moins de 30 secondes, et
+              cases, pour moins cher. Le mieux reste de tester : la création d'une page prend moins de 30 secondes, et
               le plan FREE ne te coûte rien.
             </p>
           </section>
@@ -294,7 +294,7 @@ export default function BlogBeassistlinkVsLinktree2026() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Compare en conditions réelles</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Crée ta page BeassistLink gratuite en 30 secondes et juge par toi-même — sans carte bancaire.
+              Crée ta page BeassistLink gratuite en 30 secondes et juge par toi-même : sans carte bancaire.
             </p>
             <Link
               href="/register"
@@ -319,7 +319,7 @@ export default function BlogBeassistlinkVsLinktree2026() {
                 → Linktree, Milkshake, Later, Shorby… le tour d'horizon 2026
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

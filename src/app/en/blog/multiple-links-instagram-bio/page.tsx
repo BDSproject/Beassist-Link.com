@@ -11,7 +11,7 @@ const PUBLISHED = "2026-04-14";
 export const metadata: Metadata = {
   title: "How to Add Multiple Links to Your Instagram Bio (Free)",
   description:
-    "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes — no credit card required.",
+    "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes : no credit card required.",
   keywords: [
     "multiple links instagram bio",
     "instagram link in bio",
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How to Add Multiple Links to Your Instagram Bio (Free)",
     description:
-      "Step-by-step guide to put multiple links in your Instagram bio — free, GDPR-friendly, with BeassistLink",
+      "Step-by-step guide to put multiple links in your Instagram bio : free, GDPR-friendly, with BeassistLink",
     url: `${BASE}/en/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -48,7 +48,7 @@ const jsonLd = {
       "@type": "BlogPosting",
       headline: "How to Add Multiple Links to Your Instagram Bio (Free)",
       description:
-        "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes — no credit card required.",
+        "Step-by-step: build a free link page and put it in your Instagram bio in 5 minutes : no credit card required.",
       datePublished: PUBLISHED,
       author: { "@type": "Organization", name: "BeassistLink" },
       publisher: {
@@ -111,7 +111,7 @@ export default function BlogMultipleLinksInstagramBio() {
               How to Add Multiple Links to Your Instagram Bio (Free)
             </h1>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-              Instagram only gives you one link in your bio. Here's how to add as many as you want —{" "}
+              Instagram only gives you one link in your bio. Here's how to add as many as you want :{" "}
               <strong>free</strong>, in under 5 minutes.
             </p>
           </div>
@@ -143,7 +143,7 @@ export default function BlogMultipleLinksInstagramBio() {
               <p>
                 Linktree is the best-known option, but its free plan shows a <strong>Linktree badge</strong> on your
                 page and locks detailed analytics and customization behind a paid plan (around{" "}
-                <strong>$5–24/month in 2026</strong>).
+                <strong>$5-24/month in 2026</strong>).
               </p>
               <p>
                 <Link href="/en" className="text-[#8F00FF] font-semibold hover:underline">BeassistLink</Link> is a
@@ -161,12 +161,12 @@ export default function BlogMultipleLinksInstagramBio() {
               <p>
                 You don't need a paid plan to get started. The BeassistLink FREE plan includes{" "}
                 <strong>1 bio page</strong>, <strong>5 links</strong>, <strong>3 short links</strong> and a{" "}
-                <strong>theme</strong> — enough to put a professional link in your bio today, with no credit card.
+                <strong>theme</strong> : enough to put a professional link in your bio today, with no credit card.
               </p>
               <p>
                 When you're ready to grow, STARTER ($7/month or $76/year) adds click stats, QR codes, more pages and
                 a custom link, while PRO ($13/month or $140/year) unlocks advanced analytics, unlimited QR codes,
-                scheduled links and a custom domain —{" "}
+                scheduled links and a custom domain :{" "}
                 <Link href="/en/pricing" className="text-[#8F00FF] font-semibold hover:underline">see pricing</Link>.
               </p>
             </div>
@@ -188,7 +188,7 @@ export default function BlogMultipleLinksInstagramBio() {
                       <Link href="/register" className="text-[#8F00FF] font-semibold hover:underline">
                         beassist-link.com/register
                       </Link>{" "}
-                      and create your account in 30 seconds. Pick a username — it becomes your custom URL (e.g.{" "}
+                      and create your account in 30 seconds. Pick a username : it becomes your custom URL (e.g.{" "}
                       <code className="text-xs bg-gray-100 rounded px-1.5 py-0.5">beassist-link.com/yourname</code>).
                       No credit card required.
                     </>
@@ -299,7 +299,7 @@ export default function BlogMultipleLinksInstagramBio() {
             <p className="text-sm font-semibold text-gray-500 mb-3">Read next</p>
             <div className="flex flex-col gap-2 text-sm">
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Linktree 2026 comparison — which alternative to choose?
+                → Linktree 2026 comparison : which alternative to choose?
               </Link>
               <Link href="/en/blog/link-in-bio-mistakes" className="text-[#8F00FF] hover:underline">
                 → 7 Link in Bio Mistakes That Make Visitors Leave

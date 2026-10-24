@@ -7,7 +7,7 @@ import { Logo } from "@/components/shared/logo";
 import { Facebook, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
-// Icônes SVG personnalisées — Instagram & TikTok (absentes de lucide)
+// Icônes SVG personnalisées : Instagram & TikTok (absentes de lucide)
 function IconInstagram({ size = 16 }: { size?: number }) {
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">

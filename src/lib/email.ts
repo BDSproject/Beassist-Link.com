@@ -4,7 +4,7 @@ const FROM = "BeassistLink <noreply@beassist-link.com>";
 const BASE_URL = process.env.NEXTAUTH_URL || "https://www.beassist-link.com";
 
 // ---------------------------------------------------------------------------
-// Template HTML — email de vérification
+// Template HTML : email de vérification
 // ---------------------------------------------------------------------------
 function verificationEmailHtml({
   name,
@@ -18,7 +18,7 @@ function verificationEmailHtml({
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vérifie ton email — BeassistLink</title>
+  <title>Vérifie ton email : BeassistLink</title>
 </head>
 <body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
@@ -90,7 +90,7 @@ function verificationEmailHtml({
 }
 
 // ---------------------------------------------------------------------------
-// Template HTML — email de bienvenue (post-vérification)
+// Template HTML : email de bienvenue (post-vérification)
 // ---------------------------------------------------------------------------
 function welcomeEmailHtml({
   name,
@@ -225,7 +225,7 @@ function verificationEmailHtmlEn({
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Verify your email — BeassistLink</title>
+  <title>Verify your email : BeassistLink</title>
 </head>
 <body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
@@ -367,7 +367,7 @@ export async function sendWelcomeEmail({
   lang?: EmailLang;
 }): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("[email] RESEND_API_KEY manquante — email de bienvenue non envoyé");
+    console.warn("[email] RESEND_API_KEY manquante : email de bienvenue non envoyé");
     return false;
   }
 
@@ -411,7 +411,7 @@ export async function sendVerificationEmail({
   lang?: EmailLang;
 }): Promise<boolean> {
   if (!process.env.RESEND_API_KEY) {
-    console.warn("[email] RESEND_API_KEY manquante — email de vérification non envoyé");
+    console.warn("[email] RESEND_API_KEY manquante : email de vérification non envoyé");
     return false;
   }
 

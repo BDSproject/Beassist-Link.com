@@ -89,7 +89,7 @@ function candidatureHtml(data: z.infer<typeof schema>): string {
             <td style="background:#F9FAFB;padding:20px 40px;border-top:1px solid #E5E7EB;">
               <p style="margin:0;font-size:12px;color:#9CA3AF;text-align:center;">
                 <a href="https://www.beassist-link.com" style="color:#8F00FF;text-decoration:none;">beassist-link.com</a>
-                &nbsp;·&nbsp; Email interne — ne pas transférer
+                &nbsp;·&nbsp; Email interne : ne pas transférer
               </p>
             </td>
           </tr>
@@ -107,7 +107,7 @@ function confirmationHtml(name: string): string {
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Candidature reçue – BeassistLink</title>
+  <title>Candidature reçue - BeassistLink</title>
 </head>
 <body style="margin:0;padding:0;background:#F9FAFB;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
   <table width="100%" cellpadding="0" cellspacing="0" style="background:#F9FAFB;padding:40px 20px;">
@@ -194,14 +194,14 @@ export async function POST(req: NextRequest) {
         from: FROM,
         to: NOTIFY_TO,
         replyTo: data.email,
-        subject: `🎉 Nouvelle candidature partenariat — ${data.name} (${data.platform})`,
+        subject: `🎉 Nouvelle candidature partenariat : ${data.name} (${data.platform})`,
         html: candidatureHtml(data),
       }),
       // 2. Confirmation au candidat
       resend.emails.send({
         from: FROM,
         to: data.email,
-        subject: "Candidature reçue – Programme ambassadeur BeassistLink",
+        subject: "Candidature reçue - Programme ambassadeur BeassistLink",
         html: confirmationHtml(data.name),
       }),
     ]);

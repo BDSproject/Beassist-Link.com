@@ -15,7 +15,7 @@ const schema = z.object({
   }),
 });
 
-// POST — teste des identifiants marchands sans rien enregistrer.
+// POST : teste des identifiants marchands sans rien enregistrer.
 // Permet de valider les clés avant de les stocker.
 export async function POST(req: NextRequest) {
   const session = await getServerSession(authOptions);

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Linktree, Milkshake, Later Link in Bio, Shorby… lequel choisir ?",
     description:
-      "Tour d'horizon 2026 des principales alternatives de page bio : forces, faiblesses et verdict par profil — par l'équipe BeassistLink 🇫🇷",
+      "Tour d'horizon 2026 des principales alternatives de page bio : forces, faiblesses et verdict par profil : par l'équipe BeassistLink 🇫🇷",
     url: `${BASE}/blog/${SLUG}`,
     type: "article",
     publishedTime: PUBLISHED,
@@ -117,7 +117,7 @@ export default function BlogBeassistlinkVsBioLinkAlternatives() {
           <div className="prose prose-gray max-w-none text-[15px] leading-relaxed">
             <p>
               Cinq outils, une seule place dans ta bio Instagram ou TikTok. Linktree domine la catégorie, Milkshake
-              séduit les créateurs, Later Link in Bio vise les marques, Shorby joue la carte des messageries — et
+              séduit les créateurs, Later Link in Bio vise les marques, Shorby joue la carte des messageries : et
               BeassistLink, la solution française, bouscule tout le monde. Voici le tour d'horizon 2026, outil par
               outil, pour que tu choisisses en connaissance de cause.
             </p>
@@ -354,41 +354,41 @@ export default function BlogBeassistlinkVsBioLinkAlternatives() {
                       <td className="px-4 py-3 text-gray-700">Généraliste</td>
                       <td className="px-4 py-3 text-center text-gray-700">Payant</td>
                       <td className="px-4 py-3 text-center text-gray-700">Payant</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
                     </tr>
                     <tr className="bg-gray-50/60 border-b border-gray-100">
                       <td className="px-4 py-3 font-semibold text-gray-900">Milkshake</td>
                       <td className="px-4 py-3 text-gray-700">Gratuit</td>
                       <td className="px-4 py-3 text-gray-700">Créateurs</td>
                       <td className="px-4 py-3 text-center text-gray-700">Limitées</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
                     </tr>
                     <tr className="border-b border-gray-100">
                       <td className="px-4 py-3 font-semibold text-gray-900">Later Link in Bio</td>
                       <td className="px-4 py-3 text-gray-700">Payant</td>
                       <td className="px-4 py-3 text-gray-700">Marques</td>
                       <td className="px-4 py-3 text-center text-gray-700">Avancées</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
                     </tr>
                     <tr>
                       <td className="px-4 py-3 font-semibold text-gray-900">Shorby</td>
                       <td className="px-4 py-3 text-gray-700">≈ 15 $/mois</td>
                       <td className="px-4 py-3 text-gray-700">Messageries</td>
                       <td className="px-4 py-3 text-center text-gray-700">Oui</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
-                      <td className="px-4 py-3 text-center text-gray-400">—</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
+                      <td className="px-4 py-3 text-center text-gray-400">✗</td>
                     </tr>
                   </tbody>
                 </table>
               </div>
               <div className="px-5 py-3 bg-[#8F00FF]/5 border-t border-[#8F00FF]/10">
-                <p className="text-xs text-gray-500">Tarifs concurrents constatés en avril 2026, en USD pour les outils américains. « — » : fonctionnalité absente ou non confirmée. Plans BeassistLink : FREE, STARTER et PRO.</p>
+                <p className="text-xs text-gray-500">Tarifs concurrents constatés en avril 2026, en USD pour les outils américains. « : » : fonctionnalité absente ou non confirmée. Plans BeassistLink : FREE, STARTER et PRO.</p>
               </div>
             </div>
           </section>
@@ -465,7 +465,7 @@ export default function BlogBeassistlinkVsBioLinkAlternatives() {
           <section className="rounded-2xl bg-gradient-to-br from-[#8F00FF] to-[#6200CC] p-8 text-center text-white">
             <h2 className="text-2xl font-black mb-2">Ta page bio mérite le bon outil</h2>
             <p className="text-purple-100 mb-6 leading-relaxed max-w-md mx-auto">
-              Teste BeassistLink gratuitement en 30 secondes, et compare par toi-même — sans carte bancaire.
+              Teste BeassistLink gratuitement en 30 secondes, et compare par toi-même : sans carte bancaire.
             </p>
             <Link
               href="/register"
@@ -490,7 +490,7 @@ export default function BlogBeassistlinkVsBioLinkAlternatives() {
                 → Comment avoir plusieurs liens sur Instagram sans payer
               </Link>
               <Link href="/fr/comparatif-linktree" className="text-[#8F00FF] hover:underline">
-                → Comparatif Linktree 2026 — quelle alternative choisir ?
+                → Comparatif Linktree 2026 : quelle alternative choisir ?
               </Link>
             </div>
           </nav>

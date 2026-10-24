@@ -7,7 +7,7 @@ import { Check, X, ArrowRight, Instagram, Music, ShoppingBag, Clapperboard, Brie
 const BASE = "https://www.beassist-link.com";
 
 export const metadata: Metadata = {
-  title: "Comparatif Linktree 2026 — Que choisir ?",
+  title: "Comparatif Linktree 2026 : Que choisir ?",
   description:
     "Linktree vs BeassistLink vs Milkshake vs Later : comparatif complet 2026. Solution française gratuite et conforme RGPD.",
   keywords: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     },
   },
   openGraph: {
-    title: "Comparatif Linktree 2026 — BeassistLink face à Linktree",
+    title: "Comparatif Linktree 2026 : BeassistLink face à Linktree",
     description:
       "Linktree vs BeassistLink : prix, fonctionnalités, RGPD. La solution française qui surpasse Linktree à moindre coût.",
     url: `${BASE}/fr/comparatif-linktree`,
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Article",
-  headline: "BeassistLink face à Linktree — comparatif 2026",
+  headline: "BeassistLink face à Linktree : comparatif 2026",
   description:
     "Comparatif complet entre BeassistLink, Linktree, Milkshake et Later Link in Bio. Fonctionnalités, prix, conformité RGPD.",
   datePublished: "2026-04-14",
@@ -83,7 +83,7 @@ function Cell({ val }: { val: CellValue }) {
 const faqs = [
   {
     q: "Quelle est la meilleure alternative gratuite à Linktree ?",
-    a: "BeassistLink est la solution française la plus complète : liens illimités, analytics intégrées et hébergement en Europe conforme au RGPD — tout ça gratuitement.",
+    a: "BeassistLink est la solution française la plus complète : liens illimités, analytics intégrées et hébergement en Europe conforme au RGPD : tout ça gratuitement.",
   },
   {
     q: "Les statistiques sont-elles incluses dans le plan gratuit ?",
@@ -157,7 +157,7 @@ export default function ComparatifLinktreePage() {
               <p>
                 <strong>Linktree</strong> est l'un des outils les plus connus pour créer une <em>page de liens personnalisée</em>,
                 mais il souffre de limitations importantes sur son plan gratuit : logo Linktree imposé, analytics bloquées,
-                personnalisation limitée — et le prix du plan payant est affiché en dollars américains.
+                personnalisation limitée : et le prix du plan payant est affiché en dollars américains.
               </p>
               <p>
                 <strong>BeassistLink</strong> a été créé pour les créateurs et entrepreneurs francophones qui veulent
@@ -170,7 +170,7 @@ export default function ComparatifLinktreePage() {
           {/* ── Comparison table ── */}
           <section id="comparatif" className="scroll-mt-24">
             <h2 className="text-2xl font-black text-gray-900 mb-2">
-              Tableau comparatif — Linktree vs BeassistLink vs Milkshake vs Later
+              Tableau comparatif : Linktree vs BeassistLink vs Milkshake vs Later
             </h2>
             <p className="text-sm text-gray-500 mb-6">Données vérifiées en avril 2026 sur les pages officielles de chaque service.</p>
             <div className="rounded-2xl border border-gray-200 overflow-hidden">
@@ -214,7 +214,7 @@ export default function ComparatifLinktreePage() {
                 {
                   Icon: Instagram,
                   title: "Créateurs Instagram",
-                  desc: "Mets plusieurs liens dans ta bio Instagram : YouTube, boutique, newsletter, Spotify, TikTok — tout en un.",
+                  desc: "Mets plusieurs liens dans ta bio Instagram : YouTube, boutique, newsletter, Spotify, TikTok : tout en un.",
                 },
                 {
                   Icon: Music,
