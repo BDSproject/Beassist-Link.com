@@ -1,4 +1,5 @@
 import { cn } from "@/lib/utils";
+import { AlertCircle } from "lucide-react";
 import { InputHTMLAttributes, forwardRef } from "react";
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -53,7 +54,7 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
         </div>
         {error && (
           <p className="mt-1.5 text-xs text-red-500 flex items-center gap-1">
-            <span>⚠</span> {error}
+            <AlertCircle className="w-3.5 h-3.5 flex-shrink-0" /> {error}
           </p>
         )}
         {hint && !error && (

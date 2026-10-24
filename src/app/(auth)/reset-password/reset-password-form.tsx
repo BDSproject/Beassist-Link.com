@@ -99,7 +99,7 @@ export function ResetPasswordForm() {
             <CheckCircle2 size={32} className="text-green-500" />
           </div>
         </div>
-        <h1 className="text-2xl font-black text-gray-900 mb-3">✅ {a.successMessage}</h1>
+        <h1 className="text-2xl font-black text-gray-900 mb-3">{a.successMessage}</h1>
         <p className="text-gray-400 text-sm">Redirection automatique…</p>
       </div>
     );

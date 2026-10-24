@@ -22,7 +22,7 @@ export function LangSwitcher({ className }: LangSwitcherProps) {
             : "text-gray-500 hover:text-gray-700"
         )}
       >
-        🇫🇷 FR
+        FR
       </button>
       <button
         onClick={() => setLang("en")}
@@ -34,7 +34,7 @@ export function LangSwitcher({ className }: LangSwitcherProps) {
             : "text-gray-500 hover:text-gray-700"
         )}
       >
-        🇬🇧 EN
+        EN
       </button>
     </div>
   );

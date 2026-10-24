@@ -112,7 +112,7 @@ export function Pricing() {
           {/* Annual savings hint */}
           {yearly && (
             <p className="savings-fade text-sm text-green-600 font-medium mt-3">
-              🎉 {t.pricing.saveAnnual}
+              {t.pricing.saveAnnual}
             </p>
           )}
         </div>
@@ -232,7 +232,7 @@ export function Pricing() {
                         isHighlighted ? "text-green-300" : "text-green-600"
                       }`}
                     >
-                      💰 {t.pricing.saveAnnual}
+                      {t.pricing.saveAnnual}
                     </p>
                   )}
                 </div>

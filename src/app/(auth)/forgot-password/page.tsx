@@ -56,7 +56,7 @@ export default function ForgotPasswordPage() {
               <CheckCircle2 size={32} className="text-green-500" />
             </div>
           </div>
-          <h1 className="text-2xl font-black text-gray-900 mb-3">Email envoyé ✉️</h1>
+          <h1 className="text-2xl font-black text-gray-900 mb-3">Email envoyé</h1>
           <p className="text-gray-500 text-sm leading-relaxed mb-8">{a.successMessage}</p>
           <Link
             href="/login"

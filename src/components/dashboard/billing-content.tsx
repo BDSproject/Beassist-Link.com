@@ -84,7 +84,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
       {isSuccess && (
         <div className="flex items-center gap-3 bg-green-50 border border-green-200 rounded-2xl p-4 mb-6 text-green-800">
           <CheckCircle2 size={20} className="flex-shrink-0 text-green-600" />
-          <p className="font-semibold text-sm">🎉 Paiement réussi ! Ton plan a été mis à jour.</p>
+          <p className="font-semibold text-sm">Paiement réussi ! Ton plan a été mis à jour.</p>
         </div>
       )}
       {isCanceled && (
@@ -178,7 +178,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
       {/* Annual savings hint */}
       {yearly && (
         <p className="savings-fade text-sm text-green-600 font-medium mb-5">
-          🎉 {t.pricing.saveAnnual}
+          {t.pricing.saveAnnual}
         </p>
       )}
       {!yearly && <div className="mb-5" />}
@@ -247,7 +247,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
                 )}
                 {!yearly && plan.price.savings > 0 && (
                   <p className="text-xs text-green-600 font-medium mt-1">
-                    💰 {t.pricing.saveAnnual}
+                    {t.pricing.saveAnnual}
                   </p>
                 )}
               </div>
@@ -255,7 +255,7 @@ export function BillingContent({ currentPlan, subscriptionEnd }: Props) {
               {/* CTA */}
               {isCurrentPlan ? (
                 <div className="w-full text-center py-2.5 px-4 rounded-xl bg-[#8F00FF] text-white text-sm font-bold mb-5">
-                  ✓ {d.currentPlanBtn}
+                  {d.currentPlanBtn}
                 </div>
               ) : planKey === "FREE" ? (
                 <div className="w-full text-center py-2.5 px-4 rounded-xl bg-gray-100 text-gray-500 text-sm font-medium mb-5">

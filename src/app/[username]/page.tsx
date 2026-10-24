@@ -3,6 +3,7 @@ import { db } from "@/database/client";
 import { notFound } from "next/navigation";
 import { getBrowserName, getDeviceType, getPlatformLabel, SOCIAL_PLATFORMS } from "@/lib/utils";
 import { formatAmount, getPaymentMethod } from "@/lib/payment";
+import { PaymentMethodIcon } from "@/components/ui/payment-method-icon";
 import { ExternalLink } from "lucide-react";
 import { Logo } from "@/components/shared/logo";
 import { SocialIcon } from "@/components/ui/social-icon";
@@ -326,9 +327,10 @@ export default async function UserBioPage({ params }: Props) {
                       {link.title}
                     </span>
                     {link.kind === "payment" || link.kind === "tip" ? (
-                      <span className={`text-xs ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
+                      <span className={`text-xs inline-flex items-center gap-1.5 ${isOutlineBtn ? "opacity-60" : "text-white/60"}`}>
                         {link.amount ? `${formatAmount(link.amount, link.currency)} · ` : ""}
-                        {getPaymentMethod(link.paymentMethod).emoji} {getPaymentMethod(link.paymentMethod).label}
+                        <PaymentMethodIcon method={link.paymentMethod} className="w-3.5 h-3.5 flex-shrink-0" />
+                        {getPaymentMethod(link.paymentMethod).label}
                       </span>
                     ) : (
                       link.platform && link.platform !== "other" && platform && (

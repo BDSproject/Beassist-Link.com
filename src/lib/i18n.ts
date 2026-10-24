@@ -23,8 +23,8 @@ export const fr = {
       language: "Langue",
     },
     home: {
-      greeting: "Bonjour, {name} 👋",
-      upgradeTitle: "✨ Passe au plan Starter",
+      greeting: "Bonjour, {name}",
+      upgradeTitle: "Passe au plan Starter",
       upgradeDesc: "Débloque statistiques, QR codes et bien plus.",
       upgradeBtn: "Voir les plans",
       stats: {
@@ -397,7 +397,7 @@ export const fr = {
       suggestDesc: "Tu as une idée pour améliorer BeassistLink ? Partage-la ! Ton avis compte vraiment.",
       suggestEmail: "suggestion@beassist-link.com",
       suggestCta: "Envoyer une suggestion",
-      responseTime: "⚡ Nous répondons sous 24h",
+      responseTime: "Nous répondons sous 24h",
       responseNote: "Du lundi au vendredi. En dehors de ces horaires, nous répondons dès le prochain jour ouvré.",
     },
     payments: {
@@ -460,7 +460,7 @@ export const fr = {
     dashboard: "Tableau de bord",
   },
   hero: {
-    badge: "Rassemble. Partage. Grandis. 🇫🇷",
+    badge: "Rassemble. Partage. Grandis.",
     heading1: "Un seul lien en bio",
     heading2: "Une page",
     heading3: "Tout ton univers",
@@ -472,7 +472,7 @@ export const fr = {
     socialProof: "",
   },
   features: {
-    badge: "✨ Fonctionnalités",
+    badge: "Fonctionnalités",
     heading1: "Tout ce dont tu as besoin,",
     heading2: "rien de plus",
     subheading:
@@ -511,7 +511,7 @@ export const fr = {
     ],
   },
   howItWorks: {
-    badge: "🚀 Comment ça marche",
+    badge: "Comment ça marche",
     heading1: "En 3 étapes simples,",
     heading2: "tu es prêt",
     subheading:
@@ -535,7 +535,7 @@ export const fr = {
     ],
   },
   pricing: {
-    badge: "💰 Tarifs transparents",
+    badge: "Tarifs transparents",
     heading1: "Commence gratuitement,",
     heading2: "évolue à ton rythme",
     subheading:
@@ -595,7 +595,7 @@ export const fr = {
     },
   },
   cta: {
-    badge: "✨ Rejoins la communauté",
+    badge: "Rejoins la communauté",
     heading1: "Prêt à passer",
     heading2: "à l’action ?",
     subheading:
@@ -610,7 +610,7 @@ export const fr = {
     tagline:
       "La plateforme tout-en-un pour créer ton lien en bio et gérer tes liens raccourcis.",
     madeWith: "Fait avec",
-    inFrance: "en France 🇫🇷",
+    inFrance: "en France",
     copyright: "Tous droits réservés.",
     legalNotice: "Mentions légales",
     categories: {
@@ -638,7 +638,7 @@ export const fr = {
     privacy: "Confidentialité",
     terms: "Conditions",
     login: {
-      heading: "Bon retour ! 👋",
+      heading: "Bon retour !",
       subtitle: "Connecte-toi à ton compte BeassistLink",
       continueGoogle: "Continuer avec Google",
       continueGithub: "Continuer avec GitHub",
@@ -656,7 +656,7 @@ export const fr = {
       passwordRequired: "Mot de passe requis",
     },
     register: {
-      heading: "Crée ton compte 🚀",
+      heading: "Crée ton compte",
       subtitle: "Gratuit pour toujours · Aucune carte requise",
       continueGoogle: "Continuer avec Google",
       continueGithub: "Continuer avec GitHub",
@@ -677,7 +677,7 @@ export const fr = {
       hasAccount: "Déjà un compte ?",
       signInLink: "Se connecter",
       errorGeneral: "Une erreur est survenue",
-      successRegister: "Compte créé avec succès ! 🎉",
+      successRegister: "Compte créé avec succès !",
       nameMin: "Minimum 2 caractères",
       usernameMin: "Minimum 3 caractères",
       usernameMax: "Maximum 30 caractères",
@@ -756,8 +756,8 @@ export const en: typeof fr = {
       language: "Language",
     },
     home: {
-      greeting: "Hello, {name} 👋",
-      upgradeTitle: "✨ Upgrade to Starter",
+      greeting: "Hello, {name}",
+      upgradeTitle: "Upgrade to Starter",
       upgradeDesc: "Unlock stats, QR codes and more.",
       upgradeBtn: "View plans",
       stats: {
@@ -1130,7 +1130,7 @@ export const en: typeof fr = {
       suggestDesc: "Got an idea to improve BeassistLink? Share it! Your feedback really matters.",
       suggestEmail: "suggestion@beassist-link.com",
       suggestCta: "Send a suggestion",
-      responseTime: "⚡ We reply within 24 hours",
+      responseTime: "We reply within 24 hours",
       responseNote: "Monday to Friday. Outside of these hours, we'll reply on the next business day.",
     },
     payments: {
@@ -1205,7 +1205,7 @@ export const en: typeof fr = {
     socialProof: "",
   },
   features: {
-    badge: "✨ Features",
+    badge: "Features",
     heading1: "Everything you need,",
     heading2: "nothing more",
     subheading:
@@ -1244,7 +1244,7 @@ export const en: typeof fr = {
     ],
   },
   howItWorks: {
-    badge: "🚀 How it works",
+    badge: "How it works",
     heading1: "3 simple steps,",
     heading2: "and you're ready",
     subheading:
@@ -1268,7 +1268,7 @@ export const en: typeof fr = {
     ],
   },
   pricing: {
-    badge: "💰 Transparent pricing",
+    badge: "Transparent pricing",
     heading1: "Start for free,",
     heading2: "grow at your own pace",
     subheading: "No surprises, no hidden fees. Cancel anytime.",
@@ -1327,7 +1327,7 @@ export const en: typeof fr = {
     },
   },
   cta: {
-    badge: "✨ Join the community",
+    badge: "Join the community",
     heading1: "Ready to take",
     heading2: "action?",
     subheading:
@@ -1342,7 +1342,7 @@ export const en: typeof fr = {
     tagline:
       "The all-in-one platform to create your link in bio and manage your short links.",
     madeWith: "Made with",
-    inFrance: "in France 🇫🇷",
+    inFrance: "in France",
     copyright: "All rights reserved.",
     legalNotice: "Legal Notice",
     categories: {
@@ -1370,7 +1370,7 @@ export const en: typeof fr = {
     privacy: "Privacy",
     terms: "Terms",
     login: {
-      heading: "Welcome back! 👋",
+      heading: "Welcome back!",
       subtitle: "Sign in to your BeassistLink account",
       continueGoogle: "Continue with Google",
       continueGithub: "Continue with GitHub",
@@ -1388,7 +1388,7 @@ export const en: typeof fr = {
       passwordRequired: "Password required",
     },
     register: {
-      heading: "Create your account 🚀",
+      heading: "Create your account",
       subtitle: "Free forever · No credit card required",
       continueGoogle: "Continue with Google",
       continueGithub: "Continue with GitHub",
@@ -1409,7 +1409,7 @@ export const en: typeof fr = {
       hasAccount: "Already have an account?",
       signInLink: "Sign in",
       errorGeneral: "An error occurred",
-      successRegister: "Account created successfully! 🎉",
+      successRegister: "Account created successfully!",
       nameMin: "Minimum 2 characters",
       usernameMin: "Minimum 3 characters",
       usernameMax: "Maximum 30 characters",

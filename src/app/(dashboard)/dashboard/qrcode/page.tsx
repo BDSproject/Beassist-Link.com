@@ -6,7 +6,7 @@ import { QRCodeCanvas } from "qrcode.react";
 import { toast } from "react-hot-toast";
 import {
   Download, Link2, Globe, Palette, Copy, Check,
-  Smartphone, ExternalLink, RefreshCw, QrCode, Lock, Sparkles,
+  Smartphone, ExternalLink, RefreshCw, QrCode, Lock, Sparkles, Lightbulb,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -374,7 +374,7 @@ export default function QRCodePage() {
           </Card>
 
           <p className="text-xs text-gray-400 leading-relaxed">
-            <span className="font-semibold">💡</span> {t.tip}
+            <Lightbulb className="w-3.5 h-3.5 inline-block -mt-0.5 mr-1 text-gray-400" /> {t.tip}
           </p>
         </div>
 

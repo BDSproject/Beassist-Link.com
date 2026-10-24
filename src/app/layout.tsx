@@ -62,7 +62,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink — Rassemble. Partage. Grandis.",
     description:
-      "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France 🇫🇷",
+      "Regroupe tous tes réseaux sociaux en un seul lien élégant. Gratuit et conforme RGPD. Fait en France",
     url: BASE,
     siteName: "BeassistLink",
     locale: "fr_FR",
@@ -78,9 +78,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "BeassistLink — Rassemble. Partage. Grandis. 🇫🇷",
+    title: "BeassistLink — Rassemble. Partage. Grandis.",
     description:
-      "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Fait en France 🇫🇷",
+      "Plusieurs liens en bio Instagram / TikTok. Gratuit et conforme RGPD. Fait en France",
     creator: "@beassistlink",
     images: [`${BASE}/og-image.png`],
   },

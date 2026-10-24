@@ -10,14 +10,22 @@ export type PaymentMethodId =
   | "stripe"
   | "other";
 
-export const PAYMENT_METHODS: { id: PaymentMethodId; label: string; emoji: string }[] = [
-  { id: "lydia", label: "Lydia", emoji: "💜" },
-  { id: "paypal", label: "PayPal", emoji: "🅿️" },
-  { id: "wave", label: "Wave", emoji: "🌊" },
-  { id: "orange-money", label: "Orange Money", emoji: "🟠" },
-  { id: "mtn", label: "MTN Mobile Money", emoji: "📱" },
-  { id: "stripe", label: "Carte bancaire", emoji: "💳" },
-  { id: "other", label: "Autre", emoji: "💸" },
+// Clé d'icône neutre pour chaque méthode : rendue en icône monochrome (lucide)
+// côté interface. Voir src/components/ui/payment-method-icon.tsx.
+export type PaymentMethodIcon = "wallet" | "waves" | "smartphone" | "card" | "banknote";
+
+export const PAYMENT_METHODS: {
+  id: PaymentMethodId;
+  label: string;
+  icon: PaymentMethodIcon;
+}[] = [
+  { id: "lydia", label: "Lydia", icon: "wallet" },
+  { id: "paypal", label: "PayPal", icon: "wallet" },
+  { id: "wave", label: "Wave", icon: "waves" },
+  { id: "orange-money", label: "Orange Money", icon: "smartphone" },
+  { id: "mtn", label: "MTN Mobile Money", icon: "smartphone" },
+  { id: "stripe", label: "Carte bancaire", icon: "card" },
+  { id: "other", label: "Autre", icon: "banknote" },
 ];
 
 export const CURRENCIES: { code: string; label: string }[] = [

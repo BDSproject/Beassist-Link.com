@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Navbar } from "@/components/landing/navbar";
 import { Footer } from "@/components/landing/footer";
-import { Check, X, ArrowRight } from "lucide-react";
+import { Check, X, ArrowRight, Instagram, Music, ShoppingBag, Clapperboard, Briefcase, Building2 } from "lucide-react";
 
 const BASE = "https://www.beassist-link.com";
 
@@ -142,7 +142,7 @@ export default function ComparatifLinktreePage() {
                 Voir le comparatif ↓
               </a>
             </div>
-            <p className="mt-4 text-xs text-gray-400">Gratuit · Sans carte bancaire · Conforme RGPD 🇫🇷</p>
+            <p className="mt-4 text-xs text-gray-400">Gratuit · Sans carte bancaire · Conforme RGPD</p>
           </div>
         </section>
 
@@ -179,7 +179,7 @@ export default function ComparatifLinktreePage() {
                   <thead>
                     <tr className="bg-gray-50 border-b border-gray-200">
                       <th className="text-left px-4 py-3.5 text-gray-500 font-semibold w-[36%]">Critère</th>
-                      <th className="px-4 py-3.5 text-center font-bold text-[#8F00FF]">BeassistLink 🇫🇷</th>
+                      <th className="px-4 py-3.5 text-center font-bold text-[#8F00FF]">BeassistLink</th>
                       <th className="px-4 py-3.5 text-center text-gray-500 font-semibold">Linktree</th>
                       <th className="px-4 py-3.5 text-center text-gray-500 font-semibold">Milkshake</th>
                       <th className="px-4 py-3.5 text-center text-gray-500 font-semibold">Later</th>
@@ -212,38 +212,38 @@ export default function ComparatifLinktreePage() {
             <div className="grid sm:grid-cols-2 gap-4">
               {[
                 {
-                  emoji: "📸",
+                  Icon: Instagram,
                   title: "Créateurs Instagram",
                   desc: "Mets plusieurs liens dans ta bio Instagram : YouTube, boutique, newsletter, Spotify, TikTok — tout en un.",
                 },
                 {
-                  emoji: "🎵",
+                  Icon: Music,
                   title: "Artistes & musiciens",
                   desc: "Partage ton lien Spotify, Apple Music, SoundCloud et tes dates de concert depuis une seule page.",
                 },
                 {
-                  emoji: "🛒",
+                  Icon: ShoppingBag,
                   title: "E-commerçants",
                   desc: "Redirige ton audience vers ta boutique, tes offres du moment et ta newsletter sans friction.",
                 },
                 {
-                  emoji: "🎬",
+                  Icon: Clapperboard,
                   title: "TikTokeurs",
                   desc: "Contourne la limite \"un seul lien\" sur TikTok avec une page bio complète et personnalisée.",
                 },
                 {
-                  emoji: "💼",
+                  Icon: Briefcase,
                   title: "Freelances & consultants",
                   desc: "Centraliser portfolio, calendrier de réservation, LinkedIn et contact en un lien professionnel.",
                 },
                 {
-                  emoji: "🏢",
+                  Icon: Building2,
                   title: "PME françaises",
                   desc: "Solution 100 % RGPD, hébergée en Europe, avec support en français. Idéale pour les entreprises soumises au droit européen.",
                 },
-              ].map(({ emoji, title, desc }) => (
+              ].map(({ Icon, title, desc }) => (
                 <div key={title} className="rounded-2xl border border-gray-200 p-5 hover:border-[#8F00FF]/30 hover:bg-[#F9F5FF]/40 transition-all">
-                  <div className="text-2xl mb-2">{emoji}</div>
+                  <div className="text-[#8F00FF] mb-2.5"><Icon className="w-7 h-7" /></div>
                   <h3 className="font-bold text-gray-900 mb-1">{title}</h3>
                   <p className="text-sm text-gray-600 leading-relaxed">{desc}</p>
                 </div>

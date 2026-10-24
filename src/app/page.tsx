@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "BeassistLink — Rassemble. Partage. Grandis.",
     description:
-      "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit et conforme RGPD. Fait en France 🇫🇷",
+      "Plusieurs liens en bio Instagram, TikTok, YouTube, OnlyFans, Facebook. Gratuit et conforme RGPD. Fait en France",
     url: BASE,
   },
 };

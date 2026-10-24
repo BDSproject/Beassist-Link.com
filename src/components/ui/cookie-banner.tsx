@@ -8,7 +8,7 @@ import { getConsent, setConsent } from "@/lib/consent";
 
 const TEXT = {
   fr: {
-    title: "🍪 Cookies",
+    title: "Cookies",
     message:
       "Nous utilisons des cookies essentiels au fonctionnement du site et des cookies analytiques anonymisés pour améliorer ton expérience.",
     policy: "Politique de cookies",
@@ -16,7 +16,7 @@ const TEXT = {
     decline: "Essentiels uniquement",
   },
   en: {
-    title: "🍪 Cookies",
+    title: "Cookies",
     message:
       "We use essential cookies for the site to work and anonymised analytics cookies to improve your experience.",
     policy: "Cookie policy",

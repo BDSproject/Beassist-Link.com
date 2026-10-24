@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowRight, MessageCircle } from "lucide-react";
+import { ArrowRight, Check, MessageCircle } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 export function CtaSection() {
@@ -122,9 +122,9 @@ export function CtaSection() {
               className="flex flex-wrap gap-x-8 gap-y-2 justify-center mt-12 text-white/50 text-sm animate-fade-up"
               style={{ opacity: 0, animationDelay: "480ms", animationFillMode: "forwards" }}
             >
-              <span>✓ {t.cta.proof1}</span>
-              <span>✓ {t.cta.proof2}</span>
-              <span>✓ {t.cta.proof3}</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-4 h-4" /> {t.cta.proof1}</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-4 h-4" /> {t.cta.proof2}</span>
+              <span className="inline-flex items-center gap-1.5"><Check className="w-4 h-4" /> {t.cta.proof3}</span>
             </div>
           </div>
         </div>

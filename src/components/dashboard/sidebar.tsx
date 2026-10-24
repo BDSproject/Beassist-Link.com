@@ -131,7 +131,7 @@ export function Sidebar() {
                 : "text-gray-500 hover:text-gray-700"
             )}
           >
-            🇫🇷 FR
+            FR
           </button>
           <button
             onClick={() => setLang("en")}
@@ -142,7 +142,7 @@ export function Sidebar() {
                 : "text-gray-500 hover:text-gray-700"
             )}
           >
-            🇬🇧 EN
+            EN
           </button>
         </div>
       </div>
@@ -206,7 +206,7 @@ export function Sidebar() {
             onClick={() => setLang(lang === "fr" ? "en" : "fr")}
             className="px-2.5 py-1.5 rounded-lg bg-gray-100 text-xs font-semibold text-gray-700 hover:bg-gray-200 transition-colors"
           >
-            {lang === "fr" ? "🇫🇷" : "🇬🇧"}
+            {lang === "fr" ? "FR" : "EN"}
           </button>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}

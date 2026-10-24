@@ -8,7 +8,7 @@ import {
   Plus, Trash2, GripVertical, Eye, Palette, User, Globe, Pencil,
   X, Check, ExternalLink, Image as ImageIcon, Type, MousePointer2,
   Share2, Instagram, Twitter, Youtube, Facebook, Linkedin, Github,
-  Music, MessageCircle, Lock, Camera,
+  Music, MessageCircle, Lock, Camera, Link2, CreditCard, Heart, Smartphone,
 } from "lucide-react";
 import {
   DndContext,
@@ -645,10 +645,10 @@ export default function BioPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2">{b.typeLabel}</label>
                     <div className="grid grid-cols-3 gap-2">
                       {([
-                        ["link", "🔗", b.typeLink],
-                        ["payment", "💳", b.typePayment],
-                        ["tip", "💝", b.typeTip],
-                      ] as const).map(([k, emoji, label]) => (
+                        ["link", Link2, b.typeLink],
+                        ["payment", CreditCard, b.typePayment],
+                        ["tip", Heart, b.typeTip],
+                      ] as const).map(([k, Icon, label]) => (
                         <button
                           key={k}
                           type="button"
@@ -659,7 +659,7 @@ export default function BioPage() {
                               : "border-gray-200 hover:border-gray-300 text-gray-600"
                           }`}
                         >
-                          <span>{emoji}</span>
+                          <Icon className="w-4 h-4 flex-shrink-0" />
                           {label}
                         </button>
                       ))}
@@ -687,7 +687,7 @@ export default function BioPage() {
                       </div>
                       <div className="flex items-center gap-2 mt-3 mb-2">
                         <div className="flex-1 h-px bg-gray-200" />
-                        <span className="text-xs text-gray-400 font-medium px-1">🔞 Plateformes adultes</span>
+                        <span className="text-xs text-gray-400 font-medium px-1">Plateformes adultes</span>
                         <div className="flex-1 h-px bg-gray-200" />
                       </div>
                       <div className="grid grid-cols-4 sm:grid-cols-6 gap-2">
@@ -739,7 +739,7 @@ export default function BioPage() {
                             className="w-full h-10 rounded-xl border border-gray-200 px-3 text-sm bg-white"
                           >
                             {PAYMENT_METHODS.map((m) => (
-                              <option key={m.id} value={m.id}>{m.emoji} {m.label}</option>
+                              <option key={m.id} value={m.id}>{m.label}</option>
                             ))}
                           </select>
                         </div>
@@ -872,8 +872,8 @@ export default function BioPage() {
                           if (isLocked) {
                             toast(
                               (t) => (
-                                <span className="text-sm">
-                                  🔒 {b.lockedTheme}{" "}
+                                <span className="text-sm inline-flex items-center gap-1.5 flex-wrap">
+                                  <Lock className="w-4 h-4 flex-shrink-0" /> {b.lockedTheme}{" "}
                                   <a
                                     href="/dashboard/billing"
                                     className="font-semibold text-[#8F00FF] underline"
@@ -1067,7 +1067,9 @@ export default function BioPage() {
                     <ImageIcon className="w-8 h-8" />
                     <span className="text-sm font-medium">{b.importBgImage}</span>
                     <span className="text-xs">{b.bgImageFormat}</span>
-                    <span className="text-[10px] text-green-600 font-medium">📱 Format portrait 9:16 recommandé</span>
+                    <span className="text-[10px] text-green-600 font-medium inline-flex items-center gap-1">
+                      <Smartphone className="w-3 h-3 flex-shrink-0" /> Format portrait 9:16 recommandé
+                    </span>
                   </button>
                 )}
                 <input ref={bgImageRef} type="file" accept="image/*" className="hidden" onChange={handleBgImageUpload} />
@@ -1162,8 +1164,8 @@ export default function BioPage() {
                 </div>
 
                 {/* Style & Design */}
-                <p className="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-1">
-                  🎨 {b.fontStyleLabel}
+                <p className="text-xs font-semibold text-gray-400 mb-2 flex items-center gap-1.5">
+                  <Palette className="w-3.5 h-3.5" /> {b.fontStyleLabel}
                 </p>
                 <div className="grid grid-cols-3 gap-2">
                   {FONT_STYLES.filter((f) => f.group === "style").map((fs) => (

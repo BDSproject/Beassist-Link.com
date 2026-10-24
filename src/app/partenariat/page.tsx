@@ -4,15 +4,15 @@ import { useState } from "react";
 import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
 import { MarketingLayout } from "@/components/landing/marketing-layout";
-import { Video, Gift, CheckCircle2, Star, Send, Loader2 } from "lucide-react";
+import { Video, Gift, CheckCircle2, Star, Send, Loader2, Users } from "lucide-react";
 
 const platforms = [
-  { name: "YouTube", emoji: "🎥" },
-  { name: "TikTok", emoji: "🎵" },
-  { name: "Instagram", emoji: "📸" },
-  { name: "Twitch", emoji: "🟣" },
-  { name: "Podcast", emoji: "🎙️" },
-  { name: "Other / Autre", emoji: "✨" },
+  { name: "YouTube" },
+  { name: "TikTok" },
+  { name: "Instagram" },
+  { name: "Twitch" },
+  { name: "Podcast" },
+  { name: "Other / Autre" },
 ];
 
 export default function PartnershipPage() {
@@ -75,7 +75,7 @@ export default function PartnershipPage() {
         },
         {
           number: "04",
-          title: "Lifetime Pro subscription 🎁",
+          title: "Lifetime Pro subscription",
           description:
             "Once the video is published and validated, you immediately receive your lifetime BeassistLink Pro access — no limits, no hidden conditions.",
         },
@@ -101,7 +101,7 @@ export default function PartnershipPage() {
         },
         {
           number: "04",
-          title: "Abonnement Pro à vie 🎁",
+          title: "Abonnement Pro à vie",
           description:
             "Une fois la vidéo publiée et validée, tu reçois immédiatement ton accès Pro BeassistLink à vie — aucune limite, aucune condition.",
         },
@@ -185,8 +185,8 @@ export default function PartnershipPage() {
 
   // Métadonnées dynamiques
   const pageTitle = en
-    ? "Become a BeassistLink Ambassador 🌍"
-    : "Deviens ambassadeur BeassistLink 🇫🇷";
+    ? "Become a BeassistLink Ambassador"
+    : "Deviens ambassadeur BeassistLink";
   const pageDescription = en
     ? "Got 1,000+ followers? Present BeassistLink to your community in a video and get lifetime Pro access — free, no hidden conditions."
     : "Tu as +1 000 abonnés ? Présente BeassistLink à ta communauté dans une vidéo, et décroche un accès Pro à vie — offert, sans condition cachée.";
@@ -249,8 +249,8 @@ export default function PartnershipPage() {
           }
           className="rounded-2xl border border-amber-300 bg-amber-50 p-4 flex items-start gap-3"
         >
-          <span className="text-2xl shrink-0 mt-0.5" aria-hidden="true">
-            📊
+          <span className="text-2xl shrink-0 mt-0.5 text-amber-600" aria-hidden="true">
+            <Users className="w-6 h-6" />
           </span>
           <div>
             <h2 className="text-sm font-bold text-amber-900">
@@ -287,8 +287,8 @@ export default function PartnershipPage() {
               </p>
               <p className="text-sm text-gray-500 mt-3 leading-relaxed">
                 {en
-                  ? "Minimum 1,000 followers required. No imposed script. You stay 100% authentic 🎯"
-                  : "Minimum 1 000 abonnés requis. Aucun script imposé. Tu restes 100% authentique 🎯"}
+                  ? "Minimum 1,000 followers required. No imposed script. You stay 100% authentic"
+                  : "Minimum 1 000 abonnés requis. Aucun script imposé. Tu restes 100% authentique"}
               </p>
             </div>
             <div className="flex flex-col gap-3 sm:min-w-[200px]">
@@ -375,7 +375,7 @@ export default function PartnershipPage() {
           <ul className="space-y-2 list-none p-0">
             {requirements.map((req) => (
               <li key={req} className="flex items-start gap-2 text-sm text-gray-700">
-                <span className="text-amber-500 mt-0.5 shrink-0" aria-hidden="true">✦</span>
+                <Star className="w-3.5 h-3.5 text-amber-500 mt-0.5 shrink-0 fill-current" aria-hidden="true" />
                 {req}
               </li>
             ))}
@@ -388,7 +388,7 @@ export default function PartnershipPage() {
             <div className="rounded-2xl border border-green-200 bg-green-50 p-8 text-center">
               <CheckCircle2 size={40} className="text-green-500 mx-auto mb-4" aria-hidden="true" />
               <h2 id="application-form-title" className="text-xl font-black text-gray-900 mb-2">
-                {en ? "Application received! 🎉" : "Candidature reçue ! 🎉"}
+                {en ? "Application received!" : "Candidature reçue !"}
               </h2>
               <p className="text-sm text-gray-600">
                 {en
@@ -471,7 +471,7 @@ export default function PartnershipPage() {
                             : "border-gray-200 text-gray-600 hover:border-[#8F00FF]/40"
                         }`}
                       >
-                        {p.emoji} {p.name}
+                        {p.name}
                       </button>
                     ))}
                   </div>

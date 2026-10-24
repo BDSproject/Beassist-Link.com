@@ -4,7 +4,7 @@ import Link from "next/link";
 import Head from "next/head";
 import { usePathname } from "next/navigation";
 import { Logo } from "@/components/shared/logo";
-import { Facebook } from "lucide-react";
+import { Facebook, Heart } from "lucide-react";
 import { useLanguage } from "@/contexts/language-context";
 
 // Icônes SVG personnalisées — Instagram & TikTok (absentes de lucide)
@@ -185,7 +185,7 @@ export function Footer() {
             <div className="flex flex-col sm:flex-row items-center gap-3 text-sm text-gray-500">
               <span className="flex items-center gap-1">
                 {t.footer.madeWith}{" "}
-                <span className="text-[#8F00FF] mx-1" aria-hidden="true">♥</span>{" "}
+                <Heart className="w-4 h-4 text-[#8F00FF] mx-1 fill-current" aria-hidden="true" />{" "}
                 {lang === "fr" ? "par" : "by"}{" "}
                 <span className="font-semibold text-white ml-1">Beassist</span>
               </span>
