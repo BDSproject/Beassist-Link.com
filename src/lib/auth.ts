@@ -126,18 +126,26 @@ export const authOptions: NextAuthOptions = {
         token.username = (user as any).username;
         token.plan = (user as any).plan;
         token.onboardingCompleted = (user as any).onboardingCompleted ?? true;
+        token.planRefreshedAt = Date.now();
       }
-      // Toujours rafraîchir le plan depuis la DB pour refléter tout changement
-      // (upgrade, downgrade, reset admin) sans exiger une reconnexion
+      // Rafraîchit le plan depuis la DB au plus toutes les 5 minutes, pour
+      // refléter un upgrade/downgrade sans reconnexion. Avant ce correctif,
+      // une requête partait à chaque page visitée par un utilisateur connecté.
+      // L'instantanéité du gating est de toute façon assurée côté client par
+      // le hook usePlan() qui interroge /api/user/plan.
       if (token.id && !user) {
-        const dbUser = await db.user.findUnique({
-          where: { id: token.id as string },
-          select: { username: true, plan: true, onboardingCompleted: true },
-        });
-        if (dbUser) {
-          if (!token.username) token.username = dbUser.username;
-          token.plan = dbUser.plan;
-          token.onboardingCompleted = (dbUser as any).onboardingCompleted ?? true;
+        const lastChecked = (token.planRefreshedAt as number) || 0;
+        if (Date.now() - lastChecked > 5 * 60 * 1000) {
+          const dbUser = await db.user.findUnique({
+            where: { id: token.id as string },
+            select: { username: true, plan: true, onboardingCompleted: true },
+          });
+          if (dbUser) {
+            if (!token.username) token.username = dbUser.username;
+            token.plan = dbUser.plan;
+            token.onboardingCompleted = (dbUser as any).onboardingCompleted ?? true;
+            token.planRefreshedAt = Date.now();
+          }
         }
       }
       if (trigger === "update" && session) {
