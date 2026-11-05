@@ -22,6 +22,7 @@ const staticRoutes: Array<{
   { path: "/en/pricing", priority: 0.85, changeFrequency: "weekly" },
   // Blog : high frequency
   { path: "/blog", priority: 0.8, changeFrequency: "weekly" },
+  { path: "/blog/encaisser-paiements-mobile-money", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-11-05" },
   { path: "/blog/plusieurs-liens-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-04-14" },
   { path: "/blog/7-erreurs-lien-en-bio", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },
   { path: "/blog/10-liens-bio-instagram", priority: 0.9, changeFrequency: "monthly", lastModified: "2026-09-28" },

@@ -26,6 +26,17 @@ export const metadata: Metadata = {
 
 const posts = [
   {
+    slug: "encaisser-paiements-mobile-money",
+    tag: "Monétisation",
+    tagColor: "bg-green-100 text-green-700",
+    title: "Encaisser des paiements et pourboires depuis ton lien en bio",
+    excerpt:
+      "Wave, Orange Money, MTN, Lydia : transforme ta page de liens en caisse enregistreuse et fais payer ton audience sans carte bancaire.",
+    date: "5 novembre 2026",
+    readTime: "6 min",
+    featured: true,
+  },
+  {
     slug: "7-erreurs-lien-en-bio",
     tag: "Stratégie",
     tagColor: "bg-green-100 text-green-700",
